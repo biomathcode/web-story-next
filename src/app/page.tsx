@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
+
 import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
+
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import axios from "axios";
+
 import {
   DndContext,
   closestCenter,
@@ -138,7 +138,7 @@ export default function Home() {
     AMP_TEXT() +
     AMP_CTA_LAYER("https://coolhead.in", "Website") +
     AMP_GRID_LAYER(AMP_IMAGE(image[0], 720, 1080, "responsive"), "fill");
-  // AMP_IMAGE(image[0], 720, 1080, "responsive");
+
   const newCode = AMP_STORY(
     ode,
     "this is working",
