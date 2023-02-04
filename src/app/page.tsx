@@ -1,91 +1,196 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+"use client";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "./page.module.css";
+import { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
+import axios from "axios";
 
-const inter = Inter({ subsets: ['latin'] })
+import {
+  DndContext,
+  closestCenter,
+  useSensor,
+  PointerSensor,
+  KeyboardSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  sortableKeyboardCoordinates,
+  arrayMove,
+} from "@dnd-kit/sortable";
+
+import VerticalContainer from "@/component/verticalContainer";
+
+import Droppable from "@/component/Droppable";
+import data from "./data";
+import { useUniqueId } from "@dnd-kit/utilities";
+import NavBar from "@/component/Navbar";
+import { AMP_CTA_LAYER, AMP_GRID_LAYER, AMP_IMAGE, AMP_TEXT } from "@/lib";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [isDropped, setIsDropped] = useState(false);
+
+  const [items, setItems] = useState(data);
+
+  const [page, setPage] = useState();
+
+  const [content, setContent] = useState();
+
+  const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
+    if (!over) {
+      return;
+    }
+    if (active.id && active.data.current.title) {
+      console.log(active.id, over.id);
+      const oldIndex = items.find((item) => item.id === over.id);
+
+      const newChildren = oldIndex?.children.push({
+        id: nanoid(),
+        type: "text",
+        content: active.data.current.title || "something",
+      });
+      const filterItems = items.filter((el) => el.id === over.id);
+
+      setItems((items: any) =>
+        items.map((item: any) => {
+          return item.id !== over.id ? item : oldIndex;
+        })
+      );
+
+      console.log(oldIndex);
+
+      console.log(oldIndex);
+    } else {
+      if (active.id !== over.id) {
+        setItems((items) => {
+          const oldIndex = items.findIndex((item) => item.id === active.id);
+          const newIndex = items.findIndex((item) => item.id === over.id);
+
+          return arrayMove(items, oldIndex, newIndex);
+        });
+      }
+    }
+  };
+
+  // const sensors = [useSensor(PointerSensor)];
+
+  const AddItem = (e: any) => {
+    setItems([
+      ...items,
+      {
+        id: nanoid(),
+        name: "Pratik ",
+        children: [
+          {
+            id: nanoid(),
+            type: "text",
+            content: "dasfa",
+          },
+          {
+            id: nanoid(),
+            type: "text",
+            content: "Second to none",
+          },
+        ],
+      },
+    ]);
+  };
+
+  const handleAddNewitem = (e: any) => {
+    console.log(e);
+  };
+
+  const removeItem = (id: any) => {
+    console.log("this is working");
+
+    const newItem = items.filter((el) => el.id !== id);
+    console.log("this is working");
+    setItems([...newItem]);
+  };
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const newCode = AMP_TEXT() + AMP_CTA_LAYER("https://coolhead.in", "Website");
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      <NavBar />
+      <div className="App" style={{ display: "flex", gap: "20px" }}>
+        <DndContext
+          sensors={sensors}
+          onDragEnd={(e) => handleDragEnd(e)}
+          collisionDetection={closestCenter}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+              height: "100vh",
+              borderRight: "2px solid #333",
+              minWidth: "250px",
+              padding: "0px 20px",
+            }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+            <Droppable id="kldmfssd1" />
+            <Droppable id="asdf2" />
+
+            <Droppable id="fasdf3" />
+
+            <Droppable id="fdsf4" />
+            <Droppable id="asd5" />
+
+            <button onClick={AddItem}>Add</button>
+          </div>
+
+          <div
+            style={{
+              height: "100vh",
+              overflow: "scroll",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+              minWidth: "600px",
+            }}
+          >
+            <SortableContext
+              items={items.map((item) => item.id)}
+              strategy={verticalListSortingStrategy}
+            >
+              {items.map((el) => {
+                return (
+                  <VerticalContainer
+                    items={items}
+                    setItems={setItems}
+                    key={el.id}
+                    el={el}
+                  />
+                );
+              })}
+            </SortableContext>
+          </div>
+          <div
+            style={{
+              borderLeft: "2px solid #222",
+              padding: "0px 10px",
+              width: "300px",
+            }}
+          >
+            <textarea
+              value={newCode}
+              style={{ width: "300px", height: "400px" }}
             />
-          </a>
-        </div>
+          </div>
+        </DndContext>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </>
+  );
 }
