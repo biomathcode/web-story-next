@@ -5,7 +5,6 @@ import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import axios from "axios";
-
 import {
   DndContext,
   closestCenter,
@@ -27,9 +26,26 @@ import Droppable from "@/component/Droppable";
 import data from "./data";
 import { useUniqueId } from "@dnd-kit/utilities";
 import NavBar from "@/component/Navbar";
-import { AMP_CTA_LAYER, AMP_GRID_LAYER, AMP_IMAGE, AMP_TEXT } from "@/lib";
+import {
+  AMP_CTA_LAYER,
+  AMP_GRID_LAYER,
+  AMP_IMAGE,
+  AMP_STORY,
+  AMP_TEXT,
+} from "@/lib";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const image = [
+  "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80",
+  "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+  "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+  "https://images.unsplash.com/photo-1536148935331-408321065b18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+  "https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+  "https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1076&q=80",
+  "https://images.unsplash.com/photo-1554595666-19ceabf46a84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+  "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+];
 
 export default function Home() {
   const [isDropped, setIsDropped] = useState(false);
@@ -118,7 +134,18 @@ export default function Home() {
     })
   );
 
-  const newCode = AMP_TEXT() + AMP_CTA_LAYER("https://coolhead.in", "Website");
+  const ode =
+    AMP_TEXT() +
+    AMP_CTA_LAYER("https://coolhead.in", "Website") +
+    AMP_GRID_LAYER(AMP_IMAGE(image[0], 720, 1080, "responsive"), "fill");
+  // AMP_IMAGE(image[0], 720, 1080, "responsive");
+  const newCode = AMP_STORY(
+    ode,
+    "this is working",
+    "coolhead",
+    image[0],
+    image[1]
+  );
 
   return (
     <>
@@ -186,7 +213,7 @@ export default function Home() {
           >
             <textarea
               value={newCode}
-              style={{ width: "300px", height: "400px" }}
+              style={{ width: "500px", height: "600px" }}
             />
           </div>
         </DndContext>
