@@ -1,13 +1,16 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
-const Droppable = ({ id }: {id:any}) => {
+const Droppable = ({ id, href }: { id: any; href: string }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: id,
     data: {
       id: id,
-      title: "something"
-    }
+      type: "image",
+      content: href,
+      href: href,
+      title: href,
+    },
   });
   const style = {
     display: "flex",
@@ -15,7 +18,7 @@ const Droppable = ({ id }: {id:any}) => {
     border: "1px solid #eee",
     background: "#fff",
 
-    transform: CSS.Translate.toString(transform)
+    transform: CSS.Translate.toString(transform),
   };
   return (
     <div style={style} ref={setNodeRef}>
@@ -24,7 +27,11 @@ const Droppable = ({ id }: {id:any}) => {
           <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
         </svg>
       </button>
-      <p>something</p>
+      <img
+        src={href}
+        alt="something to add"
+        style={{ width: "40px", height: "40px" }}
+      />
     </div>
   );
 };

@@ -167,13 +167,9 @@ export default function Home() {
               padding: "0px 20px",
             }}
           >
-            <Droppable id="kldmfssd1" />
-            <Droppable id="asdf2" />
-
-            <Droppable id="fasdf3" />
-
-            <Droppable id="fdsf4" />
-            <Droppable id="asd5" />
+            {image.map((el) => {
+              return <Droppable href={el} key={el} id={el} />;
+            })}
 
             <button onClick={AddItem}>Add</button>
           </div>

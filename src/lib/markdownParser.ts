@@ -1,9 +1,17 @@
 // TODO: use marked to convert md string to Lexer data
 
-const mdParser = (content: string): string[] => {
+import { marked } from "marked";
+
+const mdParser = (content: string) => {
   const data: string[] = [];
 
-  return data;
+  const response = marked.lexer(content);
+
+  const paragraphs = response.filter((el) => el.type !== "space");
+
+  console.log(paragraphs);
+
+  return paragraphs;
 };
 
 export default mdParser;
