@@ -25,46 +25,13 @@ export const colourOptions: ColourOption[] = [
   { value: "silver", label: "Silver", color: "#666666" },
 ];
 
-function NavBar() {
-  const [user, setUser] = useState({
-    name: "Pratik ",
-    publication: {
-      posts: [
-        {
-          title: "this is the title",
-        },
-      ],
-    },
-  });
-
-  const [newContent, setNewContent] = useState([]);
-
-  const [loading, setLoading] = useState(false);
-
-  const options = user?.publication?.posts.map((el) => {
+function NavBar({ loading, user }: { loading: any; user: any }) {
+  const options = user?.publication?.posts.map((el: any) => {
     return {
       value: el.title,
       label: el.title,
     };
   });
-
-  console.log(options);
-
-  useEffect(() => {
-    async function fetchFunction() {
-      const response = await axios(config);
-
-      mdParser(response.data.data.user.publication.posts[1].contentMarkdown);
-
-      setUser(response.data.data.user);
-
-      console.log(response.data.data.user);
-      return response.data;
-    }
-
-    fetchFunction();
-    setLoading(true);
-  }, []);
   return loading ? (
     <nav
       style={{

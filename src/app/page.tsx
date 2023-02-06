@@ -4,7 +4,11 @@ import { Inter } from "@next/font/google";
 
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-
+import Editor from "@monaco-editor/react";
+import axios from "axios";
+import { config } from "../axios/index";
+import mdParser from "@/lib/markdownParser";
+import Token from "marked";
 import {
   DndContext,
   closestCenter,
@@ -54,7 +58,42 @@ export default function Home() {
 
   const [page, setPage] = useState();
 
-  const [content, setContent] = useState();
+  const [content, setContent] = useState([]);
+
+  const [user, setUser] = useState({
+    name: "Pratik ",
+    publication: {
+      posts: [
+        {
+          title: "this is the title",
+        },
+      ],
+    },
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchFunction() {
+      const response = await axios(config);
+
+      setContent(
+        mdParser(
+          response.data.data.user.publication.posts[1].contentMarkdown
+        ) as []
+      );
+
+      setUser(response.data.data.user);
+
+      console.log(response.data.data.user);
+      return response.data;
+    }
+
+    fetchFunction();
+    setLoading(true);
+  }, []);
+
+  console.log("this is the new contnet", content);
 
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
@@ -91,8 +130,6 @@ export default function Home() {
       }
     }
   };
-
-  // const sensors = [useSensor(PointerSensor)];
 
   const AddItem = (e: any) => {
     setItems([
@@ -149,7 +186,7 @@ export default function Home() {
 
   return (
     <>
-      <NavBar />
+      <NavBar loading={loading} user={user} />
       <div className="App" style={{ display: "flex", gap: "20px" }}>
         <DndContext
           sensors={sensors}
@@ -167,9 +204,15 @@ export default function Home() {
               padding: "0px 20px",
             }}
           >
-            {image.map((el) => {
-              return <Droppable href={el} key={el} id={el} />;
-            })}
+            {content &&
+              content.map((el: any, i) => {
+                // three types content, code, image
+                return (
+                  el?.text?.length > 3 && (
+                    <Droppable href={el.text} key={i} id={i} />
+                  )
+                );
+              })}
 
             <button onClick={AddItem}>Add</button>
           </div>
@@ -207,10 +250,17 @@ export default function Home() {
               width: "300px",
             }}
           >
-            <textarea
+            <Editor
+              height="90vh"
+              width="600px"
+              theme="vs-dark"
+              defaultLanguage="html"
+              defaultValue={newCode}
+            />
+            {/* <textarea
               value={newCode}
               style={{ width: "500px", height: "600px" }}
-            />
+            /> */}
           </div>
         </DndContext>
       </div>
