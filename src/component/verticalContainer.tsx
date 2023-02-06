@@ -9,19 +9,19 @@ import {
   KeyboardSensor,
   PointerSensor,
   useSensor,
-  useSensors
+  useSensors,
 } from "@dnd-kit/core";
 import {
   restrictToHorizontalAxis,
   restrictToVerticalAxis,
-  restrictToWindowEdges
+  restrictToWindowEdges,
 } from "@dnd-kit/modifiers";
 import {
   SortableContext,
   horizontalListSortingStrategy,
   useSortable,
   arrayMove,
-  sortableKeyboardCoordinates
+  sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { SortableItem } from "./SortableItem";
@@ -40,7 +40,7 @@ interface Context {
 const SortableItemContext = createContext<Context>({
   attributes: {},
   listeners: undefined,
-  ref() {}
+  ref() {},
 });
 export function DragHandle() {
   const { attributes, listeners, ref } = useContext(SortableItemContext);
@@ -50,7 +50,7 @@ export function DragHandle() {
       style={{
         position: "relative",
         top: "1px",
-        left: "-0px"
+        left: "-0px",
       }}
       className="DragHandle"
       {...attributes}
@@ -72,14 +72,14 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
     transform,
     transition,
     setActivatorNodeRef,
-    isDragging
+    isDragging,
   } = useSortable({ id: el.id });
 
   const context = useMemo(
     () => ({
       attributes,
       listeners,
-      ref: setActivatorNodeRef
+      ref: setActivatorNodeRef,
     }),
     [attributes, listeners, setActivatorNodeRef]
   );
@@ -91,13 +91,10 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
     display: "flex",
 
     border: "1px solid #eee",
-    borderRadius: "10px"
+    borderRadius: "10px",
   };
 
-  const handleDragEnd = ({ active, over }: {
-    active: any, 
-    over: any
-  }) => {
+  const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
       return;
     }
@@ -123,7 +120,7 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates
+      coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
@@ -144,7 +141,7 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
                 display: "flex",
 
                 overflow: "scroll",
-                overflowX: "scroll"
+                overflowX: "scroll",
               }}
             >
               <SortableContext
@@ -152,6 +149,7 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
                 strategy={horizontalListSortingStrategy}
               >
                 {el.children.map((e: any) => {
+                  console.log("this is the iamge children", e);
                   return (
                     <SortableItem
                       setItems={setItems}
@@ -159,8 +157,9 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
                       items={items}
                       id={e.id}
                       key={e.id}
+                      type={e.type}
                     >
-                      {e.type === "image" ? e.url : e.content}
+                      {e.content}
                     </SortableItem>
                   );
                 })}

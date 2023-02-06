@@ -1,12 +1,20 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
-const Droppable = ({ id, href }: { id: any; href: string }) => {
+const Droppable = ({
+  id,
+  href,
+  type,
+}: {
+  id: any;
+  href: string;
+  type: string;
+}) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: id,
     data: {
       id: id,
-      type: "image",
+      type: type,
       content: href,
       href: href,
       title: href,
@@ -27,7 +35,11 @@ const Droppable = ({ id, href }: { id: any; href: string }) => {
           <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
         </svg>
       </button>
-      <p>{href}</p>
+      {type === "image" ? (
+        <img alt={href} src={href} width="250px" height="300px" />
+      ) : (
+        <p>{href}</p>
+      )}
     </div>
   );
 };

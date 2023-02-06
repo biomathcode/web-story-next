@@ -93,8 +93,6 @@ export default function Home() {
     setLoading(true);
   }, []);
 
-  console.log("this is the new contnet", content);
-
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
       return;
@@ -105,7 +103,7 @@ export default function Home() {
 
       const newChildren = oldIndex?.children.push({
         id: nanoid(),
-        type: "text",
+        type: active.data.current.type,
         content: active.data.current.title || "something",
       });
       const filterItems = items.filter((el) => el.id === over.id);
@@ -207,9 +205,20 @@ export default function Home() {
             {content &&
               content.map((el: any, i) => {
                 // three types content, code, image
+                if (el.raw.match(/!\[(.*)\]\((.+)\)/g)) {
+                  console.log(el);
+                  return (
+                    <Droppable
+                      type="image"
+                      href={el.tokens[1].href}
+                      key={i}
+                      id={i}
+                    />
+                  );
+                }
                 return (
                   el?.text?.length > 3 && (
-                    <Droppable href={el.text} key={i} id={i} />
+                    <Droppable type="text" href={el.text} key={i} id={i} />
                   )
                 );
               })}

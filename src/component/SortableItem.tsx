@@ -3,13 +3,14 @@ import React, { createContext, useContext, useMemo, useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import type {
   DraggableSyntheticListeners,
-  UniqueIdentifier
+  UniqueIdentifier,
 } from "@dnd-kit/core";
 
 import { CSS } from "@dnd-kit/utilities";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 
 import * as Popover from "@radix-ui/react-popover";
+import { type } from "os";
 
 interface Props {
   id: UniqueIdentifier;
@@ -24,7 +25,7 @@ interface Context {
 const SortableItemContext = createContext<Context>({
   attributes: {},
   listeners: undefined,
-  ref() {}
+  ref() {},
 });
 
 export function DragHandle() {
@@ -39,21 +40,29 @@ export function DragHandle() {
   );
 }
 
-const updateContent = ({ id, parentId, items, setItems, newContent }: {
-  id: any, 
-  parentId: any, 
-  items: any, 
-  setItems: any, 
-  newContent: any
+const updateContent = ({
+  id,
+  parentId,
+  items,
+  setItems,
+  newContent,
+  type,
+}: {
+  id: any;
+  parentId: any;
+  items: any;
+  type: any;
+  setItems: any;
+  newContent: any;
 }) => {
   const parent = items.filter((item: any) => item.id === parentId);
 
-  const newChildren = parent[0].children.map((el:any) => {
+  const newChildren = parent[0].children.map((el: any) => {
     return el.id === id
       ? {
           id: id,
-          type: "text",
-          content: newContent
+          type: type,
+          content: newContent,
         }
       : el;
   });
@@ -61,16 +70,16 @@ const updateContent = ({ id, parentId, items, setItems, newContent }: {
   const newParent = {
     id: parent[0].id,
     name: parent[0].name,
-    children: newChildren
+    children: newChildren,
   };
 
   console.log("this are the children", newParent);
   setItems((items: any) => {
-    return items.map((item : any) => (item.id === parentId ? newParent : item));
+    return items.map((item: any) => (item.id === parentId ? newParent : item));
   });
 };
 
-export function SortableItem(props:any) {
+export function SortableItem(props: any) {
   const [input, setInput] = useState(props.children);
 
   const [font, setFont] = useState("16");
@@ -81,13 +90,13 @@ export function SortableItem(props:any) {
     setNodeRef,
     setActivatorNodeRef,
     transform,
-    transition
+    transition,
   } = useSortable({ id: props.id });
   const context = useMemo(
     () => ({
       attributes,
       listeners,
-      ref: setActivatorNodeRef
+      ref: setActivatorNodeRef,
     }),
     [attributes, listeners, setActivatorNodeRef]
   );
@@ -103,7 +112,7 @@ export function SortableItem(props:any) {
     paddingRight: "20px",
 
     display: "flex",
-    gap: "10px"
+    gap: "10px",
   };
   return (
     <>
@@ -112,8 +121,11 @@ export function SortableItem(props:any) {
           <Popover.Trigger asChild>
             <div className="SortableItem" ref={setNodeRef} style={style}>
               <DragHandle />
-
-              <p style={{ fontSize: font + "px" }}>{props.children}</p>
+              {props.type === "image" ? (
+                <img src={props.children} width="40px" height="50px" />
+              ) : (
+                <p style={{ fontSize: font + "px" }}>{props.children}</p>
+              )}
             </div>
           </Popover.Trigger>
           <Popover.Portal>
@@ -130,11 +142,12 @@ export function SortableItem(props:any) {
                     onChange={(e) => setInput(e.target.value)}
                     onBlur={() =>
                       updateContent({
+                        type: props.type,
                         id: props.id,
                         parentId: props.parentId,
                         items: props.items,
                         setItems: props.setItems,
-                        newContent: input
+                        newContent: input,
                       })
                     }
                     className="Input"
