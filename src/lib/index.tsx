@@ -5,6 +5,11 @@
 // amp-story-page much have an id and children
 // amp-cta much be a decendent of amp-story-page
 // add move text settings
+// animation is missing
+
+// const newStory = AMP_STORY(AMP_STORY_PAGE(AMP_GRID_LAYER(AMP_IMAGE())))
+
+//  AMP_STORY().AMP_STORY_PAGE().AMP_GRID_LAYER()
 
 const AMP_STORY = (
   children: string,
