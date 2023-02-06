@@ -1,6 +1,11 @@
 // TODO: write a unit test for this file
 // TODO: validate the AMP code created
 
+// rules of amp pages
+// amp-story-page much have an id and children
+// amp-cta much be a decendent of amp-story-page
+// add move text settings
+
 const AMP_STORY = (
   children: string,
   title: string,

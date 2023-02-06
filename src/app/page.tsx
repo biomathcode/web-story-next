@@ -36,6 +36,7 @@ import {
   AMP_GRID_LAYER,
   AMP_IMAGE,
   AMP_STORY,
+  AMP_STORY_PAGE,
   AMP_TEXT,
 } from "@/lib";
 
@@ -176,9 +177,11 @@ export default function Home() {
   );
 
   const ode =
-    AMP_TEXT(title) +
+    AMP_STORY_PAGE(AMP_GRID_LAYER(AMP_TEXT(title), "thirds")) +
     AMP_CTA_LAYER("https://coolhead.in", "Website") +
-    AMP_GRID_LAYER(AMP_IMAGE(coverImage, 720, 1080, "responsive"), "fill");
+    AMP_STORY_PAGE(
+      AMP_GRID_LAYER(AMP_IMAGE(coverImage, 720, 1080, "responsive"), "fill")
+    );
 
   const newCode = AMP_STORY(
     ode,
