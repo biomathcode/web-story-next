@@ -46,8 +46,8 @@ const AMP_IMAGE = (
     `;
 };
 
-const AMP_TEXT = () => {
-  return `<h1>Pratik Sharma</h1>`;
+const AMP_TEXT = (content: string) => {
+  return `<h1>${content}</h1>`;
 };
 
 const AMP_CTA_LAYER = (href: string, text: string): string => {

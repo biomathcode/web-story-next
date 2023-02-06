@@ -2,7 +2,7 @@
 
 import { Inter } from "@next/font/google";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
@@ -68,6 +68,7 @@ export default function Home() {
         {
           title: "this is the title",
           contentMarkdown: "#sfhdsiafosijiojtgiowjeifgjweeifajwlk",
+          coverImage: image[0],
         },
       ],
     },
@@ -75,8 +76,13 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false);
 
+  let coverImage = user.publication.posts[select].coverImage;
+  let title = user.publication.posts[select].title;
+
   useEffect(() => {
     setContent(mdParser(user.publication.posts[select]?.contentMarkdown) as []);
+    title = user.publication.posts[select].title;
+    coverImage = user.publication.posts[select].coverImage;
   }, [user, page, select]);
 
   useEffect(() => {
@@ -170,9 +176,9 @@ export default function Home() {
   );
 
   const ode =
-    AMP_TEXT() +
+    AMP_TEXT(title) +
     AMP_CTA_LAYER("https://coolhead.in", "Website") +
-    AMP_GRID_LAYER(AMP_IMAGE(image[0], 720, 1080, "responsive"), "fill");
+    AMP_GRID_LAYER(AMP_IMAGE(coverImage, 720, 1080, "responsive"), "fill");
 
   const newCode = AMP_STORY(
     ode,
@@ -199,9 +205,9 @@ export default function Home() {
                 gap: "10px",
                 height: "100vh",
 
-                minWidth: "250px",
+                minWidth: "150px",
                 padding: "0px 20px",
-                // overflow: "scroll",
+                overflow: "scroll",
               }}
             >
               {content &&
@@ -236,7 +242,7 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "10px",
-                minWidth: "600px",
+                minWidth: "300px",
               }}
             >
               <SortableContext

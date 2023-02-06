@@ -25,6 +25,7 @@ const Droppable = ({
     gap: "10px",
     border: "1px solid #eee",
     background: "#fff",
+    maxWidth: "300px",
 
     transform: CSS.Translate.toString(transform),
   };

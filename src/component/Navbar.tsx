@@ -71,17 +71,6 @@ function NavBar({
           setPage(index);
         }}
       />
-      <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>
-
-      <fieldset>
-        <label>Username</label>
-        <input value={user?.name} />
-      </fieldset>
     </nav>
   ) : null;
 }
