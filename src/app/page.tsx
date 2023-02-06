@@ -8,6 +8,7 @@ import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { config } from "../axios/index";
 import mdParser from "@/lib/markdownParser";
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import Token from "marked";
 import {
   DndContext,
@@ -185,76 +186,79 @@ export default function Home() {
   return (
     <>
       <NavBar loading={loading} user={user} />
-      <div className="App" style={{ display: "flex", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "20px" }}>
         <DndContext
           sensors={sensors}
           onDragEnd={(e) => handleDragEnd(e)}
           collisionDetection={closestCenter}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              height: "100vh",
-              borderRight: "2px solid #333",
-              minWidth: "250px",
-              padding: "0px 20px",
-            }}
-          >
-            {content &&
-              content.map((el: any, i) => {
-                // three types content, code, image
-                if (el.raw.match(/!\[(.*)\]\((.+)\)/g)) {
-                  console.log(el);
+          <div style={{ display: "flex", gap: "10px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                height: "100vh",
+
+                minWidth: "250px",
+                padding: "0px 20px",
+                // overflow: "scroll",
+              }}
+            >
+              {content &&
+                content.map((el: any, i) => {
+                  // three types content, code, image
+                  if (el.raw.match(/!\[(.*)\]\((.+)\)/g)) {
+                    console.log(el);
+                    return (
+                      <Droppable
+                        type="image"
+                        href={el.tokens[1].href}
+                        key={i}
+                        id={i}
+                      />
+                    );
+                  }
                   return (
-                    <Droppable
-                      type="image"
-                      href={el.tokens[1].href}
-                      key={i}
-                      id={i}
+                    el?.text?.length > 3 && (
+                      <Droppable type="text" href={el.text} key={i} id={i} />
+                    )
+                  );
+                })}
+            </div>
+
+            <div
+              style={{
+                height: "100vh",
+                overflow: "scroll",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                minWidth: "600px",
+              }}
+            >
+              <SortableContext
+                items={items.map((item) => item.id)}
+                strategy={verticalListSortingStrategy}
+              >
+                {items.map((el) => {
+                  return (
+                    <VerticalContainer
+                      items={items}
+                      setItems={setItems}
+                      key={el.id}
+                      el={el}
                     />
                   );
-                }
-                return (
-                  el?.text?.length > 3 && (
-                    <Droppable type="text" href={el.text} key={i} id={i} />
-                  )
-                );
-              })}
-
-            <button onClick={AddItem}>Add</button>
+                })}
+              </SortableContext>
+              <button onClick={AddItem}>Add</button>
+            </div>
+            {/* </Panel> */}
           </div>
 
           <div
             style={{
-              height: "100vh",
-              overflow: "scroll",
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              minWidth: "600px",
-            }}
-          >
-            <SortableContext
-              items={items.map((item) => item.id)}
-              strategy={verticalListSortingStrategy}
-            >
-              {items.map((el) => {
-                return (
-                  <VerticalContainer
-                    items={items}
-                    setItems={setItems}
-                    key={el.id}
-                    el={el}
-                  />
-                );
-              })}
-            </SortableContext>
-          </div>
-          <div
-            style={{
-              borderLeft: "2px solid #222",
               padding: "0px 10px",
               width: "300px",
             }}
