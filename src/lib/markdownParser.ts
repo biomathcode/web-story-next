@@ -9,8 +9,6 @@ const mdParser = (content: string) => {
 
   const paragraphs = response.filter((el) => el.type !== "space");
 
-  console.log(paragraphs);
-
   return paragraphs;
 };
 

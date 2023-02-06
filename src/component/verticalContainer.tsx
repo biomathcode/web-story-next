@@ -149,7 +149,6 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
                 strategy={horizontalListSortingStrategy}
               >
                 {el.children.map((e: any) => {
-                  console.log("this is the iamge children", e);
                   return (
                     <SortableItem
                       setItems={setItems}

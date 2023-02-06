@@ -25,7 +25,17 @@ export const colourOptions: ColourOption[] = [
   { value: "silver", label: "Silver", color: "#666666" },
 ];
 
-function NavBar({ loading, user }: { loading: any; user: any }) {
+function NavBar({
+  loading,
+  user,
+  page,
+  setPage,
+}: {
+  loading: any;
+  user: any;
+  page: any;
+  setPage: any;
+}) {
   const options = user?.publication?.posts.map((el: any) => {
     return {
       value: el.title,
@@ -49,9 +59,17 @@ function NavBar({ loading, user }: { loading: any; user: any }) {
     >
       <Select
         className="dropdown"
-        styles={{}}
         defaultValue={options[0]}
         options={options}
+        onChange={(newValue) => {
+          console.log("this is the new Value", newValue);
+          const index = options.findIndex(
+            (el: any) => el.value === newValue.value
+          );
+
+          console.log(index, "new index");
+          setPage(index);
+        }}
       />
       <select>
         <option>1</option>

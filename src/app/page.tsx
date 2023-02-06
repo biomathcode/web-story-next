@@ -53,13 +53,13 @@ const image = [
 ];
 
 export default function Home() {
-  const [isDropped, setIsDropped] = useState(false);
-
   const [items, setItems] = useState(data);
 
-  const [page, setPage] = useState();
+  const [page, setPage] = useState(0);
 
   const [content, setContent] = useState([]);
+
+  const [select, setSelect] = useState(0);
 
   const [user, setUser] = useState({
     name: "Pratik ",
@@ -67,6 +67,7 @@ export default function Home() {
       posts: [
         {
           title: "this is the title",
+          contentMarkdown: "#sfhdsiafosijiojtgiowjeifgjweeifajwlk",
         },
       ],
     },
@@ -75,14 +76,12 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setContent(mdParser(user.publication.posts[select]?.contentMarkdown) as []);
+  }, [user, page, select]);
+
+  useEffect(() => {
     async function fetchFunction() {
       const response = await axios(config);
-
-      setContent(
-        mdParser(
-          response.data.data.user.publication.posts[1].contentMarkdown
-        ) as []
-      );
 
       setUser(response.data.data.user);
 
@@ -185,7 +184,7 @@ export default function Home() {
 
   return (
     <>
-      <NavBar loading={loading} user={user} />
+      <NavBar page={select} setPage={setSelect} loading={loading} user={user} />
       <div style={{ display: "flex", gap: "20px" }}>
         <DndContext
           sensors={sensors}
@@ -208,12 +207,15 @@ export default function Home() {
               {content &&
                 content.map((el: any, i) => {
                   // three types content, code, image
-                  if (el.raw.match(/!\[(.*)\]\((.+)\)/g)) {
-                    console.log(el);
+                  if (
+                    el.raw.match(/!\[(.*)\]\((.+)\)/g) &&
+                    el.type !== "list"
+                  ) {
+                    console.log("image", el);
                     return (
                       <Droppable
                         type="image"
-                        href={el.tokens[1].href}
+                        href={el?.tokens[1]?.href}
                         key={i}
                         id={i}
                       />

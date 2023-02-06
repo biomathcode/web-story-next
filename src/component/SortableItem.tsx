@@ -73,7 +73,6 @@ const updateContent = ({
     children: newChildren,
   };
 
-  console.log("this are the children", newParent);
   setItems((items: any) => {
     return items.map((item: any) => (item.id === parentId ? newParent : item));
   });
