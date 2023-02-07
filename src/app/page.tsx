@@ -192,7 +192,7 @@ export default function Home() {
   );
 
   return (
-    <>
+    <div className={inter.className}>
       <NavBar page={select} setPage={setSelect} loading={loading} user={user} />
       <div style={{ display: "flex", gap: "20px" }}>
         <DndContext
@@ -263,7 +263,9 @@ export default function Home() {
                   );
                 })}
               </SortableContext>
-              <button onClick={AddItem}>Add</button>
+              <button className="btn" onClick={AddItem}>
+                Add
+              </button>
             </div>
             {/* </Panel> */}
           </div>
@@ -288,6 +290,6 @@ export default function Home() {
           </div>
         </DndContext>
       </div>
-    </>
+    </div>
   );
 }
