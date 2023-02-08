@@ -194,7 +194,14 @@ export default function Home() {
   return (
     <div className={inter.className}>
       <NavBar page={select} setPage={setSelect} loading={loading} user={user} />
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          width: "100vw",
+          marginTop: "20px",
+        }}
+      >
         <DndContext
           sensors={sensors}
           onDragEnd={(e) => handleDragEnd(e)}
@@ -278,10 +285,11 @@ export default function Home() {
           >
             <Editor
               height="90vh"
-              width="600px"
+              width="500px"
               theme="vs-dark"
               defaultLanguage="html"
               defaultValue={newCode}
+              className="editor"
             />
             {/* <textarea
               value={newCode}

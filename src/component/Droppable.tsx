@@ -26,7 +26,9 @@ const Droppable = ({
     border: "1px solid #eee",
     background: "#fff",
     maxWidth: "300px",
-
+    minHeigth: "50px",
+    wordWrap: "break-word",
+    padding: "5px 10px",
     transform: CSS.Translate.toString(transform),
   };
   return (
