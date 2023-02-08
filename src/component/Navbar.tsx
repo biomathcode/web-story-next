@@ -59,7 +59,6 @@ function NavBar({
     >
       <Select
         className="dropdown"
-        defaultValue={options[0]}
         options={options}
         onChange={(newValue) => {
           console.log("this is the new Value", newValue);

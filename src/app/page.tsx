@@ -2,14 +2,13 @@
 
 import { Inter } from "@next/font/google";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { config } from "../axios/index";
 import mdParser from "@/lib/markdownParser";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import Token from "marked";
+
 import {
   DndContext,
   closestCenter,
@@ -17,6 +16,7 @@ import {
   PointerSensor,
   KeyboardSensor,
   useSensors,
+  DragOverlay,
 } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -103,35 +103,36 @@ export default function Home() {
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
       return;
-    }
-    if (active.id && active.data.current.title) {
-      console.log(active.id, over.id);
-      const oldIndex = items.find((item) => item.id === over.id);
-
-      const newChildren = oldIndex?.children.push({
-        id: nanoid(),
-        type: active.data.current.type,
-        content: active.data.current.title || "something",
-      });
-      const filterItems = items.filter((el) => el.id === over.id);
-
-      setItems((items: any) =>
-        items.map((item: any) => {
-          return item.id !== over.id ? item : oldIndex;
-        })
-      );
-
-      console.log(oldIndex);
-
-      console.log(oldIndex);
     } else {
-      if (active.id !== over.id) {
-        setItems((items) => {
-          const oldIndex = items.findIndex((item) => item.id === active.id);
-          const newIndex = items.findIndex((item) => item.id === over.id);
+      if (active.id && active.data.current.title) {
+        console.log(active.id, over.id);
+        const oldIndex = items.find((item) => item.id === over.id);
 
-          return arrayMove(items, oldIndex, newIndex);
+        const newChildren = oldIndex?.children.push({
+          id: nanoid(),
+          type: active.data.current.type,
+          content: active.data.current.title || "something",
         });
+        const filterItems = items.filter((el) => el.id === over.id);
+
+        setItems((items: any) =>
+          items.map((item: any) => {
+            return item.id !== over.id ? item : oldIndex;
+          })
+        );
+
+        console.log(oldIndex);
+
+        console.log(oldIndex);
+      } else {
+        if (active.id !== over.id) {
+          setItems((items) => {
+            const oldIndex = items.findIndex((item) => item.id === active.id);
+            const newIndex = items.findIndex((item) => item.id === over.id);
+
+            return arrayMove(items, oldIndex, newIndex);
+          });
+        }
       }
     }
   };
@@ -204,6 +205,7 @@ export default function Home() {
       >
         <DndContext
           sensors={sensors}
+          onDragCancel={(e) => console.log(e)}
           onDragEnd={(e) => handleDragEnd(e)}
           collisionDetection={closestCenter}
         >
@@ -217,7 +219,7 @@ export default function Home() {
 
                 minWidth: "150px",
                 padding: "0px 20px",
-                overflow: "scroll",
+                // overflow: "scroll",
               }}
             >
               {content &&
@@ -248,7 +250,7 @@ export default function Home() {
             <div
               style={{
                 height: "100vh",
-                overflow: "scroll",
+                // overflow: "scroll",
                 display: "flex",
                 flexDirection: "column",
                 gap: "10px",
@@ -277,7 +279,7 @@ export default function Home() {
             {/* </Panel> */}
           </div>
 
-          <div
+          {/* <div
             style={{
               padding: "0px 10px",
               width: "300px",
@@ -291,11 +293,8 @@ export default function Home() {
               defaultValue={newCode}
               className="editor"
             />
-            {/* <textarea
-              value={newCode}
-              style={{ width: "500px", height: "600px" }}
-            /> */}
-          </div>
+           
+          </div> */}
         </DndContext>
       </div>
     </div>
