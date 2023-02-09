@@ -71,18 +71,17 @@ function NewView({
             {state[select].text}
           </p>
         </div>
-        <button
-          style={{
-            padding: "10px",
-            borderRadius: "10px",
-            background: "#eee",
-            width: "fit-content",
-            height: "fit-content",
-            cursor: "pointer",
-          }}
-        >
+        <>
           {select === state.length - 1 ? (
-            <PlusIcon
+            <button
+              style={{
+                padding: "10px",
+                borderRadius: "10px",
+                background: "#eee",
+                width: "fit-content",
+                height: "fit-content",
+                cursor: "pointer",
+              }}
               onClick={() =>
                 setState([
                   ...state,
@@ -92,12 +91,25 @@ function NewView({
                   },
                 ])
               }
-              fontSize={30}
-            />
+            >
+              <PlusIcon fontSize={30} />
+            </button>
           ) : (
-            <ArrowRightIcon onClick={() => setSelect(select + 1)} />
+            <button
+              style={{
+                padding: "10px",
+                borderRadius: "10px",
+                background: "#eee",
+                width: "fit-content",
+                height: "fit-content",
+                cursor: "pointer",
+              }}
+              onClick={() => setSelect(select + 1)}
+            >
+              <ArrowRightIcon />
+            </button>
           )}
-        </button>
+        </>
       </div>
     </div>
   );
