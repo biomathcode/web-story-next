@@ -278,6 +278,59 @@ export default function Home() {
             </div>
             {/* </Panel> */}
           </div>
+          <div
+            style={{
+              padding: "0px 10px",
+              width: "400px",
+              height: "100vh",
+              position: "absolute",
+              right: "0px",
+              background: "#eee",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+            }}
+            className={inter.className}
+          >
+            <p>Configurations</p>
+            <fieldset className="flex js col mt-10  gap-10">
+              <label>Change Text</label>
+              <textarea
+                className={inter.className}
+                style={{ minHeight: "200px" }}
+                value={"this is the text"}
+              />
+            </fieldset>
+            <fieldset className="flex js  col mt-10 gap-10">
+              <label>Change Image URL </label>
+              <input className={inter.className} type="url" value={image[0]} />
+            </fieldset>
+            <fieldset className="flex js  col mt-10 gap-10">
+              <label>Font Size</label>
+              <input
+                className={inter.className}
+                type="number"
+                min="14"
+                value="16"
+              />
+            </fieldset>
+            <fieldset className="flex js  col mt-10 gap-10">
+              <label>CTA Button URL</label>
+              <input
+                className={inter.className}
+                type="url"
+                value="https://coolhead.in"
+              />
+            </fieldset>
+            <fieldset className="flex js  col  mt-10 gap-10">
+              <label>CTA Button text</label>
+              <input
+                className={inter.className}
+                type="text"
+                value="Read more"
+              />
+            </fieldset>
+          </div>
 
           {/* <div
             style={{
