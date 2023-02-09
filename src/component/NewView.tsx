@@ -1,6 +1,6 @@
-// image carousel
-
+import { useDroppable } from "@dnd-kit/core";
 import { ArrowLeftIcon, PlusIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+import { nanoid, random } from "nanoid";
 import { useState } from "react";
 
 const image = [
@@ -17,22 +17,20 @@ const image = [
 function NewView({
   newState,
   setNewState,
+  newSelect,
+  setNewSelect,
 }: {
   newState: any;
   setNewState: any;
+  newSelect: any;
+  setNewSelect: any;
 }) {
-  const [state, setState] = useState([
-    {
-      image: image[0],
-      text: "1",
-    },
-    {
-      image: image[1],
-      text: "2",
-    },
-  ]);
-
-  const [select, setSelect] = useState(0);
+  const { isOver, setNodeRef } = useDroppable({
+    id: nanoid(),
+  });
+  const style = {
+    backgroundColor: isOver ? "light-green" : "#fff",
+  };
   return (
     <div className="flex center col gap-10">
       <h1>Preview</h1>
@@ -46,14 +44,16 @@ function NewView({
             height: "fit-content",
             cursor: "pointer",
           }}
-          onClick={() => setSelect(select - 1)}
-          disabled={select === 0}
+          onClick={() => setNewSelect(newSelect - 1)}
+          disabled={newSelect === 0}
         >
           <ArrowLeftIcon />
         </button>
         <div
+          ref={setNodeRef}
           style={{
-            backgroundImage: `url(${state[select].image})`,
+            ...style,
+            backgroundImage: `url(${newState[newSelect].image})`,
             width: "360px",
             height: "720px",
             borderRadius: "10px",
@@ -68,11 +68,11 @@ function NewView({
               left: "101px",
             }}
           >
-            {state[select].text}
+            {newState[newSelect].text}
           </p>
         </div>
         <>
-          {select === state.length - 1 ? (
+          {newSelect === newState.length - 1 ? (
             <button
               style={{
                 padding: "10px",
@@ -83,11 +83,11 @@ function NewView({
                 cursor: "pointer",
               }}
               onClick={() =>
-                setState([
-                  ...state,
+                setNewState([
+                  ...newState,
                   {
-                    image: image[select + 1],
-                    text: String(select + 2),
+                    image: image[newSelect + 1],
+                    text: String(newSelect + 2),
                   },
                 ])
               }
@@ -104,7 +104,7 @@ function NewView({
                 height: "fit-content",
                 cursor: "pointer",
               }}
-              onClick={() => setSelect(select + 1)}
+              onClick={() => setNewSelect(newSelect + 1)}
             >
               <ArrowRightIcon />
             </button>

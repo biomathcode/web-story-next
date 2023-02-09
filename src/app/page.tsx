@@ -55,8 +55,6 @@ const image = [
 ];
 
 export default function Home() {
-  const [items, setItems] = useState(data);
-
   const [page, setPage] = useState(0);
 
   const [content, setContent] = useState([]);
@@ -75,6 +73,7 @@ export default function Home() {
       ],
     },
   });
+  const [newSelect, setNewSelect] = useState(0);
 
   const [loading, setLoading] = useState(false);
 
@@ -113,71 +112,23 @@ export default function Home() {
       return;
     } else {
       if (active.id && active.data.current.title) {
-        console.log(active.id, over.id);
-        const oldIndex = items.find((item) => item.id === over.id);
-
-        const newChildren = oldIndex?.children.push({
-          id: nanoid(),
-          type: active.data.current.type,
-          content: active.data.current.title || "something",
+        const state = newState.map((e, i) => {
+          return i === newSelect
+            ? {
+                image: e.image,
+                text: active.data.current.title,
+              }
+            : e;
         });
-        const filterItems = items.filter((el) => el.id === over.id);
 
-        setItems((items: any) =>
-          items.map((item: any) => {
-            return item.id !== over.id ? item : oldIndex;
-          })
-        );
+        setNewState(state);
+        console.log(active.id, over.id, active);
 
-        console.log(oldIndex);
-
-        console.log(oldIndex);
-      } else {
-        if (active.id !== over.id) {
-          setItems((items) => {
-            const oldIndex = items.findIndex((item) => item.id === active.id);
-            const newIndex = items.findIndex((item) => item.id === over.id);
-
-            return arrayMove(items, oldIndex, newIndex);
-          });
-        }
+        console.log("this is the state", state);
       }
     }
   };
 
-  const AddItem = (e: any) => {
-    setItems([
-      ...items,
-      {
-        id: nanoid(),
-        name: "Pratik ",
-        children: [
-          {
-            id: nanoid(),
-            type: "text",
-            content: "dasfa",
-          },
-          {
-            id: nanoid(),
-            type: "text",
-            content: "Second to none",
-          },
-        ],
-      },
-    ]);
-  };
-
-  const handleAddNewitem = (e: any) => {
-    console.log(e);
-  };
-
-  const removeItem = (id: any) => {
-    console.log("this is working");
-
-    const newItem = items.filter((el) => el.id !== id);
-    console.log("this is working");
-    setItems([...newItem]);
-  };
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -213,7 +164,6 @@ export default function Home() {
       >
         <DndContext
           sensors={sensors}
-          onDragCancel={(e) => console.log(e)}
           onDragEnd={(e) => handleDragEnd(e)}
           collisionDetection={closestCenter}
         >
@@ -265,7 +215,12 @@ export default function Home() {
                 minWidth: "300px",
               }}
             >
-              <NewView newState={newState} setNewState={setNewState} />
+              <NewView
+                newState={newState}
+                newSelect={newSelect}
+                setNewSelect={setNewSelect}
+                setNewState={setNewState}
+              />
             </div>
           </div>
           <div
@@ -321,23 +276,6 @@ export default function Home() {
               />
             </fieldset>
           </div>
-
-          {/* <div
-            style={{
-              padding: "0px 10px",
-              width: "300px",
-            }}
-          >
-            <Editor
-              height="90vh"
-              width="500px"
-              theme="vs-dark"
-              defaultLanguage="html"
-              defaultValue={newCode}
-              className="editor"
-            />
-           
-          </div> */}
         </DndContext>
       </div>
     </div>
