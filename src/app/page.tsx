@@ -39,6 +39,7 @@ import {
   AMP_STORY_PAGE,
   AMP_TEXT,
 } from "@/lib";
+import NewView from "@/component/NewView";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -79,6 +80,13 @@ export default function Home() {
 
   let coverImage = user.publication.posts[select].coverImage;
   let title = user.publication.posts[select].title;
+
+  const [newState, setNewState] = useState([
+    {
+      image: image[0],
+      text: title,
+    },
+  ]);
 
   useEffect(() => {
     setContent(mdParser(user.publication.posts[select]?.contentMarkdown) as []);
@@ -257,26 +265,8 @@ export default function Home() {
                 minWidth: "300px",
               }}
             >
-              <SortableContext
-                items={items.map((item) => item.id)}
-                strategy={verticalListSortingStrategy}
-              >
-                {items.map((el) => {
-                  return (
-                    <VerticalContainer
-                      items={items}
-                      setItems={setItems}
-                      key={el.id}
-                      el={el}
-                    />
-                  );
-                })}
-              </SortableContext>
-              <button className="btn" onClick={AddItem}>
-                Add
-              </button>
+              <NewView newState={newState} setNewState={setNewState} />
             </div>
-            {/* </Panel> */}
           </div>
           <div
             style={{
