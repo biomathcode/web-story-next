@@ -11,11 +11,7 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import {
-  restrictToHorizontalAxis,
-  restrictToVerticalAxis,
-  restrictToWindowEdges,
-} from "@dnd-kit/modifiers";
+import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import {
   SortableContext,
   horizontalListSortingStrategy,
@@ -72,7 +68,6 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
     transform,
     transition,
     setActivatorNodeRef,
-    isDragging,
   } = useSortable({ id: el.id });
 
   const context = useMemo(
@@ -141,7 +136,6 @@ const VerticalContainer = ({ el, setItems, items }: any) => {
                 display: "flex",
 
                 overflow: "scroll",
-                overflowX: "scroll",
               }}
             >
               <SortableContext
