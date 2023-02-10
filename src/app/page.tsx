@@ -25,11 +25,10 @@ import {
   arrayMove,
 } from "@dnd-kit/sortable";
 
-import VerticalContainer from "@/component/verticalContainer";
+import { useForm } from "react-hook-form";
 
 import Droppable from "@/component/Droppable";
-import data from "./data";
-import { useUniqueId } from "@dnd-kit/utilities";
+
 import NavBar from "@/component/Navbar";
 import {
   AMP_CTA_LAYER,
@@ -167,6 +166,8 @@ export default function Home() {
     setActiveId(event.active.id);
   }
 
+  const { register, handleSubmit } = useForm();
+
   return (
     <div className={inter.className}>
       <NavBar page={select} setPage={setSelect} loading={loading} user={user} />
@@ -175,7 +176,6 @@ export default function Home() {
           display: "flex",
           gap: "20px",
           width: "100vw",
-          marginTop: "20px",
         }}
       >
         <DndContext
@@ -184,7 +184,7 @@ export default function Home() {
           onDragEnd={(e) => handleDragEnd(e)}
           collisionDetection={closestCenter}
         >
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div className="flex ja ">
             <div
               style={{
                 display: "flex",
@@ -254,7 +254,7 @@ export default function Home() {
             document.body
           )}
           {/* <DragOverlay></DragOverlay> */}
-          <div
+          <form
             style={{
               padding: "0px 10px",
               width: "400px",
@@ -267,23 +267,31 @@ export default function Home() {
               gap: "10px",
             }}
             className={inter.className}
+            onSubmit={handleSubmit((data) => console.log(data))}
           >
             <p>Configurations</p>
             <fieldset className="flex js col mt-10  gap-10">
               <label>Change Text</label>
               <textarea
+                {...register("content")}
                 className={inter.className}
                 style={{ minHeight: "200px" }}
-                value={"this is the text"}
+                defaultValue={newState[newSelect].text}
               />
             </fieldset>
             <fieldset className="flex js  col mt-10 gap-10">
               <label>Change Image URL </label>
-              <input className={inter.className} type="url" value={image[0]} />
+              <input
+                {...register("imageUrl")}
+                className={inter.className}
+                type="url"
+                value={image[0]}
+              />
             </fieldset>
             <fieldset className="flex js  col mt-10 gap-10">
               <label>Font Size</label>
               <input
+                {...register("fontSize")}
                 className={inter.className}
                 type="number"
                 min="14"
@@ -293,6 +301,7 @@ export default function Home() {
             <fieldset className="flex js  col mt-10 gap-10">
               <label>CTA Button URL</label>
               <input
+                {...register("ctaUrl")}
                 className={inter.className}
                 type="url"
                 value="https://coolhead.in"
@@ -301,12 +310,16 @@ export default function Home() {
             <fieldset className="flex js  col  mt-10 gap-10">
               <label>CTA Button text</label>
               <input
+                {...register("ctaButton")}
                 className={inter.className}
                 type="text"
                 value="Read more"
               />
             </fieldset>
-          </div>
+            <button className="btn" type="submit">
+              Save
+            </button>
+          </form>
         </DndContext>
       </div>
     </div>
