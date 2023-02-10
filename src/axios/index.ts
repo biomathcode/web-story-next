@@ -5,16 +5,11 @@ const axiosdata = JSON.stringify({
   	photo
     numPosts
     publicationDomain
-    isEvangelist
-    socialMedia {
-      github
-      website
-    }
+    
     publication{
       posts(page: 1){
         type
         coverImage
-        numUniqueUsersWhoReacted
         slug
         title
         brief
@@ -22,13 +17,7 @@ const axiosdata = JSON.stringify({
         
       }
     }
-    numPosts
-    blogHandle
-    socialMedia {
-      twitter
-      linkedin
-      github
-    }
+   
   }
 }`,
   variables: {},

@@ -2,7 +2,7 @@
 
 import { Inter } from "@next/font/google";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
@@ -18,29 +18,18 @@ import {
   useSensors,
   DragOverlay,
 } from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-  sortableKeyboardCoordinates,
-  arrayMove,
-} from "@dnd-kit/sortable";
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 import { useForm } from "react-hook-form";
 
 import Droppable from "@/component/Droppable";
 
 import NavBar from "@/component/Navbar";
-import {
-  AMP_CTA_LAYER,
-  AMP_GRID_LAYER,
-  AMP_IMAGE,
-  AMP_STORY,
-  AMP_STORY_PAGE,
-  AMP_TEXT,
-} from "@/lib";
+
 import NewView from "@/component/NewView";
-import { createPortal } from "react-dom";
+
 import LeftSidebar from "@/component/LeftSidebar";
+import RightSidebar from "@/component/RightSidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,6 +40,26 @@ export type state = {
   text: string;
   color: string;
   background: string;
+};
+
+export type userState = {
+  name: string;
+  photo: string;
+  numPosts: number;
+  publicationDomain: string;
+
+  publication: {
+    posts: Posts[];
+  };
+};
+
+type Posts = {
+  type: string;
+  contentMarkdown: string;
+  slug: string;
+  title: string;
+  brief: string;
+  coverImage: string;
 };
 
 const image = [
@@ -71,31 +80,15 @@ export default function Home() {
 
   const [select, setSelect] = useState(0);
 
-  const [user, setUser] = useState({
-    name: "Pratik ",
-    publication: {
-      posts: [
-        {
-          title: "this is the title",
-          contentMarkdown: "#sfhdsiafosijiojtgiowjeifgjweeifajwlk",
-          coverImage: image[0],
-        },
-      ],
-    },
-  });
+  const [user, setUser] = useState<userState | null>(null);
   const [newSelect, setNewSelect] = useState(0);
 
-  const [loading, setLoading] = useState(false);
-
   const [activeId, setActiveId] = useState(null);
-
-  let coverImage = user.publication.posts[select].coverImage;
-  let title = user.publication.posts[select].title;
 
   const [newState, setNewState] = useState<state[]>([
     {
       image: image[0],
-      text: title,
+      text: "title ",
       fontSize: 16,
       color: "#fff",
       textAlign: "center", // left, right or center
@@ -104,9 +97,13 @@ export default function Home() {
   ]);
 
   useEffect(() => {
-    setContent(mdParser(user.publication.posts[select]?.contentMarkdown) as []);
-    title = user.publication.posts[select].title;
-    coverImage = user.publication.posts[select].coverImage;
+    if (user) {
+      if (user.publication.posts.length > 0) {
+        setContent(
+          mdParser(user.publication.posts[select]?.contentMarkdown) as []
+        );
+      }
+    }
   }, [user, page, select]);
 
   useEffect(() => {
@@ -120,7 +117,6 @@ export default function Home() {
     }
 
     fetchFunction();
-    setLoading(true);
   }, []);
 
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
@@ -170,27 +166,14 @@ export default function Home() {
     })
   );
 
-  const ode =
-    AMP_STORY_PAGE(AMP_GRID_LAYER(AMP_TEXT(title), "thirds")) +
-    AMP_CTA_LAYER("https://coolhead.in", "Website") +
-    AMP_STORY_PAGE(
-      AMP_GRID_LAYER(AMP_IMAGE(coverImage, 720, 1080, "responsive"), "fill")
-    );
-
-  const newCode = AMP_STORY(
-    ode,
-    "this is working",
-    "coolhead",
-    image[0],
-    image[1]
-  );
   function handleDragStart(event: any) {
     setActiveId(event.active.id);
   }
 
   return (
     <div className={inter.className}>
-      <NavBar page={select} setPage={setSelect} loading={loading} user={user} />
+      {user && <NavBar page={select} setPage={setSelect} user={user} />}
+
       <div
         style={{
           display: "flex",
@@ -205,45 +188,7 @@ export default function Home() {
           collisionDetection={closestCenter}
         >
           <div className="flex ja ">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                height: "100vh",
-                overflow: "scroll",
-
-                minWidth: "150px",
-                padding: "0px 20px",
-
-                maxWidth: "400px",
-              }}
-            >
-              {content &&
-                content.map((el: any, i) => {
-                  // three types content, code, image
-                  if (
-                    el.raw.match(/!\[(.*)\]\((.+)\)/g) &&
-                    el.type !== "list"
-                  ) {
-                    console.log("image", el);
-                    return (
-                      <Droppable
-                        type="image"
-                        href={el?.tokens[1]?.href}
-                        key={i}
-                        id={i}
-                      />
-                    );
-                  }
-                  return (
-                    el?.text?.length > 3 && (
-                      <Droppable type="text" href={el.text} key={i} id={i} />
-                    )
-                  );
-                })}
-            </div>
-
+            <RightSidebar content={content} />
             <div
               style={{
                 height: "100vh",
@@ -264,17 +209,14 @@ export default function Home() {
           </div>
           {/* {createPortal( */}
           <DragOverlay
-            dropAnimation={{
-              duration: 500,
-              easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
-            }}
+          // dropAnimation={{
+          //   duration: 500,
+          //   easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
+          // }}
           >
             {activeId ? <p>This is drag</p> : null}
           </DragOverlay>
-          ,
-          {/* document.body
-          )} */}
-          {/* <DragOverlay></DragOverlay> */}
+
           <LeftSidebar
             inter={inter}
             newSelect={newSelect}

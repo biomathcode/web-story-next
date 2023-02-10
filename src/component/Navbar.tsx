@@ -26,23 +26,24 @@ export const colourOptions: ColourOption[] = [
 ];
 
 function NavBar({
-  loading,
   user,
   page,
   setPage,
 }: {
-  loading: any;
   user: any;
   page: any;
   setPage: any;
 }) {
-  const options = user?.publication?.posts.map((el: any) => {
+  const options = user?.publication?.posts?.map((el: any) => {
     return {
       value: el.title,
       label: el.title,
     };
   });
-  return loading ? (
+
+  const [value, setValue] = useState(options[0]);
+
+  return options && user ? (
     <nav
       style={{
         width: "100vw",
@@ -60,18 +61,23 @@ function NavBar({
       <Select
         className="dropdown"
         options={options}
-        onChange={(newValue) => {
+        value={value}
+        onChange={(newValue: any) => {
           console.log("this is the new Value", newValue);
           const index = options.findIndex(
             (el: any) => el.value === newValue.value
           );
+
+          setValue(options[index]);
 
           console.log(index, "new index");
           setPage(index);
         }}
       />
     </nav>
-  ) : null;
+  ) : (
+    <p>loading...</p>
+  );
 }
 
 export default NavBar;
