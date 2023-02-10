@@ -1,8 +1,3 @@
-// TODO: write a unit test for this file
-// TODO: validate the AMP code created
-
-import { type } from "os";
-
 // rules of amp pages
 // amp-story-page much have an id and children
 // amp-cta much be a decendent of amp-story-page
@@ -14,12 +9,6 @@ import { type } from "os";
 //  AMP_STORY().AMP_STORY_PAGE().AMP_GRID_LAYER()
 // animate-in can be added to amp_image, h1, p tags
 
-//<p class="my-element"
-// animate-in="fly-in-left"
-// animate-in-delay="0.3s"
-// animate-in-duration="0.5s">
-// I'm going to fly into the page from the left!
-// </p>
 type animationType =
   | "drop"
   | "fade-in"
@@ -147,3 +136,103 @@ export {
   AMP_TEXT,
   AMP_CTA_LAYER,
 };
+
+const amp = {
+  code: function (children: string) {
+    return `<amp-story>${children}</amp-story>`;
+  },
+  children: {
+    amp_story_page: {
+      code: function (children: string) {
+        return `<amp-story-page>${children}</amp-story-page>`;
+      },
+      children: {
+        amp_grid_layout: "",
+        code: function (children: string) {
+          return `<amp-grid-layout>${children}</amp-grid-layout>`;
+        },
+        children: {
+          h1: {
+            code: function (children: string) {
+              return `<h1>${children}</h1>`;
+            },
+          },
+          p: {
+            code: function (children: string) {
+              return `<p>${children}</p>`;
+            },
+          },
+          div: {
+            code: function (children: string) {
+              return `<div>${children}</div>`;
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
+const dog: any = {
+  is: "asdfsa",
+  log() {
+    console.log(this.is);
+  },
+  bark() {
+    this.is = "woofing";
+    this.log();
+    return this;
+  },
+  walk() {
+    this.is = "walking";
+    this.log();
+    return this;
+  },
+  eat() {
+    this.is = "eating";
+    this.log();
+    return this;
+  },
+};
+
+class story {
+  content = "";
+  newContent(children: string, type: string) {
+    return `<${type}>${children} </${type}>`;
+  }
+
+  story_page(children: string) {
+    this.content = `<amp-story>${this.newContent(
+      children,
+      "amp-story-page"
+    )}<amp-story>`;
+
+    return this.story_grid_layout(this.content);
+  }
+
+  story_grid_layout(children: string) {
+    this.content = this.newContent(children, "amp-grid-layout");
+    return this.story_image(this.content);
+  }
+
+  story_image(children: string) {
+    this.content = this.newContent(children, "amp-image");
+    return this;
+  }
+}
+
+const newStory = new story();
+
+console.log(newStory.story_grid_layout("somdafkm"));
+
+// const newdata = amp_story().amp_story_page(id="this").amp_grid_layout().amp_image();
+
+/*
+<amp-story> 
+  <amp-story-page id="">
+
+
+  </amp-story-page>
+
+</amp_story>
+*/
