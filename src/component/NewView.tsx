@@ -32,12 +32,10 @@ function NewView({
     backgroundColor: isOver ? "light-green" : "#fff",
   };
 
-  const [data, setData] = useState();
-
   return (
     <div className="flex center col ">
       <div className="flex" style={{ margin: "10px 0px" }}>
-        {newState.map((el: any, i: any) => {
+        {newState?.map((el: any, i: any) => {
           return (
             <button
               onClick={() => setNewSelect(i)}
@@ -73,7 +71,7 @@ function NewView({
           ref={setNodeRef}
           style={{
             ...style,
-            backgroundImage: `url(${newState[newSelect].image})`,
+            backgroundImage: `url(${newState[newSelect]?.image})`,
             objectFit: "cover",
             backgroundRepeat: "no-repeat",
             width: "360px",
@@ -92,7 +90,7 @@ function NewView({
               top: "200px",
             }}
           >
-            {newState[newSelect].text}
+            {newState[newSelect]?.text}
           </p>
         </div>
         <>

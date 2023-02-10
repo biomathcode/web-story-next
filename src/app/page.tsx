@@ -167,8 +167,6 @@ export default function Home() {
     setActiveId(event.active.id);
   }
 
-  const { register, handleSubmit } = useForm();
-
   return (
     <div className={inter.className}>
       <NavBar page={select} setPage={setSelect} loading={loading} user={user} />
@@ -259,8 +257,7 @@ export default function Home() {
             inter={inter}
             newSelect={newSelect}
             newState={newState}
-            register={register}
-            handleSubmit={handleSubmit}
+            setNewState={setNewState}
           />
         </DndContext>
       </div>
