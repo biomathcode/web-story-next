@@ -28,8 +28,7 @@ const Droppable = ({
     maxWidth: "300px",
     minHeigth: "50px",
     padding: "5px 10px",
-    transform: CSS.Translate.toString(transform),
-    zIndex: 1000,
+    // transform: CSS.Translate.toString(transform),
   };
   return (
     <div style={style} ref={setNodeRef}>

@@ -40,6 +40,7 @@ import {
   AMP_TEXT,
 } from "@/lib";
 import NewView from "@/component/NewView";
+import { createPortal } from "react-dom";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -77,6 +78,8 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false);
 
+  const [activeId, setActiveId] = useState(null);
+
   let coverImage = user.publication.posts[select].coverImage;
   let title = user.publication.posts[select].title;
 
@@ -113,12 +116,21 @@ export default function Home() {
     } else {
       if (active.id && active.data.current.title) {
         const state = newState.map((e, i) => {
-          return i === newSelect
-            ? {
-                image: e.image,
-                text: active.data.current.title,
-              }
-            : e;
+          if (active.data.current.type === "image") {
+            return i === newSelect
+              ? {
+                  image: active.data.current.href,
+                  text: e.image,
+                }
+              : e;
+          } else {
+            return i === newSelect
+              ? {
+                  image: e.image,
+                  text: active.data.current.title,
+                }
+              : e;
+          }
         });
 
         setNewState(state);
@@ -127,6 +139,7 @@ export default function Home() {
         console.log("this is the state", state);
       }
     }
+    setActiveId(null);
   };
 
   const sensors = useSensors(
@@ -150,6 +163,9 @@ export default function Home() {
     image[0],
     image[1]
   );
+  function handleDragStart(event: any) {
+    setActiveId(event.active.id);
+  }
 
   return (
     <div className={inter.className}>
@@ -164,6 +180,7 @@ export default function Home() {
       >
         <DndContext
           sensors={sensors}
+          onDragStart={handleDragStart}
           onDragEnd={(e) => handleDragEnd(e)}
           collisionDetection={closestCenter}
         >
@@ -174,10 +191,12 @@ export default function Home() {
                 flexDirection: "column",
                 gap: "10px",
                 height: "100vh",
+                overflow: "scroll",
 
                 minWidth: "150px",
                 padding: "0px 20px",
-                // overflow: "scroll",
+
+                maxWidth: "400px",
               }}
             >
               {content &&
@@ -223,6 +242,18 @@ export default function Home() {
               />
             </div>
           </div>
+          {createPortal(
+            <DragOverlay
+              dropAnimation={{
+                duration: 500,
+                easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
+              }}
+            >
+              {activeId ? <p>This is drag</p> : null}
+            </DragOverlay>,
+            document.body
+          )}
+          {/* <DragOverlay></DragOverlay> */}
           <div
             style={{
               padding: "0px 10px",

@@ -33,7 +33,6 @@ function NewView({
   };
   return (
     <div className="flex center col gap-10">
-      <h1>Preview</h1>
       <div className="flex center gap-10">
         <button
           style={{
@@ -54,9 +53,13 @@ function NewView({
           style={{
             ...style,
             backgroundImage: `url(${newState[newSelect].image})`,
+            backgroundRepeat: "no-repeat",
             width: "360px",
-            height: "720px",
+            height: "670px",
             borderRadius: "10px",
+            overflow: "hidden",
+            display: "flex",
+            padding: "20px",
           }}
         >
           <p
@@ -65,7 +68,6 @@ function NewView({
               color: "#eee",
               position: "relative",
               top: "200px",
-              left: "101px",
             }}
           >
             {newState[newSelect].text}
