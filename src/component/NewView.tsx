@@ -31,8 +31,29 @@ function NewView({
   const style = {
     backgroundColor: isOver ? "light-green" : "#fff",
   };
+
+  const [data, setData] = useState();
+
   return (
-    <div className="flex center col gap-10">
+    <div className="flex center col ">
+      <div className="flex" style={{ margin: "10px 0px" }}>
+        {newState.map((el: any, i: any) => {
+          return (
+            <button
+              onClick={() => setNewSelect(i)}
+              key={el}
+              style={{
+                width: "40px",
+                height: "10px",
+                borderRadius: "10px",
+                background: i === newSelect ? "red" : "#222",
+                cursor: "pointer",
+                marginLeft: "2px",
+              }}
+            ></button>
+          );
+        })}
+      </div>
       <div className="flex center gap-10">
         <button
           style={{

@@ -77,6 +77,7 @@ const LeftSidebar = ({
       <button className="btn" type="submit">
         Save
       </button>
+      <button className="btn">Generate Code</button>
     </form>
   );
 };
