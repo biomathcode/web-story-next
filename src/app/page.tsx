@@ -44,6 +44,15 @@ import LeftSidebar from "@/component/LeftSidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export type state = {
+  image: string;
+  fontSize: number;
+  textAlign: "left" | "right" | "center";
+  text: string;
+  color: string;
+  background: string;
+};
+
 const image = [
   "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80",
   "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
@@ -83,10 +92,14 @@ export default function Home() {
   let coverImage = user.publication.posts[select].coverImage;
   let title = user.publication.posts[select].title;
 
-  const [newState, setNewState] = useState([
+  const [newState, setNewState] = useState<state[]>([
     {
       image: image[0],
       text: title,
+      fontSize: 16,
+      color: "#fff",
+      textAlign: "center", // left, right or center
+      background: "#000", // string
     },
   ]);
 
@@ -120,7 +133,11 @@ export default function Home() {
             return i === newSelect
               ? {
                   image: active.data.current.href,
-                  text: e.image,
+                  text: e.text,
+                  fontSize: e.fontSize,
+                  color: e.color,
+                  textAlign: e.textAlign, // left, right or center
+                  background: e.background,
                 }
               : e;
           } else {
@@ -128,6 +145,10 @@ export default function Home() {
               ? {
                   image: e.image,
                   text: active.data.current.title,
+                  fontSize: e.fontSize,
+                  color: e.color,
+                  textAlign: e.textAlign, // left, right or center
+                  background: e.background,
                 }
               : e;
           }

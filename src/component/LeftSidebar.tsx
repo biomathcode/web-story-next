@@ -34,13 +34,24 @@ const LeftSidebar = ({
   function handleChange(e: any) {
     console.log("this si working", newState, e.target.value);
     const state = newState.map((el: any, i: any) => {
-      console.log(i, newSelect, el);
-      return i === newSelect
-        ? {
-            image: el.image,
-            text: e.target.value,
-          }
-        : el;
+      console.log(i, newSelect, el, e.target.name, e.target.value);
+      const newObject =
+        e.target.name === "text"
+          ? {
+              ...el,
+              text: e.target.value,
+            }
+          : e.target.name === "textAlign"
+          ? {
+              ...el,
+              textAlign: e.target.value,
+            }
+          : {
+              ...el,
+              fontSize: e.target.value,
+            };
+
+      return i === newSelect ? newObject : el;
     });
 
     console.log("new state", state);
@@ -52,7 +63,7 @@ const LeftSidebar = ({
       <div
         style={{
           padding: "0px 10px",
-          width: "400px",
+          width: "300px",
           height: "100vh",
           position: "absolute",
           right: "0px",
@@ -60,6 +71,7 @@ const LeftSidebar = ({
           display: "flex",
           flexDirection: "column",
           gap: "10px",
+          fontSize: "14px",
         }}
         className={inter.className}
         onSubmit={(e) => {
@@ -67,18 +79,17 @@ const LeftSidebar = ({
           console.log(e);
         }}
       >
-        <p>Configurations</p>
         <fieldset className="flex js col mt-10  gap-10">
           <label>Change Text</label>
           <textarea
             name="text"
             className={inter.className}
-            style={{ minHeight: "200px" }}
+            style={{ minHeight: "70px" }}
             value={newState[newSelect]?.text}
             onChange={(e) => handleChange(e)}
           />
         </fieldset>
-        <fieldset className="flex js  col mt-10 gap-10">
+        {/* <fieldset className="flex js  col mt-10 gap-10">
           <label>Change Image URL </label>
           <input
             readOnly
@@ -87,17 +98,30 @@ const LeftSidebar = ({
             type="url"
             value={newState[newSelect]?.image}
           />
-        </fieldset>
+        </fieldset> */}
         <fieldset className="flex js  col mt-10 gap-10">
           <label>Font Size</label>
           <input
-            readOnly
+            onChange={(e) => handleChange(e)}
             name="fontSize"
             className={inter.className}
             type="number"
             min="14"
-            value="16"
+            value={newState[newSelect]?.fontSize}
           />
+        </fieldset>
+        <fieldset className="flex js center">
+          <label>Text Align</label>
+          <select
+            name="textAlign"
+            onChange={(e) => handleChange(e)}
+            value={newState[newSelect]?.textAlign}
+          >
+            <option>left</option>
+
+            <option>center</option>
+            <option>right</option>
+          </select>
         </fieldset>
         <fieldset className="flex js  col mt-10 gap-10">
           <label>CTA Button URL</label>
@@ -109,6 +133,7 @@ const LeftSidebar = ({
             value="https://coolhead.in"
           />
         </fieldset>
+
         <fieldset className="flex js  col  mt-10 gap-10">
           <label>CTA Button text</label>
           <input
@@ -127,9 +152,9 @@ const LeftSidebar = ({
             ))}
           </select>
         </fieldset>
-        <button className="btn" type="submit">
+        {/* <button className="btn" type="submit">
           Save
-        </button>
+        </button> */}
 
         <button className="btn">Generate Code</button>
       </div>

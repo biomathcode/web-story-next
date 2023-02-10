@@ -232,6 +232,7 @@ input {
 
 label {
   color: #666;
+  font-size: 14px;
 }
 
 input,
@@ -242,7 +243,7 @@ textarea {
   background: #fff;
   color: #000;
   font-family: "Inter";
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 
 .gap-10 {

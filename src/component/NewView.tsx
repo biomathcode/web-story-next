@@ -1,3 +1,4 @@
+import { state } from "@/app/page";
 import { useDroppable } from "@dnd-kit/core";
 import {
   ArrowLeftIcon,
@@ -25,7 +26,7 @@ function NewView({
   newSelect,
   setNewSelect,
 }: {
-  newState: any;
+  newState: state[];
   setNewState: any;
   newSelect: any;
   setNewSelect: any;
@@ -50,7 +51,7 @@ function NewView({
           return (
             <button
               onClick={() => setNewSelect(i)}
-              key={el}
+              key={i}
               style={{
                 width: "40px",
                 height: "10px",
@@ -83,6 +84,7 @@ function NewView({
           style={{
             ...style,
             backgroundImage: `url(${newState[newSelect]?.image})`,
+            transition: "background-image 100ms linear 0s",
             objectFit: "cover",
             backgroundRepeat: "no-repeat",
             width: "360px",
@@ -95,10 +97,13 @@ function NewView({
         >
           <p
             style={{
-              fontSize: "24px",
-              color: "#eee",
+              fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
+              color: "#eee", // change to property
               position: "relative",
               top: "200px",
+              width: "100%",
+              wordWrap: "break-word",
+              textAlign: `${newState[newSelect]?.textAlign}`, // change to property
             }}
           >
             {newState[newSelect]?.text}
