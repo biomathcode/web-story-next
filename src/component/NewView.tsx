@@ -53,6 +53,7 @@ function NewView({
           style={{
             ...style,
             backgroundImage: `url(${newState[newSelect].image})`,
+            objectFit: "cover",
             backgroundRepeat: "no-repeat",
             width: "360px",
             height: "670px",
