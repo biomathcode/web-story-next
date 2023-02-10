@@ -286,3 +286,10 @@ textarea {
 .editor {
   border-radius: 10px;
 }
+
+select {
+  padding: 10px 10px;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+}

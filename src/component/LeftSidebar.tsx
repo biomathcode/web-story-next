@@ -16,6 +16,21 @@ const LeftSidebar = ({
   //   image: newState[newSelect].image,
   // });
 
+  const animationTypes = [
+    "Fade In",
+    "Twirl In",
+    "Fly In Left",
+    "Fly In Right",
+    "Fly In Top",
+    "Fly In Bottom",
+    "Rotate In Left",
+    "Rotate In Right",
+    "Whoosh In Left",
+    "Whoosh In Right",
+    "Drop",
+    "Zoom Out",
+  ];
+
   function handleChange(e: any) {
     console.log("this si working", newState, e.target.value);
     const state = newState.map((el: any, i: any) => {
@@ -104,9 +119,18 @@ const LeftSidebar = ({
             value="Read more"
           />
         </fieldset>
+        <fieldset className="flex js  col  mt-10 gap-10">
+          <label>Animation Type</label>
+          <select>
+            {animationTypes.map((el) => (
+              <option key={el}>{el}</option>
+            ))}
+          </select>
+        </fieldset>
         <button className="btn" type="submit">
           Save
         </button>
+
         <button className="btn">Generate Code</button>
       </div>
     )

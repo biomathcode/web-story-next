@@ -28,6 +28,7 @@ const Droppable = ({
     maxWidth: "300px",
     minHeigth: "50px",
     padding: "5px 10px",
+    OverflowX: "hidden",
     // transform: CSS.Translate.toString(transform),
   };
   return (

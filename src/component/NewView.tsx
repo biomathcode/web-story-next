@@ -1,5 +1,10 @@
 import { useDroppable } from "@dnd-kit/core";
-import { ArrowLeftIcon, PlusIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+import {
+  ArrowLeftIcon,
+  PlusIcon,
+  ArrowRightIcon,
+  TrashIcon,
+} from "@radix-ui/react-icons";
 import { nanoid, random } from "nanoid";
 import { useState } from "react";
 
@@ -31,6 +36,12 @@ function NewView({
   const style = {
     backgroundColor: isOver ? "light-green" : "#fff",
   };
+
+  function deleteState() {
+    const state = newState.filter((el: any, i: any) => i !== newSelect);
+    setNewState(state);
+    setNewSelect(newSelect - 1);
+  }
 
   return (
     <div className="flex center col ">
@@ -99,7 +110,8 @@ function NewView({
               style={{
                 padding: "10px",
                 borderRadius: "10px",
-                background: "#eee",
+                background: "#000",
+                color: "#eee",
                 width: "fit-content",
                 height: "fit-content",
                 cursor: "pointer",
@@ -133,6 +145,9 @@ function NewView({
           )}
         </>
       </div>
+      <button onClick={() => deleteState()} className="btn mt-10">
+        <TrashIcon />
+      </button>
     </div>
   );
 }
