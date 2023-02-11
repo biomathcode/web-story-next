@@ -43,11 +43,12 @@ function NavBar({
 
   const [value, setValue] = useState(options[0]);
 
-  return options && user ? (
+  return (
     <nav
       style={{
         width: "100vw",
         height: "60px",
+        minHeight: "60px",
         background: "#eee",
         margin: "0px",
         padding: "0px 20px",
@@ -58,25 +59,27 @@ function NavBar({
       }}
       className="flex center"
     >
-      <Select
-        className="dropdown"
-        options={options}
-        value={value}
-        onChange={(newValue: any) => {
-          console.log("this is the new Value", newValue);
-          const index = options.findIndex(
-            (el: any) => el.value === newValue.value
-          );
+      {user ? (
+        <Select
+          className="dropdown"
+          options={options}
+          value={value}
+          onChange={(newValue: any) => {
+            console.log("this is the new Value", newValue);
+            const index = options.findIndex(
+              (el: any) => el.value === newValue.value
+            );
 
-          setValue(options[index]);
+            setValue(options[index]);
 
-          console.log(index, "new index");
-          setPage(index);
-        }}
-      />
+            console.log(index, "new index");
+            setPage(index);
+          }}
+        />
+      ) : (
+        <p>loading...</p>
+      )}
     </nav>
-  ) : (
-    <p>loading...</p>
   );
 }
 

@@ -168,7 +168,17 @@ export default function Home() {
 
   return (
     <div className={inter.className}>
-      {user && <NavBar page={select} setPage={setSelect} user={user} />}
+      {user ? (
+        <NavBar page={select} setPage={setSelect} user={user} />
+      ) : (
+        <nav
+          style={{
+            width: "100vw",
+            height: "60px",
+            background: "#eee",
+          }}
+        />
+      )}
 
       <div
         style={{
@@ -185,7 +195,7 @@ export default function Home() {
             onDragEnd={(e) => handleDragEnd(e)}
             collisionDetection={closestCenter}
           >
-            <Panel defaultSize={20} minSize={20}>
+            <Panel defaultSize={30} minSize={20}>
               <RightSidebar content={content} />
             </Panel>
             <PanelResizeHandle
@@ -196,7 +206,7 @@ export default function Home() {
                 background: "#eee",
               }}
             />
-            <Panel minSize={30}>
+            <Panel minSize={40}>
               <div
                 style={{
                   height: "calc(100vh - 60px ) ",
