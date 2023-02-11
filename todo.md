@@ -1,6 +1,9 @@
 [x] Create tabs for unsplash api
-[] Create Model for code generation
 [x] Font-size Change 
+
+[ ] font-color change
+[ ] background - block and highlight
+[] Create Model for code generation
 [] Color and 
 [] Text-alignment change 
 [] Text background

@@ -125,6 +125,7 @@ export default function Home() {
 
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
+      console.log("this is over", over);
       return;
     } else {
       if (active.id && active.data.current.title) {
@@ -201,7 +202,6 @@ export default function Home() {
             sensors={sensors}
             onDragStart={handleDragStart}
             onDragEnd={(e) => handleDragEnd(e)}
-            collisionDetection={closestCenter}
           >
             <Panel defaultSize={30} minSize={20}>
               <RightSidebar content={content} />
@@ -242,9 +242,7 @@ export default function Home() {
                 />
               </div>
               <DragOverlay>
-                {activeId ? (
-                  <Item type={"text"} href={content[activeId].raw} />
-                ) : null}
+                {activeId ? <Item el={content[activeId]} /> : null}
               </DragOverlay>
             </Panel>
 

@@ -32,7 +32,7 @@ function NewView({
   setNewSelect: any;
 }) {
   const { isOver, setNodeRef } = useDroppable({
-    id: nanoid(),
+    id: "content_" + nanoid(),
   });
   const style = {
     backgroundColor: isOver ? "light-green" : "#fff",
@@ -44,9 +44,16 @@ function NewView({
     setNewSelect(newSelect - 1);
   }
 
+  const [mouseOver, setMouseOver] = useState(false);
+
   return (
     <div className="flex center col ">
-      <div className="flex" style={{ margin: "10px 0px" }}>
+      <div
+        className="flex"
+        style={{ margin: "10px 0px" }}
+        onMouseOver={() => setMouseOver(true)}
+        onMouseLeave={() => setMouseOver(false)}
+      >
         {newState?.map((el: any, i: any) => {
           return (
             <button
@@ -54,11 +61,12 @@ function NewView({
               key={i}
               style={{
                 width: "40px",
-                height: "10px",
+                height: mouseOver ? "10px" : "5px",
                 borderRadius: "10px",
-                background: i === newSelect ? "red" : "#222",
+                background: i === newSelect ? "#222" : "#ccc",
                 cursor: "pointer",
                 marginLeft: "2px",
+                transition: "all 100ms linear",
               }}
             ></button>
           );
@@ -84,12 +92,16 @@ function NewView({
           style={{
             ...style,
             backgroundImage: `url(${newState[newSelect]?.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+
             transition: "all 100ms linear 0s",
             objectFit: "cover",
             backgroundRepeat: "no-repeat",
             width: "350px",
             height: "650px",
             borderRadius: "10px",
+            border: "1px solid #eee",
             overflow: "hidden",
             display: "flex",
             padding: "20px",
@@ -98,7 +110,7 @@ function NewView({
           <p
             style={{
               fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
-              color: "#eee", // change to property
+              color: newState[newSelect]?.color, // change to property
               position: "relative",
               top: "200px",
               width: "100%",
@@ -127,6 +139,8 @@ function NewView({
                   {
                     image: image[newSelect + 1],
                     text: String(newSelect + 2),
+                    fontSize: 16,
+                    color: "#fff",
                   },
                 ])
               }
@@ -150,7 +164,18 @@ function NewView({
           )}
         </>
       </div>
-      <button onClick={() => deleteState()} className="btn mt-10">
+      <button
+        style={{
+          padding: "10px",
+          borderRadius: "10px",
+          background: "#eee",
+          width: "fit-content",
+          height: "fit-content",
+          cursor: "pointer",
+        }}
+        onClick={() => deleteState()}
+        className=" mt-10"
+      >
         <TrashIcon />
       </button>
     </div>

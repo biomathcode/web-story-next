@@ -49,18 +49,6 @@ body {
   text-align: center;
 }
 
-button {
-  border: none;
-  border-radius: 3px;
-  margin: 0px;
-  padding: 5px 5px;
-  font-size: 12px;
-}
-
-button:hover {
-  background-color: #9c9c9c;
-}
-
 /* reset */
 button,
 fieldset,
@@ -278,9 +266,10 @@ textarea {
   background: #222;
   color: #eee;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 4px;
   cursor: pointer;
   width: fit-content;
+  transition: background 300ms ease-out;
 }
 
 .btn:hover {
@@ -340,7 +329,6 @@ select {
 }
 .TabsTrigger:focus {
   position: relative;
-  /* box-shadow: 0 0 0 2px #444; */
 }
 
 .TabsContent {

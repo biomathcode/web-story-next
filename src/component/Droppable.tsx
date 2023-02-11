@@ -1,7 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
-export const Item = ({ type, href }: { type: any; href: any }) => {
+export const Item = ({ el }: { el: any }) => {
   const style = {
     display: "flex",
     gap: "10px",
@@ -11,8 +11,14 @@ export const Item = ({ type, href }: { type: any; href: any }) => {
     minHeigth: "50px",
     padding: "5px 10px",
     OverflowX: "hidden",
+    "word-break": "break-all",
     // transform: CSS.Translate.toString(transform),
   };
+
+  const type = el.raw.match(/!\[(.*)\]\((.+)\)/g) ? "image" : "text";
+
+  const href = el?.tokens[1]?.href;
+
   return (
     <div style={style}>
       <button className="DragHandle">
@@ -23,7 +29,7 @@ export const Item = ({ type, href }: { type: any; href: any }) => {
       {type === "image" ? (
         <img alt={href} src={href} width="250px" height="300px" />
       ) : (
-        <p>{href}</p>
+        <p>{el.text}</p>
       )}
     </div>
   );
@@ -57,6 +63,7 @@ const Droppable = ({
     minHeigth: "50px",
     padding: "5px 10px",
     OverflowX: "hidden",
+    "word-break": "break-all",
     // transform: CSS.Translate.toString(transform),
   };
   return (

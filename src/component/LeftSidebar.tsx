@@ -1,4 +1,6 @@
+import { ColorWheelIcon, GearIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
+import { BlockPicker } from "react-color";
 
 const LeftSidebar = ({
   inter,
@@ -56,7 +58,7 @@ const LeftSidebar = ({
     newState && (
       <div
         style={{
-          padding: "0px 10px",
+          padding: "10px 10px",
           margin: "0px px",
 
           width: "100%",
@@ -66,6 +68,7 @@ const LeftSidebar = ({
           background: "#eee",
           display: "flex",
           flexDirection: "column",
+          justifyContent: "space-between",
           gap: "10px",
           fontSize: "14px",
         }}
@@ -75,88 +78,97 @@ const LeftSidebar = ({
           console.log(e);
         }}
       >
-        <fieldset className="flex js col mt-10  gap-10">
-          <label>Change Text</label>
-          <textarea
-            name="text"
-            className={inter.className}
-            style={{ minHeight: "70px" }}
-            value={newState[newSelect]?.text}
-            onChange={(e) => handleChange(e)}
-          />
-        </fieldset>
+        <div className="flex gap-10 col">
+          <fieldset className="flex js col mt-10  gap-10">
+            <label>Change Text</label>
+            <textarea
+              name="text"
+              className={inter.className}
+              style={{ minHeight: "70px" }}
+              value={newState[newSelect]?.text}
+              onChange={(e) => handleChange(e)}
+            />
+          </fieldset>
 
-        <fieldset className="flex js  col mt-10 gap-10">
-          <label>Font Size</label>
-          <input
-            onChange={(e) => handleChange(e)}
-            name="fontSize"
-            className={inter.className}
-            type="number"
-            min="14"
-            value={newState[newSelect]?.fontSize}
-          />
-        </fieldset>
-        <fieldset className="flex js center">
-          <label>Text Align</label>
-          <select
-            name="textAlign"
-            onChange={(e) => handleChange(e)}
-            value={newState[newSelect]?.textAlign}
-          >
-            <option>left</option>
+          <fieldset className="flex js  col mt-10 gap-10">
+            <label>Font Size</label>
+            <input
+              onChange={(e) => handleChange(e)}
+              name="fontSize"
+              className={inter.className}
+              type="number"
+              min="14"
+              value={newState[newSelect]?.fontSize}
+            />
+          </fieldset>
+          <fieldset className="flex js center">
+            <label>Text Align</label>
+            <select
+              name="textAlign"
+              onChange={(e) => handleChange(e)}
+              value={newState[newSelect]?.textAlign}
+            >
+              <option>left</option>
 
-            <option>center</option>
-            <option>right</option>
-          </select>
-        </fieldset>
-        <fieldset className="flex js center">
-          <label>Text Position</label>
-          <select
-            name="textPosition"
-            // onChange={(e) => handleChange(e)}
-            // value={newState[newSelect]?.textAlign}
-          >
-            <option>top</option>
+              <option>center</option>
+              <option>right</option>
+            </select>
+          </fieldset>
+          <fieldset className="flex js center">
+            <label>Text Position</label>
+            <select
+              name="textPosition"
+              // onChange={(e) => handleChange(e)}
+              // value={newState[newSelect]?.textAlign}
+            >
+              <option>top</option>
 
-            <option>middle</option>
-            <option>bottom</option>
-          </select>
-        </fieldset>
-        <fieldset className="flex js  col mt-10 gap-10">
-          <label>CTA Button URL</label>
-          <input
-            readOnly
-            name="ctaUrl"
-            className={inter.className}
-            type="url"
-            value="https://coolhead.in"
-          />
-        </fieldset>
+              <option>middle</option>
+              <option>bottom</option>
+            </select>
+          </fieldset>
+          <fieldset className="flex js center">
+            <label>Text Color</label>
+            <input value={newState[newSelect].color} />
+          </fieldset>
+          <fieldset className="flex js  col mt-10 gap-10">
+            <label>CTA Button URL</label>
+            <input
+              readOnly
+              name="ctaUrl"
+              className={inter.className}
+              type="url"
+              value="https://coolhead.in"
+            />
+          </fieldset>
 
-        <fieldset className="flex js  col  mt-10 gap-10">
-          <label>CTA Button text</label>
-          <input
-            readOnly
-            name="ctaButton"
-            className={inter.className}
-            type="text"
-            value="Read more"
-          />
-        </fieldset>
-        <fieldset className="flex js  col  mt-10 gap-10">
-          <label>Animation Type</label>
-          <select>
-            {animationTypes.map((el) => (
-              <option key={el}>{el}</option>
-            ))}
-          </select>
-        </fieldset>
-        {/* <button className="btn" type="submit">
+          <fieldset className="flex js  col  mt-10 gap-10">
+            <label>CTA Button text</label>
+            <input
+              readOnly
+              name="ctaButton"
+              className={inter.className}
+              type="text"
+              value="Read more"
+            />
+          </fieldset>
+          <fieldset className="flex js  col  mt-10 gap-10">
+            <label>Animation Type</label>
+            <select>
+              {animationTypes.map((el) => (
+                <option key={el}>{el}</option>
+              ))}
+            </select>
+          </fieldset>
+          {/* <button className="btn" type="submit">
           Save
         </button> */}
+        </div>
 
-        <button className="btn">Generate Code</button>
+        <button className="generate_btn btn flex center gap-10">
+          <GearIcon />
+          Generate Code
+        </button>
       </div>
     )
   );
