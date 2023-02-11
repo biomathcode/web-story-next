@@ -11,11 +11,6 @@ const LeftSidebar = ({
   newSelect: any;
   setNewState: any;
 }) => {
-  // const [data, setData] = useState({
-  //   text: newState[newSelect].text,
-  //   image: newState[newSelect].image,
-  // });
-
   const animationTypes = [
     "Fade In",
     "Twirl In",
@@ -32,7 +27,6 @@ const LeftSidebar = ({
   ];
 
   function handleChange(e: any) {
-    console.log("this si working", newState, e.target.value);
     const state = newState.map((el: any, i: any) => {
       console.log(i, newSelect, el, e.target.name, e.target.value);
       const newObject =
@@ -116,6 +110,19 @@ const LeftSidebar = ({
             <option>right</option>
           </select>
         </fieldset>
+        <fieldset className="flex js center">
+          <label>Text Position</label>
+          <select
+            name="textPosition"
+            // onChange={(e) => handleChange(e)}
+            // value={newState[newSelect]?.textAlign}
+          >
+            <option>top</option>
+
+            <option>middle</option>
+            <option>bottom</option>
+          </select>
+        </fieldset>
         <fieldset className="flex js  col mt-10 gap-10">
           <label>CTA Button URL</label>
           <input
@@ -156,3 +163,19 @@ const LeftSidebar = ({
 };
 
 export default LeftSidebar;
+
+const CTA_Form = ({
+  on,
+  url,
+  label,
+}: {
+  on: boolean;
+  url: string;
+  label: string;
+}) => {
+  return (
+    <div>
+      <label>CTA FORM</label>
+    </div>
+  );
+};

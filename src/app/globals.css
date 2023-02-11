@@ -354,3 +354,7 @@ select {
 .TabsContent:focus {
   /* box-shadow: 0 0 0 2px #444; */
 }
+
+.drag_handler {
+  color: #444;
+}

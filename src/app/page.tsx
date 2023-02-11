@@ -174,10 +174,6 @@ export default function Home() {
     setActiveId(event.active.id);
   }
 
-  const cont = activeId && content[activeId];
-
-  console.log("content with active id", cont);
-
   return (
     <div className={inter.className}>
       {user ? (
@@ -214,10 +210,19 @@ export default function Home() {
               style={{
                 width: "10px",
                 height: "calc(100vh - 60px ) ",
+                display: "flex",
+                justifyContent: "center",
 
                 background: "#eee",
               }}
-            />
+            >
+              <svg className="drag_handler" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M18,16V13H15V22H13V2H15V11H18V8L22,12L18,16M2,12L6,16V13H9V22H11V2H9V11H6V8L2,12Z"
+                ></path>
+              </svg>
+            </PanelResizeHandle>
             <Panel minSize={40}>
               <div
                 style={{
@@ -247,10 +252,19 @@ export default function Home() {
               style={{
                 width: "10px",
                 height: "calc(100vh - 60px ) ",
+                display: "flex",
+                justifyContent: "center",
 
                 background: "#eee",
               }}
-            />
+            >
+              <svg className="drag_handler" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M18,16V13H15V22H13V2H15V11H18V8L22,12L18,16M2,12L6,16V13H9V22H11V2H9V11H6V8L2,12Z"
+                ></path>
+              </svg>
+            </PanelResizeHandle>
             <Panel minSize={20}>
               <LeftSidebar
                 inter={inter}
