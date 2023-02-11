@@ -63,9 +63,11 @@ const LeftSidebar = ({
       <div
         style={{
           padding: "0px 10px",
-          width: "300px",
-          height: "100vh",
-          position: "absolute",
+          margin: "0px px",
+
+          width: "100%",
+          height: "calc(100vh - 60px ) ",
+
           right: "0px",
           background: "#eee",
           display: "flex",
@@ -89,16 +91,7 @@ const LeftSidebar = ({
             onChange={(e) => handleChange(e)}
           />
         </fieldset>
-        {/* <fieldset className="flex js  col mt-10 gap-10">
-          <label>Change Image URL </label>
-          <input
-            readOnly
-            name="imageUrl"
-            className={inter.className}
-            type="url"
-            value={newState[newSelect]?.image}
-          />
-        </fieldset> */}
+
         <fieldset className="flex js  col mt-10 gap-10">
           <label>Font Size</label>
           <input

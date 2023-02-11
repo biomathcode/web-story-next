@@ -3,8 +3,7 @@
 import { Inter } from "@next/font/google";
 
 import { use, useEffect, useState } from "react";
-import { nanoid } from "nanoid";
-import Editor from "@monaco-editor/react";
+
 import axios from "axios";
 import { config } from "../axios/index";
 import mdParser from "@/lib/markdownParser";
@@ -20,16 +19,13 @@ import {
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
-import { useForm } from "react-hook-form";
-
-import Droppable from "@/component/Droppable";
-
 import NavBar from "@/component/Navbar";
 
 import NewView from "@/component/NewView";
 
 import LeftSidebar from "@/component/LeftSidebar";
 import RightSidebar from "@/component/RightSidebar";
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -179,51 +175,66 @@ export default function Home() {
           display: "flex",
           gap: "20px",
           width: "100vw",
+          height: "calc(100vh - 60px ) ",
         }}
       >
-        <DndContext
-          sensors={sensors}
-          onDragStart={handleDragStart}
-          onDragEnd={(e) => handleDragEnd(e)}
-          collisionDetection={closestCenter}
-        >
-          <div className="flex ja ">
-            <RightSidebar content={content} />
-            <div
+        <PanelGroup direction="horizontal">
+          <DndContext
+            sensors={sensors}
+            onDragStart={handleDragStart}
+            onDragEnd={(e) => handleDragEnd(e)}
+            collisionDetection={closestCenter}
+          >
+            <Panel defaultSize={20} minSize={20}>
+              <RightSidebar content={content} />
+            </Panel>
+            <PanelResizeHandle
               style={{
-                height: "100vh",
-                // overflow: "scroll",
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                minWidth: "300px",
+                width: "10px",
+                height: "calc(100vh - 60px ) ",
+
+                background: "#eee",
               }}
-            >
-              <NewView
-                newState={newState}
+            />
+            <Panel minSize={30}>
+              <div
+                style={{
+                  height: "calc(100vh - 60px ) ",
+                  // overflow: "scroll",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                  minWidth: "300px",
+                }}
+              >
+                <NewView
+                  newState={newState}
+                  newSelect={newSelect}
+                  setNewSelect={setNewSelect}
+                  setNewState={setNewState}
+                />
+              </div>
+              <DragOverlay>{activeId ? <p>This is drag</p> : null}</DragOverlay>
+            </Panel>
+
+            <PanelResizeHandle
+              style={{
+                width: "10px",
+                height: "calc(100vh - 60px ) ",
+
+                background: "#eee",
+              }}
+            />
+            <Panel minSize={20}>
+              <LeftSidebar
+                inter={inter}
                 newSelect={newSelect}
-                setNewSelect={setNewSelect}
+                newState={newState}
                 setNewState={setNewState}
               />
-            </div>
-          </div>
-          {/* {createPortal( */}
-          <DragOverlay
-          // dropAnimation={{
-          //   duration: 500,
-          //   easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
-          // }}
-          >
-            {activeId ? <p>This is drag</p> : null}
-          </DragOverlay>
-
-          <LeftSidebar
-            inter={inter}
-            newSelect={newSelect}
-            newState={newState}
-            setNewState={setNewState}
-          />
-        </DndContext>
+            </Panel>
+          </DndContext>
+        </PanelGroup>
       </div>
     </div>
   );

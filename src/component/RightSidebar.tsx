@@ -3,7 +3,11 @@ import * as Tabs from "@radix-ui/react-tabs";
 
 const RightSidebar = ({ content }: { content: any }) => {
   return (
-    <Tabs.Root className="TabsRoot" defaultValue="tab1">
+    <Tabs.Root
+      className="TabsRoot"
+      defaultValue="tab1"
+      style={{ overflow: "auto", width: "100%" }}
+    >
       <Tabs.List className="TabsList" aria-label="Manage your account">
         <Tabs.Trigger className="TabsTrigger" value="tab1">
           Content
@@ -18,8 +22,10 @@ const RightSidebar = ({ content }: { content: any }) => {
           display: "flex",
           flexDirection: "column",
           gap: "10px",
+          height: "calc(100vh - 60px ) ",
 
           overflow: "scroll",
+          width: "100%",
 
           minWidth: "150px",
           padding: "10px 20px",
