@@ -1,6 +1,34 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
+export const Item = ({ type, href }: { type: any; href: any }) => {
+  const style = {
+    display: "flex",
+    gap: "10px",
+    border: "1px solid #eee",
+    background: "#fff",
+    maxWidth: "300px",
+    minHeigth: "50px",
+    padding: "5px 10px",
+    OverflowX: "hidden",
+    // transform: CSS.Translate.toString(transform),
+  };
+  return (
+    <div style={style}>
+      <button className="DragHandle">
+        <svg viewBox="0 0 20 20" width="12">
+          <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
+        </svg>
+      </button>
+      {type === "image" ? (
+        <img alt={href} src={href} width="250px" height="300px" />
+      ) : (
+        <p>{href}</p>
+      )}
+    </div>
+  );
+};
+
 const Droppable = ({
   id,
   href,

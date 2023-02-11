@@ -26,6 +26,7 @@ import NewView from "@/component/NewView";
 import LeftSidebar from "@/component/LeftSidebar";
 import RightSidebar from "@/component/RightSidebar";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import { Item } from "@/component/Droppable";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,6 +59,13 @@ type Posts = {
   coverImage: string;
 };
 
+type ContentType = {
+  type: string;
+  raw: string;
+  text: string;
+  tokens: string;
+};
+
 const image = [
   "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80",
   "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
@@ -72,14 +80,14 @@ const image = [
 export default function Home() {
   const [page, setPage] = useState(0);
 
-  const [content, setContent] = useState([]);
+  const [content, setContent] = useState<ContentType[]>([]);
 
   const [select, setSelect] = useState(0);
 
   const [user, setUser] = useState<userState | null>(null);
   const [newSelect, setNewSelect] = useState(0);
 
-  const [activeId, setActiveId] = useState(null);
+  const [activeId, setActiveId] = useState<number | null>(null);
 
   const [newState, setNewState] = useState<state[]>([
     {
@@ -166,6 +174,10 @@ export default function Home() {
     setActiveId(event.active.id);
   }
 
+  const cont = activeId && content[activeId];
+
+  console.log("content with active id", cont);
+
   return (
     <div className={inter.className}>
       {user ? (
@@ -224,7 +236,11 @@ export default function Home() {
                   setNewState={setNewState}
                 />
               </div>
-              <DragOverlay>{activeId ? <p>This is drag</p> : null}</DragOverlay>
+              <DragOverlay>
+                {activeId ? (
+                  <Item type={"text"} href={content[activeId].raw} />
+                ) : null}
+              </DragOverlay>
             </Panel>
 
             <PanelResizeHandle
