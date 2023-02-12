@@ -29,7 +29,7 @@ export const Item = ({ el }: { el: any }) => {
       {type === "image" ? (
         <img alt={href} src={href} width="250px" height="300px" />
       ) : (
-        <p>{el.text}</p>
+        <p className="fs-14">{el.text}</p>
       )}
     </div>
   );
@@ -58,13 +58,20 @@ const Droppable = ({
     display: "flex",
     gap: "10px",
     border: "1px solid #eee",
+    borderRadius: "var(--radius)",
     background: "#fff",
-    maxWidth: "300px",
-    minHeigth: "50px",
+    width: "100%",
+    lineHeight: 1.6,
+    letterSpacing: 0.2,
+    wordSpacing: "2px",
+
+    minHeigth: "120px",
     padding: "5px 10px",
     OverflowX: "hidden",
     "word-break": "break-all",
-    // transform: CSS.Translate.toString(transform),
+    color: "#4b4b4b",
+
+    transform: CSS.Translate.toString(transform),
   };
   return (
     <div style={style} ref={setNodeRef}>
@@ -76,7 +83,7 @@ const Droppable = ({
       {type === "image" ? (
         <img alt={href} src={href} width="250px" height="300px" />
       ) : (
-        <p>{href}</p>
+        <p className="fs-14">{href}</p>
       )}
     </div>
   );

@@ -8,6 +8,7 @@ import {
 } from "@radix-ui/react-icons";
 import { nanoid, random } from "nanoid";
 import { useState } from "react";
+import ToolTip from "./ToolTip";
 
 const image = [
   "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80",
@@ -73,20 +74,22 @@ function NewView({
         })}
       </div>
       <div className="flex center gap-10">
-        <button
-          style={{
-            padding: "10px",
-            borderRadius: "10px",
-            background: "#eee",
-            width: "fit-content",
-            height: "fit-content",
-            cursor: "pointer",
-          }}
-          onClick={() => setNewSelect(newSelect - 1)}
-          disabled={newSelect === 0}
-        >
-          <ArrowLeftIcon />
-        </button>
+        <ToolTip text="Previous Page">
+          <button
+            style={{
+              padding: "10px",
+              borderRadius: "10px",
+              background: "#eee",
+              width: "fit-content",
+              height: "fit-content",
+              cursor: "pointer",
+            }}
+            onClick={() => setNewSelect(newSelect - 1)}
+            disabled={newSelect === 0}
+          >
+            <ArrowLeftIcon />
+          </button>
+        </ToolTip>
         <div
           ref={setNodeRef}
           style={{
@@ -123,31 +126,54 @@ function NewView({
         </div>
         <>
           {newSelect === newState.length - 1 ? (
-            <button
-              style={{
-                padding: "10px",
-                borderRadius: "10px",
-                background: "#000",
-                color: "#eee",
-                width: "fit-content",
-                height: "fit-content",
-                cursor: "pointer",
-              }}
-              onClick={() =>
-                setNewState([
-                  ...newState,
-                  {
-                    image: image[newSelect + 1],
-                    text: String(newSelect + 2),
-                    fontSize: 16,
-                    color: "#fff",
-                  },
-                ])
-              }
-            >
-              <PlusIcon fontSize={30} />
-            </button>
+            <ToolTip text="Add new page">
+              <button
+                style={{
+                  padding: "10px",
+                  borderRadius: "10px",
+                  background: "#000",
+                  color: "#eee",
+                  width: "fit-content",
+                  height: "fit-content",
+                  cursor: "pointer",
+                }}
+                onClick={() =>
+                  setNewState([
+                    ...newState,
+                    {
+                      image: image[newSelect + 1],
+                      text: String(newSelect + 2),
+                      fontSize: 16,
+                      color: "#fff",
+                    },
+                  ])
+                }
+              >
+                <PlusIcon fontSize={30} />
+              </button>
+            </ToolTip>
           ) : (
+            <ToolTip text={"Next page"}>
+              <button
+                style={{
+                  padding: "10px",
+                  borderRadius: "10px",
+                  background: "#eee",
+                  width: "fit-content",
+                  height: "fit-content",
+                  cursor: "pointer",
+                }}
+                onClick={() => setNewSelect(newSelect + 1)}
+              >
+                <ArrowRightIcon />
+              </button>
+            </ToolTip>
+          )}
+        </>
+      </div>
+      <div className="flex gap-10">
+        <ToolTip text="Delete the present page">
+          {newState.length > 1 && newSelect > 0 && (
             <button
               style={{
                 padding: "10px",
@@ -157,27 +183,14 @@ function NewView({
                 height: "fit-content",
                 cursor: "pointer",
               }}
-              onClick={() => setNewSelect(newSelect + 1)}
+              onClick={() => deleteState()}
+              className=" mt-10"
             >
-              <ArrowRightIcon />
+              <TrashIcon />
             </button>
           )}
-        </>
+        </ToolTip>
       </div>
-      <button
-        style={{
-          padding: "10px",
-          borderRadius: "10px",
-          background: "#eee",
-          width: "fit-content",
-          height: "fit-content",
-          cursor: "pointer",
-        }}
-        onClick={() => deleteState()}
-        className=" mt-10"
-      >
-        <TrashIcon />
-      </button>
     </div>
   );
 }

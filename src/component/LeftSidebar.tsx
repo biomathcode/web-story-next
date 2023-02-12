@@ -2,6 +2,9 @@ import { ColorWheelIcon, GearIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { BlockPicker } from "react-color";
 import Toggle from "./Toggle";
+import { AnimationOptions } from "@/lib";
+
+// Text, Image, Cta, Animation,
 
 const LeftSidebar = ({
   inter,
@@ -86,7 +89,7 @@ const LeftSidebar = ({
           style={{ transition: "width 300ms linear" }}
         >
           <fieldset className="flex js col mt-10  gap-10">
-            <label>Change Text</label>
+            <label className="label">Change Text</label>
             <textarea
               name="text"
               className={inter.className}
@@ -96,8 +99,8 @@ const LeftSidebar = ({
             />
           </fieldset>
 
-          <fieldset className="flex js  col mt-10 gap-10">
-            <label>Font Size</label>
+          <fieldset className="flex js  center mt-10 gap-10">
+            <label className="label">Font Size</label>
             <input
               onChange={(e) => handleChange(e)}
               name="fontSize"
@@ -108,7 +111,7 @@ const LeftSidebar = ({
             />
           </fieldset>
           <fieldset className="flex js center">
-            <label>Text Align</label>
+            <label className="label">Text Align</label>
             <select
               name="textAlign"
               onChange={(e) => handleChange(e)}
@@ -121,7 +124,7 @@ const LeftSidebar = ({
             </select>
           </fieldset>
           <fieldset className="flex js center">
-            <label>Text Position</label>
+            <label className="label"> Text Position</label>
             <select
               name="textPosition"
               // onChange={(e) => handleChange(e)}
@@ -134,8 +137,8 @@ const LeftSidebar = ({
             </select>
           </fieldset>
           <fieldset className="flex js center">
-            <label>Text Color</label>
-            <input readOnly value={newState[newSelect].color} />
+            <label className="label">Text Color</label>
+            <input readOnly value={newState[newSelect]?.color} />
           </fieldset>
           <Toggle
             infoText="You can only add one CTA per page"
@@ -146,7 +149,7 @@ const LeftSidebar = ({
           {open && (
             <div>
               <fieldset className="flex js  col mt-10 gap-10">
-                <label>CTA Button URL</label>
+                <label className="label">CTA Button URL</label>
                 <input
                   readOnly
                   name="ctaUrl"
@@ -156,7 +159,7 @@ const LeftSidebar = ({
                 />
               </fieldset>
               <fieldset className="flex js  col  mt-10 gap-10">
-                <label>CTA Button text</label>
+                <label className="label">CTA Button text</label>
                 <input
                   readOnly
                   name="ctaButton"
@@ -169,16 +172,15 @@ const LeftSidebar = ({
           )}
 
           <fieldset className="flex js  col  mt-10 gap-10">
-            <label>Animation Type</label>
+            <label className="label">Animation Type</label>
             <select>
-              {animationTypes.map((el) => (
-                <option key={el}>{el}</option>
+              {AnimationOptions.map((el) => (
+                <option value={el.value} key={el.value}>
+                  {el.label}
+                </option>
               ))}
             </select>
           </fieldset>
-          {/* <button className="btn" type="submit">
-          Save
-        </button> */}
         </div>
 
         <button className="generate_btn btn flex center gap-10">

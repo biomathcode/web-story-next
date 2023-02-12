@@ -45,6 +45,7 @@ export type userState = {
   numPosts: number;
   publicationDomain: string;
 
+  username: string;
   publication: {
     posts: Posts[];
   };
@@ -193,7 +194,7 @@ export default function Home() {
             onDragStart={handleDragStart}
             onDragEnd={(e) => handleDragEnd(e)}
           >
-            <Panel defaultSize={30} minSize={20}>
+            <Panel defaultSize={25} minSize={20}>
               <RightSidebar content={content} />
             </Panel>
             <PanelResizeHandle
@@ -253,7 +254,7 @@ export default function Home() {
                 ></path>
               </svg>
             </PanelResizeHandle>
-            <Panel minSize={20}>
+            <Panel defaultSize={20} minSize={20}>
               <LeftSidebar
                 inter={inter}
                 newSelect={newSelect}

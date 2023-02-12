@@ -5,6 +5,7 @@ const axiosdata = JSON.stringify({
   	photo
     numPosts
     publicationDomain
+    username
     
     publication{
       posts(page: 1){

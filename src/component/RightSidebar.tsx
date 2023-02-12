@@ -1,6 +1,8 @@
 import Droppable from "./Droppable";
 import * as Tabs from "@radix-ui/react-tabs";
 
+//TODO: Replace Loading with a Illustration
+
 const RightSidebar = ({ content }: { content: any }) => {
   return (
     <Tabs.Root
@@ -17,6 +19,24 @@ const RightSidebar = ({ content }: { content: any }) => {
         </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+
+          overflow: "scroll",
+
+          padding: "10px 20px",
+        }}
+        value="tab2"
+      >
+        <div>
+          <h1>Content</h1>
+          <h1>Contente</h1>
+          <h1>Contnet</h1>
+        </div>
+      </Tabs.Content>
+      <Tabs.Content
         value="tab1"
         style={{
           display: "flex",
@@ -29,11 +49,9 @@ const RightSidebar = ({ content }: { content: any }) => {
 
           minWidth: "150px",
           padding: "10px 20px",
-
-          maxWidth: "400px",
         }}
       >
-        {content ? (
+        {content.length > 0 ? (
           content.map((el: any, i: any) => {
             // three types content, code, image
             if (el.raw.match(/!\[(.*)\]\((.+)\)/g) && el.type !== "list") {
@@ -54,23 +72,11 @@ const RightSidebar = ({ content }: { content: any }) => {
             );
           })
         ) : (
-          <p>loading...</p>
+          <div style={{ marginTop: "20px", color: "#000", zIndex: 20 }}>
+            loading...
+          </div>
         )}
       </Tabs.Content>
-      <Tabs.Content
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-
-          overflow: "scroll",
-
-          padding: "10px 20px",
-
-          maxWidth: "400px",
-        }}
-        value="tab2"
-      ></Tabs.Content>
     </Tabs.Root>
   );
 };

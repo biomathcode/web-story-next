@@ -14,7 +14,7 @@ type AnimationType = {
   value: animationType;
 };
 
-const Animation: AnimationType[] = [
+export const AnimationOptions: AnimationType[] = [
   {
     label: "Drop",
     value: "drop",

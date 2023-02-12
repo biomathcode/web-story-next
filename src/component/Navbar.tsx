@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { config } from "../axios";
 import mdParser from "@/lib/markdownParser";
+import { MagicWandIcon } from "@radix-ui/react-icons";
 
 export interface ColourOption {
   value: string;
@@ -54,12 +55,8 @@ function NavBar({
         background: "#eee",
         margin: "0px",
         padding: "0px 20px",
-        display: "flex",
-        alignContent: "center",
-        alignItems: "center",
-        justifyContent: "center",
       }}
-      className="flex center"
+      className="flex center jc gap-10"
     >
       {user ? (
         <Select
@@ -81,6 +78,25 @@ function NavBar({
       ) : (
         <p>loading...</p>
       )}
+      <fieldset>
+        <input
+          min={0}
+          max={10}
+          defaultValue={0}
+          type="number"
+          style={{ width: "50px" }}
+          placeholder="Page"
+        />
+      </fieldset>
+      <fieldset>
+        <input type="text" value={user?.username} placeholder="username" />
+      </fieldset>
+      <fieldset>
+        <button className="btn fs-12 flex gap-10 center" type="submit">
+          <MagicWandIcon />
+          Search
+        </button>
+      </fieldset>
     </nav>
   );
 }

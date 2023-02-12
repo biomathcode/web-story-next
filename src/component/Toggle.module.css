@@ -1,7 +1,7 @@
 /* reset */
 
 .SwitchRoot {
-  width: 42px;
+  width: 32px;
   height: 15px;
   background-color: var(--blackA9);
   border-radius: 9999px;
@@ -18,7 +18,7 @@
 
 .SwitchThumb {
   display: block;
-  width: 21px;
+  width: 11px;
   height: 11px;
   background-color: white;
   border-radius: 9999px;

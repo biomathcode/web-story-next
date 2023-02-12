@@ -6,10 +6,16 @@
 
 @import "@radix-ui/colors/violet.css";
 
+@import "@radix-ui/colors/slate.css";
+
+@import "@radix-ui/colors/grayDark.css";
+
 :root {
   --font-mono: "Inter", ui-monospace, Menlo, Monaco, "Cascadia Mono",
     "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --radius: 4px;
+  --padding: 8px;
 }
 
 * {
@@ -58,7 +64,7 @@ input {
 }
 
 .PopoverContent {
-  border-radius: 4px;
+  border-radius: var(--radius);
   padding: 20px;
   width: 260px;
   background-color: white;
@@ -111,7 +117,7 @@ input {
 
 .IconButton {
   font-family: inherit;
-  border-radius: 100%;
+  border-radius: var(--radius);
   height: 35px;
   width: 35px;
   display: inline-flex;
@@ -146,7 +152,7 @@ input {
   align-items: center;
   justify-content: center;
   flex: 1;
-  border-radius: 4px;
+  border-radius: var(--radius);
   padding: 0 10px;
   font-size: 13px;
   line-height: 1;
@@ -224,17 +230,18 @@ input {
 
 .label {
   color: #666;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 input,
 textarea {
-  padding: 10px;
-  border: 1px solid #444;
-  border-radius: 10px;
-  background: #fff;
-  color: #000;
+  padding: 8px;
+  border: 1px solid var(--mauve8);
+  border-radius: var(--radius);
+  background: var(--mauve1);
+  color: var(--slate11);
   font-family: "Inter";
+  font-size: 12px;
   /* font-size: 16px; */
 }
 
@@ -267,7 +274,7 @@ textarea {
   background: #222;
   color: #eee;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: var(--radius);
   cursor: pointer;
   width: fit-content;
   transition: background 300ms ease-out;
@@ -278,14 +285,15 @@ textarea {
   color: #fff;
 }
 .editor {
-  border-radius: 10px;
+  border-radius: var(--radius);
 }
 
 select {
-  padding: 10px 10px;
-  border-radius: 10px;
-  background: #fff;
-  color: #000;
+  padding: var(--padding);
+  border-radius: var(--radius);
+  border: none;
+  background: var(--mauve1);
+  color: var(--slate11);
 }
 
 .TabsRoot {
@@ -346,4 +354,25 @@ select {
 
 .drag_handler {
   color: #444;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.DragHandle {
+  cursor: pointer;
+}
+
+.DragHandle:hover {
+  background: var(--mauve4);
+  color: var(--mauve11);
 }
