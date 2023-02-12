@@ -9,6 +9,78 @@
 //  AMP_STORY().AMP_STORY_PAGE().AMP_GRID_LAYER()
 // animate-in can be added to amp_image, h1, p tags
 
+type AnimationType = {
+  label: String;
+  value: animationType;
+};
+
+const Animation: AnimationType[] = [
+  {
+    label: "Drop",
+    value: "drop",
+  },
+  {
+    label: "Fade In",
+    value: "fade-in",
+  },
+  {
+    label: "Fly In Bottom",
+    value: "fly-in-bottom",
+  },
+  {
+    label: "Fly In Top",
+    value: "fly-in-top",
+  },
+  {
+    label: "Fly In Right",
+    value: "fly-in-right",
+  },
+  {
+    label: "Fly In Left",
+    value: "fly-in-left",
+  },
+  {
+    label: "Pulse",
+    value: "pulse",
+  },
+  {
+    label: "Rotate In Left",
+    value: "rotate-in-left",
+  },
+  {
+    label: "Rotate In Right",
+    value: "rotate-in-right",
+  },
+  {
+    label: "Twirl In",
+    value: "twirl-in",
+  },
+  {
+    label: "Pan Left",
+    value: "pan-left",
+  },
+  {
+    label: "Pan Right",
+    value: "pan-right",
+  },
+  {
+    label: "Pan Up",
+    value: "pan-up",
+  },
+  {
+    label: "Pan Down",
+    value: "pan-down",
+  },
+  {
+    label: "Zoom In",
+    value: "zoom-in",
+  },
+  {
+    label: "Zoom Out",
+    value: "zoom-out",
+  },
+];
+
 type animationType =
   | "drop"
   | "fade-in"

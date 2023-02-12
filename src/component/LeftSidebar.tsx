@@ -1,6 +1,7 @@
 import { ColorWheelIcon, GearIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { BlockPicker } from "react-color";
+import Toggle from "./Toggle";
 
 const LeftSidebar = ({
   inter,
@@ -27,6 +28,8 @@ const LeftSidebar = ({
     "Drop",
     "Zoom Out",
   ];
+
+  const [open, setOpen] = useState(false);
 
   function handleChange(e: any) {
     const state = newState.map((el: any, i: any) => {
@@ -78,7 +81,10 @@ const LeftSidebar = ({
           console.log(e);
         }}
       >
-        <div className="flex gap-10 col">
+        <div
+          className="flex gap-10 col"
+          style={{ transition: "width 300ms linear" }}
+        >
           <fieldset className="flex js col mt-10  gap-10">
             <label>Change Text</label>
             <textarea
@@ -129,29 +135,39 @@ const LeftSidebar = ({
           </fieldset>
           <fieldset className="flex js center">
             <label>Text Color</label>
-            <input value={newState[newSelect].color} />
+            <input readOnly value={newState[newSelect].color} />
           </fieldset>
-          <fieldset className="flex js  col mt-10 gap-10">
-            <label>CTA Button URL</label>
-            <input
-              readOnly
-              name="ctaUrl"
-              className={inter.className}
-              type="url"
-              value="https://coolhead.in"
-            />
-          </fieldset>
+          <Toggle
+            infoText="You can only add one CTA per page"
+            label="Call to Action"
+            open={open}
+            setOpen={setOpen}
+          />
+          {open && (
+            <div>
+              <fieldset className="flex js  col mt-10 gap-10">
+                <label>CTA Button URL</label>
+                <input
+                  readOnly
+                  name="ctaUrl"
+                  className={inter.className}
+                  type="url"
+                  value="https://coolhead.in"
+                />
+              </fieldset>
+              <fieldset className="flex js  col  mt-10 gap-10">
+                <label>CTA Button text</label>
+                <input
+                  readOnly
+                  name="ctaButton"
+                  className={inter.className}
+                  type="text"
+                  value="Read more"
+                />
+              </fieldset>
+            </div>
+          )}
 
-          <fieldset className="flex js  col  mt-10 gap-10">
-            <label>CTA Button text</label>
-            <input
-              readOnly
-              name="ctaButton"
-              className={inter.className}
-              type="text"
-              value="Read more"
-            />
-          </fieldset>
           <fieldset className="flex js  col  mt-10 gap-10">
             <label>Animation Type</label>
             <select>

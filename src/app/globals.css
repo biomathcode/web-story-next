@@ -1,4 +1,5 @@
 @import "@radix-ui/colors/blackA.css";
+
 @import "@radix-ui/colors/mauve.css";
 
 @import "@radix-ui/colors/green.css";
@@ -221,7 +222,7 @@ input {
   flex-direction: column;
 }
 
-label {
+.label {
   color: #666;
   font-size: 14px;
 }

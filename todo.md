@@ -6,7 +6,6 @@
 [] Create Model for code generation
 [] Color and 
 [] Text-alignment change 
-[] Text background
 [] Animation 
 [] CTA component
 
