@@ -182,6 +182,9 @@ const LeftSidebar = ({
               ))}
             </select>
           </fieldset>
+          <fieldset>
+            <label className="label"></label>
+          </fieldset>
         </div>
 
         <Model />
