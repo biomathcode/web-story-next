@@ -34,14 +34,16 @@ function NavBar({
   page: any;
   setPage: any;
 }) {
-  const options = user?.publication?.posts?.map((el: any) => {
-    return {
-      value: el.title,
-      label: el.title,
-    };
-  });
+  const options =
+    user &&
+    user?.publication?.posts?.map((el: any) => {
+      return {
+        value: el.title,
+        label: el.title,
+      };
+    });
 
-  const [value, setValue] = useState(options[0]);
+  const [value, setValue] = useState(user && options[0]);
 
   return (
     <nav

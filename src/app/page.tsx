@@ -177,17 +177,7 @@ export default function Home() {
 
   return (
     <div className={inter.className}>
-      {user ? (
-        <NavBar page={select} setPage={setSelect} user={user} />
-      ) : (
-        <nav
-          style={{
-            width: "100vw",
-            height: "60px",
-            background: "#eee",
-          }}
-        />
-      )}
+      <NavBar page={select} setPage={setSelect} user={user} />
 
       <div
         style={{
