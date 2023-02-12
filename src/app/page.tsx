@@ -7,6 +7,7 @@ import { use, useEffect, useState } from "react";
 import axios from "axios";
 import { config } from "../axios/index";
 import mdParser from "@/lib/markdownParser";
+import useLocalStorage from "use-local-storage";
 
 import {
   DndContext,
@@ -86,11 +87,12 @@ export default function Home() {
   const [select, setSelect] = useState(0);
 
   const [user, setUser] = useState<userState | null>(null);
+
   const [newSelect, setNewSelect] = useState(0);
 
   const [activeId, setActiveId] = useState<number | null>(null);
 
-  const [newState, setNewState] = useState<state[]>([
+  const [newState, setNewState] = useLocalStorage<state[]>("state", [
     {
       image: image[0],
       text: "title ",
