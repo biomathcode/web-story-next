@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BlockPicker } from "react-color";
 import Toggle from "./Toggle";
 import { AnimationOptions } from "@/lib";
+import Model from "./Model";
 
 // Text, Image, Cta, Animation,
 
@@ -183,10 +184,12 @@ const LeftSidebar = ({
           </fieldset>
         </div>
 
-        <button className="generate_btn btn flex center gap-10">
+        <Model />
+
+        {/* <button className="generate_btn btn flex center gap-10">
           <GearIcon />
           Generate Code
-        </button>
+        </button> */}
       </div>
     )
   );
