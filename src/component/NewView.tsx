@@ -5,6 +5,7 @@ import {
   PlusIcon,
   ArrowRightIcon,
   TrashIcon,
+  ResetIcon,
 } from "@radix-ui/react-icons";
 import { nanoid, random } from "nanoid";
 import { useState } from "react";
@@ -51,7 +52,7 @@ function NewView({
     <div className="flex center col ">
       <div
         className="flex"
-        style={{ margin: "10px 0px" }}
+        style={{ margin: "10px 0px", overflow: "scroll", width: "600px" }}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >
@@ -102,7 +103,7 @@ function NewView({
             objectFit: "cover",
             backgroundRepeat: "no-repeat",
             width: "350px",
-            height: "650px",
+            height: "620px",
             borderRadius: "10px",
             border: "1px solid #eee",
             overflow: "hidden",
@@ -171,7 +172,7 @@ function NewView({
           )}
         </>
       </div>
-      <div className="flex gap-10">
+      <div className="flex gap-10 center mt-10">
         <ToolTip text="Delete the present page">
           {newState.length > 1 && newSelect > 0 && (
             <button
@@ -182,13 +183,28 @@ function NewView({
                 width: "fit-content",
                 height: "fit-content",
                 cursor: "pointer",
+                fontFamily: "Inter",
               }}
               onClick={() => deleteState()}
-              className=" mt-10"
             >
               <TrashIcon />
             </button>
           )}
+        </ToolTip>
+        <ToolTip text="Reset">
+          <button
+            style={{
+              padding: "10px",
+              borderRadius: "10px",
+              background: "#eee",
+              width: "fit-content",
+              height: "fit-content",
+              cursor: "pointer",
+              fontFamily: "Inter",
+            }}
+          >
+            <ResetIcon />
+          </button>
         </ToolTip>
       </div>
     </div>

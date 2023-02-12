@@ -7,8 +7,12 @@ export const Item = ({ el }: { el: any }) => {
     gap: "10px",
     border: "1px solid #eee",
     background: "#fff",
-    maxWidth: "300px",
+    width: "100%",
     minHeigth: "50px",
+    lineHeight: 1.6,
+    letterSpacing: 0.2,
+    wordSpacing: "2px",
+
     padding: "5px 10px",
     OverflowX: "hidden",
     "word-break": "break-all",
@@ -71,7 +75,7 @@ const Droppable = ({
     "word-break": "break-all",
     color: "#4b4b4b",
 
-    transform: CSS.Translate.toString(transform),
+    // transform: CSS.Translate.toString(transform),
   };
   return (
     <div style={style} ref={setNodeRef}>
