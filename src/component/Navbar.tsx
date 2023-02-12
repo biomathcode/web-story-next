@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { config } from "../axios";
 import mdParser from "@/lib/markdownParser";
-import { MagicWandIcon } from "@radix-ui/react-icons";
+import { MagicWandIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 export interface ColourOption {
   value: string;
@@ -93,7 +93,7 @@ function NavBar({
       </fieldset>
       <fieldset>
         <button className="btn fs-12 flex gap-10 center" type="submit">
-          <MagicWandIcon />
+          <MagnifyingGlassIcon />
           Search
         </button>
       </fieldset>
