@@ -1,9 +1,9 @@
 import { ColorWheelIcon, GearIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { BlockPicker } from "react-color";
-import Toggle from "./Toggle";
+import Toggle from "./Toggle/Toggle";
 import { AnimationOptions } from "@/lib";
-import Model from "./Model";
+import Model from "./Model/Model";
 
 // Text, Image, Cta, Animation,
 

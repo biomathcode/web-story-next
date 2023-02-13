@@ -1,5 +1,6 @@
 import Droppable from "./Droppable";
 import * as Tabs from "@radix-ui/react-tabs";
+import PlaceHolder from "./Placeholder/Placeholder";
 
 //TODO: Replace Loading with a Illustration
 
@@ -32,9 +33,7 @@ const RightSidebar = ({ content }: { content: any }) => {
         value="tab2"
       >
         <div>
-          <h1>Content</h1>
-          <h1>Contente</h1>
-          <h1>Contnet</h1>
+          <PlaceHolder />
         </div>
       </Tabs.Content>
       <Tabs.Content

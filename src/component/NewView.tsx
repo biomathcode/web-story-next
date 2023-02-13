@@ -6,10 +6,12 @@ import {
   ArrowRightIcon,
   TrashIcon,
   ResetIcon,
+  CopyIcon,
 } from "@radix-ui/react-icons";
+
 import { nanoid, random } from "nanoid";
 import { useState } from "react";
-import ToolTip from "./ToolTip";
+import ToolTip from "./ToolTip/ToolTip";
 
 const image = [
   "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80",
@@ -204,6 +206,21 @@ function NewView({
             }}
           >
             <ResetIcon />
+          </button>
+        </ToolTip>
+        <ToolTip text="Reorder Pages">
+          <button
+            style={{
+              padding: "10px",
+              borderRadius: "10px",
+              background: "#eee",
+              width: "fit-content",
+              height: "fit-content",
+              cursor: "pointer",
+              fontFamily: "Inter",
+            }}
+          >
+            <CopyIcon />
           </button>
         </ToolTip>
       </div>
