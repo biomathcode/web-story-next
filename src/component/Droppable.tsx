@@ -15,7 +15,8 @@ export const Item = ({ el }: { el: any }) => {
 
     padding: "5px 10px",
     OverflowX: "hidden",
-    "word-break": "break-all",
+    breakWord: "break-all",
+
     // transform: CSS.Translate.toString(transform),
   };
 
@@ -72,7 +73,8 @@ const Droppable = ({
     minHeigth: "120px",
     padding: "5px 10px",
     OverflowX: "hidden",
-    "word-break": "break-all",
+    breakWord: "break-all",
+
     color: "#4b4b4b",
 
     // transform: CSS.Translate.toString(transform),

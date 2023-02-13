@@ -145,9 +145,16 @@ const LeftSidebar = ({
           <fieldset className="flex js center">
             <label className="label">Text Color</label>
             <input
+              type="color"
               name="color"
               onChange={(e) => handleChange(e)}
               value={newState[newSelect]?.color}
+              style={{
+                width: "40px",
+                height: "30px",
+                padding: "0px",
+                borderRadius: "4px",
+              }}
             />
           </fieldset>
           <fieldset className="flex js center">
