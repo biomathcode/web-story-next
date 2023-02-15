@@ -90,6 +90,11 @@ export default function Home() {
 
   const [user, setUser] = useState<userState | null>(null);
 
+  const [info, setInfo] = useLocalStorage("info", {
+    username: "biomathcode",
+    page: 0,
+  });
+
   const [newSelect, setNewSelect] = useState(0);
 
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -118,7 +123,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchFunction() {
-      const response = await axios(config("jcrd", 1));
+      const response = await axios(config(info.username, info.page));
 
       setUser(response.data.data.user);
 
@@ -127,7 +132,7 @@ export default function Home() {
     }
 
     fetchFunction();
-  }, []);
+  }, [info.page, info.username]);
 
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
@@ -185,7 +190,14 @@ export default function Home() {
 
   return (
     <div className={inter.className}>
-      <NavBar page={select} setPage={setSelect} user={user} />
+      <NavBar
+        page={select}
+        setPage={setSelect}
+        user={user}
+        setUser={setUser}
+        info={info}
+        setInfo={setInfo}
+      />
 
       <div
         style={{

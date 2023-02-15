@@ -4,6 +4,7 @@ import axios from "axios";
 import { config } from "../axios";
 import mdParser from "@/lib/markdownParser";
 import { MagicWandIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { useForm } from "react-hook-form";
 
 export interface ColourOption {
   value: string;
@@ -30,10 +31,14 @@ function NavBar({
   user,
   page,
   setPage,
+  setUser,
 }: {
   user: any;
   page: any;
   setPage: any;
+  setUser: any;
+  info: any;
+  setInfo: any;
 }) {
   const options =
     user &&
@@ -45,6 +50,13 @@ function NavBar({
     });
 
   const [value, setValue] = useState(user && options[0]);
+
+  // const handleSubmit = (e: any) => {
+  //   e.preventDefault();
+  //   console.log(e.target);
+  // };
+
+  const { register, handleSubmit } = useForm();
 
   return (
     <nav
@@ -78,25 +90,47 @@ function NavBar({
       ) : (
         <p>loading...</p>
       )}
-      <fieldset>
-        <input
-          min={0}
-          max={10}
-          defaultValue={0}
-          type="number"
-          style={{ width: "50px" }}
-          placeholder="Page"
-        />
-      </fieldset>
-      <fieldset>
-        <input type="text" value={user?.username} placeholder="username" />
-      </fieldset>
-      <fieldset>
-        <button className="btn fs-12 flex gap-10 center" type="submit">
-          <MagnifyingGlassIcon />
-          Search
-        </button>
-      </fieldset>
+      <form
+        onSubmit={handleSubmit(async (data) => {
+          const response = await axios(
+            config(data.username, Number(data.page))
+          );
+          if (response.data.data.user) {
+            setUser(response.data.data.user);
+          } else {
+            alert(`No data found on page ${data.page}`);
+          }
+
+          console.log(response);
+        })}
+        className="flex center jc gap-10"
+      >
+        <fieldset>
+          <input
+            {...register("page")}
+            min={0}
+            max={10}
+            defaultValue={0}
+            type="number"
+            style={{ width: "50px" }}
+            placeholder="Page"
+          />
+        </fieldset>
+        <fieldset>
+          <input
+            {...register("username")}
+            type="text"
+            defaultValue={user?.username}
+            placeholder="username"
+          />
+        </fieldset>
+        <fieldset>
+          <button className="btn fs-12 flex gap-10 center" type="submit">
+            <MagnifyingGlassIcon />
+            Search
+          </button>
+        </fieldset>
+      </form>
     </nav>
   );
 }

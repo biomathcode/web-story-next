@@ -5,7 +5,7 @@ import { marked } from "marked";
 const mdParser = (content: string) => {
   const data: string[] = [];
 
-  const response = marked.lexer(content);
+  const response = marked?.lexer(content);
 
   const paragraphs = response.filter((el) => el.type !== "space");
 
