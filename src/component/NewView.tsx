@@ -203,12 +203,13 @@ function NewView({
               height: "fit-content",
               cursor: "pointer",
               fontFamily: "Inter",
+              fontSize: "12px",
             }}
           >
             <ResetIcon />
           </button>
         </ToolTip>
-        <ToolTip text="Reorder Pages">
+        {/* <ToolTip text="Reorder Pages">
           <button
             style={{
               padding: "10px",
@@ -218,11 +219,14 @@ function NewView({
               height: "fit-content",
               cursor: "pointer",
               fontFamily: "Inter",
+              fontSize: "12px",
             }}
+            className="flex gap-10 center"
           >
+            Sort
             <CopyIcon />
           </button>
-        </ToolTip>
+        </ToolTip> */}
       </div>
     </div>
   );
