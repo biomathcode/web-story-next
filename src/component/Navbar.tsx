@@ -56,6 +56,8 @@ function NavBar({
   //   console.log(e.target);
   // };
 
+  const [loading, setLoading] = useState(false);
+
   const { register, handleSubmit } = useForm();
 
   return (
@@ -92,13 +94,20 @@ function NavBar({
       )}
       <form
         onSubmit={handleSubmit(async (data) => {
+          setLoading(true);
           const response = await axios(
             config(data.username, Number(data.page))
           );
-          if (response.data.data.user) {
+          console.log("this is response", response);
+          if (
+            response.data?.data?.user?.publication?.posts?.length > 0 &&
+            response.data.data.user
+          ) {
             setUser(response.data.data.user);
+            setLoading(false);
           } else {
             alert(`No data found on page ${data.page}`);
+            setLoading(false);
           }
 
           console.log(response);
@@ -107,7 +116,9 @@ function NavBar({
       >
         <fieldset>
           <input
-            {...register("page")}
+            {...register("page", {
+              required: true,
+            })}
             min={0}
             max={10}
             defaultValue={0}
@@ -118,16 +129,28 @@ function NavBar({
         </fieldset>
         <fieldset>
           <input
-            {...register("username")}
+            {...register("username", {
+              required: true,
+            })}
             type="text"
             defaultValue={user?.username}
             placeholder="username"
           />
         </fieldset>
         <fieldset>
-          <button className="btn fs-12 flex gap-10 center" type="submit">
-            <MagnifyingGlassIcon />
-            Search
+          <button
+            disabled={loading}
+            className="btn fs-12 flex gap-10 center"
+            type="submit"
+          >
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <MagnifyingGlassIcon />
+                <span>Search</span>
+              </>
+            )}
           </button>
         </fieldset>
       </form>
