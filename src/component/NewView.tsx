@@ -62,7 +62,7 @@ function NewView({
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >
-        {/* {newState &&
+        {newState &&
           newState?.map((el: any, i: any) => {
             return (
               <div
@@ -79,7 +79,7 @@ function NewView({
                 }}
               />
             );
-          })} */}
+          })}
       </div>
       <div className="flex center gap-10">
         <ToolTip text="Previous Page">
@@ -127,25 +127,32 @@ function NewView({
               width: "100%",
               wordWrap: "break-word",
               textAlign: `${newState[newSelect]?.textAlign}`, // change to property
-              // boxDecorationBreak: "clone",
-              // background: `${newState[newSelect]?.background}`,
+              background: `${
+                newState[newSelect]?.highlight === "box"
+                  ? newState[newSelect]?.background
+                  : "none"
+              }`,
               height: "fit-content",
               lineHeight: "45px",
             }}
           >
-            <span
-              style={{
-                background: "#000",
-                borderRadius: "10px",
-                boxDecorationBreak: "clone",
-                WebkitBoxDecorationBreak: "clone",
-                display: "inline",
+            {newState[newSelect]?.highlight === "mark" ? (
+              <span
+                style={{
+                  background: newState[newSelect]?.background,
+                  borderRadius: "10px",
+                  boxDecorationBreak: "clone",
+                  WebkitBoxDecorationBreak: "clone",
+                  display: "inline",
 
-                padding: "2px 10px",
-              }}
-            >
-              {newState[newSelect]?.text}
-            </span>
+                  padding: "2px 10px",
+                }}
+              >
+                {newState[newSelect]?.text}
+              </span>
+            ) : (
+              newState[newSelect]?.text
+            )}
           </p>
         </div>
         <>
@@ -164,11 +171,14 @@ function NewView({
                 onClick={() =>
                   setNewState([
                     ...newState,
+
                     {
                       image: image[newSelect + 1],
                       text: String(newSelect + 2),
                       fontSize: 16,
                       color: "#fff",
+                      background: "#000",
+                      highlight: "box",
                     },
                   ])
                 }

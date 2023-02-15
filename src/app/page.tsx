@@ -39,6 +39,7 @@ export type state = {
   text: string;
   color: string;
   background: string;
+  highlight: "box" | "mark";
 };
 
 export type userState = {
@@ -101,6 +102,7 @@ export default function Home() {
       color: "#fff",
       textAlign: "center", // left, right or center
       background: "#000", // string
+      highlight: "mark",
     },
   ]);
 
@@ -143,6 +145,7 @@ export default function Home() {
                   color: e.color,
                   textAlign: e.textAlign, // left, right or center
                   background: e.background,
+                  highlight: e.highlight,
                 }
               : e;
           } else {
@@ -154,6 +157,7 @@ export default function Home() {
                   color: e.color,
                   textAlign: e.textAlign, // left, right or center
                   background: e.background,
+                  highlight: e.highlight,
                 }
               : e;
           }

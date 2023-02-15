@@ -54,6 +54,16 @@ const LeftSidebar = ({
               ...el,
               color: e.target.value,
             }
+          : e.target.name === "highlight"
+          ? {
+              ...el,
+              highlight: e.target.value === "Box" ? "box" : "mark",
+            }
+          : e.target.name === "background"
+          ? {
+              ...el,
+              background: e.target.value,
+            }
           : {
               ...el,
               fontSize: e.target.value,
@@ -159,10 +169,31 @@ const LeftSidebar = ({
           </fieldset>
           <fieldset className="flex js center">
             <label className="label">Text Highlight</label>
-            <select>
+            <select
+              name="highlight"
+              onChange={(e) => handleChange(e)}
+              value={
+                newState[newSelect]?.highlight === "box" ? "Box" : "Marked"
+              }
+            >
               <option>Box </option>
               <option>Marked</option>
             </select>
+          </fieldset>
+          <fieldset className="flex js center">
+            <label className="label">Background</label>
+            <input
+              type="color"
+              name="background"
+              onChange={(e) => handleChange(e)}
+              value={newState[newSelect]?.background}
+              style={{
+                width: "40px",
+                height: "30px",
+                padding: "0px",
+                borderRadius: "4px",
+              }}
+            />
           </fieldset>
           <Toggle
             infoText="You can only add one CTA per page"
