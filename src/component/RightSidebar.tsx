@@ -42,7 +42,7 @@ const RightSidebar = ({ content }: { content: any }) => {
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          height: "calc(100vh - 60px ) ",
+          height: "calc(100vh - 130px ) ",
 
           overflow: "scroll",
 

@@ -1,12 +1,13 @@
 [x] Create tabs for unsplash api
 [x] Font-size Change 
 
-[ ] font-color change
-[ ] background - block and highlight
-[] Create Model for code generation
-[] Color and 
+[x] font-color change
+[x] background - block and highlight
+[x] Create Model for code generation
+[x] Color and 
+[x] Animation 
+
 [] Text-alignment change 
-[] Animation 
 [] CTA component
 
 

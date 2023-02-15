@@ -118,7 +118,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchFunction() {
-      const response = await axios(config);
+      const response = await axios(config("jcrd", 1));
 
       setUser(response.data.data.user);
 
