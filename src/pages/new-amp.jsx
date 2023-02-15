@@ -56,6 +56,7 @@ export default function IndexPage() {
             <amp-story-page id="something new" key={el.image}>
               <amp-story-grid-layer template="fill">
                 <amp-img
+                  animate-in="fly-in-top"
                   src={el.image}
                   width="720"
                   height="1280"
