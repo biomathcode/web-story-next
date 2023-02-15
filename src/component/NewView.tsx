@@ -1,3 +1,5 @@
+"use client";
+
 import { state } from "@/app/page";
 import { useDroppable } from "@dnd-kit/core";
 import {
@@ -9,8 +11,8 @@ import {
   CopyIcon,
 } from "@radix-ui/react-icons";
 
-import { nanoid, random } from "nanoid";
-import { useState } from "react";
+import { nanoid } from "nanoid";
+import { useRef, useState } from "react";
 import ToolTip from "./ToolTip/ToolTip";
 
 const image = [
@@ -50,31 +52,34 @@ function NewView({
 
   const [mouseOver, setMouseOver] = useState(false);
 
+  const data = useRef<state[] | null>();
+
   return (
-    <div className="flex center col ">
+    <div className="flex center col " suppressHydrationWarning={true}>
       <div
         className="flex"
         style={{ margin: "10px 0px", overflow: "scroll", width: "600px" }}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >
-        {newState?.map((el: any, i: any) => {
-          return (
-            <button
-              onClick={() => setNewSelect(i)}
-              key={i}
-              style={{
-                width: "40px",
-                height: mouseOver ? "10px" : "5px",
-                borderRadius: "10px",
-                background: i === newSelect ? "#222" : "#ccc",
-                cursor: "pointer",
-                marginLeft: "2px",
-                transition: "all 100ms linear",
-              }}
-            ></button>
-          );
-        })}
+        {/* {newState &&
+          newState?.map((el: any, i: any) => {
+            return (
+              <div
+                onClick={() => setNewSelect(i)}
+                key={i}
+                style={{
+                  width: "40px",
+                  height: mouseOver ? "10px" : "5px",
+                  borderRadius: "10px",
+                  background: i === newSelect ? "#222" : "#ccc",
+                  cursor: "pointer",
+                  marginLeft: "2px",
+                  transition: "all 100ms linear",
+                }}
+              />
+            );
+          })} */}
       </div>
       <div className="flex center gap-10">
         <ToolTip text="Previous Page">
@@ -122,9 +127,25 @@ function NewView({
               width: "100%",
               wordWrap: "break-word",
               textAlign: `${newState[newSelect]?.textAlign}`, // change to property
+              // boxDecorationBreak: "clone",
+              // background: `${newState[newSelect]?.background}`,
+              height: "fit-content",
+              lineHeight: "45px",
             }}
           >
-            {newState[newSelect]?.text}
+            <span
+              style={{
+                background: "#000",
+                borderRadius: "10px",
+                boxDecorationBreak: "clone",
+                WebkitBoxDecorationBreak: "clone",
+                display: "inline",
+
+                padding: "2px 10px",
+              }}
+            >
+              {newState[newSelect]?.text}
+            </span>
           </p>
         </div>
         <>

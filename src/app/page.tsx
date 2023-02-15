@@ -28,6 +28,7 @@ import LeftSidebar from "@/component/LeftSidebar";
 import RightSidebar from "@/component/RightSidebar";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { Item } from "@/component/Droppable";
+import dynamic from "next/dynamic";
 
 const inter = Inter({ subsets: ["latin"] });
 
