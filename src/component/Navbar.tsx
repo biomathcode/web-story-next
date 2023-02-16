@@ -74,7 +74,7 @@ function NavBar({
     >
       {user ? (
         <Select
-          className="dropdown"
+          className="select"
           options={options}
           value={value}
           onChange={(newValue: any) => {

@@ -1,5 +1,6 @@
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
+import CodeBlock from "./Codeblock";
 
 export const Item = ({ el }: { el: any }) => {
   const style = {
@@ -25,7 +26,23 @@ export const Item = ({ el }: { el: any }) => {
 
   const type = el?.raw?.match(/!\[(.*)\]\((.+)\)/g) ? "image" : "text";
 
-  const href = el?.tokens[1]?.href;
+  const href = el.type !== "code" && el?.tokens[1]?.href;
+
+  el.type === "code" && console.log("thi sis code block");
+
+  if (el.type === "code") {
+    return (
+      <div className="word-break" style={style}>
+        <button className="DragHandle">
+          <svg viewBox="0 0 20 20" width="12">
+            <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
+          </svg>
+        </button>
+
+        <CodeBlock code={el.text} language={el.lang} />
+      </div>
+    );
+  }
 
   return (
     <div className="word-break" style={style}>
@@ -86,6 +103,21 @@ const Droppable = ({
 
     // transform: CSS.Translate.toString(transform),
   };
+
+  if (data.type === "code") {
+    return (
+      <div style={style} className="word-break" ref={setNodeRef}>
+        <button className="DragHandle" {...attributes} {...listeners}>
+          <svg viewBox="0 0 20 20" width="12">
+            <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
+          </svg>
+        </button>
+
+        <CodeBlock code={data.text} language={data.lang} />
+      </div>
+    );
+  }
+
   return (
     <div style={style} className="word-break" ref={setNodeRef}>
       <button className="DragHandle" {...attributes} {...listeners}>

@@ -5,6 +5,7 @@ import PlaceHolder from "./Placeholder/Placeholder";
 //TODO: Replace Loading with a Illustration
 
 const RightSidebar = ({ content }: { content: any }) => {
+  console.log("this is content", content);
   return (
     <Tabs.Root
       className="TabsRoot"
@@ -67,25 +68,27 @@ const RightSidebar = ({ content }: { content: any }) => {
                   id={i}
                 />
               );
+            } else {
+              console.log(el);
+              return (
+                el?.text?.length > 3 && (
+                  <Droppable
+                    data={el}
+                    type="text"
+                    href={el.raw}
+                    key={i}
+                    id={i}
+                  />
+                )
+              );
             }
-            console.log(el);
-            return (
-              el?.text?.length > 3 && (
-                <Droppable
-                  data={el}
-                  type="text"
-                  href={el.text}
-                  key={i}
-                  id={i}
-                />
-              )
-            );
           })
         ) : (
           <div style={{ marginTop: "20px", color: "#000", zIndex: 20 }}>
             loading...
           </div>
         )}
+        {content.length === 0 && <PlaceHolder />}
       </Tabs.Content>
     </Tabs.Root>
   );
