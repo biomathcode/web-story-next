@@ -13,6 +13,7 @@ import {
 
 import { nanoid } from "nanoid";
 import { useRef, useState } from "react";
+import CTA from "./CTA";
 import ToolTip from "./ToolTip/ToolTip";
 
 const image = [
@@ -115,16 +116,34 @@ function NewView({
             border: "1px solid #eee",
             overflow: "hidden",
             display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
             padding: "20px",
           }}
         >
+          <div
+            style={{
+              position: "relative",
+              bottom: "-530px",
+              // left: "70px",
+              height: "fit-content",
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              zIndex: 10,
+            }}
+          >
+            <CTA url="https://coolhead.in" text="Learn more" />
+          </div>
           <p
             style={{
               fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
               color: newState[newSelect]?.color, // change to property
               position: "relative",
-              top: "200px",
-              width: "100%",
+              top: "36%",
+              width: "330px",
+
               wordWrap: "break-word",
               textAlign: `${newState[newSelect]?.textAlign}`, // change to property
               background: `${
@@ -134,6 +153,7 @@ function NewView({
               }`,
               height: "fit-content",
               lineHeight: "45px",
+              zIndex: 2,
             }}
           >
             {newState[newSelect]?.highlight === "mark" ? (
