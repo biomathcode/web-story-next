@@ -46,10 +46,11 @@ const RightSidebar = ({ content }: { content: any }) => {
 
           overflow: "scroll",
 
-          maxWidth: "300px",
+          // maxWidth: "300px",
 
           minWidth: "150px",
           padding: "10px 20px",
+          marginTop: "30px",
         }}
       >
         {content.length > 0 ? (
@@ -59,6 +60,7 @@ const RightSidebar = ({ content }: { content: any }) => {
               console.log("image", el);
               return (
                 <Droppable
+                  data={el}
                   type="image"
                   href={el?.tokens[1]?.href}
                   key={i}
@@ -66,9 +68,16 @@ const RightSidebar = ({ content }: { content: any }) => {
                 />
               );
             }
+            console.log(el);
             return (
               el?.text?.length > 3 && (
-                <Droppable type="text" href={el.text} key={i} id={i} />
+                <Droppable
+                  data={el}
+                  type="text"
+                  href={el.text}
+                  key={i}
+                  id={i}
+                />
               )
             );
           })

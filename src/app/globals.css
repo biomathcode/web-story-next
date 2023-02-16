@@ -376,3 +376,7 @@ select {
   background: var(--mauve4);
   color: var(--mauve11);
 }
+
+.word-break {
+  word-break: break-word;
+}

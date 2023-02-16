@@ -15,17 +15,20 @@ export const Item = ({ el }: { el: any }) => {
 
     padding: "5px 10px",
     OverflowX: "hidden",
+
     breakWord: "break-all",
+    WordBreak: "break-word",
 
     // transform: CSS.Translate.toString(transform),
   };
+  console.log("this is data in drop", el);
 
-  const type = el.raw.match(/!\[(.*)\]\((.+)\)/g) ? "image" : "text";
+  const type = el?.raw?.match(/!\[(.*)\]\((.+)\)/g) ? "image" : "text";
 
   const href = el?.tokens[1]?.href;
 
   return (
-    <div style={style}>
+    <div className="word-break" style={style}>
       <button className="DragHandle">
         <svg viewBox="0 0 20 20" width="12">
           <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
@@ -34,7 +37,7 @@ export const Item = ({ el }: { el: any }) => {
       {type === "image" ? (
         <img alt={href} src={href} width="250px" height="300px" />
       ) : (
-        <p className="fs-14">{el.text}</p>
+        <p className="fs-14">{el?.text}</p>
       )}
     </div>
   );
@@ -44,19 +47,22 @@ const Droppable = ({
   id,
   href,
   type,
+  data,
 }: {
   id: any;
   href: string;
   type: string;
+  data: any;
 }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: id,
+    id: id + 1,
     data: {
       id: id,
       type: type,
       content: href,
       href: href,
       title: href,
+      data: data,
     },
   });
   const style = {
@@ -74,13 +80,14 @@ const Droppable = ({
     padding: "5px 10px",
     OverflowX: "hidden",
     breakWord: "break-all",
+    WordBreak: "break-word",
 
     color: "#4b4b4b",
 
     // transform: CSS.Translate.toString(transform),
   };
   return (
-    <div style={style} ref={setNodeRef}>
+    <div style={style} className="word-break" ref={setNodeRef}>
       <button className="DragHandle" {...attributes} {...listeners}>
         <svg viewBox="0 0 20 20" width="12">
           <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
