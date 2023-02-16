@@ -4,7 +4,7 @@ function PlaceHolderIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="417"
+      width="100%"
       height="403"
       fill="none"
       viewBox="0 0 417 403"

@@ -21,11 +21,12 @@ const RightSidebar = ({ content }: { content: any }) => {
         </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content
+        className="flex  center jc"
         style={{
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          maxWidth: "300px",
+          width: "100%",
 
           overflow: "scroll",
 
@@ -33,9 +34,7 @@ const RightSidebar = ({ content }: { content: any }) => {
         }}
         value="tab2"
       >
-        <div>
-          <PlaceHolder />
-        </div>
+        <PlaceHolder />
       </Tabs.Content>
       <Tabs.Content
         value="tab1"
@@ -43,7 +42,7 @@ const RightSidebar = ({ content }: { content: any }) => {
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          height: "calc(100vh - 130px ) ",
+          height: "calc(100vh - 150px ) ",
 
           overflow: "scroll",
 
@@ -51,7 +50,6 @@ const RightSidebar = ({ content }: { content: any }) => {
 
           minWidth: "150px",
           padding: "10px 20px",
-          marginTop: "30px",
         }}
       >
         {content.length > 0 ? (

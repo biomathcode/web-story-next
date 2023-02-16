@@ -4,8 +4,11 @@ import { BlockPicker } from "react-color";
 import Toggle from "./Toggle/Toggle";
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
+import AccordianContainer from "./Accordian";
 
 // Text, Image, Cta, Animation,
+
+// TODO: Add a Accordian here for text, image, CTA,
 
 const LeftSidebar = ({
   inter,
@@ -100,6 +103,7 @@ const LeftSidebar = ({
           console.log(e);
         }}
       >
+        {/* <AccordianContainer /> */}
         <div
           className="flex gap-10 col"
           style={{ transition: "width 300ms linear" }}
