@@ -40,6 +40,9 @@ export type state = {
   color: string;
   background: string;
   highlight: "box" | "mark";
+  cta: boolean;
+  url: string;
+  ctaText: string;
 };
 
 export type userState = {
@@ -108,6 +111,9 @@ export default function Home() {
       textAlign: "center", // left, right or center
       background: "#000", // string
       highlight: "mark",
+      cta: false,
+      ctaText: "",
+      url: "",
     },
   ]);
 

@@ -64,7 +64,7 @@ function NewView({
         onMouseLeave={() => setMouseOver(false)}
       >
         {newState &&
-          newState?.map((el: any, i: any) => {
+          newState?.map((el: state, i: any) => {
             return (
               <div
                 onClick={() => setNewSelect(i)}
@@ -133,7 +133,12 @@ function NewView({
               width: "100%",
             }}
           >
-            <CTA url="https://coolhead.in" text="Learn more" />
+            {newState[newSelect]?.cta && (
+              <CTA
+                url={newState[newSelect]?.url}
+                text={newState[newSelect]?.text}
+              />
+            )}
           </div>
           <p
             style={{
