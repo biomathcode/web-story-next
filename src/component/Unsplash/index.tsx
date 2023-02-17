@@ -1,6 +1,7 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Dispatch, SetStateAction, useState } from "react";
 import { createApi } from "unsplash-js";
+import useLocalStorage from "use-local-storage";
 import PlaceHolder from "../Placeholder/Placeholder";
 
 const unsplash = createApi({
@@ -9,7 +10,7 @@ const unsplash = createApi({
 
 function UnsplashContainer() {
   const [query, setQuery] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useLocalStorage("image", []);
 
   return (
     <div className="flex col gap-10 center jc" style={{ width: "100%" }}>
@@ -43,7 +44,6 @@ function Search({
             query: query,
             page: 1,
             perPage: 10,
-            color: "green",
             orientation: "portrait",
           })
           .then((el) => {

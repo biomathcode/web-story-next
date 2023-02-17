@@ -15,7 +15,7 @@ Features:
 
 [] Text-alignment change 
 [x] CTA component
-[] Add unsplash api
+[x] Add unsplash api
 [] Code generation
 [] Improve UI/UX
 
