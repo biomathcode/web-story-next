@@ -136,7 +136,7 @@ function NewView({
             {newState[newSelect]?.cta && (
               <CTA
                 url={newState[newSelect]?.url}
-                text={newState[newSelect]?.text}
+                text={newState[newSelect]?.ctaText || " "}
               />
             )}
           </div>

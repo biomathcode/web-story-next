@@ -40,39 +40,46 @@ const LeftSidebar = ({
 
   function handleChange(e: any) {
     const state = newState.map((el: any, i: any) => {
-      console.log(i, newSelect, el, e.target.name, e.target.value);
-      const newObject =
-        e.target.name === "text"
-          ? {
-              ...el,
-              text: e.target.value,
-            }
-          : e.target.name === "textAlign"
-          ? {
-              ...el,
-              textAlign: e.target.value,
-            }
-          : e.target.name === "color"
-          ? {
-              ...el,
-              color: e.target.value,
-            }
-          : e.target.name === "highlight"
-          ? {
-              ...el,
-              highlight: e.target.value === "Box" ? "box" : "mark",
-            }
-          : e.target.name === "background"
-          ? {
-              ...el,
-              background: e.target.value,
-            }
-          : {
-              ...el,
-              fontSize: e.target.value,
-            };
+      const newObject: any = {
+        text: {
+          ...el,
+          text: e.target.value,
+        },
+        textAlign: {
+          ...el,
+          textAlign: e.target.value,
+        },
+        color: {
+          ...el,
+          color: e.target.value,
+        },
+        highlight: {
+          ...el,
+          highlight: e.target.value === "Box" ? "box" : "mark",
+        },
+        background: {
+          ...el,
+          background: e.target.value,
+        },
+        fontSize: {
+          ...el,
+          fontSize: e.target.value,
+        },
+        cta: {
+          ...el,
+          cta: e.target.value === "true" ? true : false,
+        },
+        url: {
+          ...el,
+          url: e.target.value,
+        },
+        ctaText: {
+          ...el,
+          ctaText: e.target.value,
+        },
+      };
 
-      return i === newSelect ? newObject : el;
+      return i === newSelect ? newObject[e.target.name] : el;
     });
 
     console.log("new state", state);
@@ -199,36 +206,48 @@ const LeftSidebar = ({
               }}
             />
           </fieldset>
-          <Toggle
+          {/* <Toggle
             infoText="You can only add one CTA per page"
             label="Call to Action"
             open={open}
             setOpen={setOpen}
           />
-          {open && (
-            <div>
-              <fieldset className="flex js  col mt-10 gap-10">
-                <label className="label">CTA Button URL</label>
-                <input
-                  readOnly
-                  name="ctaUrl"
-                  className={inter.className}
-                  type="url"
-                  value="https://coolhead.in"
-                />
-              </fieldset>
-              <fieldset className="flex js  col  mt-10 gap-10">
-                <label className="label">CTA Button text</label>
-                <input
-                  readOnly
-                  name="ctaButton"
-                  className={inter.className}
-                  type="text"
-                  value="Read more"
-                />
-              </fieldset>
-            </div>
-          )}
+          {open && ( */}
+          <div>
+            <fieldset className="flex js center gap-10">
+              <label className="label">CTA</label>
+              <select
+                name="cta"
+                className={inter.className}
+                onChange={(e) => handleChange(e)}
+                value={newState[newSelect]?.cta ? "true" : "false"}
+              >
+                <option>true</option>
+                <option>false</option>
+              </select>
+            </fieldset>
+            <fieldset className="flex js  col mt-10 gap-10">
+              <label className="label">CTA Button URL</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                name="url"
+                className={inter.className}
+                type="url"
+                value={newState[newSelect]?.url}
+              />
+            </fieldset>
+            <fieldset className="flex js  col  mt-10 gap-10">
+              <label className="label">CTA Button text</label>
+              <input
+                onChange={(e) => handleChange(e)}
+                name="ctaText"
+                className={inter.className}
+                type="text"
+                value={newState[newSelect]?.ctaText}
+              />
+            </fieldset>
+          </div>
+          {/* )} */}
 
           <fieldset className="flex js  col  mt-10 gap-10">
             <label className="label">Animation Type</label>

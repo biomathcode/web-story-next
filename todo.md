@@ -23,4 +23,4 @@ Features:
 Bugs: 
 
 [x] First element is not draggable 
-[] 
+[ ] CTA button change the position of the Text element  
