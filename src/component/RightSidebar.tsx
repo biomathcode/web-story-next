@@ -2,6 +2,8 @@ import Droppable from "./Droppable";
 import * as Tabs from "@radix-ui/react-tabs";
 import PlaceHolder from "./Placeholder/Placeholder";
 
+import UnsplashContainer from "./Unsplash";
+
 //TODO: Replace Loading with a Illustration
 
 const RightSidebar = ({ content }: { content: any }) => {
@@ -34,7 +36,7 @@ const RightSidebar = ({ content }: { content: any }) => {
         }}
         value="tab2"
       >
-        <PlaceHolder />
+        <UnsplashContainer />
       </Tabs.Content>
       <Tabs.Content
         value="tab1"
