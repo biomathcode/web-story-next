@@ -150,25 +150,16 @@ export default function Home() {
           if (active.data.current.type === "image") {
             return i === newSelect
               ? {
+                  ...e,
                   image: active.data.current.href,
-                  text: e.text,
-                  fontSize: e.fontSize,
-                  color: e.color,
-                  textAlign: e.textAlign, // left, right or center
-                  background: e.background,
-                  highlight: e.highlight,
                 }
               : e;
           } else {
             return i === newSelect
               ? {
-                  image: e.image,
+                  ...e,
+
                   text: active.data.current.title,
-                  fontSize: e.fontSize,
-                  color: e.color,
-                  textAlign: e.textAlign, // left, right or center
-                  background: e.background,
-                  highlight: e.highlight,
                 }
               : e;
           }

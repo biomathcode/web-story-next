@@ -18,6 +18,10 @@ Features:
 [x] Add unsplash api
 [] Code generation
 [] Improve UI/UX
+[] SEO settings
+[] add Analytics (google analytics Code)
+[] Publisher Info
+
 
 
 Bugs: 
