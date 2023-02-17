@@ -22,13 +22,10 @@ export const Item = ({ el }: { el: any }) => {
 
     // transform: CSS.Translate.toString(transform),
   };
-  console.log("this is data in drop", el);
 
-  const type = el?.raw?.match(/!\[(.*)\]\((.+)\)/g) ? "image" : "text";
+  const type = el?.data?.raw?.match(/!\[(.*)\]\((.+)\)/g) ? "image" : el.type;
 
-  const href = el.type !== "code" && el?.tokens[1]?.href;
-
-  el.type === "code" && console.log("thi sis code block");
+  const href = el.type !== "code" && el.href;
 
   if (el.type === "code") {
     return (
@@ -54,7 +51,7 @@ export const Item = ({ el }: { el: any }) => {
       {type === "image" ? (
         <img alt={href} src={href} width="250px" height="300px" />
       ) : (
-        <p className="fs-14">{el?.text}</p>
+        <p className="fs-14">{el.content}</p>
       )}
     </div>
   );
@@ -132,6 +129,10 @@ const Droppable = ({
       )}
     </div>
   );
+};
+
+const ImageDroppbale = () => {
+  return <div></div>;
 };
 
 export default Droppable;

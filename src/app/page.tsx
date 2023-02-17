@@ -183,7 +183,7 @@ export default function Home() {
 
   function handleDragStart(event: any) {
     console.log(event.active.id);
-    setActiveId(event.active.id);
+    setActiveId(event.active.data.current);
   }
 
   return (
@@ -250,8 +250,11 @@ export default function Home() {
                 />
               </div>
             </Panel>
+            {/* 
+            Refactor overlay so that you don't have to use the content state
+            */}
             <DragOverlay>
-              {activeId ? <Item el={content[activeId - 1]} /> : null}
+              {activeId ? <Item el={activeId} /> : null}
             </DragOverlay>
 
             <PanelResizeHandle
