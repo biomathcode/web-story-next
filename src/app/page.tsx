@@ -2,7 +2,7 @@
 
 import { Inter } from "@next/font/google";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import axios from "axios";
 import { config } from "../axios/index";
@@ -11,7 +11,6 @@ import useLocalStorage from "use-local-storage";
 
 import {
   DndContext,
-  closestCenter,
   useSensor,
   PointerSensor,
   KeyboardSensor,
@@ -28,7 +27,6 @@ import LeftSidebar from "@/component/LeftSidebar";
 import RightSidebar from "@/component/RightSidebar";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { Item } from "@/component/Droppable";
-import dynamic from "next/dynamic";
 
 const inter = Inter({ subsets: ["latin"] });
 

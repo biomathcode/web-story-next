@@ -5,6 +5,7 @@ import Toggle from "./Toggle/Toggle";
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
 import AccordianContainer from "./Accordian";
+import { state } from "@/app/page";
 
 // Text, Image, Cta, Animation,
 
@@ -17,7 +18,7 @@ const LeftSidebar = ({
   setNewState,
 }: {
   inter: any;
-  newState: any;
+  newState: state[];
   newSelect: any;
   setNewState: any;
 }) => {
@@ -190,6 +191,10 @@ const LeftSidebar = ({
               <option>Box </option>
               <option>Marked</option>
             </select>
+          </fieldset>
+          <fieldset className="flex js center">
+            <label className="label">Line Height</label>
+            <input type="number" min="0" max="100" name="lineHeight" />
           </fieldset>
           <fieldset className="flex js center">
             <label className="label">Background</label>
