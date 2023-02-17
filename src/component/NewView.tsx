@@ -131,7 +131,6 @@ function NewView({
               display: "flex",
               justifyContent: "center",
               width: "100%",
-              zIndex: 10,
             }}
           >
             <CTA url="https://coolhead.in" text="Learn more" />
@@ -153,7 +152,6 @@ function NewView({
               }`,
               height: "fit-content",
               lineHeight: "45px",
-              zIndex: 2,
             }}
           >
             {newState[newSelect]?.highlight === "mark" ? (
