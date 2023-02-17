@@ -25,7 +25,9 @@ export default function Head() {
       <meta
         name="twitter:image:alt"
         content="Create Web Stories from your hashnode blog"
-      ></meta>
+      />
+      <meta name="twitter:image:width" content="630" />
+      <meta name="twitter:image:height" content="1200" />
       <meta name="twitter:card" content="summary_large_image" />
 
       <meta property="og:site_name" content="Webstory.coolhead.in" />
