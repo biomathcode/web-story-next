@@ -14,7 +14,7 @@ export default function Head() {
       />
       <meta
         property="og:image"
-        content="http://webstory.coolhead.in/ogimage.png"
+        content="https://webstory.coolhead.in/ogimage.png"
       />
 
       <meta
