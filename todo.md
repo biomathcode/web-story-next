@@ -6,16 +6,18 @@ Features:
 [x] background - block and highlight
 [x] Create Model for code generation
 [x] Color and 
+[x] CTA component
+[x] Add unsplash api
 
 [ ] Animation 
 [ ] Line Height
 [ ] Padding 
+[ ] Paginate the story nav
 
 
 
 [] Text-alignment change 
-[x] CTA component
-[x] Add unsplash api
+
 [] Code generation
 [] Improve UI/UX
 [] SEO settings

@@ -7,7 +7,6 @@ import UnsplashContainer from "./Unsplash";
 //TODO: Replace Loading with a Illustration
 
 const RightSidebar = ({ content }: { content: any }) => {
-  console.log("this is content", content);
   return (
     <Tabs.Root
       className="TabsRoot"
@@ -58,7 +57,6 @@ const RightSidebar = ({ content }: { content: any }) => {
           content.map((el: any, i: any) => {
             // three types content, code, image
             if (el.raw.match(/!\[(.*)\]\((.+)\)/g) && el.type !== "list") {
-              console.log("image", el);
               return (
                 <Droppable
                   data={el}
@@ -69,7 +67,6 @@ const RightSidebar = ({ content }: { content: any }) => {
                 />
               );
             } else {
-              console.log(el);
               return (
                 el?.text?.length > 3 && (
                   <Droppable

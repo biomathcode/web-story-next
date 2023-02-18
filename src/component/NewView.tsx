@@ -55,25 +55,32 @@ function NewView({
 
   const data = useRef<state[] | null>();
 
+  const newPage = Math.floor(Math.abs(newSelect / 10)) * 10;
+
+  const slicedData = newState?.slice(newPage, newPage + 10);
+  console.log("page len index select", newPage, newState?.length, newSelect);
+
   return (
-    <div className="flex center col " suppressHydrationWarning={true}>
+    <div className="flex center col jc  " suppressHydrationWarning={true}>
       <div
-        className="flex"
-        style={{ margin: "10px 0px", overflow: "scroll", width: "600px" }}
+        className="flex center jc "
+        style={{ margin: "10px 0px", overflow: "scroll", width: "400px" }}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >
-        {newState &&
-          newState?.map((el: state, i: any) => {
+        {slicedData &&
+          slicedData?.map((el: state, i: any) => {
+            const isTrue = i + newPage;
+            console.log();
             return (
               <div
-                onClick={() => setNewSelect(i)}
+                onClick={() => setNewSelect(i + newPage * 10)}
                 key={i}
                 style={{
                   width: "40px",
                   height: mouseOver ? "10px" : "5px",
                   borderRadius: "10px",
-                  background: i === newSelect ? "#222" : "#ccc",
+                  background: i + newPage === newSelect ? "#222" : "#ccc",
                   cursor: "pointer",
                   marginLeft: "2px",
                   transition: "all 100ms linear",
@@ -199,6 +206,7 @@ function NewView({
                       image: image[newSelect + 1],
                       text: String(newSelect + 2),
                       fontSize: 16,
+                      textAlign: "left",
                       color: "#fff",
                       background: "#000",
                       highlight: "box",
