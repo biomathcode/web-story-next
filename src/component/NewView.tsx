@@ -53,12 +53,9 @@ function NewView({
 
   const [mouseOver, setMouseOver] = useState(false);
 
-  const data = useRef<state[] | null>();
-
   const newPage = Math.floor(Math.abs(newSelect / 10)) * 10;
 
   const slicedData = newState?.slice(newPage, newPage + 10);
-  console.log("page len index select", newPage, newState?.length, newSelect);
 
   return (
     <div className="flex center col jc  " suppressHydrationWarning={true}>
@@ -70,11 +67,10 @@ function NewView({
       >
         {slicedData &&
           slicedData?.map((el: state, i: any) => {
-            const isTrue = i + newPage;
-            console.log();
+            console.log("index page");
             return (
               <div
-                onClick={() => setNewSelect(i + newPage * 10)}
+                onClick={() => setNewSelect(i + newPage)}
                 key={i}
                 style={{
                   width: "40px",
