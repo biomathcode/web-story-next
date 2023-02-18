@@ -239,10 +239,9 @@ textarea {
   border: 1px solid var(--mauve8);
   border-radius: var(--radius);
   background: var(--mauve1);
-  color: var(--slate11);
+  color: var(--slate12);
   font-family: "Inter";
   font-size: 12px;
-  /* font-size: 16px; */
 }
 
 .gap-10 {

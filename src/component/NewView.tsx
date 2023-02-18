@@ -67,7 +67,6 @@ function NewView({
       >
         {slicedData &&
           slicedData?.map((el: state, i: any) => {
-            console.log("index page");
             return (
               <div
                 onClick={() => setNewSelect(i + newPage)}

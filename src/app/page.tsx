@@ -105,9 +105,9 @@ export default function Home() {
       image: image[0],
       text: "title ",
       fontSize: 16,
-      color: "#fff",
+      color: "#ffffff",
       textAlign: "center", // left, right or center
-      background: "#000", // string
+      background: "#000000", // string
       highlight: "mark",
       cta: false,
       ctaText: "",
