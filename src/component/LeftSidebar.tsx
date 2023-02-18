@@ -78,6 +78,26 @@ const LeftSidebar = ({
           ...el,
           ctaText: e.target.value,
         },
+        lineHeight: {
+          ...el,
+          lineHeight: e.target.value,
+        },
+        paddingX: {
+          ...el,
+          paddingX: e.target.value,
+        },
+        paddingY: {
+          ...el,
+          paddingY: e.target.value,
+        },
+        textAnimation: {
+          ...el,
+          textAnimation: e.target.value,
+        },
+        imageAnimation: {
+          ...el,
+          imageAnimation: e.target.value,
+        },
       };
 
       return i === newSelect ? newObject[e.target.name] : el;
@@ -93,6 +113,7 @@ const LeftSidebar = ({
         style={{
           padding: "10px 10px",
           margin: "0px px",
+          overflow: "scroll",
 
           width: "100%",
           height: "calc(100vh - 60px ) ",
@@ -136,6 +157,18 @@ const LeftSidebar = ({
               type="number"
               min="14"
               value={newState[newSelect]?.fontSize}
+            />
+          </fieldset>
+          <fieldset className="flex js  center mt-10 gap-10">
+            <label className="label">Line height</label>
+            <input
+              onChange={(e) => handleChange(e)}
+              name="lineHeight"
+              className={inter.className}
+              type="number"
+              min="1"
+              max="100"
+              value={newState[newSelect]?.lineHeight}
             />
           </fieldset>
           <fieldset className="flex js center">
@@ -192,10 +225,7 @@ const LeftSidebar = ({
               <option>Marked</option>
             </select>
           </fieldset>
-          <fieldset className="flex js center">
-            <label className="label">Line Height</label>
-            <input type="number" min="0" max="100" name="lineHeight" />
-          </fieldset>
+
           <fieldset className="flex js center">
             <label className="label">Background</label>
             <input
@@ -211,6 +241,29 @@ const LeftSidebar = ({
               }}
             />
           </fieldset>
+          <fieldset className="flex js center">
+            <label className="label">Padding Vertical </label>
+            <input
+              type="number"
+              name="paddingY"
+              min={0}
+              max={100}
+              onChange={(e) => handleChange(e)}
+              value={newState[newSelect]?.paddingY}
+            />
+          </fieldset>
+          <fieldset className="flex js center">
+            <label className="label">Padding Horizontal </label>
+            <input
+              type="number"
+              name="paddingX"
+              min={0}
+              max={100}
+              onChange={(e) => handleChange(e)}
+              value={newState[newSelect]?.paddingX}
+            />
+          </fieldset>
+
           {/* <Toggle
             infoText="You can only add one CTA per page"
             label="Call to Action"
@@ -231,32 +284,53 @@ const LeftSidebar = ({
                 <option>false</option>
               </select>
             </fieldset>
-            <fieldset className="flex js  col mt-10 gap-10">
-              <label className="label">CTA Button URL</label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="url"
-                className={inter.className}
-                type="url"
-                value={newState[newSelect]?.url}
-              />
-            </fieldset>
-            <fieldset className="flex js  col  mt-10 gap-10">
-              <label className="label">CTA Button text</label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="ctaText"
-                className={inter.className}
-                type="text"
-                value={newState[newSelect]?.ctaText}
-              />
-            </fieldset>
+            {newState[newSelect]?.cta ? (
+              <>
+                <fieldset className="flex js  col mt-10 gap-10">
+                  <label className="label">CTA Button URL</label>
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    name="url"
+                    className={inter.className}
+                    type="url"
+                    value={newState[newSelect]?.url}
+                  />
+                </fieldset>
+                <fieldset className="flex js  col  mt-10 gap-10">
+                  <label className="label">CTA Button text</label>
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    name="ctaText"
+                    className={inter.className}
+                    type="text"
+                    value={newState[newSelect]?.ctaText}
+                  />
+                </fieldset>
+              </>
+            ) : null}
           </div>
-          {/* )} */}
 
           <fieldset className="flex js  col  mt-10 gap-10">
-            <label className="label">Animation Type</label>
-            <select>
+            <label className="label">Text Animation</label>
+            <select
+              name="textAnimation"
+              defaultValue={newState[newSelect]?.textAnimation}
+              onChange={(e) => handleChange(e)}
+            >
+              {AnimationOptions.map((el) => (
+                <option value={el.value} key={el.value}>
+                  {el.label}
+                </option>
+              ))}
+            </select>
+          </fieldset>
+          <fieldset className="flex js  col  mt-10 gap-10">
+            <label className="label">Image Animation</label>
+            <select
+              name="imageAnimation"
+              defaultValue={newState[newSelect]?.imageAnimation}
+              onChange={(e) => handleChange(e)}
+            >
               {AnimationOptions.map((el) => (
                 <option value={el.value} key={el.value}>
                   {el.label}

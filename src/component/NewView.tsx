@@ -8,11 +8,10 @@ import {
   ArrowRightIcon,
   TrashIcon,
   ResetIcon,
-  CopyIcon,
 } from "@radix-ui/react-icons";
 
 import { nanoid } from "nanoid";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CTA from "./CTA";
 import ToolTip from "./ToolTip/ToolTip";
 
@@ -149,7 +148,6 @@ function NewView({
               position: "relative",
               top: "36%",
               width: "330px",
-
               wordWrap: "break-word",
               textAlign: `${newState[newSelect]?.textAlign}`, // change to property
               background: `${
@@ -158,7 +156,11 @@ function NewView({
                   : "none"
               }`,
               height: "fit-content",
-              lineHeight: "45px",
+              lineHeight: `${newState[newSelect]?.lineHeight}px`,
+              padding:
+                newState[newSelect]?.highlight === "box"
+                  ? `${newState[newSelect]?.paddingY}px ${newState[newSelect]?.paddingX}px`
+                  : "0px",
             }}
           >
             {newState[newSelect]?.highlight === "mark" ? (
@@ -170,7 +172,7 @@ function NewView({
                   WebkitBoxDecorationBreak: "clone",
                   display: "inline",
 
-                  padding: "2px 10px",
+                  padding: `${newState[newSelect]?.paddingY}px ${newState[newSelect]?.paddingX}px`,
                 }}
               >
                 {newState[newSelect]?.text}
@@ -193,7 +195,7 @@ function NewView({
                   height: "fit-content",
                   cursor: "pointer",
                 }}
-                onClick={() =>
+                onClick={(): state =>
                   setNewState([
                     ...newState,
 
@@ -205,6 +207,14 @@ function NewView({
                       color: "#fff",
                       background: "#000",
                       highlight: "box",
+                      lineHeight: 25,
+                      paddingX: 10,
+                      paddingY: 20,
+                      cta: false,
+                      url: "",
+                      ctaText: "",
+                      textAnimation: "fade-in",
+                      imageAnimation: "none",
                     },
                   ])
                 }

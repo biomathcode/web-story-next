@@ -27,20 +27,26 @@ import LeftSidebar from "@/component/LeftSidebar";
 import RightSidebar from "@/component/RightSidebar";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { Item } from "@/component/Droppable";
+import { animationType } from "@/lib";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export type state = {
   image: string;
+  paddingX: number;
+  paddingY: number;
   fontSize: number;
   textAlign: "left" | "right" | "center";
   text: string;
   color: string;
+  lineHeight: number;
   background: string;
   highlight: "box" | "mark";
   cta: boolean;
   url: string;
   ctaText: string;
+  textAnimation: animationType;
+  imageAnimation: animationType;
 };
 
 export type userState = {
@@ -104,14 +110,20 @@ export default function Home() {
     {
       image: image[0],
       text: "title ",
+      lineHeight: 20,
       fontSize: 16,
       color: "#ffffff",
+      paddingX: 10,
+      paddingY: 20,
+
       textAlign: "center", // left, right or center
       background: "#000000", // string
       highlight: "mark",
       cta: false,
       ctaText: "",
       url: "",
+      textAnimation: "fade-in",
+      imageAnimation: "none",
     },
   ]);
 

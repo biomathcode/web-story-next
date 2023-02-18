@@ -15,7 +15,7 @@ import useLocalStorage from "use-local-storage";
 import styles from "./Model.module.css";
 
 const Model = () => {
-  const data = window ? window?.localStorage?.getItem("state") : " something";
+  const [data, setData] = useLocalStorage("state", "");
 
   return (
     <Dialog.Root>
