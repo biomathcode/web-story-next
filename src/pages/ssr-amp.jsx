@@ -38,17 +38,15 @@ export default function IndexPage({ data }) {
                 ></amp-img>
               </amp-story-grid-layer>
 
-              <amp-story-grid-layer template="fill">
+              <amp-story-grid-layer template="thirds">
                 <h1
                   animate-in="fade-in"
+                  grid-area="lower-third"
                   style={{
                     fontSize: el.fontSize,
                     background: el.background,
                     color: el.color,
                     position: "absolute",
-                    marginTop: "50%",
-                    top: "50%",
-                    height: "fit-content",
                   }}
                 >
                   {el.text}

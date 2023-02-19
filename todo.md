@@ -19,7 +19,7 @@ Features:
 [] Improve UI/UX
 [] SEO settings title, description change og:image, rest remain the same like twitter, 
 [] add Analytics (google analytics Code)
-[] Publisher Info
+[] Publisher Info (one time input)
 
 
 Bugs: 

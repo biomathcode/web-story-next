@@ -41,7 +41,25 @@ export default function IndexPage() {
     <>
       <Head>
         <title>new AMP Page ?</title>
+        <meta name="title" content="how to create new AMP Page? " />
+        <meta
+          name="description"
+          content="Learn to create AMP page in this visual story"
+        />
+        <meta property="og:type" content="website" />
+
+        <meta
+          property="og:description"
+          content="Learn to create AMP page in this visual story"
+        />
+        <meta
+          property="og:url"
+          content="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80"
+        />
+
+        <link rel="canonical" href="http://www.coolhead.in/new-amp"></link>
       </Head>
+
       <amp-story
         standalone=""
         title="How to create Avatar Maker in Next JS and React"
@@ -51,9 +69,9 @@ export default function IndexPage() {
         poster-square-src="https://coolhead.in/_next/image?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Funsplash%2Ft0Bv0OBQuTg%2Fupload%2Fv1658429127724%2FIOh4hOqD9.jpeg%3Fw%3D1600%26h%3D840%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp&w=3840&q=75"
         poster-landscape-src="https://coolhead.in/_next/image?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Funsplash%2Ft0Bv0OBQuTg%2Fupload%2Fv1658429127724%2FIOh4hOqD9.jpeg%3Fw%3D1600%26h%3D840%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp&w=3840&q=75"
       >
-        {newData.map((el) => {
+        {newData.map((el, i) => {
           return (
-            <amp-story-page id="something new" key={el.image}>
+            <amp-story-page id={i} key={el.image}>
               <amp-story-grid-layer template="fill">
                 <amp-img
                   animate-in="fly-in-top"
@@ -64,7 +82,7 @@ export default function IndexPage() {
                 ></amp-img>
               </amp-story-grid-layer>
               <amp-story-grid-layer template="thirds">
-                <h1
+                <div
                   animate-in="fly-in-top"
                   grid-area="lower-third"
                   animate-in-delay="0.4s"
@@ -73,7 +91,7 @@ export default function IndexPage() {
                   }}
                 >
                   {el.text}
-                </h1>
+                </div>
               </amp-story-grid-layer>
             </amp-story-page>
           );
