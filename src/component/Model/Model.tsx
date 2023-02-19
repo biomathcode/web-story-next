@@ -7,15 +7,59 @@
 // use case for Code generated display
 // Copy, Download File
 
+import {
+  AMP_CTA_LAYER,
+  AMP_GRID_LAYER,
+  AMP_IMAGE,
+  AMP_STORY,
+  AMP_STORY_PAGE,
+  AMP_TEXT,
+} from "@/lib";
 import Editor from "@monaco-editor/react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Cross2Icon, GearIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  EnterFullScreenIcon,
+  GearIcon,
+} from "@radix-ui/react-icons";
 import useLocalStorage from "use-local-storage";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import styles from "./Model.module.css";
 
 const Model = () => {
-  const [data, setData] = useLocalStorage("state", "");
+  const [data, setData] = useLocalStorage("state", []);
+
+  const newData = AMP_STORY(
+    data
+      .map((el: any, i: any) => {
+        return AMP_STORY_PAGE(
+          AMP_GRID_LAYER(
+            AMP_IMAGE(el.image, 360, 720, "fill", "fade-in"),
+            "fill"
+          ) + AMP_GRID_LAYER(AMP_TEXT(el.text, "fade-in"), "fill"),
+          i
+        );
+      })
+      .join("\n"),
+    "this is an amp story",
+    "Coolhead",
+    "https://coolhead.in",
+    ""
+  );
+
+  console.log(newData);
+
+  const options = {
+    selectOnLineNumbers: true,
+    minimap: {
+      autohide: true,
+      enabled: false,
+    },
+    fontSize: 14,
+  };
+
+  const handle = useFullScreenHandle();
 
   return (
     <Dialog.Root>
@@ -32,17 +76,26 @@ const Model = () => {
             Edit profile
           </Dialog.Title>
           <Dialog.Description className={styles.DialogDescription}>
-            Make changes to your profile here. Click save when done.
+            <button
+              onClick={handle.enter}
+              style={{ padding: "2px 5px" }}
+              className="btn flex gap-10 center"
+            >
+              <EnterFullScreenIcon />
+              FullScreen
+            </button>
           </Dialog.Description>
-
-          <Editor
-            width="100%"
-            height="700"
-            language="json"
-            theme="vs-dark"
-            className={styles.editor}
-            value={data || "somethng"}
-          />
+          <FullScreen handle={handle}>
+            <Editor
+              options={options}
+              width="100%"
+              height="100%"
+              language="html"
+              theme="vs-dark"
+              className={styles.editor}
+              value={newData || "somethng"}
+            />
+          </FullScreen>
           {/* <fieldset className={styles.Fieldset}>
           <label className={styles.Label} htmlFor="name">
             Name

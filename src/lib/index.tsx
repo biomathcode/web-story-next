@@ -130,9 +130,9 @@ const AMP_STORY = (
     `;
 };
 
-const AMP_STORY_PAGE = (children: string): string => {
+const AMP_STORY_PAGE = (children: string, id: string): string => {
   return `
-    <amp-story-page >
+    <amp-story-page id="${id}" >
     ${children}
     </amp-story-page>
     
