@@ -4,11 +4,6 @@
 // add move text settings
 // animation is missing
 
-// const newStory = AMP_STORY(AMP_STORY_PAGE(AMP_GRID_LAYER(AMP_IMAGE())))
-
-//  AMP_STORY().AMP_STORY_PAGE().AMP_GRID_LAYER()
-// animate-in can be added to amp_image, h1, p tags
-
 type AnimationType = {
   label: String;
   value: animationType;
@@ -104,6 +99,36 @@ export type animationType =
 
 const HTML_TEMPLATE_STARTER = (children: string) => {
   return `<p>${children}</p>`;
+};
+
+const NEXT_SEO = () => {};
+
+const NEXT_HEAD = (title: string, description: string, image: string) => {
+  return `
+  <Head>
+        <title>${title}</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta
+          name="description"
+          content="${description}"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="${title}"
+        />
+        <meta
+          property="og:image"
+          content="${image}"
+        />
+  
+        <meta
+          property="og:description"
+          content="${description}"
+        />
+
+  </Head>
+  `;
 };
 
 const NEXTJS_TEMPLATE_STARTER = (children: string) => {
@@ -209,103 +234,3 @@ export {
   AMP_TEXT,
   AMP_CTA_LAYER,
 };
-
-const amp = {
-  code: function (children: string) {
-    return `<amp-story>${children}</amp-story>`;
-  },
-  children: {
-    amp_story_page: {
-      code: function (children: string) {
-        return `<amp-story-page>${children}</amp-story-page>`;
-      },
-      children: {
-        amp_grid_layout: "",
-        code: function (children: string) {
-          return `<amp-grid-layout>${children}</amp-grid-layout>`;
-        },
-        children: {
-          h1: {
-            code: function (children: string) {
-              return `<h1>${children}</h1>`;
-            },
-          },
-          p: {
-            code: function (children: string) {
-              return `<p>${children}</p>`;
-            },
-          },
-          div: {
-            code: function (children: string) {
-              return `<div>${children}</div>`;
-            },
-          },
-        },
-      },
-    },
-  },
-};
-
-const dog: any = {
-  is: "asdfsa",
-  log() {
-    console.log(this.is);
-  },
-  bark() {
-    this.is = "woofing";
-    this.log();
-    return this;
-  },
-  walk() {
-    this.is = "walking";
-    this.log();
-    return this;
-  },
-  eat() {
-    this.is = "eating";
-    this.log();
-    return this;
-  },
-};
-
-class story {
-  content = "";
-  newContent(children: string, type: string) {
-    return `<${type}>${children} </${type}>`;
-  }
-
-  story_page(children: string) {
-    this.content = `<amp-story>${this.newContent(
-      children,
-      "amp-story-page"
-    )}<amp-story>`;
-
-    return this.story_grid_layout(this.content);
-  }
-
-  story_grid_layout(children: string) {
-    this.content = this.newContent(children, "amp-grid-layout");
-    return this.story_image(this.content);
-  }
-
-  story_image(children: string) {
-    this.content = this.newContent(children, "amp-image");
-    return this;
-  }
-}
-
-const newStory = new story();
-
-console.log(newStory.story_grid_layout("somdafkm"));
-
-// const newdata = amp_story().amp_story_page(id="this").amp_grid_layout().amp_image();
-
-/*
-<amp-story> 
-  <amp-story-page id="">
-
-
-  </amp-story-page>
-
-</amp_story>
-*/
