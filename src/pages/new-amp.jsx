@@ -53,7 +53,7 @@ export default function IndexPage() {
           content="Learn to create AMP page in this visual story"
         />
         <meta
-          property="og:url"
+          property="og:image"
           content="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80"
         />
 
