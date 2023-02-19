@@ -57,7 +57,10 @@ export default function IndexPage() {
           content="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2825&q=80"
         />
 
-        <link rel="canonical" href="http://www.coolhead.in/new-amp"></link>
+        <link
+          rel="canonical"
+          href="https://www.webstory.coolhead.in/new-amp"
+        ></link>
       </Head>
 
       <amp-story
