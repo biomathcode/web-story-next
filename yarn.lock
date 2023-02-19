@@ -209,6 +209,11 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     "to-fast-properties" "^2.0.0"
 
+"@corex/deepmerge@^4.0.29":
+  "integrity" "sha512-PX90bEnrLdxd5e6rSFWsghExMuSw0Uov3fWJuuaoFuUQIS/446diu/4seExK5b+43L+SOBbd2uBGwYUkG1JfCw=="
+  "resolved" "https://registry.npmjs.org/@corex/deepmerge/-/deepmerge-4.0.37.tgz"
+  "version" "4.0.37"
+
 "@dnd-kit/accessibility@^3.0.0":
   "integrity" "sha512-HXRrwS9YUYQO9lFRc/49uO/VICbM+O+ZRpFDe9Pd1rwVv2PCNkRiTZRdxrDgng/UkvdC3Re9r2vwPpXXrWeFzg=="
   "resolved" "https://registry.npmjs.org/@dnd-kit/accessibility/-/accessibility-3.0.1.tgz"
@@ -463,7 +468,7 @@
     "@monaco-editor/loader" "^1.3.2"
     "prop-types" "^15.7.2"
 
-"@next/env@13.1.6":
+"@next/env@*", "@next/env@13.1.6":
   "integrity" "sha512-s+W9Fdqh5MFk6ECrbnVmmAOwxKQuhGMT7xXHrkYIBMBcTiOqNWhv5KbJIboKR5STXxNXl32hllnvKaffzFaWQg=="
   "resolved" "https://registry.npmjs.org/@next/env/-/env-13.1.6.tgz"
   "version" "13.1.6"
@@ -2708,7 +2713,7 @@
   dependencies:
     "brace-expansion" "^1.1.7"
 
-"minimist@^1.2.0", "minimist@^1.2.6":
+"minimist@^1.2.0", "minimist@^1.2.6", "minimist@^1.2.7":
   "integrity" "sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g=="
   "resolved" "https://registry.npmjs.org/minimist/-/minimist-1.2.7.tgz"
   "version" "1.2.7"
@@ -2743,12 +2748,20 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
+"next-sitemap@^3.1.52":
+  "integrity" "sha512-tY469i4QRV1PwM9BoL+HdKYBCJ83IQl3PmUNapG/Hxp0MIYIw1hINU8E+Edf5Kr8vHXfVzPqDoul/Abu2P0vkw=="
+  "resolved" "https://registry.npmjs.org/next-sitemap/-/next-sitemap-3.1.52.tgz"
+  "version" "3.1.52"
+  dependencies:
+    "@corex/deepmerge" "^4.0.29"
+    "minimist" "^1.2.7"
+
 "next-tick@^1.1.0":
   "integrity" "sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ=="
   "resolved" "https://registry.npmjs.org/next-tick/-/next-tick-1.1.0.tgz"
   "version" "1.1.0"
 
-"next@13.1.6":
+"next@*", "next@13.1.6":
   "integrity" "sha512-hHlbhKPj9pW+Cymvfzc15lvhaOZ54l+8sXDXJWm3OBNBzgrVj6hwGPmqqsXg40xO1Leq+kXpllzRPuncpC0Phw=="
   "resolved" "https://registry.npmjs.org/next/-/next-13.1.6.tgz"
   "version" "13.1.6"

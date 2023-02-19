@@ -47,6 +47,7 @@ export default function IndexPage() {
           content="Learn to create AMP page in this visual story"
         />
         <meta property="og:type" content="website" />
+        <meta property="og:title" content="how to create new AMP Page?" />
 
         <meta
           property="og:description"

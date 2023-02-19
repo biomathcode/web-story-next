@@ -28,3 +28,10 @@ pnpm dev
 [How to optimize amp stories for google search results](https://www.searchenginejournal.com/how-to-optimize-amp-stories-for-google-search-results/348962/)
 
 [Web story Content Policy](https://developers.google.com/search/docs/appearance/web-stories-content-policy)
+
+[Web Story SEO ](https://blog.amp.dev/2020/02/12/seo-for-amp-stories/)
+
+[AMP Test ](https://search.google.com/test/amp)
+
+[Rich Results Test](https://search.google.com/test/rich-results)
+
