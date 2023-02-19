@@ -9,24 +9,23 @@ Features:
 [x] CTA component
 [x] Add unsplash api
 
-[ ] Animation 
-[ ] Line Height
-[ ] Padding 
-[ ] Paginate the story nav
+[x] Animation 
+[x] Line Height
+[x] Padding 
+[x] Paginate the story nav
 
-
-
-[] Text-alignment change 
 
 [] Code generation
 [] Improve UI/UX
-[] SEO settings
+[] SEO settings title, description change og:image, rest remain the same like twitter, 
 [] add Analytics (google analytics Code)
 [] Publisher Info
-
 
 
 Bugs: 
 
 [x] First element is not draggable 
 [ ] CTA button change the position of the Text element  
+
+ROADMAP: 
+[] Text-alignment change 

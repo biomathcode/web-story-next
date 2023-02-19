@@ -48,8 +48,6 @@ const Model = () => {
     ""
   );
 
-  console.log(newData);
-
   const options = {
     selectOnLineNumbers: true,
     minimap: {
