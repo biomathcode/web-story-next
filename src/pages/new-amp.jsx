@@ -59,7 +59,7 @@ export default function IndexPage() {
 
         <link
           rel="canonical"
-          href="https://www.webstory.coolhead.in/new-amp"
+          href="https://webstory.coolhead.in/new-amp"
         ></link>
       </Head>
 
