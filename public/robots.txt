@@ -1,2 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: http://webstory.coolhead.in
+
+# Sitemaps
+Sitemap: http://webstory.coolhead.in/sitemap.xml
