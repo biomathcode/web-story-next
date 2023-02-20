@@ -14,13 +14,16 @@ Features:
 [x] Padding 
 [x] Paginate the story nav
 
+[x] Preview solution encode the html code in base64 format and redirect the user to https://playground.amp.dev/#share=code
 
-[] Code generation
+
+[x] Code generation
+
 [] Improve UI/UX
 [] SEO settings title, description change og:image, rest remain the same like twitter, 
 [] add Analytics (google analytics Code)
 [] Publisher Info (one time input)
-
+[] Overlay Effect
 
 Bugs: 
 
@@ -30,5 +33,3 @@ Bugs:
 ROADMAP: 
 [] Text-alignment change 
 
-
-[] Preview solution encode the html code in base64 format and redirect the user to https://playground.amp.dev/#share=code

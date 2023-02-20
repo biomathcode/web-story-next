@@ -107,6 +107,7 @@ function NewView({
             backgroundImage: `url(${newState[newSelect]?.image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            position: "relative",
 
             transition: "all 100ms linear 0s",
             objectFit: "cover",
@@ -125,8 +126,8 @@ function NewView({
         >
           <div
             style={{
-              position: "relative",
-              bottom: "-530px",
+              position: "absolute",
+              bottom: "10px",
               // left: "70px",
               height: "fit-content",
               display: "flex",
@@ -145,7 +146,7 @@ function NewView({
             style={{
               fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
               color: newState[newSelect]?.color, // change to property
-              position: "relative",
+              position: "absolute",
               top: "36%",
               width: "330px",
               wordWrap: "break-word",
