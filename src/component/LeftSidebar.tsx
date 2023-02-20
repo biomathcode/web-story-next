@@ -11,6 +11,8 @@ import { state } from "@/app/page";
 
 // TODO: Add a Accordian here for text, image, CTA,
 
+//
+
 const LeftSidebar = ({
   inter,
   newState,
