@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/new-amp.jsx", "src/pages/new-amp.jsx", "src/lib/supabase.js", "src/lib/supabase.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/new-amp.jsx", "src/pages/new-amp.jsx", "src/lib/supabase.ts", "src/lib/supabase.ts"],
   "exclude": ["node_modules"]
 }
