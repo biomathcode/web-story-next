@@ -14,6 +14,7 @@ import {
   AMP_STORY,
   AMP_STORY_PAGE,
   AMP_TEXT,
+  HTML_TEMPLATE,
 } from "@/lib";
 import Editor from "@monaco-editor/react";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -30,7 +31,7 @@ import styles from "./Model.module.css";
 const Model = () => {
   const [data, setData] = useLocalStorage("state", []);
 
-  const newData = AMP_STORY(
+  const ampStory = AMP_STORY(
     data
       .map((el: any, i: any) => {
         return AMP_STORY_PAGE(
@@ -44,9 +45,19 @@ const Model = () => {
       .join("\n"),
     "this is an amp story",
     "Coolhead",
-    "https://coolhead.in",
-    ""
+    "https://images.unsplash.com/photo-1536148935331-408321065b18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
   );
+
+  const newData = HTML_TEMPLATE(ampStory);
+
+  const baseData = btoa(unescape(encodeURIComponent(newData)));
+
+  //Buffer.from(newData, "base64");
+
+  //Buffer.from(newData, "base64").toString();
+
+  const previewLink = `https://playground.amp.dev/#share=${baseData}`;
 
   const options = {
     selectOnLineNumbers: true,
@@ -122,7 +133,14 @@ const Model = () => {
             }}
           >
             <Dialog.Close asChild>
-              <button className="Button green">Save changes</button>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={previewLink}
+                className="btn flex gap-10 "
+              >
+                Preview
+              </a>
             </Dialog.Close>
           </div>
           <Dialog.Close asChild>

@@ -35,3 +35,5 @@ pnpm dev
 
 [Rich Results Test](https://search.google.com/test/rich-results)
 
+[Page Speed](https://pagespeed.web.dev/)
+

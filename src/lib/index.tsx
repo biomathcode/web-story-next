@@ -144,7 +144,7 @@ const AMP_STORY = (
 ): string => {
   return `
     <amp-story
-        standalone=""
+        standalone
         title="${title}"
         publisher="${publisher}"
         publisher-logo-src="${publisherLogo}"
@@ -180,6 +180,119 @@ const AMP_IMAGE = (
     animate-in="${animation}"
   ></amp-img>
     `;
+};
+
+const HTML_TEMPLATE = (children: string) => {
+  return `<!DOCTYPE html>
+
+<html ⚡ amp>
+  <head>
+    <meta charset="utf-8" />
+
+
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script
+      async
+      custom-element="amp-story"
+      src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
+    ></script>
+    <title>Hello, AMPs</title>
+    <link
+    rel="canonical"
+    href="https://webstory.coolhead.in/new-amp"
+  />
+
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": ["logo.jpg"]
+      }
+    </script>
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      }
+      @-webkit-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-moz-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-ms-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-o-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+    </style>
+    <noscript
+      ><style amp-boilerplate>
+        body {
+          -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          animation: none;
+        }
+      </style></noscript
+    >
+    <style amp-custom>
+      /* any custom style goes here */
+      body {
+        background-color: white;
+        padding: 0 1rem;
+        text-align: center;
+      }
+      amp-img {
+        background-color: gray;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+  ${children}
+
+  </body>
+  </html>
+  
+  `;
 };
 
 const AMP_TEXT = (
@@ -233,4 +346,5 @@ export {
   AMP_IMAGE,
   AMP_TEXT,
   AMP_CTA_LAYER,
+  HTML_TEMPLATE,
 };

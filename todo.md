@@ -29,3 +29,6 @@ Bugs:
 
 ROADMAP: 
 [] Text-alignment change 
+
+
+[] Preview solution encode the html code in base64 format and redirect the user to https://playground.amp.dev/#share=code
