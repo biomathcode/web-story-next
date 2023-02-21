@@ -87,6 +87,7 @@ export default function IndexPage() {
               </amp-story-grid-layer>
               <amp-story-grid-layer template="thirds">
                 <div
+                  layout="responsive"
                   animate-in="fly-in-top"
                   grid-area="lower-third"
                   animate-in-delay="0.4s"

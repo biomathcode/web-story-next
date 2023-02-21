@@ -182,7 +182,7 @@ const AMP_IMAGE = (
     `;
 };
 
-const HTML_TEMPLATE = (children: string) => {
+const HTML_TEMPLATE = (children: string, styles: string, links: string) => {
   return `<!DOCTYPE html>
 
 <html ⚡ amp>
@@ -201,6 +201,8 @@ const HTML_TEMPLATE = (children: string) => {
     rel="canonical"
     href="https://webstory.coolhead.in/new-amp"
   />
+
+  ${links}
 
     <meta
       name="viewport"
@@ -262,7 +264,9 @@ const HTML_TEMPLATE = (children: string) => {
           visibility: visible;
         }
       }
+      
     </style>
+   
     <noscript
       ><style amp-boilerplate>
         body {
@@ -274,16 +278,18 @@ const HTML_TEMPLATE = (children: string) => {
       </style></noscript
     >
     <style amp-custom>
-      /* any custom style goes here */
-      body {
-        background-color: white;
-        padding: 0 1rem;
-        text-align: center;
-      }
-      amp-img {
-        background-color: gray;
-        border: 1px solid black;
-      }
+
+    .overlay {
+      width: 100%;
+     height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, black 100%);
+   }
+ 
+  
+   
+      
+    ${styles}
+
     </style>
   </head>
   <body>
@@ -299,31 +305,31 @@ const AMP_TEXT = (
   content: string,
   animation: animationType = "fade-in"
 ): string => {
-  return `<h1 animate-in="${animation}">${content}</h1>`;
+  return `
+  <h1
+  animate-in="${animation}"
+  >
+   ${content}
+  </h1>`;
+};
+
+const AMP_OVERLAY = (): string => {
+  return `
+  <div
+  class="overlay"
+  >
+  </div>
+
+  `;
 };
 
 const AMP_CTA_LAYER = (href: string, text: string): string => {
   return `
-    <amp-story-cta-layer>
-    <a
-      style={{
-        textDecoration: "none",
-        fontSize: "24px",
-        background: "#111",
-        color: "#fff",
-        width: "fit-content",
-        padding: "10px",
-        borderRadius: "4px",
-        marginLeft: "100px",
-      }}
-      animate-in="fly-in-top"
-      animate-in-delay="0.4s"
-      href="${href}"
-      class="button medium center"
-    >
-      <p class="20px">${text}</p>
-    </a>
-  </amp-story-cta-layer>
+
+  <amp-story-page-outlink layout="nodisplay">
+    <a href="${href}" title="Link Description">${text}</a>
+  </amp-story-page-outlink>
+
   `;
 };
 

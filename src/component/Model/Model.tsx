@@ -38,7 +38,7 @@ const Model = () => {
           AMP_GRID_LAYER(
             AMP_IMAGE(el.image, 360, 720, "fill", "fade-in"),
             "fill"
-          ) + AMP_GRID_LAYER(AMP_TEXT(el.text, "fade-in"), "fill"),
+          ) + AMP_GRID_LAYER(AMP_TEXT(el.text, "fly-in-top"), "vertical"),
           i
         );
       })
@@ -49,7 +49,26 @@ const Model = () => {
     "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
   );
 
-  const newData = HTML_TEMPLATE(ampStory);
+  const newData = HTML_TEMPLATE(
+    ampStory,
+    `
+    body {
+      background-color: #000;
+      padding: 0 1rem;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+  h1{
+    font-size: 14px;
+    margin-top:  50%;
+  }
+    `,
+    `
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
+    `
+  );
 
   const baseData = btoa(unescape(encodeURIComponent(newData)));
 
@@ -137,7 +156,7 @@ const Model = () => {
                 target="_blank"
                 rel="noreferrer"
                 href={previewLink}
-                className="btn flex gap-10 "
+                className="btn inter flex gap-10 "
               >
                 Preview
               </a>
