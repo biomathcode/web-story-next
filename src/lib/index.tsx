@@ -307,6 +307,9 @@ const AMP_TEXT = (
 ): string => {
   return `
   <h1
+  style="color:#fff;
+  position:absolute;
+  top: 200px"
   animate-in="${animation}"
   >
    ${content}
@@ -352,5 +355,6 @@ export {
   AMP_IMAGE,
   AMP_TEXT,
   AMP_CTA_LAYER,
+  AMP_OVERLAY,
   HTML_TEMPLATE,
 };

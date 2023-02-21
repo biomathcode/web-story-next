@@ -11,6 +11,7 @@ import {
   AMP_CTA_LAYER,
   AMP_GRID_LAYER,
   AMP_IMAGE,
+  AMP_OVERLAY,
   AMP_STORY,
   AMP_STORY_PAGE,
   AMP_TEXT,
@@ -38,7 +39,9 @@ const Model = () => {
           AMP_GRID_LAYER(
             AMP_IMAGE(el.image, 360, 720, "fill", "fade-in"),
             "fill"
-          ) + AMP_GRID_LAYER(AMP_TEXT(el.text, "fly-in-top"), "vertical"),
+          ) +
+            AMP_GRID_LAYER(AMP_OVERLAY(), "fill") +
+            AMP_GRID_LAYER(AMP_TEXT(el.text, "fly-in-top"), "vertical"),
           i
         );
       })
