@@ -21,8 +21,11 @@ import Editor from "@monaco-editor/react";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   Cross2Icon,
+  DownloadIcon,
   EnterFullScreenIcon,
+  ExternalLinkIcon,
   GearIcon,
+  RocketIcon,
 } from "@radix-ui/react-icons";
 import useLocalStorage from "use-local-storage";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
@@ -103,9 +106,6 @@ const Model = () => {
       <Dialog.Portal>
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content className={styles.DialogContent}>
-          <Dialog.Title className={styles.DialogTitle}>
-            Edit profile
-          </Dialog.Title>
           <Dialog.Description className={styles.DialogDescription}>
             <button
               onClick={handle.enter}
@@ -115,12 +115,35 @@ const Model = () => {
               <EnterFullScreenIcon />
               FullScreen
             </button>
+            <button
+              style={{ padding: "2px 5px" }}
+              className="btn flex gap-10 center"
+            >
+              <DownloadIcon />
+              Download JSX
+            </button>
+            <button
+              style={{ padding: "2px 5px" }}
+              className="btn flex gap-10 center"
+            >
+              <DownloadIcon />
+              Download html
+            </button>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={previewLink}
+              className="btn inter flex gap-10 center "
+            >
+              <RocketIcon />
+              Preview
+            </a>
           </Dialog.Description>
           <FullScreen handle={handle}>
             <Editor
               options={options}
               width="100%"
-              height="100%"
+              height="560px"
               language="html"
               theme="vs-dark"
               className={styles.editor}
@@ -147,24 +170,7 @@ const Model = () => {
             defaultValue="@peduarte"
           />
         </fieldset> */}
-          <div
-            style={{
-              display: "flex",
-              marginTop: 25,
-              justifyContent: "flex-end",
-            }}
-          >
-            <Dialog.Close asChild>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href={previewLink}
-                className="btn inter flex gap-10 "
-              >
-                Preview
-              </a>
-            </Dialog.Close>
-          </div>
+
           <Dialog.Close asChild>
             <button className={styles.IconButton} aria-label="Close">
               <Cross2Icon />

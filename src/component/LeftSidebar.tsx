@@ -1,4 +1,13 @@
-import { ColorWheelIcon, GearIcon } from "@radix-ui/react-icons";
+import {
+  ColorWheelIcon,
+  FontSizeIcon,
+  GearIcon,
+  LineHeightIcon,
+  SpaceBetweenHorizontallyIcon,
+  SpaceBetweenVerticallyIcon,
+  TextAlignBottomIcon,
+  TextIcon,
+} from "@radix-ui/react-icons";
 import { useState } from "react";
 import { BlockPicker } from "react-color";
 import Toggle from "./Toggle/Toggle";
@@ -140,7 +149,10 @@ const LeftSidebar = ({
           style={{ transition: "width 300ms linear" }}
         >
           <fieldset className="flex js col mt-10  gap-10">
-            <label className="label">Change Text</label>
+            <label className="label flex gap-10 center">
+              Change Text
+              <TextIcon />
+            </label>
             <textarea
               name="text"
               className={inter.className}
@@ -151,7 +163,10 @@ const LeftSidebar = ({
           </fieldset>
 
           <fieldset className="flex js  center mt-10 gap-10">
-            <label className="label">Font Size</label>
+            <label className="label flex center gap-10">
+              Font Size
+              <FontSizeIcon />
+            </label>
             <input
               onChange={(e) => handleChange(e)}
               name="fontSize"
@@ -162,7 +177,10 @@ const LeftSidebar = ({
             />
           </fieldset>
           <fieldset className="flex js  center mt-10 gap-10">
-            <label className="label">Line height</label>
+            <label className="label flex center gap-10">
+              Line height
+              <LineHeightIcon />
+            </label>
             <input
               onChange={(e) => handleChange(e)}
               name="lineHeight"
@@ -174,7 +192,10 @@ const LeftSidebar = ({
             />
           </fieldset>
           <fieldset className="flex js center">
-            <label className="label">Text Align</label>
+            <label className="label flex gap-10 center">
+              Text Align
+              <TextAlignBottomIcon />
+            </label>
             <select
               name="textAlign"
               onChange={(e) => handleChange(e)}
@@ -200,7 +221,10 @@ const LeftSidebar = ({
             </select>
           </fieldset>
           <fieldset className="flex js center">
-            <label className="label">Text Color</label>
+            <label className="label flex gap-10 center">
+              Text Color
+              <ColorWheelIcon />
+            </label>
             <input
               type="color"
               name="color"
@@ -229,7 +253,10 @@ const LeftSidebar = ({
           </fieldset>
 
           <fieldset className="flex js center">
-            <label className="label">Background</label>
+            <label className="label flex gap-10 center">
+              Background
+              <ColorWheelIcon />
+            </label>
             <input
               type="color"
               name="background"
@@ -244,7 +271,10 @@ const LeftSidebar = ({
             />
           </fieldset>
           <fieldset className="flex js center">
-            <label className="label">Padding Vertical </label>
+            <label className="label flex gap-10 center">
+              Padding Vertical
+              <SpaceBetweenVerticallyIcon />
+            </label>
             <input
               type="number"
               name="paddingY"
@@ -255,7 +285,10 @@ const LeftSidebar = ({
             />
           </fieldset>
           <fieldset className="flex js center">
-            <label className="label">Padding Horizontal </label>
+            <label className="label flex gap-10 center">
+              Padding Horizontal
+              <SpaceBetweenHorizontallyIcon />
+            </label>
             <input
               type="number"
               name="paddingX"
