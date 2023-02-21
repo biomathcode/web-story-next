@@ -1,5 +1,5 @@
 import InfoCarousel from "@/component/InfoCarousel";
-import { SEO } from "@/component/SEO/index";
+import { AuthorInfo, PublisherInfo, SEO } from "@/component/SEO/index";
 
 function Component() {
   const info = [
@@ -11,6 +11,8 @@ function Component() {
     <div>
       <InfoCarousel info={info} />
       <SEO />
+      <PublisherInfo />
+      <AuthorInfo />
     </div>
   );
 }
