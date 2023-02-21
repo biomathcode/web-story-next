@@ -24,6 +24,8 @@ Features:
 [] add Analytics (google analytics Code)
 [] Publisher Info (one time input)
 [] Overlay Effect
+[] Info Components 
+[] Editor Tour
 
 Bugs: 
 

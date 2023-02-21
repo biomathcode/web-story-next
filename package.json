@@ -7,7 +7,9 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.7",
@@ -57,7 +59,18 @@
     "use-local-storage": "^2.3.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
     "@types/prismjs": "^1.26.0",
-    "@types/react-color": "^3.0.6"
+    "@types/react-color": "^3.0.6",
+    "babel-loader": "^8.3.0",
+    "eslint-plugin-storybook": "^0.6.10"
   }
 }
