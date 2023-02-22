@@ -54,6 +54,16 @@ function NewView({
 
   const [mouseOver, setMouseOver] = useState(false);
 
+  const [animation, setAnimation] = useState(false);
+
+  const animate = () => {
+    // Button begins to shake
+    setAnimation(true);
+
+    // Buttons stops to shake after 2 seconds
+    setTimeout(() => setAnimation(false), 2000);
+  };
+
   const newPage = Math.floor(Math.abs(newSelect / 10)) * 10;
 
   const slicedData = newState?.slice(newPage, newPage + 10);
@@ -118,9 +128,7 @@ function NewView({
           ref={setNodeRef}
           style={{
             ...style,
-            backgroundImage: `url(${newState[newSelect]?.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+
             position: "relative",
 
             transition: "all 100ms linear 0s",
@@ -137,6 +145,18 @@ function NewView({
             textAlign: "center",
           }}
         >
+          <div
+            className={animation ? `animate__animated animate__fadeIn` : ""}
+            style={{
+              backgroundImage: `url(${newState[newSelect]?.image})`,
+
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              width: "350px",
+              height: "620px",
+              zIndex: 0,
+            }}
+          ></div>
           <div
             style={{
               position: "absolute",
@@ -156,9 +176,18 @@ function NewView({
             )}
           </div>
 
-          {newState[newSelect]?.overlay && <div className="overlay"></div>}
+          {newState[newSelect]?.overlay && (
+            <div
+              style={{
+                zIndex: 3,
+                position: "absolute",
+              }}
+              className="overlay"
+            ></div>
+          )}
 
           <p
+            className={animation ? `animate__animated animate__fadeIn` : ""}
             style={{
               fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
               color: newState[newSelect]?.color, // change to property
@@ -172,6 +201,7 @@ function NewView({
                   ? newState[newSelect]?.background
                   : "none"
               }`,
+              zIndex: 4,
               height: "fit-content",
               lineHeight: `${newState[newSelect]?.lineHeight}px`,
               padding:
@@ -297,7 +327,7 @@ function NewView({
         <ToolTip text="Play the animation">
           <button
             className="flex center gap-10 inter"
-            onClick={() => console.log("this")}
+            onClick={animate}
             style={{
               padding: "10px",
               borderRadius: "10px",

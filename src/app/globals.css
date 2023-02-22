@@ -10,6 +10,8 @@
 
 @import "@radix-ui/colors/grayDark.css";
 
+@import "animate.css";
+
 :root {
   --font-mono: "Inter", ui-monospace, Menlo, Monaco, "Cascadia Mono",
     "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
