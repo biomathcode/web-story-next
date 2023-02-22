@@ -23,14 +23,32 @@ import {
   Cross2Icon,
   DownloadIcon,
   EnterFullScreenIcon,
-  ExternalLinkIcon,
   GearIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
 import useLocalStorage from "use-local-storage";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
-
+import { z } from "zod";
 import styles from "./Model.module.css";
+
+const storyObject = z.object({
+  image: z.string().url(),
+  paddingX: z.number(),
+  paddingY: z.number(),
+  fontSize: z.number(),
+  textAlign: z.enum(["left", "right", "center"]),
+  text: z.string(),
+  color: z.string(),
+  lineHeight: z.string(),
+  background: z.string(),
+  highlight: z.enum(["box", "mark"]),
+  cta: z.boolean(),
+  url: z.string().url(),
+  ctaText: z.string(),
+  overlay: z.boolean(),
+  textAnimation: z.string(),
+  imageAnimation: z.string(),
+});
 
 const Model = () => {
   const [data, setData] = useLocalStorage("state", []);
@@ -77,10 +95,6 @@ const Model = () => {
   );
 
   const baseData = btoa(unescape(encodeURIComponent(newData)));
-
-  //Buffer.from(newData, "base64");
-
-  //Buffer.from(newData, "base64").toString();
 
   const previewLink = `https://playground.amp.dev/#share=${baseData}`;
 
