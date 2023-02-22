@@ -16,6 +16,7 @@ Features:
 
 [x] Preview solution encode the html code in base64 format and redirect the user to https://playground.amp.dev/#share=code
 [x] Overlay Effect
+[x] Info Components 
 
 
 
@@ -25,7 +26,6 @@ Features:
 [] SEO settings title, description change og:image, rest remain the same like twitter, 
 [] add Analytics (google analytics Code)
 [] Publisher Info (one time input)
-[] Info Components 
 [] Editor Tour
 
 Bugs: 
@@ -35,4 +35,10 @@ Bugs:
 
 ROADMAP: 
 [] Text-alignment change 
+[] Animation Play Preview
+[] Add Multiple fonts
+[] Code Validation with actions to improve
+[] Create Template 
+[] Component tab in the RightSidebar
+
 

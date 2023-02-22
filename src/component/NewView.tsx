@@ -13,6 +13,7 @@ import {
 
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 import CTA from "./CTA";
 import ToolTip from "./ToolTip/ToolTip";
 
@@ -56,6 +57,18 @@ function NewView({
   const newPage = Math.floor(Math.abs(newSelect / 10)) * 10;
 
   const slicedData = newState?.slice(newPage, newPage + 10);
+
+  useHotkeys("ArrowLeft", () => {
+    if (newSelect !== 0) {
+      setNewSelect((w: any) => w - 1);
+    }
+  });
+
+  useHotkeys("ArrowRight", () => {
+    if (newState.length - 1 !== newSelect) {
+      setNewSelect((w: any) => w + 1);
+    }
+  });
 
   return (
     <div className="flex center col jc  " suppressHydrationWarning={true}>
