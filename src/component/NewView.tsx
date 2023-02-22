@@ -8,6 +8,7 @@ import {
   ArrowRightIcon,
   TrashIcon,
   ResetIcon,
+  PlayIcon,
 } from "@radix-ui/react-icons";
 
 import { nanoid } from "nanoid";
@@ -121,7 +122,6 @@ function NewView({
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            padding: "20px",
           }}
         >
           <div
@@ -142,6 +142,9 @@ function NewView({
               />
             )}
           </div>
+
+          {newState[newSelect]?.overlay && <div className="overlay"></div>}
+
           <p
             style={{
               fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
@@ -216,6 +219,7 @@ function NewView({
                       ctaText: "",
                       textAnimation: "fade-in",
                       imageAnimation: "none",
+                      overlay: false,
                     },
                   ])
                 }
@@ -275,6 +279,25 @@ function NewView({
             }}
           >
             <ResetIcon />
+          </button>
+        </ToolTip>
+        <ToolTip text="Play the animation">
+          <button
+            className="flex center gap-10 inter"
+            onClick={() => console.log("this")}
+            style={{
+              padding: "10px",
+              borderRadius: "10px",
+              background: "#eee",
+              width: "fit-content",
+              height: "fit-content",
+              cursor: "pointer",
+
+              fontSize: "12px",
+            }}
+          >
+            <PlayIcon />
+            {/* Run */}
           </button>
         </ToolTip>
         {/* <ToolTip text="Reorder Pages">

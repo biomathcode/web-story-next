@@ -33,10 +33,10 @@ const colors = {
 function InfoCheckBox({ icon, title, description }: InfoCheckBoxType) {
   return (
     <div
-      className="flex gap-10 center"
+      className="flex gap-10 center inter"
       style={{
         padding: " 10px 10px",
-        fontFamily: "Inter",
+
         fontSize: "14px",
         borderRadius: "4px",
         color: "#f3f3f3",
@@ -44,7 +44,6 @@ function InfoCheckBox({ icon, title, description }: InfoCheckBoxType) {
         borderWidth: "1px",
         borderStyle: "solid",
         borderColor: colors[icon],
-        lineHeight: "28px",
 
         // display: "flex",
         // gap: "10px",
@@ -53,9 +52,9 @@ function InfoCheckBox({ icon, title, description }: InfoCheckBoxType) {
         // alignItems: "center",
       }}
     >
-      {IconEnum[icon]}
+      <div>{IconEnum[icon]}</div>
 
-      <div>
+      <div className="fs-12">
         <b>{title}:</b> <span>{description}</span>
       </div>
     </div>

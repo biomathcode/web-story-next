@@ -15,6 +15,8 @@ Features:
 [x] Paginate the story nav
 
 [x] Preview solution encode the html code in base64 format and redirect the user to https://playground.amp.dev/#share=code
+[x] Overlay Effect
+
 
 
 [x] Code generation
@@ -23,14 +25,13 @@ Features:
 [] SEO settings title, description change og:image, rest remain the same like twitter, 
 [] add Analytics (google analytics Code)
 [] Publisher Info (one time input)
-[] Overlay Effect
 [] Info Components 
 [] Editor Tour
 
 Bugs: 
 
 [x] First element is not draggable 
-[ ] CTA button change the position of the Text element  
+[x] CTA button change the position of the Text element  
 
 ROADMAP: 
 [] Text-alignment change 

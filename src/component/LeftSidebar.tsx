@@ -10,10 +10,8 @@ import {
 } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { BlockPicker } from "react-color";
-import Toggle from "./Toggle/Toggle";
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
-import AccordianContainer from "./Accordian";
 import { state } from "@/app/page";
 
 // Text, Image, Cta, Animation,
@@ -108,6 +106,10 @@ const LeftSidebar = ({
         imageAnimation: {
           ...el,
           imageAnimation: e.target.value,
+        },
+        overlay: {
+          ...el,
+          overlay: e.target.value === "true" ? true : false,
         },
       };
 
@@ -249,6 +251,17 @@ const LeftSidebar = ({
             >
               <option>Box </option>
               <option>Marked</option>
+            </select>
+          </fieldset>
+          <fieldset className="flex js center">
+            <label className="label">Overlay</label>
+            <select
+              name="overlay"
+              onChange={(e) => handleChange(e)}
+              value={newState[newSelect]?.overlay === true ? "true" : "false"}
+            >
+              <option>true </option>
+              <option>false</option>
             </select>
           </fieldset>
 

@@ -47,6 +47,7 @@ export type state = {
   ctaText: string;
   textAnimation: animationType;
   imageAnimation: animationType;
+  overlay: boolean;
 };
 
 export type userState = {
@@ -124,6 +125,7 @@ export default function Home() {
       url: "",
       textAnimation: "fade-in",
       imageAnimation: "none",
+      overlay: false,
     },
   ]);
 
