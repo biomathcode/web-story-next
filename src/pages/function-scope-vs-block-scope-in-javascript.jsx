@@ -1,8 +1,18 @@
 import Head from "next/head";
 import { useAmp } from "next/amp";
-import { Inter } from "@next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import { structuredData } from "../component/SEO/index";
+
+const data = structuredData({
+  link: "https://webstory.coolhead.in/function-scope-vs-block-scope-in-javascript",
+  title: "Function Scope vs Block Scope in Javascript",
+  description:
+    "Difference between function scope and block scope in javascript. Scopes in Javascript",
+  authorName: "Pratik Sharma",
+  authorUrl: "http://coolhead.in",
+  image:
+    "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+});
 
 export const config = {
   amp: true,
@@ -13,18 +23,26 @@ export default function IndexPage() {
   return (
     <>
       <Head>
-        <title></title>
-        <meta name="title" content="how to create new AMP Page? " />
+        <title>Function Scope vs Block Scope in Javascript</title>
+        <meta
+          name="title"
+          content="Function Scope vs Block Scope in Javascript"
+        />
         <meta
           name="description"
           content="Learn to create AMP page in this visual story"
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="how to create new AMP Page?" />
+        <meta property="og:type" content="blog" />
+        <meta
+          property="og:title"
+          content="Function Scope vs Block Scope in Javascript"
+        />
 
         <meta
           property="og:description"
-          content="Learn to create AMP page in this visual story"
+          content="
+          Difference between function scope and block scope in javascript
+          "
         />
         <meta
           property="og:image"
@@ -40,11 +58,16 @@ export default function IndexPage() {
           href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           rel="stylesheet"
         ></link>
-
+        {/* 
         <link
           rel="canonical"
           href="https://webstory.coolhead.in/function-scope-vs-block-scope-in-javascript"
-        ></link>
+        ></link> */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+          key="product-jsonld"
+        />
       </Head>
       <style jsx>
         {`
@@ -67,9 +90,7 @@ export default function IndexPage() {
             font-weight: 600;
             font-family: "Inter", sans-serif;
           }
-          html {
-            font-family: ${inter.style.fontFamily};
-          }
+
           body {
             background-color: #000;
             padding: 0 1rem;

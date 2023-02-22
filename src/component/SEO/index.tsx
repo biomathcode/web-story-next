@@ -63,7 +63,7 @@ function SEO() {
   );
 }
 
-export { SEO, PublisherInfo, AuthorInfo };
+export { SEO, PublisherInfo, AuthorInfo, structuredData };
 
 const PublisherInfo = () => {
   const { handleSubmit, register } = useForm();
@@ -151,15 +151,13 @@ type schemaType = {
   dateModified: string;
 };
 
-const schema = ({
+const structuredData = ({
   link,
   title,
   description,
   authorName,
   authorUrl,
   image,
-  datePublished,
-  dateModified,
 }: schemaType) => {
   return {
     "@context": "https://schema.org",
@@ -170,21 +168,24 @@ const schema = ({
     author: {
       "@type": "Person",
       name: authorName,
-      // The full URL must be provided, including the website's domain.
+
       url: authorUrl,
     },
     publisher: {
       "@type": "Organization",
       name: "Coolhead",
       url: "https://coolhead.in",
-      logo: "",
     },
     image: {
       "@type": "ImageObject",
       url: image,
     },
-    datePublished: Date.now(),
-    dateModified: Date.now(),
+    datePublished: new Date().toISOString(),
+    dateModified: new Date().toISOString(),
     isAccessibleForFree: "http://schema.org/True",
   };
 };
+
+const d = new Date();
+
+d.toISOString();
