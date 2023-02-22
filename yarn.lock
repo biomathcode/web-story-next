@@ -1602,7 +1602,7 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/font@13.1.6":
+"@next/font@^13.1.6":
   "integrity" "sha512-AITjmeb1RgX1HKMCiA39ztx2mxeAyxl4ljv2UoSBUGAbFFMg8MO7YAvjHCgFhD39hL7YTbFjol04e/BPBH5RzQ=="
   "resolved" "https://registry.npmjs.org/@next/font/-/font-13.1.6.tgz"
   "version" "13.1.6"
