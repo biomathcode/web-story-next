@@ -50,12 +50,12 @@ export default function RootLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      {/* <Script
+      <Script
         id="adsbygoogle-init"
         strategy="afterInteractive"
         crossOrigin="anonymous"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7971530262943091"
-      /> */}
+      />
 
       <body>{children}</body>
     </html>
