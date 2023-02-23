@@ -77,6 +77,7 @@ export default function IndexPage() {
           key="product-jsonld"
         />
       </Head>
+
       <style jsx>
         {`
           .p {
