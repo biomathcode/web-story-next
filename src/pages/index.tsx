@@ -28,6 +28,7 @@ import { Item } from "@/component/Droppable";
 import { animationType } from "@/lib";
 import Script from "next/script";
 import { structuredData } from "@/component/SEO";
+import withNoSSR from "@/component/Nossr";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -89,7 +90,7 @@ const image = [
   "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
 ];
 
-export default function Home() {
+function Home() {
   const [page, setPage] = useState(0);
 
   const [content, setContent] = useState<ContentType[]>([]);
@@ -311,3 +312,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default withNoSSR(Home);
