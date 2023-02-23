@@ -13,6 +13,7 @@ type InfoCheckBoxType = {
   icon: "success" | "warning" | "info" | "danger";
   title: string;
   description: string;
+  size: number;
 };
 
 const IconEnum = {
@@ -30,20 +31,21 @@ const colors = {
   danger: "#ED1644",
 };
 
-function InfoCheckBox({ icon, title, description }: InfoCheckBoxType) {
+function InfoCheckBox({ icon, title, description, size }: InfoCheckBoxType) {
   return (
     <div
       className="flex gap-10 center inter"
       style={{
         padding: " 10px 10px",
 
-        fontSize: "14px",
+        fontSize: `${size}px`,
         borderRadius: "4px",
         color: "#f3f3f3",
         background: colors[icon],
         borderWidth: "1px",
         borderStyle: "solid",
         borderColor: colors[icon],
+        maxWidth: "600px",
 
         // display: "flex",
         // gap: "10px",
@@ -54,7 +56,7 @@ function InfoCheckBox({ icon, title, description }: InfoCheckBoxType) {
     >
       <div>{IconEnum[icon]}</div>
 
-      <div className="fs-12">
+      <div>
         <b>{title}:</b> <span>{description}</span>
       </div>
     </div>

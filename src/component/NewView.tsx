@@ -1,6 +1,6 @@
 "use client";
 
-import { state } from "@/app/page";
+import { state } from "@/pages";
 import { useDroppable } from "@dnd-kit/core";
 import {
   ArrowLeftIcon,

@@ -4,8 +4,6 @@ import PlaceHolder from "./Placeholder/Placeholder";
 
 import UnsplashContainer from "./Unsplash";
 
-//TODO: Replace Loading with a Illustration
-
 const RightSidebar = ({ content }: { content: any }) => {
   return (
     <Tabs.Root
