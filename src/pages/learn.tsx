@@ -3,29 +3,76 @@ import InfoCheckBox from "@/component/InfoCheckbox/InfoCheckbox";
 function Learn() {
   return (
     <>
-      <div className="flex center col jc gap-10">
-        <article className="flex col gap-10">
-          <h1>Learn about Amp web stories Search Engine Optimisation or SEO</h1>
-          <p>by Pratik Sharma</p>
-          {/* 
+      <div className="flex center col jc gap-10 inter p-20 m-20">
+        <article
+          className="flex col gap-10 mt-10"
+          style={{
+            maxWidth: "600px",
+          }}
+        >
+          <h1>Learn about AMP web stories Search Engine Optimisation or SEO</h1>
+          <p>
+            by{" "}
+            <a href="http://twitter.com/biomathcode" target="_blank">
+              Pratik Sharma
+            </a>{" "}
+          </p>
+
           <InfoCheckBox
-            size={18}
+            size={15}
             icon="success"
             title="For Monitisation"
-            description="To enable ads on your webstories, add google adsense to your domain website. Web story should atleast have more than 7 story pages to be enable for auto-ads"
-          /> */}
+            description="To enable ads on your webstories, add google adsense to your domain website. Web story should atleast have more than 7 story pages to be enabled for auto-ads."
+          />
+          <InfoCheckBox
+            size={15}
+            icon="info"
+            title="Structured Data"
+            description=" Add schema json to enable rich results for your web stories . You can visit https://search.google.com/test/rich-results
+             "
+          />
+          <InfoCheckBox
+            size={15}
+            icon="warning"
+            title="Dead Page"
+            description="Make sure your webstory is not a dead lock without any CTA(external Link). Add CTA link to your main blog article, or your site link. "
+          />
+          <InfoCheckBox
+            size={15}
+            icon="danger"
+            title="Valid AMP"
+            description=" Make sure your amp html is valid. You can visit https://search.google.com/test/amp
+             "
+          />
+
           <ul className="flex col gap-10">
             <li>Add Structued data to your webstories.</li>
             <li>
-              Make sure there is enought contract between the text and the
-              background image.
+              Make sure there is enough contract between the text and the
+              background image. <i>Tip: Add Overlay Effect</i>
             </li>
-            <li>Text should be similar to tweets- short and informative</li>
+            <li>Text should be similar to tweets- short and informative.</li>
             <li>
               Add meta data - title, description, og:image, og:title,
-              og:description - to get better link preview on social media
+              og:description - to get better link preview on social media.
             </li>
-            <li></li>
+            <li>
+              Add <b>Call To Action</b> link to your blog, article related to
+              your webstory.
+            </li>
+            <li>
+              Add your web stories into the XML sitemap, if you want your web
+              stories to appear on Google search results. Also, add canonical
+              tags to describe your web stories in an explicitly detailed way
+            </li>
+            <li>
+              Authentic Stories grab more audience attention as compared to
+              others. Be clear and write something you are passionate about. To
+              rank well on Google, you need to nurture your brand by building
+              its experience, expertise, authority, and trustworthiness
+              (E-E-A-T). Hence being authentic will make your Web Stories more
+              amazing.
+            </li>
           </ul>
         </article>
       </div>

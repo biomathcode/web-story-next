@@ -12,7 +12,7 @@ import { useState } from "react";
 import { BlockPicker } from "react-color";
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
-import { state } from "@/app/page";
+import { state } from "@/pages";
 
 // Text, Image, Cta, Animation,
 
