@@ -40,8 +40,9 @@ function InfoCheckBox({ icon, title, description, size }: InfoCheckBoxType) {
 
         fontSize: `${size}px`,
         borderRadius: "4px",
-        color: "#f3f3f3",
-        background: colors[icon],
+        color: "#333",
+        lineHeight: "28px",
+        // background: colors[icon],
         borderWidth: "1px",
         borderStyle: "solid",
         borderColor: colors[icon],
@@ -54,7 +55,13 @@ function InfoCheckBox({ icon, title, description, size }: InfoCheckBoxType) {
         // alignItems: "center",
       }}
     >
-      <div>{IconEnum[icon]}</div>
+      <div
+        style={{
+          color: colors[icon],
+        }}
+      >
+        {IconEnum[icon]}
+      </div>
 
       <div>
         <b>{title}:</b> <span>{description}</span>
