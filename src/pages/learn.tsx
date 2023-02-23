@@ -71,7 +71,11 @@ function Learn() {
           <h1>Learn about AMP web stories Search Engine Optimisation or SEO</h1>
           <p>
             by{" "}
-            <a href="http://twitter.com/biomathcode" target="_blank">
+            <a
+              href="http://twitter.com/biomathcode"
+              rel="noreferrer"
+              target="_blank"
+            >
               Pratik Sharma
             </a>{" "}
           </p>
