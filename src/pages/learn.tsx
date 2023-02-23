@@ -73,8 +73,8 @@ function Learn() {
             by{" "}
             <a
               href="http://twitter.com/biomathcode"
-              rel="noreferrer"
               target="_blank"
+              rel="noreferrer"
             >
               Pratik Sharma
             </a>{" "}
