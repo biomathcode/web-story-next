@@ -348,6 +348,29 @@ const AMP_GRID_LAYER = (children: string, template: templateType): string => {
     `;
 };
 
+const AMP_STORY_AUTO_ADS = () => {
+  return `
+  <amp-story-auto-ads>
+  <script type="application/json">
+    {
+      "ad-attributes": {
+        "type": "doubleclick",
+        "data-slot": "/30497360/a4a/amp_story_dfp_example"
+      }
+    }
+  </script>
+</amp-story-auto-ads>
+  
+  `;
+};
+
+const AMP_ANALYTICS = (tag: string) => {
+  return `
+  <amp-story-auto-analytics gtag-id="${tag}"></amp-story-auto-analytics>
+
+  `;
+};
+
 export {
   AMP_STORY,
   AMP_STORY_PAGE,
