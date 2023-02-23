@@ -45,18 +45,6 @@ export default function RootLayout({
     <html lang="en">
       <head />
 
-      <Script
-        id="this"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <Script
-        id="adsbygoogle-init"
-        strategy="afterInteractive"
-        crossOrigin="anonymous"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7971530262943091"
-      />
-
       <body>{children}</body>
     </html>
   );
