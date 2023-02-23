@@ -206,12 +206,7 @@ function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <Script
-        id="adsbygoogle-init"
-        strategy="afterInteractive"
-        crossOrigin="anonymous"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7971530262943091"
-      />
+
       <NavBar
         page={select}
         setPage={setSelect}

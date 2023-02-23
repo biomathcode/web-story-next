@@ -19,6 +19,11 @@ const App = ({ Component, pageProps }: AppProps) => {
           gtag('config', 'G-5K7VWB3071');
         `}
       </Script>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7971530262943091"
+        crossOrigin="anonymous"
+      ></Script>
       <Component {...pageProps} />
     </>
   );
