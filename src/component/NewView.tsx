@@ -62,7 +62,7 @@ function NewView({
     setAnimation(true);
 
     // Buttons stops to shake after 2 seconds
-    setTimeout(() => setAnimation(false), 2000);
+    setTimeout(() => setAnimation(false), 2500);
   };
 
   const newPage = Math.floor(Math.abs(newSelect / 10)) * 10;
@@ -148,7 +148,9 @@ function NewView({
           }}
         >
           <div
-            className={animation ? `animate__animated animate__fadeIn` : ""}
+            className={
+              animation ? animationMap[newState[newSelect]?.imageAnimation] : ""
+            }
             style={{
               backgroundImage: `url(${newState[newSelect]?.image})`,
 
