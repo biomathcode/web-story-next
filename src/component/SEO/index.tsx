@@ -24,13 +24,9 @@ function SEO() {
         });
       })}
       className="flex col gap-10 "
-      style={{
-        width: "400px",
-      }}
     >
-      <InfoCarousel info={info} />
-      <fieldset className="flex gap-10 js center">
-        <label>Title</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Title</label>
         <input
           defaultValue={seo.title}
           {...register("title")}
@@ -39,17 +35,17 @@ function SEO() {
           placeholder="Seo title"
         />
       </fieldset>
-      <fieldset className="flex gap-10 js center">
-        <label>Description</label>
-        <textarea
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Description</label>
+        <input
           defaultValue={seo.description}
           {...register("description")}
           required
           placeholder="description of your page "
         />
       </fieldset>
-      <fieldset className="flex gap-10 js center">
-        <label>Social Link Thumbnail</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Social Link Thumbnail</label>
         <input
           defaultValue={seo.image}
           {...register("image")}
@@ -58,14 +54,14 @@ function SEO() {
           placeholder="social media link Thumbnai "
         />
       </fieldset>
-      <button className="btn flex fs-12  " type="submit">
+      <button className="btn flex fs-12" type="submit">
         Submit
       </button>
     </form>
   );
 }
 
-export { SEO, PublisherInfo, AuthorInfo, structuredData };
+export { SEO, PublisherInfo, AuthorInfo, structuredData, Analytics };
 
 const PublisherInfo = () => {
   const { handleSubmit, register } = useForm();
@@ -99,14 +95,11 @@ const PublisherInfo = () => {
         setPublisher(data);
       })}
       className="flex col gap-10"
-      style={{
-        width: "400px",
-      }}
     >
       {data.map((el) => {
         return (
-          <fieldset key={el.value} className="flex gap-10 js center">
-            <label>{el.label}</label>
+          <fieldset className="flex gap-10 center js" key={el.value}>
+            <label className="label">{el.label}</label>
             <input
               defaultValue={publisher[el.value]}
               {...register(el.value)}
@@ -115,7 +108,30 @@ const PublisherInfo = () => {
           </fieldset>
         );
       })}
-      <button className="btn flex fs-12  " type="submit">
+      <button type="submit" className="btn fs-12 m-y ">
+        Submit
+      </button>
+    </form>
+  );
+};
+
+const Analytics = () => {
+  const { handleSubmit, register } = useForm();
+  const [analytics, setAnalytics] = useLocalStorage<any>("analytics", {
+    gtag: "",
+  });
+  return (
+    <form onSubmit={handleSubmit((data) => setAnalytics(data))}>
+      <fieldset className="flex center gap-10 js">
+        <label className="label">Google Analytics G-tag</label>
+        <input
+          required
+          type="text"
+          {...register("gtag")}
+          defaultValue={analytics.gtag}
+        />
+      </fieldset>
+      <button type="submit" className="btn fs-12 ">
         Submit
       </button>
     </form>
@@ -124,64 +140,49 @@ const PublisherInfo = () => {
 
 const AuthorInfo = () => {
   const { handleSubmit, register } = useForm();
-
-  const [author, setAuthor] = useLocalStorage<any>("authorInfo", {
+  const [author, setAuthor] = useLocalStorage<any>("authorinfo", {
     authorName: "",
     authorUrl: "",
     authorImage: "",
   });
   return (
     <form
-      onSubmit={handleSubmit((data) => {
-        setAuthor(data);
-      })}
-      className="flex col gap-10 mt-10"
-      style={{
-        width: "400px",
-      }}
+      className="flex col gap-10"
+      onSubmit={handleSubmit((data) => setAuthor(data))}
     >
-      <fieldset className="flex gap-10 js center">
-        <label>Author name</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Author name</label>
         <input
+          required
           type="text"
           defaultValue={author.authorName}
           {...register("authorName")}
         />
       </fieldset>
-      <fieldset className="flex gap-10 js center">
-        <label>Author Image URL</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label"> Author Image URL</label>
         <input
+          required
           type="url"
           defaultValue={author.authorImage}
           {...register("authorImage")}
         />
       </fieldset>
-      <fieldset className="flex gap-10 js center">
-        <label>Author Website</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Author Website</label>
         <input
+          required
           type="url"
           defaultValue={author.authorUrl}
           {...register("authorUrl")}
         />
       </fieldset>
-      <button className="btn flex fs-12 " type="submit">
+      <button type="submit" className="btn fs-12 m-x">
         Submit
       </button>
     </form>
   );
 };
-
-{
-  /* <meta property="og:title" content="Social Title for Cool Page" />
-<meta
-  property="og:description"
-  content="And a social description for our cool page"
-/>
-<meta
-  property="og:image"
-  content="https://example.com/images/cool-page.jpg"
-/> */
-}
 
 type schemaType = {
   link: string;
@@ -228,7 +229,3 @@ const structuredData = ({
     isAccessibleForFree: "http://schema.org/True",
   };
 };
-
-const d = new Date();
-
-d.toISOString();

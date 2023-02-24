@@ -175,7 +175,7 @@ const LeftSidebar = ({
               className={inter.className}
               type="number"
               min="14"
-              value={newState[newSelect]?.fontSize}
+              value={String(newState[newSelect]?.fontSize)}
             />
           </fieldset>
           <fieldset className="flex js  center mt-10 gap-10">

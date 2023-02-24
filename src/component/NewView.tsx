@@ -1,5 +1,6 @@
 "use client";
 
+import { animationMap } from "@/lib/animation";
 import { state } from "@/pages";
 import { useDroppable } from "@dnd-kit/core";
 import {
@@ -61,7 +62,7 @@ function NewView({
     setAnimation(true);
 
     // Buttons stops to shake after 2 seconds
-    setTimeout(() => setAnimation(false), 2000);
+    setTimeout(() => setAnimation(false), 2500);
   };
 
   const newPage = Math.floor(Math.abs(newSelect / 10)) * 10;
@@ -80,6 +81,7 @@ function NewView({
     }
   });
 
+  console.log(animationMap[newState[newSelect]?.textAnimation]);
   return (
     <div className="flex center col jc  " suppressHydrationWarning={true}>
       <div
@@ -146,7 +148,9 @@ function NewView({
           }}
         >
           <div
-            className={animation ? `animate__animated animate__fadeIn` : ""}
+            className={
+              animation ? animationMap[newState[newSelect]?.imageAnimation] : ""
+            }
             style={{
               backgroundImage: `url(${newState[newSelect]?.image})`,
 
@@ -187,7 +191,9 @@ function NewView({
           )}
 
           <p
-            className={animation ? `animate__animated animate__fadeIn` : ""}
+            className={
+              animation ? animationMap[newState[newSelect]?.textAnimation] : ""
+            }
             style={{
               fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
               color: newState[newSelect]?.color, // change to property

@@ -46,10 +46,7 @@ export const AnimationOptions: AnimationType[] = [
     label: "Rotate In Right",
     value: "rotate-in-right",
   },
-  {
-    label: "Twirl In",
-    value: "twirl-in",
-  },
+
   {
     label: "Pan Left",
     value: "pan-left",
@@ -380,4 +377,5 @@ export {
   AMP_CTA_LAYER,
   AMP_OVERLAY,
   HTML_TEMPLATE,
+  AMP_ANALYTICS,
 };

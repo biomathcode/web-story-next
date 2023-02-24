@@ -37,22 +37,14 @@ function InfoCheckBox({ icon, title, description, size }: InfoCheckBoxType) {
       className="flex gap-10 center inter"
       style={{
         padding: " 10px 10px",
-
         fontSize: `${size}px`,
         borderRadius: "4px",
         color: "#333",
         lineHeight: "28px",
-        // background: colors[icon],
         borderWidth: "1px",
         borderStyle: "solid",
         borderColor: colors[icon],
         maxWidth: "600px",
-
-        // display: "flex",
-        // gap: "10px",
-
-        // alignContent: "center",
-        // alignItems: "center",
       }}
     >
       <div
