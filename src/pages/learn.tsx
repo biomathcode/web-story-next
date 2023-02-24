@@ -1,3 +1,4 @@
+import Footer from "@/component/Footer";
 import InfoCheckBox from "@/component/InfoCheckbox/InfoCheckbox";
 import { structuredData } from "@/component/SEO";
 import Head from "next/head";
@@ -190,6 +191,7 @@ function Learn() {
             })}
           </ul>
         </article>
+        <Footer />
       </div>
     </>
   );
