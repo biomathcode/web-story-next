@@ -7,11 +7,9 @@ const mdParser = (content: string) => {
 
   const data: any = [];
 
-  const paragraphs = response.filter((el) => {
+  response.filter((el) => {
     if (el.type !== "space" && el.type !== "hr") {
       if (el.type === "list") {
-        console.log("this is if list", el.type);
-
         const items = el.items.map((op, v) => {
           data.push(op);
 
@@ -19,18 +17,11 @@ const mdParser = (content: string) => {
         });
         return items;
       } else {
-        console.log("this is else", el.type);
         data.push(el);
         return el;
       }
     }
   });
-
-  console.log(paragraphs, "this is without flat");
-
-  console.log(data, "new lists");
-
-  console.log(paragraphs.flat());
 
   return data;
 };

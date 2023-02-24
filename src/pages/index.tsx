@@ -29,6 +29,7 @@ import { animationType } from "@/lib";
 import Script from "next/script";
 import { structuredData } from "@/component/SEO";
 import withNoSSR from "@/component/Nossr";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -201,6 +202,59 @@ function Home() {
 
   return (
     <div className={inter.className}>
+      <Head>
+        <title>
+          Webstory code generator- no code editor to create google web stories
+          for free
+        </title>
+        <meta title="Webstory code generator- no code editor to create google web stories for free" />
+        <meta
+          property="title"
+          content="Webstory code generator- no code editor to create google web stories for free"
+        />
+
+        <meta
+          property="description"
+          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
+        />
+        <meta
+          property="og:title"
+          content="Webstory code generator- no code editor to create google web stories for free"
+        />
+        <meta
+          property="og:description"
+          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
+        />
+        <meta
+          property="og:image"
+          content="https://webstory.coolhead.in/ogimage.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          name="twitter:title"
+          content="Webstory code generator- no code editor to create google web stories for free"
+        />
+        <meta
+          name="twitter:description"
+          content=" Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
+        />
+        <meta
+          name="twitter:image"
+          content=" http://webstory.coolhead.in/ogimage.png"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Webstory code generator - no code tool editor "
+        />
+        <meta property="og:type" content="article" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:url" content="http://webstory.coolhead.in" />
+        <meta property="og:site" content="http://webstory.coolhead.in" />
+
+        <meta name="twitter:creator" content="@biomathcode" />
+      </Head>
       <Script
         id="this"
         type="application/ld+json"
