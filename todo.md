@@ -30,7 +30,7 @@ Bugs:
 
 [x] First element is not draggable 
 [x] CTA button change the position of the Text element  
-[] Parsing of List-type from hashnode blog markdown - will just i have 1 degree of depth to the list style
+[x] Parsing of List-type from hashnode blog markdown - will just i have 1 degree of depth to the list style
 
 Pending Decisions
 [x] We will me removing code blocks,as we will have to use SSR and generate styles code blocks which is not the aim of the project.
@@ -47,6 +47,7 @@ ROADMAP:
 [] Component tab in the RightSidebar - 1 hour
 [] Code Block - 2 hour
 [] Making Learning material for people to make better seo optimized web stories - 6 hours
-[] 
+[] Add file system
+[] export and import feature
 
 
