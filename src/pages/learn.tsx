@@ -4,6 +4,44 @@ import Head from "next/head";
 import Script from "next/script";
 
 function Learn() {
+  const resources = [
+    {
+      text: "AMP SEO - Everything you need to know",
+      link: "https://www.searchenginejournal.com/amp-seo-everything-you-need-to-know/375931/",
+    },
+    {
+      text: "AMP Search report",
+      link: "https://support.google.com/webmasters/answer/7450883?visit_id=638124340102566873-1453760594&rd=1#prioritize_fix_issues",
+    },
+    {
+      text: "AMP Guidelines",
+      link: "https://developers.google.com/search/docs/crawling-indexing/amp",
+    },
+    {
+      text: "How to optimize amp stories for google search results",
+      link: "https://www.searchenginejournal.com/how-to-optimize-amp-stories-for-google-search-results/348962/",
+    },
+    {
+      text: "Web story Content Policy",
+      link: "https://developers.google.com/search/docs/appearance/web-stories-content-policy",
+    },
+    {
+      text: "Web Story SEO ",
+      link: "https://blog.amp.dev/2020/02/12/seo-for-amp-stories/",
+    },
+    {
+      text: "AMP Test ",
+      link: "https://search.google.com/test/amp",
+    },
+    {
+      text: "Rich Results Test",
+      link: "https://search.google.com/test/rich-results",
+    },
+    {
+      text: "Page Speed",
+      link: "https://pagespeed.web.dev/",
+    },
+  ];
   return (
     <>
       <Head>
@@ -66,6 +104,8 @@ function Learn() {
           className="flex col gap-10 mt-10"
           style={{
             maxWidth: "600px",
+            minWidth: "240px",
+            padding: "20px",
           }}
         >
           <h1>Learn about AMP web stories Search Engine Optimisation or SEO</h1>
@@ -107,6 +147,8 @@ function Learn() {
              "
           />
 
+          <h2 className="mt-y">Tips To Make Better web stories</h2>
+
           <ul className="flex col gap-10">
             <li>Add Structued data to your webstories.</li>
             <li>
@@ -135,6 +177,17 @@ function Learn() {
               (E-E-A-T). Hence being authentic will make your Web Stories more
               amazing.
             </li>
+          </ul>
+
+          <h3>Resource to learn more</h3>
+          <ul className="flex col gap-10">
+            {resources.map((el) => {
+              return (
+                <div className="flex " key={el.text}>
+                  <a href={el.link}>{el.text}</a>
+                </div>
+              );
+            })}
           </ul>
         </article>
       </div>

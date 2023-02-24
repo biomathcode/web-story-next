@@ -1,10 +1,11 @@
 import Select from "react-select";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { config } from "../axios";
-import mdParser from "@/lib/markdownParser";
-import { MagicWandIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+
+import { MagnifyingGlassIcon, RocketIcon } from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 export interface ColourOption {
   value: string;
@@ -51,11 +52,6 @@ function NavBar({
 
   const [value, setValue] = useState(user && options[0]);
 
-  // const handleSubmit = (e: any) => {
-  //   e.preventDefault();
-  //   console.log(e.target);
-  // };
-
   const [loading, setLoading] = useState(false);
 
   const { register, handleSubmit } = useForm();
@@ -70,90 +66,112 @@ function NavBar({
         margin: "0px",
         padding: "0px 20px",
       }}
-      className="flex center jc gap-10"
+      className="flex center ja gap-10"
     >
-      {user ? (
-        <Select
-          className="select"
-          options={options}
-          value={value}
-          onChange={(newValue: any) => {
-            console.log("this is the new Value", newValue);
-            const index = options.findIndex(
-              (el: any) => el.value === newValue.value
+      <div className="flex center gap-10 ">
+        {user ? (
+          <Select
+            className="select"
+            options={options}
+            value={value}
+            onChange={(newValue: any) => {
+              console.log("this is the new Value", newValue);
+              const index = options.findIndex(
+                (el: any) => el.value === newValue.value
+              );
+
+              setValue(options[index]);
+
+              console.log(index, "new index");
+              setPage(index);
+            }}
+          />
+        ) : (
+          <p>loading...</p>
+        )}
+        <form
+          onSubmit={handleSubmit(async (data) => {
+            setLoading(true);
+            const response = await axios(
+              config(data.username, Number(data.page))
             );
+            console.log("this is response", response);
+            if (
+              response.data?.data?.user?.publication?.posts?.length > 0 &&
+              response.data.data.user
+            ) {
+              setUser(response.data.data.user);
+              setLoading(false);
+            } else {
+              alert(`No data found on page ${data.page}`);
+              setLoading(false);
+            }
 
-            setValue(options[index]);
+            console.log(response);
+          })}
+          className="flex center jc gap-10"
+        >
+          <fieldset>
+            <input
+              {...register("page", {
+                required: true,
+              })}
+              min={0}
+              max={10}
+              defaultValue={0}
+              type="number"
+              style={{ width: "50px" }}
+              placeholder="Page"
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              {...register("username", {
+                required: true,
+              })}
+              type="text"
+              defaultValue={user?.username}
+              placeholder="username"
+            />
+          </fieldset>
+          <fieldset>
+            <button
+              disabled={loading}
+              className="btn fs-12 flex gap-10 center"
+              type="submit"
+            >
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                <>
+                  <MagnifyingGlassIcon />
+                  <span>Search</span>
+                </>
+              )}
+            </button>
+          </fieldset>
+        </form>
+      </div>
 
-            console.log(index, "new index");
-            setPage(index);
+      <div>
+        <Link
+          className="flex  center gap-10 fs-14"
+          style={{
+            color: "var(--violet2)",
+            padding: "10px 15px",
+            background: "var(--violet9)",
+            borderRadius: "5px",
+
+            textDecorationStyle: "solid",
           }}
-        />
-      ) : (
-        <p>loading...</p>
-      )}
-      <form
-        onSubmit={handleSubmit(async (data) => {
-          setLoading(true);
-          const response = await axios(
-            config(data.username, Number(data.page))
-          );
-          console.log("this is response", response);
-          if (
-            response.data?.data?.user?.publication?.posts?.length > 0 &&
-            response.data.data.user
-          ) {
-            setUser(response.data.data.user);
-            setLoading(false);
-          } else {
-            alert(`No data found on page ${data.page}`);
-            setLoading(false);
-          }
-
-          console.log(response);
-        })}
-        className="flex center jc gap-10"
-      >
-        <fieldset>
-          <input
-            {...register("page", {
-              required: true,
-            })}
-            min={0}
-            max={10}
-            defaultValue={0}
-            type="number"
-            style={{ width: "50px" }}
-            placeholder="Page"
-          />
-        </fieldset>
-        <fieldset>
-          <input
-            {...register("username", {
-              required: true,
-            })}
-            type="text"
-            defaultValue={user?.username}
-            placeholder="username"
-          />
-        </fieldset>
-        <fieldset>
-          <button
-            disabled={loading}
-            className="btn fs-12 flex gap-10 center"
-            type="submit"
-          >
-            {loading ? (
-              <p>Loading...</p>
-            ) : (
-              <>
-                <MagnifyingGlassIcon />
-                <span>Search</span>
-              </>
-            )}
-          </button>
-        </fieldset>
-      </form>
+          href="/learn"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <RocketIcon />
+          Learn
+        </Link>
+      </div>
     </nav>
   );
 }

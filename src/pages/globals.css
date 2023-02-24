@@ -10,6 +10,10 @@
 
 @import "@radix-ui/colors/grayDark.css";
 
+@import "@radix-ui/colors/blue.css";
+
+@import "@radix-ui/colors/indigo.css";
+
 @import "animate.css";
 
 :root {
@@ -28,19 +32,15 @@
 
 html,
 body {
-  max-width: 100vw;
   overflow-x: hidden;
   font-family: "Inter";
-}
-
-body {
   color: #000;
   background: #fff;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--indigo9);
+  text-decoration: underline;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -395,6 +395,20 @@ select {
 
 .fs-16 {
   font-size: 16px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-x {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.mt-y {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .DragHandle {
