@@ -3,13 +3,22 @@
 import { marked } from "marked";
 
 const mdParser = (content: string) => {
-  const data: string[] = [];
-
   const response = marked?.lexer(content);
 
-  const paragraphs = response.filter((el) => el.type !== "space");
+  const paragraphs = response.filter((el) => {
+    if (el.type !== "space" && el.type !== "hr") {
+      if (el.type === "list") {
+        const items = el.items.map((op, v) => {
+          return op;
+        });
+        return items;
+      } else {
+        return el;
+      }
+    }
+  });
 
-  return paragraphs;
+  return paragraphs.flat();
 };
 
 export default mdParser;
