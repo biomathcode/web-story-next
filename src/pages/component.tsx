@@ -1,17 +1,13 @@
-import InfoCarousel from "@/component/InfoCarousel";
 import { AuthorInfo, PublisherInfo, SEO } from "@/component/SEO/index";
 
 function Component() {
-  const info = [
-    "This is the first info",
-    "this is the second info",
-    "this is the third info",
-  ];
   return (
-    <div>
-      <InfoCarousel info={info} />
+    <div className="flex center jc col gap-10">
       <SEO />
+      <hr style={{ width: "400px" }} />
       <PublisherInfo />
+      <hr style={{ width: "400px" }} />
+
       <AuthorInfo />
     </div>
   );

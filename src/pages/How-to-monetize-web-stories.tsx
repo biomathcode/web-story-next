@@ -11,10 +11,11 @@ function Monetization() {
           className="flex col gap-10 inter"
           style={{ maxWidth: "600px", margin: "20px", padding: "20px" }}
         >
-          <h1>How to monetize web stories </h1>
+          <h1>How to monetize web stories? </h1>
           <ul>
             <li>Connect your site to google adsense</li>
-            <li></li>
+            <li>Create display ad</li>
+            <li>Add the info into the Monetise section of editor</li>
           </ul>
         </div>
       </div>

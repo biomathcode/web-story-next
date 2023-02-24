@@ -22,11 +22,14 @@ function SEO() {
           description: data.description,
           image: data.image,
         });
-        console.log(seo);
       })}
+      className="flex col gap-10 "
+      style={{
+        width: "400px",
+      }}
     >
       <InfoCarousel info={info} />
-      <fieldset>
+      <fieldset className="flex gap-10 js center">
         <label>Title</label>
         <input
           defaultValue={seo.title}
@@ -36,17 +39,16 @@ function SEO() {
           placeholder="Seo title"
         />
       </fieldset>
-      <fieldset>
+      <fieldset className="flex gap-10 js center">
         <label>Description</label>
-        <input
+        <textarea
           defaultValue={seo.description}
           {...register("description")}
           required
-          type="text"
           placeholder="description of your page "
         />
       </fieldset>
-      <fieldset>
+      <fieldset className="flex gap-10 js center">
         <label>Social Link Thumbnail</label>
         <input
           defaultValue={seo.image}
@@ -56,7 +58,7 @@ function SEO() {
           placeholder="social media link Thumbnai "
         />
       </fieldset>
-      <button className="btn flex " type="submit">
+      <button className="btn flex fs-12  " type="submit">
         Submit
       </button>
     </form>
@@ -96,10 +98,14 @@ const PublisherInfo = () => {
       onSubmit={handleSubmit((data) => {
         setPublisher(data);
       })}
+      className="flex col gap-10"
+      style={{
+        width: "400px",
+      }}
     >
       {data.map((el) => {
         return (
-          <fieldset key={el.value}>
+          <fieldset key={el.value} className="flex gap-10 js center">
             <label>{el.label}</label>
             <input
               defaultValue={publisher[el.value]}
@@ -109,21 +115,58 @@ const PublisherInfo = () => {
           </fieldset>
         );
       })}
+      <button className="btn flex fs-12  " type="submit">
+        Submit
+      </button>
     </form>
   );
 };
 
 const AuthorInfo = () => {
+  const { handleSubmit, register } = useForm();
+
+  const [author, setAuthor] = useLocalStorage<any>("authorInfo", {
+    authorName: "",
+    authorUrl: "",
+    authorImage: "",
+  });
   return (
-    <form>
-      <fieldset>
+    <form
+      onSubmit={handleSubmit((data) => {
+        setAuthor(data);
+      })}
+      className="flex col gap-10 mt-10"
+      style={{
+        width: "400px",
+      }}
+    >
+      <fieldset className="flex gap-10 js center">
         <label>Author name</label>
-        <input name="authorName" />
+        <input
+          type="text"
+          defaultValue={author.authorName}
+          {...register("authorName")}
+        />
       </fieldset>
-      <fieldset>
+      <fieldset className="flex gap-10 js center">
         <label>Author Image URL</label>
-        <input />
+        <input
+          type="url"
+          defaultValue={author.authorImage}
+          {...register("authorImage")}
+        />
       </fieldset>
+      <fieldset className="flex gap-10 js center">
+        <label>Author Website</label>
+        <input
+          type="url"
+          defaultValue={author.authorUrl}
+          {...register("authorUrl")}
+        />
+      </fieldset>
+      <button className="btn flex fs-12 " type="submit">
+        Submit
+      </button>
     </form>
   );
 };
