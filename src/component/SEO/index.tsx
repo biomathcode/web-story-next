@@ -63,7 +63,7 @@ function SEO() {
   );
 }
 
-export { SEO, PublisherInfo, AuthorInfo, structuredData };
+export { SEO, PublisherInfo, AuthorInfo, structuredData, Analytics };
 
 const PublisherInfo = () => {
   const { handleSubmit, register } = useForm();

@@ -1,4 +1,5 @@
 import InfoCarousel from "@/component/InfoCarousel";
+import MultiStep from "@/component/MultiStep";
 import { AuthorInfo, PublisherInfo, SEO } from "@/component/SEO/index";
 
 function Component() {
@@ -9,11 +10,7 @@ function Component() {
   ];
   return (
     <div className="flex center jc col gap-10" style={{ width: "100vw" }}>
-      <div className="flex col gap-10 p-10">
-        <SEO />
-        <PublisherInfo />
-        <AuthorInfo />
-      </div>
+      <MultiStep />
     </div>
   );
 }
