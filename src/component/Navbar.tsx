@@ -155,7 +155,7 @@ function NavBar({
 
       <div>
         <Link
-          className="flex  center gap-10 fs-14"
+          className="flex  center gap-10 fs-12"
           style={{
             color: "var(--violet2)",
             padding: "10px 15px",

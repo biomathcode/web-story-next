@@ -313,6 +313,11 @@ textarea {
   background: #444;
   color: #fff;
 }
+
+.btn:focus {
+  outline: 2px solid var(--blue11);
+}
+
 .editor {
   border-radius: var(--radius);
 }
@@ -401,12 +406,12 @@ select {
   margin-top: 10px;
 }
 
-.mt-x {
+.m-x {
   margin-right: 10px;
   margin-left: 10px;
 }
 
-.mt-y {
+.m-y {
   margin-top: 10px;
   margin-bottom: 10px;
 }

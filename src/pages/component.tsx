@@ -8,11 +8,12 @@ function Component() {
     "this is the third info",
   ];
   return (
-    <div>
-      <InfoCarousel info={info} />
-      <SEO />
-      <PublisherInfo />
-      <AuthorInfo />
+    <div className="flex center jc col gap-10" style={{ width: "100vw" }}>
+      <div className="flex col gap-10 p-10">
+        <SEO />
+        <PublisherInfo />
+        <AuthorInfo />
+      </div>
     </div>
   );
 }

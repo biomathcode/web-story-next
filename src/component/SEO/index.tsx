@@ -24,10 +24,10 @@ function SEO() {
         });
         console.log(seo);
       })}
+      className="flex col gap-10 "
     >
-      <InfoCarousel info={info} />
-      <fieldset>
-        <label>Title</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Title</label>
         <input
           defaultValue={seo.title}
           {...register("title")}
@@ -36,8 +36,8 @@ function SEO() {
           placeholder="Seo title"
         />
       </fieldset>
-      <fieldset>
-        <label>Description</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Description</label>
         <input
           defaultValue={seo.description}
           {...register("description")}
@@ -46,8 +46,8 @@ function SEO() {
           placeholder="description of your page "
         />
       </fieldset>
-      <fieldset>
-        <label>Social Link Thumbnail</label>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Social Link Thumbnail</label>
         <input
           defaultValue={seo.image}
           {...register("image")}
@@ -56,7 +56,7 @@ function SEO() {
           placeholder="social media link Thumbnai "
         />
       </fieldset>
-      <button className="btn flex " type="submit">
+      <button className="btn flex fs-12" type="submit">
         Submit
       </button>
     </form>
@@ -96,11 +96,12 @@ const PublisherInfo = () => {
       onSubmit={handleSubmit((data) => {
         setPublisher(data);
       })}
+      className="flex col gap-10"
     >
       {data.map((el) => {
         return (
-          <fieldset key={el.value}>
-            <label>{el.label}</label>
+          <fieldset className="flex gap-10 center js" key={el.value}>
+            <label className="label">{el.label}</label>
             <input
               defaultValue={publisher[el.value]}
               {...register(el.value)}
@@ -109,36 +110,81 @@ const PublisherInfo = () => {
           </fieldset>
         );
       })}
+      <button type="submit" className="btn fs-12 m-y ">
+        Submit
+      </button>
+    </form>
+  );
+};
+
+const Analytics = () => {
+  const { handleSubmit, register } = useForm();
+  const [analytics, setAnalytics] = useLocalStorage<any>("analytics", {
+    gtag: "",
+  });
+  return (
+    <form onSubmit={handleSubmit((data) => setAnalytics(data))}>
+      <fieldset className="flex center gap-10 js">
+        <label className="label">Google Analytics G-tag</label>
+        <input
+          required
+          type="text"
+          {...register("gtag")}
+          defaultValue={analytics.gtag}
+        />
+      </fieldset>
+      <button type="submit" className="btn fs-12 ">
+        Submit
+      </button>
     </form>
   );
 };
 
 const AuthorInfo = () => {
+  const { handleSubmit, register } = useForm();
+  const [author, setAuthor] = useLocalStorage<any>("authorinfo", {
+    authorName: "",
+    authorUrl: "",
+    authorImage: "",
+  });
   return (
-    <form>
-      <fieldset>
-        <label>Author name</label>
-        <input name="authorName" />
+    <form
+      className="flex col gap-10"
+      onSubmit={handleSubmit((data) => setAuthor(data))}
+    >
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Author name</label>
+        <input
+          required
+          type="text"
+          defaultValue={author.authorName}
+          {...register("authorName")}
+        />
       </fieldset>
-      <fieldset>
-        <label>Author Image URL</label>
-        <input />
+      <fieldset className="flex gap-10 center js">
+        <label className="label"> Author Image URL</label>
+        <input
+          required
+          type="url"
+          defaultValue={author.authorImage}
+          {...register("authorImage")}
+        />
       </fieldset>
+      <fieldset className="flex gap-10 center js">
+        <label className="label">Author Website</label>
+        <input
+          required
+          type="url"
+          defaultValue={author.authorUrl}
+          {...register("authorUrl")}
+        />
+      </fieldset>
+      <button type="submit" className="btn fs-12 m-x">
+        Submit
+      </button>
     </form>
   );
 };
-
-{
-  /* <meta property="og:title" content="Social Title for Cool Page" />
-<meta
-  property="og:description"
-  content="And a social description for our cool page"
-/>
-<meta
-  property="og:image"
-  content="https://example.com/images/cool-page.jpg"
-/> */
-}
 
 type schemaType = {
   link: string;
@@ -185,7 +231,3 @@ const structuredData = ({
     isAccessibleForFree: "http://schema.org/True",
   };
 };
-
-const d = new Date();
-
-d.toISOString();
