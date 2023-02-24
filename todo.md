@@ -25,6 +25,7 @@ Features:
 [] add Analytics (google analytics Code)
 [] Publisher Info (one time input)
 [] Editor Tour
+[] When page selection changes, change the title, description, 
 
 Bugs: 
 
@@ -35,9 +36,9 @@ Bugs:
 Pending Decisions
 [x] We will me removing code blocks,as we will have to use SSR and generate styles code blocks which is not the aim of the project.
 [] Should I add animation delay, animation duration options
-
-Made Decisions
-[] 
+[] Code Block - 2 hour
+[] Add file system
+[] export and import feature
 
 ROADMAP: 
 [] Text-alignment change - 30min
@@ -45,9 +46,7 @@ ROADMAP:
 [] Code Validation with actions to improve - 2 hours
 [] Create Template - 2 hour
 [] Component tab in the RightSidebar - 1 hour
-[] Code Block - 2 hour
 [] Making Learning material for people to make better seo optimized web stories - 6 hours
-[] Add file system
-[] export and import feature
+
 
 

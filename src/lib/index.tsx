@@ -4,6 +4,14 @@
 // add move text settings
 // animation is missing
 
+export const slugify = (str: string) =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 type AnimationType = {
   label: String;
   value: animationType;

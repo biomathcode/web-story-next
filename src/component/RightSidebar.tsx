@@ -53,8 +53,11 @@ const RightSidebar = ({ content }: { content: any }) => {
       >
         {content.length > 0 ? (
           content.map((el: any, i: any) => {
+            if (el.type === "list") {
+              console.log(el, "this is list");
+            }
             // three types content, code, image
-            if (el?.raw?.match(/!\[(.*)\]\((.+)\)/g)) {
+            if (el?.raw?.match(/!\[(.*)\]\((.+)\)/g) && el?.type !== "list") {
               return (
                 <Droppable
                   data={el}
@@ -70,7 +73,7 @@ const RightSidebar = ({ content }: { content: any }) => {
                   <Droppable
                     data={el}
                     type="text"
-                    href={el.raw}
+                    href={el.text}
                     key={i}
                     id={i}
                   />
