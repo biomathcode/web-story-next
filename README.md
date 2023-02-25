@@ -33,7 +33,11 @@ pnpm dev
 
 [AMP Test ](https://search.google.com/test/amp)
 
+[AMP Validator](https://validator.ampproject.org/)
+
 [Rich Results Test](https://search.google.com/test/rich-results)
 
 [Page Speed](https://pagespeed.web.dev/)
+
+[Web Story publishing checklist](https://creators.google/pt-br/content-creation-guides/modern-storytelling-with-web-stories/web-story-publishing-checklist/#follow-seo-best-practices)
 

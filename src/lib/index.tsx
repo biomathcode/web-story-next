@@ -353,16 +353,17 @@ const AMP_GRID_LAYER = (children: string, template: templateType): string => {
     `;
 };
 
-const AMP_STORY_AUTO_ADS = () => {
+const AMP_STORY_AUTO_ADS = (client: string, slot: string) => {
   return `
   <amp-story-auto-ads>
   <script type="application/json">
-    {
-      "ad-attributes": {
-        "type": "doubleclick",
-        "data-slot": "/30497360/a4a/amp_story_dfp_example"
-      }
-    }
+  {
+   "ad-attributes": {
+    "type": "adsense",
+    "data-ad-client": "${client}",
+    "data-ad-slot": "${slot}"
+   }
+  }
   </script>
 </amp-story-auto-ads>
   

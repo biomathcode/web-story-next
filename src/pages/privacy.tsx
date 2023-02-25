@@ -1,3 +1,5 @@
+import Footer from "@/component/Footer";
+
 function Privacy() {
   return (
     <div className="flex center col jc gap-10 inter p-20 m-20">
@@ -517,6 +519,7 @@ function Privacy() {
           <li>By email: pratik@coolhead.in</li>
         </ul>
       </article>
+      <Footer />
     </div>
   );
 }

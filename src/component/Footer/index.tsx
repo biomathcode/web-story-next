@@ -1,4 +1,4 @@
-import { HomeIcon } from "@radix-ui/react-icons";
+import { FileIcon, HomeIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 function Footer() {
@@ -6,7 +6,7 @@ function Footer() {
     <footer
       style={{
         position: "fixed",
-        bottom: "10px",
+        bottom: "5px",
         zIndex: 3,
         display: "flex",
         justifyContent: "center",
@@ -16,16 +16,33 @@ function Footer() {
     >
       <div
         style={{
-          padding: "10px 10px",
+          padding: "5px 10px",
           display: "flex",
           gap: "10px",
           background: "#222",
           borderRadius: "4px",
         }}
       >
-        <Link className="btn flex center gap-10" href="/">
+        <Link className="btn flex center gap-10 no-style" href="/">
           <HomeIcon />
           home
+        </Link>
+        <Link
+          className="btn flex center gap-10 no-style"
+          href="/learn"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FileIcon />
+          Learn
+        </Link>
+        <Link
+          className="btn flex center gap-10 no-style fs-14"
+          href="/privacy"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Privacy Policy
         </Link>
       </div>
     </footer>

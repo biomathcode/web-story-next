@@ -110,7 +110,9 @@ function Learn() {
           }}
         >
           <h1>Learn about AMP web stories Search Engine Optimisation or SEO</h1>
-          <p>
+          <p
+            style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}
+          >
             by{" "}
             <a
               href="http://twitter.com/biomathcode"
@@ -179,6 +181,19 @@ function Learn() {
               amazing.
             </li>
           </ul>
+          <p
+            style={{
+              border: "1px solid #444",
+              borderRadius: "4px",
+              padding: "20px",
+              margin: "40px 0px",
+            }}
+          >
+            Read this next article{" "}
+            <a href="/how-to-monetize-web-stories">
+              How to monetize web Stories ?
+            </a>
+          </p>
 
           <h3>Resource to learn more</h3>
           <ul className="flex col gap-10">

@@ -1,6 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import useLocalStorage from "use-local-storage";
 
 type InfoCarouselType = {
   info: string | string[];
@@ -16,7 +15,11 @@ function InfoCarousel({ info = ["working"] }: InfoCarouselType) {
   const flexStyles = {
     display: "flex",
     gap: "10px",
-    background: "#eee",
+    border: "1px solid #444",
+    borderRadius: "4px",
+    margin: "20px 0px",
+    fontSize: "15px",
+
     color: "#222",
     padding: "10px",
     transition: "all 216ms ease-in",
@@ -31,17 +34,17 @@ function InfoCarousel({ info = ["working"] }: InfoCarouselType) {
   };
   return (
     <div className="flex gap-10 " style={{ ...flexStyles, ...center }}>
-      <div style={{ ...flexStyles }}>
+      <div className="flex gap-10 ">
         <button
           disabled={is_first}
-          style={{ ...button, color: is_first ? "#777" : "#222" }}
+          style={{ ...button, color: is_first ? "#777" : "#000" }}
           onClick={() => setCurrent(current - 1)}
         >
           <ChevronLeftIcon />
         </button>
         <button
           disabled={is_last}
-          style={{ ...button, color: is_last ? "#777" : "#222" }}
+          style={{ ...button, color: is_last ? "#777" : "#000" }}
           onClick={() => setCurrent(current + 1)}
         >
           <ChevronRightIcon />

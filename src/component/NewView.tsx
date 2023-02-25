@@ -267,7 +267,7 @@ function NewView({
                       url: "",
                       ctaText: "",
                       textAnimation: "fade-in",
-                      imageAnimation: "none",
+                      imageAnimation: "fade-in",
                       overlay: false,
                     },
                   ])

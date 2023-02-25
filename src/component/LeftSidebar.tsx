@@ -31,23 +31,6 @@ const LeftSidebar = ({
   newSelect: any;
   setNewState: any;
 }) => {
-  const animationTypes = [
-    "Fade In",
-    "Twirl In",
-    "Fly In Left",
-    "Fly In Right",
-    "Fly In Top",
-    "Fly In Bottom",
-    "Rotate In Left",
-    "Rotate In Right",
-    "Whoosh In Left",
-    "Whoosh In Right",
-    "Drop",
-    "Zoom Out",
-  ];
-
-  const [open, setOpen] = useState(false);
-
   function handleChange(e: any) {
     const state = newState.map((el: any, i: any) => {
       const newObject: any = {
@@ -362,7 +345,7 @@ const LeftSidebar = ({
             <label className="label">Text Animation</label>
             <select
               name="textAnimation"
-              defaultValue={newState[newSelect]?.textAnimation}
+              value={newState[newSelect]?.textAnimation}
               onChange={(e) => handleChange(e)}
             >
               {AnimationOptions.map((el) => (
@@ -376,7 +359,7 @@ const LeftSidebar = ({
             <label className="label">Image Animation</label>
             <select
               name="imageAnimation"
-              defaultValue={newState[newSelect]?.imageAnimation}
+              value={newState[newSelect]?.imageAnimation}
               onChange={(e) => handleChange(e)}
             >
               {AnimationOptions.map((el) => (

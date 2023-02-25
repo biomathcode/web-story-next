@@ -316,6 +316,10 @@ input {
   width: 75px;
 }
 
+.no-style {
+  text-decoration: none;
+}
+
 .Input {
   width: 100%;
   display: inline-flex;
