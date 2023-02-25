@@ -220,8 +220,9 @@ const LeftSidebar = ({
             </select>
           </fieldset>
           <fieldset className="flex js center">
-            <label htmlFor="textPosition" className="label">
+            <label htmlFor="textPosition" className="label flex gap-10 center">
               Text Position
+              <TextIcon />
             </label>
             <input
               onChange={(e) => handleChange(e)}

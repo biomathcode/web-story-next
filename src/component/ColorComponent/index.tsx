@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RgbaColorPicker } from "react-colorful";
 import { useClickAway } from "use-click-away";
-import { number } from "zod";
 
 type ColorComponentType = {
   colorValue: string;
@@ -9,12 +8,8 @@ type ColorComponentType = {
   setColorValue: (e: any) => void;
 };
 
-export default function ColorComponent({
-  colorValue,
-  setColorValue,
-  name,
-}: ColorComponentType) {
-  const obj = colorValue.match(/[\d\.]+/g)?.map(Number);
+function stringToRGB(color: string) {
+  const obj = color.match(/[\d\.]+/g)?.map(Number);
 
   const rgbaObj = obj && {
     r: obj[0],
@@ -22,9 +17,22 @@ export default function ColorComponent({
     b: obj[2],
     a: obj[3],
   };
-  const [color, setColor] = useState(rgbaObj);
+
+  return rgbaObj;
+}
+
+export default function ColorComponent({
+  colorValue,
+  setColorValue,
+  name,
+}: ColorComponentType) {
+  const [color, setColor] = useState(stringToRGB(colorValue));
   const [modal, setModal] = React.useState(false);
   const clickRef = React.useRef<any>("");
+
+  useEffect(() => {
+    setColor(stringToRGB(colorValue));
+  }, [colorValue]);
 
   useClickAway(clickRef, () => {
     setModal(false);
