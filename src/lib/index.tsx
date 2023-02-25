@@ -1,9 +1,3 @@
-// rules of amp pages
-// amp-story-page much have an id and children
-// amp-cta much be a decendent of amp-story-page
-// add move text settings
-// animation is missing
-
 export const slugify = (str: string) =>
   str
     .toLowerCase()
@@ -136,6 +130,32 @@ const NEXT_HEAD = (title: string, description: string, image: string) => {
   `;
 };
 
+const HTML_META = (title: string, description: string, image: string) => {
+  return `
+  <title>${title}</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta
+    name="description"
+    content="${description}"
+  />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="${title}"
+  />
+  <meta
+    property="og:image"
+    content="${image}"
+  />
+
+  <meta
+    property="og:description"
+    content="${description}"
+  />
+  
+  `;
+};
+
 const NEXTJS_TEMPLATE_STARTER = (children: string) => {
   return `<p>${children}</p>`;
 };
@@ -187,12 +207,18 @@ const AMP_IMAGE = (
     `;
 };
 
-const HTML_TEMPLATE = (children: string, styles: string, links: string) => {
+const HTML_TEMPLATE = (
+  children: string,
+  styles: string,
+  links: string,
+  meta: string
+) => {
   return `<!DOCTYPE html>
 
 <html ⚡ amp>
   <head>
     <meta charset="utf-8" />
+    ${meta}
 
 
     <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -387,4 +413,5 @@ export {
   AMP_OVERLAY,
   HTML_TEMPLATE,
   AMP_ANALYTICS,
+  HTML_META,
 };
