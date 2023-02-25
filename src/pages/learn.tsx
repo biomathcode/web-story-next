@@ -2,6 +2,7 @@ import Footer from "@/component/Footer";
 import InfoCheckBox from "@/component/InfoCheckbox/InfoCheckbox";
 import { structuredData } from "@/component/SEO";
 import Head from "next/head";
+import Link from "next/link";
 import Script from "next/script";
 
 function Learn() {
@@ -190,9 +191,9 @@ function Learn() {
             }}
           >
             Read this next article{" "}
-            <a href="/how-to-monetize-web-stories">
+            <Link href="/how-to-monetize-web-stories">
               How to monetize web Stories ?
-            </a>
+            </Link>
           </p>
 
           <h3>Resource to learn more</h3>

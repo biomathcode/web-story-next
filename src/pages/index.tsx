@@ -209,6 +209,10 @@ function Home() {
         </title>
         <meta title="Webstory code generator- no code editor to create google web stories for free" />
         <meta
+          name="description"
+          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
+        />
+        <meta
           property="title"
           content="Webstory code generator- no code editor to create google web stories for free"
         />

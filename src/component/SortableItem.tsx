@@ -11,6 +11,7 @@ import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 
 import * as Popover from "@radix-ui/react-popover";
 import { type } from "os";
+import Image from "next/image";
 
 interface Props {
   id: UniqueIdentifier;
@@ -121,7 +122,7 @@ export function SortableItem(props: any) {
             <div className="SortableItem" ref={setNodeRef} style={style}>
               <DragHandle />
               {props.type === "image" ? (
-                <img src={props.children} width="40px" height="50px" />
+                <Image src={props.children} alt="sortable image" />
               ) : (
                 <p style={{ fontSize: font + "px" }}>{props.children}</p>
               )}
