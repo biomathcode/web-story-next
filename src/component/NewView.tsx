@@ -198,7 +198,7 @@ function NewView({
               fontSize: `${newState[newSelect]?.fontSize}px`, // change to property
               color: newState[newSelect]?.color, // change to property
               position: "absolute",
-              top: "36%",
+              top: `${newState[newSelect]?.textPosition}%`,
               width: "100%",
               wordWrap: "break-word",
               textAlign: `${newState[newSelect]?.textAlign}`, // change to property
@@ -258,9 +258,10 @@ function NewView({
                       text: String(newSelect + 2),
                       fontSize: 16,
                       textAlign: "left",
-                      color: "#fff",
-                      background: "#000",
+                      color: "rgba(255, 255, 255, 1)",
+                      background: "rgba(0, 0, 0, 1)",
                       highlight: "box",
+                      textPosition: 36,
                       lineHeight: 25,
                       paddingX: 10,
                       paddingY: 20,

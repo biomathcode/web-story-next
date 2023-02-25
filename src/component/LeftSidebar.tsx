@@ -77,6 +77,10 @@ const LeftSidebar = ({
           ...el,
           lineHeight: e.target.value,
         },
+        textPosition: {
+          ...el,
+          textPosition: e.target.value,
+        },
         paddingX: {
           ...el,
           paddingX: e.target.value,
@@ -217,6 +221,20 @@ const LeftSidebar = ({
           </fieldset>
           <fieldset className="flex js center">
             <label htmlFor="textPosition" className="label">
+              Text Position
+            </label>
+            <input
+              onChange={(e) => handleChange(e)}
+              className={inter.className}
+              name="textPosition"
+              type="number"
+              min="0"
+              max="100"
+              value={newState[newSelect]?.textPosition}
+            />
+          </fieldset>
+          {/* <fieldset className="flex js center">
+            <label htmlFor="textPosition" className="label">
               {" "}
               Text Position
             </label>
@@ -231,7 +249,7 @@ const LeftSidebar = ({
               <option>middle</option>
               <option>bottom</option>
             </select>
-          </fieldset>
+          </fieldset> */}
           <fieldset className="flex js center">
             <label htmlFor="color" className="label flex gap-10 center">
               Text Color

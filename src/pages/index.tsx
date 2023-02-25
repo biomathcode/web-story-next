@@ -38,6 +38,7 @@ export type state = {
   paddingX: number;
   paddingY: number;
   fontSize: number;
+  textPosition: number;
   textAlign: "left" | "right" | "center";
   text: string;
   color: string;
@@ -47,6 +48,7 @@ export type state = {
   cta: boolean;
   url: string;
   ctaText: string;
+
   textAnimation: animationType;
   imageAnimation: animationType;
   overlay: boolean;
@@ -118,6 +120,7 @@ function Home() {
       color: "#ffffff",
       paddingX: 10,
       paddingY: 20,
+      textPosition: 36,
 
       textAlign: "center", // left, right or center
       background: "#000000", // string
