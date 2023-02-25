@@ -7,9 +7,6 @@ import "./globals.css";
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <Head>
-        <html lang="en" />
-      </Head>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-5K7VWB3071"
         strategy="afterInteractive"
