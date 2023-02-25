@@ -24,7 +24,6 @@ Features:
 [] SEO settings title, description change og:image, rest remain the same like twitter, 
 [] add Analytics (google analytics Code)
 [] Publisher Info (one time input)
-[] Editor Tour
 [] When page selection changes, change the title, description, 
 
 Bugs: 
@@ -39,10 +38,11 @@ Pending Decisions
 [] Code Block - 2 hour
 [] Add file system
 [] export and import feature
+[] Add Multiple fonts - research
 
 ROADMAP: 
 [] Text-alignment change - 30min
-[] Add Multiple fonts - research, 3 hours
+
 [] Code Validation with actions to improve - 2 hours
 [] Create Template - 2 hour
 [] Component tab in the RightSidebar - 1 hour

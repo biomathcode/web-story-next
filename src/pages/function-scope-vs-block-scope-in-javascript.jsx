@@ -87,6 +87,7 @@ export default function IndexPage() {
             top: 50%;
             position: absolute;
             color: #ffffff;
+            background: rgba(0, 0, 0, 0.5);
 
             font-family: "Inter", sans-serif;
           }
@@ -156,7 +157,114 @@ export default function IndexPage() {
             </h1>
           </amp-story-grid-layer>
         </amp-story-page>
+        <amp-story-page id="4">
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src="https://images.unsplash.com/photo-1525373698358-041e3a460346?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDYxOTZ8MHwxfHNlYXJjaHw1fHxwcm9ncmFtbWluZ3xlbnwwfDF8fHwxNjc3MzI3MzYy&ixlib=rb-4.0.3&q=80&w=400"
+              width="360"
+              height="720"
+              layout="fill"
+              animate-in="fade-in"
+            ></amp-img>
+          </amp-story-grid-layer>
 
+          <amp-story-grid-layer template="fill">
+            <div className="overlay"></div>
+          </amp-story-grid-layer>
+
+          <amp-story-grid-layer template="vertical">
+            <p className="p" animate-in="fly-in-top">
+              Scope: It is a region of the program where a variable can be
+              accessed. In other words, scope determines the
+              accessibility/visibility of a variable.
+            </p>
+          </amp-story-grid-layer>
+        </amp-story-page>
+
+        <amp-story-page id="4">
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src="https://images.unsplash.com/photo-1525373698358-041e3a460346?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDYxOTZ8MHwxfHNlYXJjaHw1fHxwcm9ncmFtbWluZ3xlbnwwfDF8fHwxNjc3MzI3MzYy&ixlib=rb-4.0.3&q=80&w=400"
+              width="360"
+              height="720"
+              layout="fill"
+              animate-in="fade-in"
+            ></amp-img>
+          </amp-story-grid-layer>
+
+          <amp-story-grid-layer template="fill">
+            <div className="overlay"></div>
+          </amp-story-grid-layer>
+
+          <amp-story-grid-layer template="vertical">
+            <p className="p" animate-in="fly-in-top">
+              JavaScript has 3 types of scope: Global Scope, Function Scope and
+              Block Scope
+            </p>
+          </amp-story-grid-layer>
+        </amp-story-page>
+        <amp-story-page id="5">
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDYxOTZ8MHwxfHNlYXJjaHw3fHxwcm9ncmFtbWluZ3xlbnwwfDF8fHwxNjc3MzI3MzYy&ixlib=rb-4.0.3&q=80&w=400"
+              width="360"
+              height="720"
+              layout="fill"
+              animate-in="fade-in"
+            ></amp-img>
+          </amp-story-grid-layer>
+
+          <amp-story-grid-layer template="fill">
+            <div className="overlay"></div>
+          </amp-story-grid-layer>
+
+          <amp-story-grid-layer template="vertical">
+            <p className="p" animate-in="fly-in-top">
+              Global Scope: Variables declared Globally (outside any function)
+              have Global Scope. Global variables can be accessed from anywhere
+              in a JavaScript program.
+            </p>
+          </amp-story-grid-layer>
+          <amp-story-page-outlink layout="nodisplay">
+            <a
+              href="https://blog.coolhead.in/difference-between-function-scope-and-block-scope-in-javascript"
+              title="Link Description"
+            >
+              See code example
+            </a>
+          </amp-story-page-outlink>
+        </amp-story-page>
+        <amp-story-page id="4">
+          <amp-story-grid-layer template="fill">
+            <amp-img
+              src="https://images.unsplash.com/photo-1528372444006-1bfc81acab02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDYxOTZ8MHwxfHNlYXJjaHwxMHx8cHJvZ3JhbW1pbmd8ZW58MHwxfHx8MTY3NzMyNzM2Mg&ixlib=rb-4.0.3&q=80&w=400"
+              width="360"
+              height="720"
+              layout="fill"
+              animate-in="fade-in"
+            ></amp-img>
+          </amp-story-grid-layer>
+
+          <amp-story-grid-layer template="fill">
+            <div className="overlay"></div>
+          </amp-story-grid-layer>
+
+          <amp-story-grid-layer template="vertical">
+            <p className="p" animate-in="fly-in-top">
+              Local Scope: variables declared inside the functions are
+              considered to be of the local scope and it is further divided into
+              function scoped and block scoped.
+            </p>
+          </amp-story-grid-layer>
+          <amp-story-page-outlink layout="nodisplay">
+            <a
+              href="https://blog.coolhead.in/difference-between-function-scope-and-block-scope-in-javascript"
+              title="Link Description"
+            >
+              See code example
+            </a>
+          </amp-story-page-outlink>
+        </amp-story-page>
         <amp-story-page id="1">
           <amp-story-grid-layer template="fill">
             <amp-img
@@ -179,11 +287,10 @@ export default function IndexPage() {
             </p>
           </amp-story-grid-layer>
         </amp-story-page>
-
         <amp-story-page id="2">
           <amp-story-grid-layer template="fill">
             <amp-img
-              src="https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDYxOTZ8MHwxfHNlYXJjaHwzfHxkZXZlbG9wZXJ8ZW58MHwxfHx8MTY3NjYzMDIxNA&ixlib=rb-4.0.3&q=80&w=400"
+              src="https://images.unsplash.com/photo-1560235316-99f3ef4cbe98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDYxOTZ8MHwxfHNlYXJjaHw2fHxsYXRlJTIwbmlnaHR8ZW58MHwxfHx8MTY3NzMyODQ5MQ&ixlib=rb-4.0.3&q=80&w=400"
               width="360"
               height="720"
               layout="fill"
@@ -202,8 +309,15 @@ export default function IndexPage() {
               that function.
             </p>
           </amp-story-grid-layer>
+          <amp-story-page-outlink layout="nodisplay">
+            <a
+              href="https://blog.coolhead.in/difference-between-function-scope-and-block-scope-in-javascript"
+              title="Link Description"
+            >
+              See code example
+            </a>
+          </amp-story-page-outlink>
         </amp-story-page>
-
         <amp-story-page id="3">
           <amp-story-grid-layer template="fill">
             <amp-img
@@ -226,6 +340,14 @@ export default function IndexPage() {
               that particular condition or loop.
             </p>
           </amp-story-grid-layer>
+          <amp-story-page-outlink layout="nodisplay">
+            <a
+              href="https://blog.coolhead.in/difference-between-function-scope-and-block-scope-in-javascript"
+              title="Link Description"
+            >
+              See code example
+            </a>
+          </amp-story-page-outlink>
         </amp-story-page>
       </amp-story>
     </>

@@ -179,26 +179,6 @@ const Model = () => {
               value={code || "somethng"}
             />
           </FullScreen>
-          {/* <fieldset className={styles.Fieldset}>
-          <label className={styles.Label} htmlFor="name">
-            Name
-          </label>
-          <input
-            className={styles.Input}
-            id="name"
-            defaultValue="Pedro Duarte"
-          />
-        </fieldset>
-        <fieldset className={styles.Fieldset}>
-          <label className={styles.Label} htmlFor="username">
-            Username
-          </label>
-          <input
-            className={styles.Input}
-            id="username"
-            defaultValue="@peduarte"
-          />
-        </fieldset> */}
 
           <Dialog.Close asChild>
             <button className={styles.IconButton} aria-label="Close">
