@@ -398,7 +398,10 @@ const AMP_STORY_AUTO_ADS = (client: string, slot: string) => {
 
 const AMP_ANALYTICS = (tag: string) => {
   return `
-  <amp-story-auto-analytics gtag-id="${tag}"></amp-story-auto-analytics>
+  <amp-story-auto-analytics 
+    gtag-id="${tag}"
+  >
+  </amp-story-auto-analytics>
 
   `;
 };

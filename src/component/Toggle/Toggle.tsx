@@ -6,33 +6,47 @@ import InfoCard from "../InfoCard/InfoCard";
 type ToggleType = {
   label: string;
   infoText: string;
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  // open: boolean;
+  value: string;
+  name: string;
+  onChange: (e) => void;
+  // setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Toggle = ({ label, infoText, open, setOpen }: ToggleType) => (
-  <div className="flex js">
-    <div className="flex gap-10 center">
-      <InfoCard text={infoText} />
+const Toggle = ({ label, infoText, name, onChange, value }: ToggleType) => {
+  return (
+    <div className="flex js">
+      <div className="flex gap-10 center">
+        <label
+          className={styles.Label}
+          htmlFor={label}
+          style={{ paddingRight: 15 }}
+        >
+          {label}
+        </label>
+        <InfoCard text={infoText} />
+      </div>
 
-      <label
-        className={styles.Label}
-        htmlFor={label}
-        style={{ paddingRight: 15 }}
+      <Switch.Root
+        onCheckedChange={(e) => {
+          const newObje = {
+            target: {
+              name: name,
+              value: e,
+            },
+          };
+          onChange(newObje);
+        }}
+        checked={value === "true" ? true : false}
+        name={name}
+        className={styles.SwitchRoot}
+        id="airplane-mode"
+        value={value}
       >
-        {label}
-      </label>
+        <Switch.Thumb className={styles.SwitchThumb} />
+      </Switch.Root>
     </div>
-
-    <Switch.Root
-      checked={open}
-      onCheckedChange={(e) => setOpen(e)}
-      className={styles.SwitchRoot}
-      id="airplane-mode"
-    >
-      <Switch.Thumb className={styles.SwitchThumb} />
-    </Switch.Root>
-  </div>
-);
+  );
+};
 
 export default Toggle;

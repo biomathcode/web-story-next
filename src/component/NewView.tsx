@@ -199,7 +199,7 @@ function NewView({
               color: newState[newSelect]?.color, // change to property
               position: "absolute",
               top: "36%",
-              width: "330px",
+              width: "100%",
               wordWrap: "break-word",
               textAlign: `${newState[newSelect]?.textAlign}`, // change to property
               background: `${
@@ -207,6 +207,7 @@ function NewView({
                   ? newState[newSelect]?.background
                   : "none"
               }`,
+
               zIndex: 4,
               height: "fit-content",
               lineHeight: `${newState[newSelect]?.lineHeight}px`,

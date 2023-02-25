@@ -4,6 +4,7 @@
   border-radius: 6px;
   padding: 10px;
   width: fit-content;
+  max-width: 260px;
   background-color: var(--mauve12);
   border: 1px solid var(--mauve8);
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,

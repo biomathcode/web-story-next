@@ -13,6 +13,8 @@ import { BlockPicker } from "react-color";
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
 import { state } from "@/pages/index";
+import Toggle from "./Toggle/Toggle";
+import ColorComponent from "./ColorComponent";
 
 // Text, Image, Cta, Animation,
 
@@ -32,6 +34,7 @@ const LeftSidebar = ({
   setNewState: any;
 }) => {
   function handleChange(e: any) {
+    console.log(e);
     const state = newState.map((el: any, i: any) => {
       const newObject: any = {
         text: {
@@ -60,7 +63,7 @@ const LeftSidebar = ({
         },
         cta: {
           ...el,
-          cta: e.target.value === "true" ? true : false,
+          cta: e.target.value,
         },
         url: {
           ...el,
@@ -92,7 +95,7 @@ const LeftSidebar = ({
         },
         overlay: {
           ...el,
-          overlay: e.target.value === "true" ? true : false,
+          overlay: e.target.value,
         },
       };
 
@@ -234,19 +237,21 @@ const LeftSidebar = ({
               Text Color
               <ColorWheelIcon />
             </label>
-            <input
-              aria-label="textColor"
-              id="color"
-              type="color"
+            <ColorComponent
+              colorValue={newState[newSelect]?.color}
+              setColorValue={handleChange}
               name="color"
-              onChange={(e) => handleChange(e)}
-              value={newState[newSelect]?.color}
-              style={{
-                width: "40px",
-                height: "30px",
-                padding: "0px",
-                borderRadius: "4px",
-              }}
+            />
+          </fieldset>
+          <fieldset className="flex js center">
+            <label htmlFor="background" className="label flex gap-10 center">
+              Background
+              <ColorWheelIcon />
+            </label>
+            <ColorComponent
+              colorValue={newState[newSelect]?.background}
+              setColorValue={handleChange}
+              name="background"
             />
           </fieldset>
           <fieldset className="flex js center">
@@ -266,41 +271,7 @@ const LeftSidebar = ({
               <option>Marked</option>
             </select>
           </fieldset>
-          <fieldset className="flex js center">
-            <label htmlFor="overlay" className="label">
-              Overlay
-            </label>
-            <select
-              aria-label="overlay"
-              name="overlay"
-              onChange={(e) => handleChange(e)}
-              value={newState[newSelect]?.overlay === true ? "true" : "false"}
-            >
-              <option>true </option>
-              <option>false</option>
-            </select>
-          </fieldset>
 
-          <fieldset className="flex js center">
-            <label htmlFor="background" className="label flex gap-10 center">
-              Background
-              <ColorWheelIcon />
-            </label>
-            <input
-              id="background"
-              aria-label="background"
-              type="color"
-              name="background"
-              onChange={(e) => handleChange(e)}
-              value={newState[newSelect]?.background}
-              style={{
-                width: "40px",
-                height: "30px",
-                padding: "0px",
-                borderRadius: "4px",
-              }}
-            />
-          </fieldset>
           <fieldset className="flex js center">
             <label htmlFor="paddingY" className="label flex gap-10 center">
               Padding Vertical
@@ -333,31 +304,25 @@ const LeftSidebar = ({
               value={newState[newSelect]?.paddingX}
             />
           </fieldset>
+          <Toggle
+            key="Overlay"
+            infoText="Overlay will have a transparent gray gradient from top to bottom. This will increase contrast between the image and text "
+            label="Overlay"
+            name="overlay"
+            onChange={handleChange}
+            value={newState[newSelect]?.overlay === true ? "true" : "false"}
+          />
 
-          {/* <Toggle
+          <Toggle
+            key={"Cta"}
             infoText="You can only add one CTA per page"
             label="Call to Action"
-            open={open}
-            setOpen={setOpen}
+            name="cta"
+            onChange={handleChange}
+            value={newState[newSelect]?.cta === true ? "true" : "false"}
           />
-          {open && ( */}
+
           <div>
-            <fieldset className="flex js center gap-10">
-              <label htmlFor="cta" className="label">
-                CTA
-              </label>
-              <select
-                aria-label="Call to action"
-                id="cta"
-                name="cta"
-                className={inter.className}
-                onChange={(e) => handleChange(e)}
-                value={newState[newSelect]?.cta ? "true" : "false"}
-              >
-                <option>true</option>
-                <option>false</option>
-              </select>
-            </fieldset>
             {newState[newSelect]?.cta ? (
               <>
                 <fieldset className="flex js  col mt-10 gap-10">
