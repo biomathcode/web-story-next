@@ -48,6 +48,11 @@ export default function ColorComponent({
           border: "2px solid #222",
           background: `rgba(${color?.r}, ${color?.g}, ${color?.b},${color?.a}`,
         }}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          e.key === "Enter" && setModal(true);
+          e.key === "Escape" && setModal(false);
+        }}
         onClick={() => setModal(true)}
         id={name}
       ></div>

@@ -71,6 +71,7 @@ function NavBar({
       <div className="flex center gap-10 ">
         {user ? (
           <Select
+            aria-label="Search"
             className="select"
             options={options}
             value={value}

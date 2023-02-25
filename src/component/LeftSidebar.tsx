@@ -225,6 +225,7 @@ const LeftSidebar = ({
               <TextIcon />
             </label>
             <input
+              id="textPosition"
               onChange={(e) => handleChange(e)}
               className={inter.className}
               name="textPosition"

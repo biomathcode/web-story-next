@@ -8,7 +8,11 @@ const ToolTip = ({ children, text }: { children: any; text: any }) => {
       <Tooltip.Root>
         <Tooltip.Trigger asChild>{children}</Tooltip.Trigger>
         <Tooltip.Portal>
-          <Tooltip.Content className={styles.TooltipContent} sideOffset={5}>
+          <Tooltip.Content
+            style={{ zIndex: 20 }}
+            className={styles.TooltipContent}
+            sideOffset={5}
+          >
             {text}
             <Tooltip.Arrow className={styles.TooltipArrow} />
           </Tooltip.Content>

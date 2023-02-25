@@ -31,11 +31,7 @@ export const Item = ({ el }: { el: any }) => {
   if (el.type === "code") {
     return (
       <div className="word-break" style={style}>
-        <button
-          aria-label="drag handler"
-          id="draghandler"
-          className="DragHandle"
-        >
+        <button aria-label={href} id={href} className="DragHandle">
           <svg viewBox="0 0 20 20" width="12">
             <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
           </svg>
@@ -48,12 +44,7 @@ export const Item = ({ el }: { el: any }) => {
 
   return (
     <div className="word-break" style={style}>
-      <button
-        type="button"
-        aria-label="drag handler"
-        id="draghandler"
-        className="DragHandle"
-      >
+      <button type="button" aria-label={href} id={href} className="DragHandle">
         <svg viewBox="0 0 20 20" width="12">
           <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
         </svg>
@@ -114,7 +105,13 @@ const Droppable = ({
   if (data.type === "code") {
     return (
       <div style={style} className="word-break" ref={setNodeRef}>
-        <button className="DragHandle" {...attributes} {...listeners}>
+        <button
+          className="DragHandle"
+          id={href}
+          aria-label={href}
+          {...attributes}
+          {...listeners}
+        >
           <svg viewBox="0 0 20 20" width="12">
             <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
           </svg>
@@ -129,8 +126,8 @@ const Droppable = ({
     <div style={style} className="word-break" ref={setNodeRef}>
       <button
         className="DragHandle"
-        id="draghandler"
-        aria-label="drag handler"
+        id={href}
+        aria-label={href}
         {...attributes}
         {...listeners}
       >
@@ -145,10 +142,6 @@ const Droppable = ({
       )}
     </div>
   );
-};
-
-const ImageDroppbale = () => {
-  return <div></div>;
 };
 
 export default Droppable;
