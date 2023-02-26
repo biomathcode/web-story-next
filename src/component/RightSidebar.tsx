@@ -3,6 +3,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import PlaceHolder from "./Placeholder/Placeholder";
 
 import UnsplashContainer from "./Unsplash";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
 
 const RightSidebar = ({ content }: { content: any }) => {
   return (
@@ -33,7 +34,11 @@ const RightSidebar = ({ content }: { content: any }) => {
         }}
         value="tab2"
       >
-        <UnsplashContainer />
+        <ScrollArea.Root>
+          <ScrollArea.Viewport>
+            <UnsplashContainer />
+          </ScrollArea.Viewport>
+        </ScrollArea.Root>
       </Tabs.Content>
       <Tabs.Content
         value="tab1"

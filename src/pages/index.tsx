@@ -94,8 +94,6 @@ const image = [
 ];
 
 function Home() {
-  const [page, setPage] = useState(0);
-
   const [content, setContent] = useState<ContentType[]>([]);
 
   const [select, setSelect] = useState(0);
@@ -142,7 +140,7 @@ function Home() {
         );
       }
     }
-  }, [user, page, select]);
+  }, [user, select]);
 
   useEffect(() => {
     async function fetchFunction() {
@@ -159,7 +157,6 @@ function Home() {
 
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
-      console.log("this is over", over);
       return;
     } else {
       if (active.id && active.data.current.title) {
@@ -183,9 +180,6 @@ function Home() {
         });
 
         setNewState(state);
-        console.log(active.id, over.id, active);
-
-        console.log("this is the state", state);
       }
     }
     setActiveId(null);
@@ -328,6 +322,7 @@ function Home() {
 
                   display: "flex",
                   flexDirection: "column",
+                  justifyContent: "center",
                   gap: "10px",
                   minWidth: "300px",
                 }}
@@ -362,7 +357,7 @@ function Home() {
                 ></path>
               </svg>
             </PanelResizeHandle>
-            <Panel defaultSize={20} minSize={20}>
+            <Panel defaultSize={20} minSize={20} style={{ background: "#eee" }}>
               <LeftSidebar
                 inter={inter}
                 newSelect={newSelect}

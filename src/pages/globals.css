@@ -444,6 +444,10 @@ fieldset {
   justify-content: space-between;
 }
 
+.jc {
+  justify-content: center;
+}
+
 .ja {
   justify-content: space-around;
 }

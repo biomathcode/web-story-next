@@ -13,6 +13,9 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
 import { state } from "@/pages/index";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
+import { styled } from "@stitches/react";
+import { violet, mauve, blackA } from "@radix-ui/colors";
 import Toggle from "./Toggle/Toggle";
 import ColorComponent from "./ColorComponent";
 
@@ -111,7 +114,14 @@ const LeftSidebar = ({
     setNewState(state);
   }
   return (
-    <div className="flex col  js">
+    <div
+      className="flex col  js"
+      style={{
+        height: "80vh",
+        justifyContent: "space-between",
+        background: "#eee",
+      }}
+    >
       <Tabs.Root
         className="TabsRoot"
         defaultValue="tab1"
@@ -135,7 +145,7 @@ const LeftSidebar = ({
             margin: "0px px",
 
             width: "100%",
-            // height: "calc(90vh - 150px ) ",
+            maxHeight: "calc(90vh - 150px ) ",
 
             right: "0px",
             background: "#eee",
@@ -195,7 +205,7 @@ const LeftSidebar = ({
             overflow: "scroll",
 
             width: "100%",
-            // height: "calc(90vh - 150px ) ",
+            maxHeight: "calc(90vh - 150px ) ",
 
             right: "0px",
             background: "#eee",
@@ -250,7 +260,8 @@ const LeftSidebar = ({
             paddingBottom: "30px",
 
             width: "100%",
-            height: "calc(100vh - 200px ) ",
+
+            maxHeight: "calc(90vh - 150px ) ",
 
             right: "0px",
             background: "#eee",
@@ -446,7 +457,9 @@ const LeftSidebar = ({
           </div>
         </Tabs.Content>
       </Tabs.Root>
-      <Model />
+      <div className="flex jc p-10 center">
+        <Model />
+      </div>
     </div>
   );
 };
