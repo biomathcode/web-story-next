@@ -69,8 +69,18 @@ const Model = () => {
 
   function handleChange() {
     const item = window.localStorage.getItem("state");
+    const pubinfo = window.localStorage.getItem("publicationinfo");
 
     const data = item && JSON.parse(item);
+    const publisherInfo = pubinfo && JSON.parse(pubinfo);
+
+    // generate schema.org
+    // add publisher info to amp story
+    // add story images like posterSrc
+    // generate slug from title
+    //
+
+    console.log(publisherInfo);
     const ampStory = AMP_STORY(
       data
         .map((el: any, i: any) => {
@@ -80,7 +90,8 @@ const Model = () => {
               "fill"
             ) +
               AMP_GRID_LAYER(AMP_OVERLAY(), "fill") +
-              AMP_GRID_LAYER(AMP_TEXT(el.text, "fly-in-top"), "vertical"),
+              AMP_GRID_LAYER(AMP_TEXT(el.text, el.textAnimation), "vertical") +
+              AMP_CTA_LAYER("https://coolhead.in", "learn more"),
             i
           );
         })
