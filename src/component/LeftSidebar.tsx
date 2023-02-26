@@ -115,7 +115,7 @@ const LeftSidebar = ({
       <Tabs.Root
         className="TabsRoot"
         defaultValue="tab1"
-        style={{ overflow: "auto", width: "100%" }}
+        style={{ width: "100%" }}
       >
         <Tabs.List className="TabsList" aria-label="Manage your account">
           <Tabs.Trigger className="TabsTrigger" value="tab1">
@@ -133,7 +133,6 @@ const LeftSidebar = ({
           style={{
             padding: "10px 10px",
             margin: "0px px",
-            overflow: "scroll",
 
             width: "100%",
             // height: "calc(90vh - 150px ) ",
@@ -249,7 +248,6 @@ const LeftSidebar = ({
         <Tabs.Content
           style={{
             paddingBottom: "30px",
-            overflow: "scroll",
 
             width: "100%",
             height: "calc(100vh - 200px ) ",

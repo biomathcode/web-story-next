@@ -1681,6 +1681,13 @@
   "resolved" "https://registry.npmjs.org/@radix-ui/colors/-/colors-0.1.8.tgz"
   "version" "0.1.8"
 
+"@radix-ui/number@1.0.0":
+  "integrity" "sha512-Ofwh/1HX69ZfJRiRBMTy7rgjAzHmwe4kW9C9Y99HTRUcYLUuVT0KESFj15rPjRgKJs20GPq8Bm5aEDJ8DuA3vA=="
+  "resolved" "https://registry.npmjs.org/@radix-ui/number/-/number-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+
 "@radix-ui/primitive@1.0.0":
   "integrity" "sha512-3e7rn8FDMin4CgeL7Z/49smCA3rFYY3Ha2rUQ7HRWFadS5iCRw08ZgVT1LaNTCNqgvrUiyczLflrVrF0SRQtNA=="
   "resolved" "https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.0.0.tgz"
@@ -1917,6 +1924,22 @@
     "@radix-ui/react-primitive" "1.0.1"
     "@radix-ui/react-use-callback-ref" "1.0.0"
     "@radix-ui/react-use-controllable-state" "1.0.0"
+
+"@radix-ui/react-scroll-area@^1.0.2":
+  "integrity" "sha512-k8VseTxI26kcKJaX0HPwkvlNBPTs56JRdYzcZ/vzrNUkDlvXBy8sMc7WvCpYzZkHgb+hd72VW9MqkqecGtuNgg=="
+  "resolved" "https://registry.npmjs.org/@radix-ui/react-scroll-area/-/react-scroll-area-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/number" "1.0.0"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-direction" "1.0.0"
+    "@radix-ui/react-presence" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-use-callback-ref" "1.0.0"
+    "@radix-ui/react-use-layout-effect" "1.0.0"
 
 "@radix-ui/react-slot@1.0.1":
   "integrity" "sha512-avutXAFL1ehGvAXtPquu0YK5oz6ctS474iM3vNGQIkswrVhdrS52e3uoMQBzZhNRAIE0jBnUyXWNmSjGHhCFcw=="

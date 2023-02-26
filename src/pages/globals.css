@@ -76,6 +76,10 @@ textarea {
   font-size: 12px;
 }
 
+fieldset {
+  padding: 0px 5px;
+}
+
 :-webkit-autofill,
 :-webkit-autofill:hover,
 :-webkit-autofill:focus {

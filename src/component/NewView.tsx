@@ -87,7 +87,7 @@ function NewView({
     <div className="flex center col jc  " suppressHydrationWarning={true}>
       <div
         className="flex center jc "
-        style={{ margin: "10px 0px", overflow: "scroll", width: "400px" }}
+        style={{ margin: "10px 0px", width: "400px" }}
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >

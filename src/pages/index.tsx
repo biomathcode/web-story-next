@@ -44,7 +44,7 @@ export type state = {
   color: string;
   lineHeight: number;
   background: string;
-  highlight: "box" | "mark";
+  highlight: "box" | "mark" | "none";
   cta: boolean;
   url: string;
   ctaText: string;
@@ -315,7 +315,7 @@ function Home() {
               <div
                 style={{
                   height: "calc(100vh - 60px ) ",
-                  // overflow: "scroll",
+
                   display: "flex",
                   flexDirection: "column",
                   gap: "10px",
@@ -330,9 +330,7 @@ function Home() {
                 />
               </div>
             </Panel>
-            {/* 
-            Refactor overlay so that you don't have to use the content state
-            */}
+
             <DragOverlay>
               {activeId ? <Item el={activeId} /> : null}
             </DragOverlay>
