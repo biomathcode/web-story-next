@@ -215,6 +215,7 @@ function Home() {
           name="description"
           content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
         />
+
         <meta
           property="title"
           content="Webstory code generator- no code editor to create google web stories for free"
@@ -254,9 +255,18 @@ function Home() {
           name="twitter:image:alt"
           content="Webstory code generator - no code tool editor "
         />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        />
         <meta property="og:type" content="article" />
-
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+
         <meta property="og:url" content="http://webstory.coolhead.in" />
         <meta property="og:site" content="http://webstory.coolhead.in" />
 
