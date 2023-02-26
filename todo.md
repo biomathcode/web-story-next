@@ -20,7 +20,7 @@ Features:
 [x] Animation Play Preview
 [x] Code generation
 
-[] Improve UI/UX
+[x] Improve UI/UX
 [] SEO settings title, description change og:image, rest remain the same like twitter, 
 [] add Analytics (google analytics Code)
 [] Publisher Info (one time input)
@@ -41,7 +41,7 @@ Pending Decisions
 [] Add Multiple fonts - research
 
 ROADMAP: 
-[] Text-alignment change - 30min
+[x] Text-alignment change - 30min
 
 [] Code Validation with actions to improve - 2 hours
 [] Create Template - 2 hour

@@ -50,7 +50,7 @@ export const Item = ({ el }: { el: any }) => {
         </svg>
       </button>
       {type === "image" ? (
-        <Image alt={href} src={href} />
+        <Image alt={href} src={href} width={240} height={360} />
       ) : (
         <p className="fs-14">{el.content}</p>
       )}
@@ -136,7 +136,7 @@ const Droppable = ({
         </svg>
       </button>
       {type === "image" ? (
-        <Image alt={href} src={href} />
+        <Image alt={href} src={href} width={240} height={360} />
       ) : (
         <p className="fs-14">{href}</p>
       )}

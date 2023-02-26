@@ -43,6 +43,17 @@ a {
   text-decoration: underline;
 }
 
+/* reset */
+button,
+fieldset,
+input {
+  all: unset;
+}
+input:-internal-autofill-selected {
+  background: #444;
+  color: #fff;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -52,6 +63,22 @@ a {
 body {
   margin: 0px;
   padding: 0px;
+}
+
+input,
+textarea {
+  padding: 8px;
+  border: 1px solid var(--mauve8);
+  border-radius: var(--radius);
+  background: var(--mauve1);
+  color: var(--slate12);
+  font-family: "Inter";
+  font-size: 12px;
+}
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
 }
 
 .overlay {
@@ -67,13 +94,6 @@ body {
 .App {
   font-family: sans-serif;
   text-align: center;
-}
-
-/* reset */
-button,
-fieldset,
-input {
-  all: unset;
 }
 
 /* animation */
@@ -407,17 +427,6 @@ input {
   font-size: 12px;
 }
 
-input,
-textarea {
-  padding: 8px;
-  border: 1px solid var(--mauve8);
-  border-radius: var(--radius);
-  background: var(--mauve1);
-  color: var(--slate12);
-  font-family: "Inter";
-  font-size: 12px;
-}
-
 .gap-10 {
   gap: 10px;
 }
@@ -476,6 +485,8 @@ textarea {
 }
 
 .btn:focus {
+  background: #444;
+  color: #fff;
   outline: 2px solid var(--blue11);
 }
 

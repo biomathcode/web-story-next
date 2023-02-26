@@ -10,6 +10,7 @@ import {
   TrashIcon,
   ResetIcon,
   PlayIcon,
+  PauseIcon,
 } from "@radix-ui/react-icons";
 
 import { nanoid } from "nanoid";
@@ -166,6 +167,8 @@ function NewView({
               position: "absolute",
               bottom: "10px",
               // left: "70px",
+              zIndex: 4,
+
               height: "fit-content",
               display: "flex",
               justifyContent: "center",
@@ -347,7 +350,8 @@ function NewView({
               fontSize: "12px",
             }}
           >
-            <PlayIcon />
+            {animation ? <PauseIcon /> : <PlayIcon />}
+
             {/* Run */}
           </button>
         </ToolTip>

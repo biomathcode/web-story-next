@@ -1,3 +1,12 @@
+import { nanoid } from "nanoid";
+
+// Text styles
+// editor input element
+// styles creator => inline styles , classname Styles
+// Testing
+// Validation for image not found, cta url is not correct
+//
+
 export const slugify = (str: string) =>
   str
     .toLowerCase()
@@ -211,7 +220,8 @@ const HTML_TEMPLATE = (
   children: string,
   styles: string,
   links: string,
-  meta: string
+  meta: string,
+  canonicalLink?: string
 ) => {
   return `<!DOCTYPE html>
 
@@ -402,7 +412,22 @@ const AMP_ANALYTICS = (tag: string) => {
     gtag-id="${tag}"
   >
   </amp-story-auto-analytics>
+  `;
+};
 
+const AMP_STYLES = (
+  id: string,
+  fontSize: string,
+  color: string,
+  background: string,
+  textAlign: string
+) => {
+  return `
+    .${id} {
+      font-size: ${fontSize};
+      color: ${color};
+      background: ${background};
+    }
   `;
 };
 
@@ -417,4 +442,5 @@ export {
   HTML_TEMPLATE,
   AMP_ANALYTICS,
   HTML_META,
+  AMP_STYLES,
 };
