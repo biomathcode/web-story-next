@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import InfoCheckBox from "../component/InfoCheckbox/InfoCheckbox";
-import "../app/globals.css";
+import "../pages/globals.css";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

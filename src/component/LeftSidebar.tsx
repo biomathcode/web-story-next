@@ -1,7 +1,6 @@
 import {
   ColorWheelIcon,
   FontSizeIcon,
-  GearIcon,
   LineHeightIcon,
   SpaceBetweenHorizontallyIcon,
   SpaceBetweenVerticallyIcon,
@@ -460,6 +459,7 @@ const LeftSidebar = ({
       <div className="flex jc p-10 center">
         <Model />
       </div>
+      <div></div>
     </div>
   );
 };

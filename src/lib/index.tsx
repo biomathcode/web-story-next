@@ -342,9 +342,24 @@ const HTML_TEMPLATE = (
   `;
 };
 
+// for seo first element will be h1
+
+// then all be the p
+
+const AMP_HIGHLIGHTED_TEXT = () => {};
+
 const AMP_TEXT = (
   content: string,
-  animation: animationType = "fade-in"
+  animation: animationType = "fade-in",
+
+  color?: string,
+  background?: string,
+  top?: string,
+  fontSize?: string,
+  textAlign?: string,
+  paddingVertical?: string,
+  paddingHorizontal?: string,
+  lineHeight?: string
 ): string => {
   return `
   <h1

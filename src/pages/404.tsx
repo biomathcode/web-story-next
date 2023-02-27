@@ -1,10 +1,11 @@
-import PlaceHolderIcon from "@/component/Icons";
+import Footer from "@/component/Footer";
+import PlaceHolderIcon, { BusPlaceholder } from "@/component/Icons";
 import Link from "next/link";
 
 function ErrorPage() {
   return (
     <div className="flex center js label col gap-10">
-      <PlaceHolderIcon />
+      <BusPlaceholder />
       <p className="fs-16 ">404 Error Page not found</p>
       <ul className="flex gap-10 col">
         <Link
@@ -26,6 +27,7 @@ function ErrorPage() {
           Learn
         </Link>
       </ul>
+      <Footer />
     </div>
   );
 }

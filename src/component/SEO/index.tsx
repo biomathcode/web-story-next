@@ -123,15 +123,16 @@ const Analytics = () => {
   return (
     <form onSubmit={handleSubmit((data) => setAnalytics(data))}>
       <fieldset className="flex center gap-10 js">
-        <label className="label">Google Analytics G-tag</label>
+        <label className="">Google Analytics G-tag</label>
         <input
+          placeholder="GA-124"
           required
           type="text"
           {...register("gtag")}
           defaultValue={analytics.gtag}
         />
       </fieldset>
-      <button type="submit" className="btn fs-12 ">
+      <button type="submit" className="btn fs-12 mt-10 ">
         Submit
       </button>
     </form>

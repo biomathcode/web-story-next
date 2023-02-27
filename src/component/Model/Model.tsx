@@ -31,6 +31,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { z } from "zod";
 import styles from "./Model.module.css";
 import { useEffect, useState } from "react";
+import { state } from "@/pages";
 
 const storyObject = z.object({
   image: z.string().url(),
@@ -83,15 +84,21 @@ const Model = () => {
     console.log(publisherInfo);
     const ampStory = AMP_STORY(
       data
-        .map((el: any, i: any) => {
+        .map((el: state, i: any) => {
+          const cta = el.cta ? AMP_CTA_LAYER(el.url, el.ctaText) : "";
+
+          const overlay = el.overlay
+            ? AMP_GRID_LAYER(AMP_OVERLAY(), "fill")
+            : "";
+
           return AMP_STORY_PAGE(
             AMP_GRID_LAYER(
-              AMP_IMAGE(el.image, 360, 720, "fill", "fade-in"),
+              AMP_IMAGE(el.image, 360, 720, "fill", el.imageAnimation),
               "fill"
             ) +
-              AMP_GRID_LAYER(AMP_OVERLAY(), "fill") +
+              overlay +
               AMP_GRID_LAYER(AMP_TEXT(el.text, el.textAnimation), "vertical") +
-              AMP_CTA_LAYER("https://coolhead.in", "learn more"),
+              cta,
             i
           );
         })

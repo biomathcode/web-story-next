@@ -27,12 +27,7 @@ function Footer() {
           <HomeIcon />
           home
         </Link>
-        <Link
-          className="btn flex center gap-10 no-style"
-          href="/learn"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link className="btn flex center gap-10 no-style" href="/learn">
           <FileIcon />
           Learn
         </Link>
