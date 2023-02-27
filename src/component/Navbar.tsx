@@ -33,6 +33,8 @@ function NavBar({
   page,
   setPage,
   setUser,
+  info,
+  setInfo,
 }: {
   user: any;
   page: any;
@@ -93,6 +95,8 @@ function NavBar({
         <form
           onSubmit={handleSubmit(async (data) => {
             setLoading(true);
+
+            setInfo(data);
             const response = await axios(
               config(data.username, Number(data.page))
             );
@@ -119,7 +123,7 @@ function NavBar({
               })}
               min={0}
               max={10}
-              defaultValue={0}
+              defaultValue={info?.page}
               type="number"
               style={{ width: "50px" }}
               placeholder="Page"
@@ -131,7 +135,7 @@ function NavBar({
                 required: true,
               })}
               type="text"
-              defaultValue={user?.username}
+              defaultValue={info?.username}
               placeholder="username"
             />
           </fieldset>

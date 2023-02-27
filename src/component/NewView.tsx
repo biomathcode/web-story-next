@@ -12,6 +12,7 @@ import {
   PlayIcon,
   PauseIcon,
 } from "@radix-ui/react-icons";
+import classnames from "classnames";
 
 import { nanoid } from "nanoid";
 import { useState } from "react";
@@ -154,7 +155,7 @@ function NewView({
             }
             style={{
               backgroundImage: `url(${newState[newSelect]?.image})`,
-
+              transition: "all ease-in 216ms",
               backgroundSize: "cover",
               backgroundPosition: "center",
               width: "350px",

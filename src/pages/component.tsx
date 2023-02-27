@@ -4,12 +4,16 @@ import { CalendarPlaceHolder, Check } from "@/component/Icons";
 import { Analytics } from "@/component/SEO/index";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
+import useLocalStorage from "use-local-storage";
 
 function Component() {
   const [open, setOpen] = useState(false);
+
   return (
     <>
+      <Toaster />
       <div className="flex jc center mt-10 w-100">
         <div className="flex  center gap-10  ">
           <CalendarPlaceHolder height={200} />
@@ -70,7 +74,7 @@ function Component() {
                 <div
                   style={{
                     padding: "5px",
-                    background: "#1B91FB",
+                    background: open ? "#1B91FB" : "#444",
                     borderRadius: "50%",
                     width: "40px",
                     height: "40px",

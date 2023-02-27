@@ -1,19 +1,23 @@
+import {
+  ANALYTICS,
+  AUTHOR,
+  MONETIZE,
+  PUBLISHER,
+  SCHEMA,
+} from "@/lib/constants";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import useLocalStorage from "use-local-storage";
-import InfoCarousel from "../InfoCarousel";
 
-function SEO() {
-  const [seo, setSeo] = useLocalStorage("seo", {
+function Schema() {
+  const [seo, setSeo] = useLocalStorage(SCHEMA, {
     title: "",
     description: "",
     image: "",
   });
 
   const { handleSubmit, register } = useForm();
-  const info = [
-    "Title and description are very important for better page ranking",
-    "Add an social media thumbnail so that people get a preview when they share your page link",
-  ];
+
   return (
     <form
       onSubmit={handleSubmit((data) => {
@@ -22,6 +26,7 @@ function SEO() {
           description: data.description,
           image: data.image,
         });
+        toast("seo info updated");
       })}
       className="flex col gap-10 "
     >
@@ -64,7 +69,7 @@ function SEO() {
 const PublisherInfo = () => {
   const { handleSubmit, register } = useForm();
 
-  const [publisher, setPublisher] = useLocalStorage<any>("publisher", {
+  const [publisher, setPublisher] = useLocalStorage<any>(PUBLISHER, {
     websiteUrl: "",
     websiteName: "",
     websiteLogo: "",
@@ -91,6 +96,7 @@ const PublisherInfo = () => {
     <form
       onSubmit={handleSubmit((data) => {
         setPublisher(data);
+        toast.success("Publisher info updated");
       })}
       className="flex col gap-10"
     >
@@ -100,7 +106,9 @@ const PublisherInfo = () => {
             <label className="label">{el.label}</label>
             <input
               defaultValue={publisher[el.value]}
-              {...register(el.value)}
+              {...register(el.value, {
+                required: true,
+              })}
               type={el.type}
             />
           </fieldset>
@@ -115,18 +123,25 @@ const PublisherInfo = () => {
 
 const Analytics = () => {
   const { handleSubmit, register } = useForm();
-  const [analytics, setAnalytics] = useLocalStorage<any>("analytics", {
+  const [analytics, setAnalytics] = useLocalStorage<any>(ANALYTICS, {
     gtag: "",
   });
   return (
-    <form onSubmit={handleSubmit((data) => setAnalytics(data))}>
+    <form
+      onSubmit={handleSubmit((data) => {
+        setAnalytics(data);
+        toast.success("Analytics info updated!!");
+      })}
+    >
       <fieldset className="flex center gap-10 js">
         <label className="">Google Analytics G-tag</label>
         <input
           placeholder="GA-124"
           required
           type="text"
-          {...register("gtag")}
+          {...register("gtag", {
+            required: true,
+          })}
           defaultValue={analytics.gtag}
         />
       </fieldset>
@@ -139,14 +154,17 @@ const Analytics = () => {
 
 const Monetize = () => {
   const { handleSubmit, register } = useForm();
-  const [monetize, setMonetize] = useLocalStorage<any>("monetize", {
+  const [monetize, setMonetize] = useLocalStorage<any>(MONETIZE, {
     client: "",
     slot: "",
   });
   return (
     <form
       className="flex col gap-10"
-      onSubmit={handleSubmit((data) => setMonetize(data))}
+      onSubmit={handleSubmit((data) => {
+        setMonetize(data);
+        toast.success("Monetization info updated");
+      })}
     >
       <fieldset className="flex center gap-10 js">
         <label className="">Data ad client</label>
@@ -154,7 +172,9 @@ const Monetize = () => {
           placeholder="ca-pub-7971530223412"
           required
           type="text"
-          {...register("client")}
+          {...register("client", {
+            required: true,
+          })}
           defaultValue={monetize.client}
         />
       </fieldset>
@@ -164,7 +184,9 @@ const Monetize = () => {
           placeholder="21342392052"
           required
           type="text"
-          {...register("slot")}
+          {...register("slot", {
+            required: true,
+          })}
           defaultValue={monetize.slot}
         />
       </fieldset>
@@ -179,7 +201,7 @@ const Monetize = () => {
 
 const AuthorInfo = () => {
   const { handleSubmit, register } = useForm();
-  const [author, setAuthor] = useLocalStorage<any>("authorinfo", {
+  const [author, setAuthor] = useLocalStorage<any>(AUTHOR, {
     authorName: "",
     authorUrl: "",
     authorImage: "",
@@ -187,7 +209,9 @@ const AuthorInfo = () => {
   return (
     <form
       className="flex col gap-10"
-      onSubmit={handleSubmit((data) => setAuthor(data))}
+      onSubmit={handleSubmit((data) => {
+        setAuthor(data), toast.success("Author info updated");
+      })}
     >
       <fieldset className="flex gap-10 center js">
         <label className="label">Author name</label>
@@ -195,7 +219,9 @@ const AuthorInfo = () => {
           required
           type="text"
           defaultValue={author.authorName}
-          {...register("authorName")}
+          {...register("authorName", {
+            required: true,
+          })}
         />
       </fieldset>
       <fieldset className="flex gap-10 center js">
@@ -204,7 +230,9 @@ const AuthorInfo = () => {
           required
           type="url"
           defaultValue={author.authorImage}
-          {...register("authorImage")}
+          {...register("authorImage", {
+            required: true,
+          })}
         />
       </fieldset>
       <fieldset className="flex gap-10 center js">
@@ -213,7 +241,9 @@ const AuthorInfo = () => {
           required
           type="url"
           defaultValue={author.authorUrl}
-          {...register("authorUrl")}
+          {...register("authorUrl", {
+            required: true,
+          })}
         />
       </fieldset>
       <button type="submit" className="btn fs-12 m-x">
@@ -269,4 +299,11 @@ const structuredData = ({
   };
 };
 
-export { SEO, PublisherInfo, AuthorInfo, structuredData, Analytics, Monetize };
+export {
+  Schema,
+  PublisherInfo,
+  AuthorInfo,
+  structuredData,
+  Analytics,
+  Monetize,
+};

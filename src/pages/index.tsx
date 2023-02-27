@@ -30,6 +30,8 @@ import Script from "next/script";
 import { structuredData } from "@/component/SEO";
 import withNoSSR from "@/component/Nossr";
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
+import { INFO, STATE } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -100,7 +102,7 @@ function Home() {
 
   const [user, setUser] = useState<userState | null>(null);
 
-  const [info, setInfo] = useLocalStorage("info", {
+  const [info, setInfo] = useLocalStorage(INFO, {
     username: "biomathcode",
     page: 0,
   });
@@ -109,7 +111,7 @@ function Home() {
 
   const [activeId, setActiveId] = useState<number | null>(null);
 
-  const [newState, setNewState] = useLocalStorage<state[]>("state", [
+  const [newState, setNewState] = useLocalStorage<state[]>(STATE, [
     {
       image: image[0],
       text: "title ",
@@ -271,6 +273,7 @@ function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <Toaster />
 
       <NavBar
         page={select}

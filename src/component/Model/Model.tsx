@@ -33,6 +33,14 @@ import { z } from "zod";
 import styles from "./Model.module.css";
 import { useEffect, useState } from "react";
 import { state } from "@/pages";
+import {
+  ANALYTICS,
+  AUTHOR,
+  MONETIZE,
+  PUBLISHER,
+  SCHEMA,
+  STATE,
+} from "@/lib/constants";
 
 const storyObject = z.object({
   image: z.string().url(),
@@ -70,11 +78,29 @@ const Model = () => {
   const handle = useFullScreenHandle();
 
   function handleChange() {
-    const item = window.localStorage.getItem("state");
-    const pubinfo = window.localStorage.getItem("publicationinfo");
+    const item = window.localStorage.getItem(STATE);
+    const pubinfo = window.localStorage.getItem(PUBLISHER);
+
+    const monetizeinfo = window.localStorage.getItem(MONETIZE);
+
+    const analyticInfo = window.localStorage.getItem(ANALYTICS);
+
+    const authorinfo = window.localStorage.getItem(AUTHOR);
+
+    const structedinfo = window.localStorage.getItem(SCHEMA);
 
     const data = item && JSON.parse(item);
-    const publisherInfo = pubinfo && JSON.parse(pubinfo);
+    const publisher = pubinfo && JSON.parse(pubinfo);
+
+    const monetize = monetizeinfo && JSON.parse(monetizeinfo);
+
+    const analytics = analyticInfo && JSON.parse(analyticInfo);
+
+    const author = authorinfo && JSON.parse(authorinfo);
+
+    const structeddata = structedinfo && JSON.parse(structedinfo);
+
+    console.log(monetize, analytics, publisher, author);
 
     // generate schema.org
     // add publisher info to amp story
@@ -124,10 +150,12 @@ const Model = () => {
           );
         })
         .join("\n"),
-      "this is an amp story",
-      "Coolhead",
-      "https://images.unsplash.com/photo-1536148935331-408321065b18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-      "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      structeddata.title,
+      publisher.title,
+      publisher.websiteLogo,
+      data[0].image,
+      analytics,
+      monetize
     );
 
     const newData = HTML_TEMPLATE(
@@ -166,7 +194,7 @@ const Model = () => {
       <Dialog.Trigger asChild>
         <button
           onClick={() => handleChange()}
-          className="btn violet flex center gap-10"
+          className="btn violet flex center gap-10 fs-12"
         >
           <GearIcon />
           Generate Code

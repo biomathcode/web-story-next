@@ -17,6 +17,9 @@ import { styled } from "@stitches/react";
 import { violet, mauve, blackA } from "@radix-ui/colors";
 import Toggle from "./Toggle/Toggle";
 import ColorComponent from "./ColorComponent";
+import Link from "next/link";
+import FullModel from "./FullModel";
+import { Analytics, AuthorInfo, Monetize, PublisherInfo, Schema } from "./SEO";
 
 // Text, Image, Cta, Animation,
 
@@ -456,8 +459,32 @@ const LeftSidebar = ({
           </div>
         </Tabs.Content>
       </Tabs.Root>
-      <div className="flex jc p-10 center">
+      <div className="flex jc col  p-10 gap-10 center">
         <Model />
+        {/* Analytics, Monetisation */}
+        <FullModel triggerName="Analytics">
+          <Analytics />
+        </FullModel>
+        <FullModel triggerName="Monetize">
+          <Monetize />
+        </FullModel>
+        <FullModel triggerName="SEO">
+          <>
+            <AuthorInfo />
+            <PublisherInfo />
+            <Schema />
+          </>
+        </FullModel>
+        {/* <Link href="/component" className="btn fs-12">
+          analytics
+        </Link> */}
+        {/* AuthorInfo, PublisherInfo */}
+        {/* <Link href="/monetize" className="btn fs-12">
+          monetize
+        </Link>
+        <Link href="/seo" className="btn fs-12">
+          seo settings
+        </Link> */}
       </div>
       <div></div>
     </div>

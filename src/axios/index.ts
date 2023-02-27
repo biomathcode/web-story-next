@@ -28,7 +28,7 @@ const axiosdata = (username: string, page: number) =>
     },
   });
 
-var config = (username: string, page: number) => ({
+var config = (username: string = "biomathcode", page: number = 0) => ({
   method: "post",
   url: "https://api.hashnode.com/",
   headers: {
