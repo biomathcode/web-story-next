@@ -10,6 +10,7 @@
 import {
   AMP_CTA_LAYER,
   AMP_GRID_LAYER,
+  AMP_HIGHLIGHTED_TEXT,
   AMP_IMAGE,
   AMP_OVERLAY,
   AMP_STORY,
@@ -81,11 +82,16 @@ const Model = () => {
     // generate slug from title
     //
 
-    console.log(publisherInfo);
+    console.log(data);
     const ampStory = AMP_STORY(
       data
         .map((el: state, i: any) => {
           const cta = el.cta ? AMP_CTA_LAYER(el.url, el.ctaText) : "";
+
+          const text =
+            el.highlight === "box"
+              ? AMP_TEXT(" ", "drop")
+              : AMP_HIGHLIGHTED_TEXT("", "fade-in");
 
           const overlay = el.overlay
             ? AMP_GRID_LAYER(AMP_OVERLAY(), "fill")
@@ -97,7 +103,10 @@ const Model = () => {
               "fill"
             ) +
               overlay +
-              AMP_GRID_LAYER(AMP_TEXT(el.text, el.textAnimation), "vertical") +
+              AMP_GRID_LAYER(
+                AMP_TEXT(el.text, el.textAnimation, el.color, el.background),
+                "vertical"
+              ) +
               cta,
             i
           );

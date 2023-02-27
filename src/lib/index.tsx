@@ -346,15 +346,48 @@ const HTML_TEMPLATE = (
 
 // then all be the p
 
-const AMP_HIGHLIGHTED_TEXT = () => {};
+const AMP_HIGHLIGHTED_TEXT = (
+  content: string,
+  animation: animationType = "fade-in",
+  tag: string = "p",
+
+  color?: string,
+  background?: string,
+  textPosition: number = 36,
+  fontSize?: string,
+  textAlign?: string,
+  paddingVertical?: string,
+  paddingHorizontal?: string,
+  lineHeight?: string
+) => {
+  return `
+  <${tag}
+  style="color:${color};
+  position:absolute;
+  top: ${textPosition}%;"
+  animate-in="${animation}"
+  >
+  <span
+  style="background:${background};
+  position:absolute;
+ 
+  "
+  >
+
+   ${content}
+   </span>
+  </${tag}>
+  `;
+};
 
 const AMP_TEXT = (
   content: string,
   animation: animationType = "fade-in",
-
   color?: string,
   background?: string,
-  top?: string,
+
+  tag: string = "p",
+  textPosition: number = 36,
   fontSize?: string,
   textAlign?: string,
   paddingVertical?: string,
@@ -362,14 +395,15 @@ const AMP_TEXT = (
   lineHeight?: string
 ): string => {
   return `
-  <h1
-  style="color:#fff;
+  <${tag}
+  style="color:${color};
+  background:${background};
   position:absolute;
-  top: 200px"
+  top: ${textPosition}%;"
   animate-in="${animation}"
   >
    ${content}
-  </h1>`;
+  </${tag}>`;
 };
 
 const AMP_OVERLAY = (): string => {
@@ -459,4 +493,5 @@ export {
   HTML_META,
   AMP_STYLES,
   AMP_STORY_AUTO_ADS,
+  AMP_HIGHLIGHTED_TEXT,
 };
