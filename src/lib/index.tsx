@@ -174,7 +174,9 @@ const AMP_STORY = (
   title: string,
   publisher: string,
   publisherLogo: string,
-  posterSrc: string
+  posterSrc: string,
+  analytics: string = "",
+  ads: string = ""
 ): string => {
   return `
     <amp-story
@@ -185,6 +187,8 @@ const AMP_STORY = (
         poster-portrait-src="${posterSrc}"
       >
       ${children}
+      ${analytics}
+      ${ads}
     </amp-story>
     `;
 };
@@ -354,11 +358,11 @@ const AMP_HIGHLIGHTED_TEXT = (
   color?: string,
   background?: string,
   textPosition: number = 36,
-  fontSize?: string,
-  textAlign?: string,
-  paddingVertical?: string,
-  paddingHorizontal?: string,
-  lineHeight?: string
+  fontSize: number = 24,
+  textAlign: string = "center",
+  paddingVertical: number = 10,
+  paddingHorizontal: number = 10,
+  lineHeight: number = 28
 ) => {
   return `
   <${tag}
@@ -370,7 +374,10 @@ const AMP_HIGHLIGHTED_TEXT = (
   <span
   style="background:${background};
   position:absolute;
- 
+  padding: ${paddingVertical}px ${paddingHorizontal}px;
+  font-size: ${fontSize}px;
+  text-align: ${textAlign}px;
+  line-height: ${lineHeight}px;
   "
   >
 
@@ -399,7 +406,12 @@ const AMP_TEXT = (
   style="color:${color};
   background:${background};
   position:absolute;
-  top: ${textPosition}%;"
+  top: ${textPosition}%;
+  padding: ${paddingVertical}px ${paddingHorizontal}px;
+  font-size: ${fontSize}px;
+  text-align: ${textAlign};
+  line-height: ${lineHeight}px;
+  "
   animate-in="${animation}"
   >
    ${content}

@@ -104,7 +104,19 @@ const Model = () => {
             ) +
               overlay +
               AMP_GRID_LAYER(
-                AMP_TEXT(el.text, el.textAnimation, el.color, el.background),
+                AMP_TEXT(
+                  el.text,
+                  el.textAnimation,
+                  el.color,
+                  el.background,
+                  "p",
+                  el.textPosition,
+                  el.fontSize.toString(),
+                  el.textAlign,
+                  el.paddingY.toString(),
+                  el.paddingX.toString(),
+                  el.lineHeight.toString()
+                ),
                 "vertical"
               ) +
               cta,
