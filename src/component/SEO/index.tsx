@@ -61,8 +61,6 @@ function SEO() {
   );
 }
 
-export { SEO, PublisherInfo, AuthorInfo, structuredData, Analytics };
-
 const PublisherInfo = () => {
   const { handleSubmit, register } = useForm();
 
@@ -135,6 +133,46 @@ const Analytics = () => {
       <button type="submit" className="btn fs-12 mt-10 ">
         Submit
       </button>
+    </form>
+  );
+};
+
+const Monetize = () => {
+  const { handleSubmit, register } = useForm();
+  const [monetize, setMonetize] = useLocalStorage<any>("monetize", {
+    client: "",
+    slot: "",
+  });
+  return (
+    <form
+      className="flex col gap-10"
+      onSubmit={handleSubmit((data) => setMonetize(data))}
+    >
+      <fieldset className="flex center gap-10 js">
+        <label className="">Data ad client</label>
+        <input
+          placeholder="ca-pub-7971530223412"
+          required
+          type="text"
+          {...register("client")}
+          defaultValue={monetize.client}
+        />
+      </fieldset>
+      <fieldset className="flex center gap-10 js">
+        <label className="">Data ad Slot</label>
+        <input
+          placeholder="21342392052"
+          required
+          type="text"
+          {...register("slot")}
+          defaultValue={monetize.slot}
+        />
+      </fieldset>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <button type="submit" className="btn fs-12 mt-10 ">
+          Submit
+        </button>
+      </div>
     </form>
   );
 };
@@ -230,3 +268,5 @@ const structuredData = ({
     isAccessibleForFree: "http://schema.org/True",
   };
 };
+
+export { SEO, PublisherInfo, AuthorInfo, structuredData, Analytics, Monetize };

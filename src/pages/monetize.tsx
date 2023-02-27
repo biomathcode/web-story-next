@@ -1,7 +1,7 @@
 import ColorComponent from "@/component/ColorComponent";
-import { CalendarPlaceHolder, Check } from "@/component/Icons";
+import { BankPlaceholder, CalendarPlaceHolder, Check } from "@/component/Icons";
 
-import { Analytics } from "@/component/SEO/index";
+import { Analytics, Monetize } from "@/component/SEO/index";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useState } from "react";
@@ -12,7 +12,7 @@ function Component() {
     <>
       <div className="flex jc center mt-10 w-100">
         <div className="flex  center gap-10  ">
-          <CalendarPlaceHolder height={200} />
+          <BankPlaceholder />
 
           <div
             className="flex col gap-10 h-100  jc"
@@ -23,13 +23,13 @@ function Component() {
                 fontWeight: 400,
               }}
             >
-              Add Analytics{" "}
+              Add Monetization{" "}
             </h2>
             <p className="gray">
-              Learn more about how to add google analytics to your webstories.
+              Learn more about how to add google adsense to your webstories.
               {"  "}
               <Link
-                href="/how-to-add-google-analytics-in-web-stories"
+                href="/how-to-monetize-web-stories"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -65,7 +65,7 @@ function Component() {
                     fontWeight: "400",
                   }}
                 >
-                  Add Analytics of your webstory
+                  Add Monetization of your webstory
                 </h1>
                 <div
                   style={{
@@ -89,7 +89,7 @@ function Component() {
               }}
               className="w-100 p-10  "
             >
-              <Analytics />
+              <Monetize />
             </div>
           )}
         </div>
