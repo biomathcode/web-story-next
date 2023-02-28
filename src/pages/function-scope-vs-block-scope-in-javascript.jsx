@@ -71,7 +71,7 @@ export default function IndexPage() {
 
         <link
           rel="canonical"
-          href="/function-scope-vs-block-scope-in-javascript"
+          href="https://webstory.coolhead.in/function-scope-vs-block-scope-in-javascript"
         ></link>
         <script
           type="application/ld+json"
@@ -124,20 +124,6 @@ export default function IndexPage() {
         publisher-logo-src="https://images.unsplash.com/photo-1536148935331-408321065b18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
         poster-portrait-src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
       >
-        <amp-story-auto-ads>
-          <script
-            type="application/json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "ad-attributes": {
-                  type: "adsense",
-                  "data-ad-client": "ca-pub-7971530262943091",
-                  "data-ad-slot": "2891356213",
-                },
-              }),
-            }}
-          ></script>
-        </amp-story-auto-ads>
         <amp-story-page id="0">
           <amp-story-grid-layer template="fill">
             <amp-img
@@ -351,6 +337,22 @@ export default function IndexPage() {
             </a>
           </amp-story-page-outlink>
         </amp-story-page>
+        <amp-story-auto-analytics gtag-id="G-5K7VWB3071"></amp-story-auto-analytics>
+
+        <amp-story-auto-ads>
+          <script
+            type="application/json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "ad-attributes": {
+                  type: "adsense",
+                  "data-ad-client": "ca-pub-7971530262943091",
+                  "data-ad-slot": "2891356213",
+                },
+              }),
+            }}
+          ></script>
+        </amp-story-auto-ads>
       </amp-story>
     </>
   );
