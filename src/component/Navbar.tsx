@@ -6,6 +6,8 @@ import { config } from "../axios";
 import { MagnifyingGlassIcon, RocketIcon } from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import useLocalStorage from "use-local-storage";
+import { SCHEMA } from "@/lib/constants";
 
 export interface ColourOption {
   value: string;

@@ -27,11 +27,11 @@ import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { Item } from "@/component/Droppable";
 import { animationType } from "@/lib";
 import Script from "next/script";
-import { structuredData } from "@/component/SEO";
+import { StructuredData } from "@/component/SEO";
 import withNoSSR from "@/component/Nossr";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
-import { INFO, STATE } from "@/lib/constants";
+import { INFO, SCHEMA, STATE } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -68,7 +68,7 @@ export type userState = {
   };
 };
 
-type Posts = {
+export type Posts = {
   type: string;
   contentMarkdown: string;
   slug: string;
@@ -77,11 +77,38 @@ type Posts = {
   coverImage: string;
 };
 
-type ContentType = {
+export type ContentType = {
   type: string;
   raw: string;
   text: string;
   tokens: string;
+};
+
+export type seoType = {
+  title: string;
+  description: string;
+  image: string;
+};
+
+export type publisherType = {
+  websiteUrl: string;
+  websiteName: string;
+  websiteLogo: string;
+};
+
+export type analyticsType = {
+  gtag: string;
+};
+
+export type monetizeType = {
+  client: string;
+  slot: string;
+};
+
+export type authorType = {
+  authorName: string;
+  authorUrl: string;
+  authorImage: string;
 };
 
 const image = [
@@ -110,6 +137,18 @@ function Home() {
   const [newSelect, setNewSelect] = useState(0);
 
   const [activeId, setActiveId] = useState<number | null>(null);
+
+  const [schema, setSchema] = useLocalStorage<seoType>(
+    SCHEMA,
+    {
+      title: "",
+      description: "",
+      image: "",
+    },
+    {
+      syncData: true,
+    }
+  );
 
   const [newState, setNewState] = useLocalStorage<state[]>(STATE, [
     {
@@ -140,6 +179,12 @@ function Home() {
         setContent(
           mdParser(user.publication.posts[select]?.contentMarkdown) as []
         );
+
+        setSchema({
+          title: user.publication.posts[select].title,
+          description: user.publication.posts[select].brief,
+          image: user.publication.posts[select].coverImage,
+        });
       }
     }
   }, [user, select]);
@@ -271,7 +316,19 @@ function Home() {
       <Script
         id="this"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            StructuredData({
+              title:
+                "Webstory code generator- no code editor to create google web stories for free",
+              description:
+                " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
+              image: "http://webstory.coolhead.in/ogimage",
+              authorName: "Pratik Sharma",
+              authorUrl: "https://coolhead.in",
+            })
+          ),
+        }}
       />
       <Toaster />
 

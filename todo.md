@@ -43,6 +43,7 @@ Pending Decisions
 
 ROADMAP: 
 [x] Text-alignment change - 30min
+[] Sortable pages
 [] export and import feature
 [] Add Multiple fonts - research
 [] Code generation for Nextjs 

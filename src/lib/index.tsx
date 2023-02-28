@@ -243,7 +243,7 @@ const HTML_TEMPLATE = (
     <title>Hello, AMPs</title>
     <link
     rel="canonical"
-    href="https://webstory.coolhead.in/new-amp"
+    href="${canonicalLink}"
   />
 
   ${links}
@@ -252,15 +252,7 @@ const HTML_TEMPLATE = (
       name="viewport"
       content="width=device-width,minimum-scale=1,initial-scale=1"
     />
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "NewsArticle",
-        "headline": "Open-source framework for publishing content",
-        "datePublished": "2015-10-07T12:02:41Z",
-        "image": ["logo.jpg"]
-      }
-    </script>
+  
     <style amp-boilerplate>
       body {
         -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;

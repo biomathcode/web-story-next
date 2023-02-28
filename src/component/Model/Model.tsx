@@ -19,6 +19,7 @@ import {
   AMP_STORY_PAGE,
   AMP_TEXT,
   HTML_TEMPLATE,
+  slugify,
 } from "@/lib";
 import Editor from "@monaco-editor/react";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -34,7 +35,14 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { z } from "zod";
 import styles from "./Model.module.css";
 import { useEffect, useState } from "react";
-import { state } from "@/pages";
+import {
+  analyticsType,
+  authorType,
+  monetizeType,
+  publisherType,
+  seoType,
+  state,
+} from "@/pages";
 import {
   ANALYTICS,
   AUTHOR,
@@ -43,6 +51,7 @@ import {
   SCHEMA,
   STATE,
 } from "@/lib/constants";
+import { StructuredData } from "../SEO";
 
 const storyObject = z.object({
   image: z.string().url(),
@@ -92,15 +101,15 @@ const Model = () => {
     const structedinfo = window.localStorage.getItem(SCHEMA);
 
     const data = item && JSON.parse(item);
-    const publisher = pubinfo && JSON.parse(pubinfo);
+    const publisher: publisherType = pubinfo && JSON.parse(pubinfo);
 
-    const monetize = monetizeinfo && JSON.parse(monetizeinfo);
+    const monetize: monetizeType = monetizeinfo && JSON.parse(monetizeinfo);
 
-    const analytics = analyticInfo && JSON.parse(analyticInfo);
+    const analytics: analyticsType = analyticInfo && JSON.parse(analyticInfo);
 
-    const author = authorinfo && JSON.parse(authorinfo);
+    const author: authorType = authorinfo && JSON.parse(authorinfo);
 
-    const structeddata = structedinfo && JSON.parse(structedinfo);
+    const structeddata: seoType = structedinfo && JSON.parse(structedinfo);
 
     const ampStory = AMP_STORY(
       data
@@ -144,12 +153,24 @@ const Model = () => {
         })
         .join("\n"),
       structeddata.title,
-      publisher.title,
+      publisher.websiteName,
       publisher.websiteLogo,
       data[0].image,
       AMP_ANALYTICS(analytics.gtag),
       AMP_STORY_AUTO_ADS(monetize.client, monetize.slot)
     );
+
+    const schema = JSON.stringify(
+      StructuredData({
+        title: structeddata.title,
+        description: structeddata.description,
+        image: structeddata.image,
+        authorName: author.authorName,
+        authorUrl: author.authorUrl,
+      })
+    );
+
+    const schemaScript = `<script type="application/ld+json">${schema}</script>`;
 
     const newData = HTML_TEMPLATE(
       ampStory,
@@ -170,7 +191,8 @@ const Model = () => {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
       `,
-      ""
+      schemaScript,
+      `${publisher.websiteName}/${slugify(structeddata.title)}`
     );
 
     setCode(newData);

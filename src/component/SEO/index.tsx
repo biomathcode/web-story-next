@@ -1,3 +1,4 @@
+import { slugify } from "@/lib";
 import {
   ANALYTICS,
   AUTHOR,
@@ -5,12 +6,14 @@ import {
   PUBLISHER,
   SCHEMA,
 } from "@/lib/constants";
+import { analyticsType, monetizeType, publisherType, seoType } from "@/pages";
+
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import useLocalStorage from "use-local-storage";
 
 function Schema() {
-  const [seo, setSeo] = useLocalStorage(SCHEMA, {
+  const [schema, setSchema] = useLocalStorage<seoType>(SCHEMA, {
     title: "",
     description: "",
     image: "",
@@ -21,7 +24,7 @@ function Schema() {
   return (
     <form
       onSubmit={handleSubmit((data) => {
-        setSeo({
+        setSchema({
           title: data.title,
           description: data.description,
           image: data.image,
@@ -33,7 +36,7 @@ function Schema() {
       <fieldset className="flex gap-10 center js">
         <label className="label">Title</label>
         <input
-          defaultValue={seo.title}
+          defaultValue={schema.title}
           {...register("title")}
           type="text"
           required
@@ -43,7 +46,7 @@ function Schema() {
       <fieldset className="flex gap-10 center js">
         <label className="label">Description</label>
         <input
-          defaultValue={seo.description}
+          defaultValue={schema.description}
           {...register("description")}
           required
           placeholder="description of your page "
@@ -52,7 +55,7 @@ function Schema() {
       <fieldset className="flex gap-10 center js">
         <label className="label">Social Link Thumbnail</label>
         <input
-          defaultValue={seo.image}
+          defaultValue={schema.image}
           {...register("image")}
           required
           type="url"
@@ -69,7 +72,7 @@ function Schema() {
 const PublisherInfo = () => {
   const { handleSubmit, register } = useForm();
 
-  const [publisher, setPublisher] = useLocalStorage<any>(PUBLISHER, {
+  const [publisher, setPublisher] = useLocalStorage<publisherType>(PUBLISHER, {
     websiteUrl: "",
     websiteName: "",
     websiteLogo: "",
@@ -94,7 +97,7 @@ const PublisherInfo = () => {
   ];
   return (
     <form
-      onSubmit={handleSubmit((data) => {
+      onSubmit={handleSubmit((data: any) => {
         setPublisher(data);
         toast.success("Publisher info updated");
       })}
@@ -123,12 +126,12 @@ const PublisherInfo = () => {
 
 const Analytics = () => {
   const { handleSubmit, register } = useForm();
-  const [analytics, setAnalytics] = useLocalStorage<any>(ANALYTICS, {
+  const [analytics, setAnalytics] = useLocalStorage<analyticsType>(ANALYTICS, {
     gtag: "",
   });
   return (
     <form
-      onSubmit={handleSubmit((data) => {
+      onSubmit={handleSubmit((data: any) => {
         setAnalytics(data);
         toast.success("Analytics info updated!!");
       })}
@@ -154,14 +157,14 @@ const Analytics = () => {
 
 const Monetize = () => {
   const { handleSubmit, register } = useForm();
-  const [monetize, setMonetize] = useLocalStorage<any>(MONETIZE, {
+  const [monetize, setMonetize] = useLocalStorage<monetizeType>(MONETIZE, {
     client: "",
     slot: "",
   });
   return (
     <form
       className="flex col gap-10"
-      onSubmit={handleSubmit((data) => {
+      onSubmit={handleSubmit((data: any) => {
         setMonetize(data);
         toast.success("Monetization info updated");
       })}
@@ -254,24 +257,21 @@ const AuthorInfo = () => {
 };
 
 type schemaType = {
-  link: string;
   title: string;
   description: string;
   authorName: string;
   authorUrl: string;
   image: string;
-  datePublished: string;
-  dateModified: string;
 };
 
-const structuredData = ({
-  link,
+const StructuredData = ({
   title,
   description,
+  image,
   authorName,
   authorUrl,
-  image,
 }: schemaType) => {
+  const link = slugify(title);
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -303,7 +303,7 @@ export {
   Schema,
   PublisherInfo,
   AuthorInfo,
-  structuredData,
+  StructuredData,
   Analytics,
   Monetize,
 };
