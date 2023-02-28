@@ -129,7 +129,7 @@ function Home() {
       ctaText: "",
       url: "",
       textAnimation: "fade-in",
-      imageAnimation: "none",
+      imageAnimation: "fade-in",
       overlay: false,
     },
   ]);

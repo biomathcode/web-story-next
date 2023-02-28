@@ -8,12 +8,14 @@
 // Copy, Download File
 
 import {
+  AMP_ANALYTICS,
   AMP_CTA_LAYER,
   AMP_GRID_LAYER,
   AMP_HIGHLIGHTED_TEXT,
   AMP_IMAGE,
   AMP_OVERLAY,
   AMP_STORY,
+  AMP_STORY_AUTO_ADS,
   AMP_STORY_PAGE,
   AMP_TEXT,
   HTML_TEMPLATE,
@@ -100,15 +102,6 @@ const Model = () => {
 
     const structeddata = structedinfo && JSON.parse(structedinfo);
 
-    console.log(monetize, analytics, publisher, author);
-
-    // generate schema.org
-    // add publisher info to amp story
-    // add story images like posterSrc
-    // generate slug from title
-    //
-
-    console.log(data);
     const ampStory = AMP_STORY(
       data
         .map((el: state, i: any) => {
@@ -154,8 +147,8 @@ const Model = () => {
       publisher.title,
       publisher.websiteLogo,
       data[0].image,
-      analytics,
-      monetize
+      AMP_ANALYTICS(analytics.gtag),
+      AMP_STORY_AUTO_ADS(monetize.client, monetize.slot)
     );
 
     const newData = HTML_TEMPLATE(

@@ -85,7 +85,6 @@ export const AnimationOptions: AnimationType[] = [
 ];
 
 export type animationType =
-  | "none"
   | "drop"
   | "fade-in"
   | "fly-in-bottom"

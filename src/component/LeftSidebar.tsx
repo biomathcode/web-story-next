@@ -13,19 +13,12 @@ import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
 import { state } from "@/pages/index";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
-import { styled } from "@stitches/react";
-import { violet, mauve, blackA } from "@radix-ui/colors";
+
 import Toggle from "./Toggle/Toggle";
 import ColorComponent from "./ColorComponent";
-import Link from "next/link";
+
 import FullModel from "./FullModel";
 import { Analytics, AuthorInfo, Monetize, PublisherInfo, Schema } from "./SEO";
-
-// Text, Image, Cta, Animation,
-
-// TODO: Add a Accordian here for text, image, CTA,
-
-//
 
 const LeftSidebar = ({
   inter,
@@ -475,16 +468,6 @@ const LeftSidebar = ({
             <Schema />
           </>
         </FullModel>
-        {/* <Link href="/component" className="btn fs-12">
-          analytics
-        </Link> */}
-        {/* AuthorInfo, PublisherInfo */}
-        {/* <Link href="/monetize" className="btn fs-12">
-          monetize
-        </Link>
-        <Link href="/seo" className="btn fs-12">
-          seo settings
-        </Link> */}
       </div>
       <div></div>
     </div>
