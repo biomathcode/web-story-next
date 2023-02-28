@@ -41,6 +41,13 @@ Pending Decisions
 [] Add file system
 
 
+Optimization
+[] Create One Input for for so many input
+[] Create One Model for so many models
+[] Create one form component for setting forms
+[] Add A Slider for the values top, padding, line-height, 
+
+
 ROADMAP: 
 [x] Text-alignment change - 30min
 [] Sortable pages

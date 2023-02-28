@@ -1,12 +1,10 @@
-import ColorComponent from "@/component/ColorComponent";
 import { CalendarPlaceHolder, Check } from "@/component/Icons";
 
 import { Analytics } from "@/component/SEO/index";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Toaster } from "react-hot-toast";
-import useLocalStorage from "use-local-storage";
 
 function Component() {
   const [open, setOpen] = useState(false);

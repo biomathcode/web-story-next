@@ -45,16 +45,14 @@ function NavBar({
   info: any;
   setInfo: any;
 }) {
-  const options =
-    user &&
-    user?.publication?.posts?.map((el: any) => {
-      return {
-        value: el.title,
-        label: el.title,
-      };
-    });
+  const options = user?.publication?.posts?.map((el: any) => {
+    return {
+      value: el.title,
+      label: el.title,
+    };
+  });
 
-  const [value, setValue] = useState(user && options[0]);
+  const [value, setValue] = useState(user && user.name !== null && options[0]);
 
   const [loading, setLoading] = useState(false);
 
@@ -126,7 +124,7 @@ function NavBar({
               })}
               min={0}
               max={10}
-              defaultValue={info?.page}
+              defaultValue={Number(info?.page)}
               type="number"
               style={{ width: "50px" }}
               placeholder="Page"

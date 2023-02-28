@@ -19,6 +19,8 @@ import ColorComponent from "./ColorComponent";
 
 import FullModel from "./FullModel";
 import { Analytics, AuthorInfo, Monetize, PublisherInfo, Schema } from "./SEO";
+import Component from "@/pages/component";
+import MonetiseComponent from "@/pages/monetize";
 
 const LeftSidebar = ({
   inter,
@@ -122,7 +124,7 @@ const LeftSidebar = ({
         defaultValue="tab1"
         style={{ width: "100%" }}
       >
-        <Tabs.List className="TabsList" aria-label="Manage your account">
+        <Tabs.List className="TabsList scroll" aria-label="Manage your account">
           <Tabs.Trigger className="TabsTrigger" value="tab1">
             Styles
           </Tabs.Trigger>
@@ -134,6 +136,7 @@ const LeftSidebar = ({
           </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content
+          className="scroll"
           value="tab3"
           style={{
             padding: "10px 10px",
@@ -457,7 +460,10 @@ const LeftSidebar = ({
         <Model />
         {/* Analytics, Monetisation */}
         <FullModel triggerName="Analytics">
-          <Analytics />
+          <>
+            <Component />
+            <MonetiseComponent />
+          </>
         </FullModel>
         <FullModel triggerName="Monetize">
           <Monetize />

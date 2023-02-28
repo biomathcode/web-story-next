@@ -1,13 +1,7 @@
 import { ComponentType, FunctionComponent, ReactNode } from "react";
 import styles from "./styles.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import {
-  Cross2Icon,
-  DownloadIcon,
-  EnterFullScreenIcon,
-  GearIcon,
-  RocketIcon,
-} from "@radix-ui/react-icons";
+import { Cross2Icon, GearIcon } from "@radix-ui/react-icons";
 
 type ModelType = {
   triggerName: string;
@@ -30,11 +24,14 @@ function FullModel({ triggerName, children }: ModelType) {
       </Dialog.Trigger>
       <Dialog.Portal style={{ zIndex: 10 }}>
         <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.DialogContent} style={{ zIndex: 10 }}>
-          <Dialog.Title>Add Analytics</Dialog.Title>
+        <Dialog.Content
+          className={styles.DialogContent}
+          style={{ zIndex: 10, overflow: "scroll" }}
+        >
+          {/* <Dialog.Title>Add Analytics</Dialog.Title>
           <Dialog.Description className={styles.DialogDescription}>
             <p>Add Analytics to your site</p>
-          </Dialog.Description>
+          </Dialog.Description> */}
 
           {children}
 
@@ -45,7 +42,7 @@ function FullModel({ triggerName, children }: ModelType) {
               className={styles.IconButton}
               aria-label="Close"
             >
-              <Cross2Icon />
+              <Cross2Icon width={80} height={80} />
             </button>
           </Dialog.Close>
         </Dialog.Content>

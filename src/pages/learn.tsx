@@ -109,6 +109,8 @@ function Learn() {
               image: "http://webstory.coolhead.in/ogimage",
               authorName: "Pratik Sharma",
               authorUrl: "https://coolhead.in",
+              publisherWebsite: "https://coolhead.in",
+              publisherName: "Coolhead",
             })
           ),
         }}

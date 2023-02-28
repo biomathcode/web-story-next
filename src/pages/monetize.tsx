@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 
-function Component() {
+function MonetiseComponent() {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -100,7 +100,7 @@ function Component() {
   );
 }
 
-export default Component;
+export default MonetiseComponent;
 
 //#59CB04
 

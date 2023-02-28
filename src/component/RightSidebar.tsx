@@ -12,7 +12,7 @@ const RightSidebar = ({ content }: { content: any }) => {
       defaultValue="tab1"
       style={{ overflow: "auto", width: "100%" }}
     >
-      <Tabs.List className="TabsList" aria-label="Manage your account">
+      <Tabs.List className="TabsList scroll" aria-label="Manage your account">
         <Tabs.Trigger className="TabsTrigger" value="tab1">
           Content
         </Tabs.Trigger>
@@ -21,7 +21,7 @@ const RightSidebar = ({ content }: { content: any }) => {
         </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content
-        className="flex  center jc"
+        className="flex  center jc scroll"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -42,6 +42,7 @@ const RightSidebar = ({ content }: { content: any }) => {
       </Tabs.Content>
       <Tabs.Content
         value="tab1"
+        className="scroll"
         style={{
           display: "flex",
           flexDirection: "column",

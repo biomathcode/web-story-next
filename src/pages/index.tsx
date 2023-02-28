@@ -175,7 +175,7 @@ function Home() {
 
   useEffect(() => {
     if (user) {
-      if (user.publication.posts.length > 0) {
+      if (user?.publication?.posts?.length > 0 && user?.name !== null) {
         setContent(
           mdParser(user.publication.posts[select]?.contentMarkdown) as []
         );
@@ -191,7 +191,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchFunction() {
-      const response = await axios(config(info.username, info.page));
+      const response = await axios(config(info.username, Number(info.page)));
 
       setUser(response.data.data.user);
 
@@ -313,6 +313,7 @@ function Home() {
 
         <meta name="twitter:creator" content="@biomathcode" />
       </Head>
+
       <Script
         id="this"
         type="application/ld+json"
@@ -326,6 +327,8 @@ function Home() {
               image: "http://webstory.coolhead.in/ogimage",
               authorName: "Pratik Sharma",
               authorUrl: "https://coolhead.in",
+              publisherName: "Coolhead",
+              publisherWebsite: "https://coolhead.in",
             })
           ),
         }}

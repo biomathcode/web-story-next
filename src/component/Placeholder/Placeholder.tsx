@@ -11,8 +11,7 @@ function PlaceHolder() {
           textAlign: "center",
         }}
       >
-        Something went wrong ! <br />
-        Don&apos;t worry We are working on it.
+        Search Images and drag them to the Canvas
       </p>
     </div>
   );

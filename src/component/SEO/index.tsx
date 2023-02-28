@@ -29,7 +29,7 @@ function Schema() {
           description: data.description,
           image: data.image,
         });
-        toast("seo info updated");
+        toast.success("seo info updated");
       })}
       className="flex col gap-10 "
     >
@@ -288,6 +288,8 @@ type schemaType = {
   authorName: string;
   authorUrl: string;
   image: string;
+  publisherName: string;
+  publisherWebsite: string;
 };
 
 const StructuredData = ({
@@ -297,6 +299,8 @@ const StructuredData = ({
   image,
   authorName,
   authorUrl,
+  publisherName,
+  publisherWebsite,
 }: schemaType) => {
   const elink = slugify(link || title);
   return {
@@ -313,8 +317,8 @@ const StructuredData = ({
     },
     publisher: {
       "@type": "Organization",
-      name: "Coolhead",
-      url: "https://coolhead.in",
+      name: publisherName,
+      url: publisherWebsite,
     },
     image: {
       "@type": "ImageObject",

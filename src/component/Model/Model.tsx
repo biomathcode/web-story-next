@@ -116,6 +116,8 @@ const Model = () => {
         .map((el: state, i: any) => {
           const cta = el.cta ? AMP_CTA_LAYER(el.url, el.ctaText) : "";
 
+          const tag = i === 0 ? "h1" : "p";
+
           const text =
             el.highlight === "box"
               ? AMP_TEXT(" ", "drop")
@@ -137,7 +139,7 @@ const Model = () => {
                   el.textAnimation,
                   el.color,
                   el.background,
-                  "p",
+                  tag,
                   el.textPosition,
                   el.fontSize.toString(),
                   el.textAlign,
@@ -156,8 +158,8 @@ const Model = () => {
       publisher.websiteName,
       publisher.websiteLogo,
       data[0].image,
-      AMP_ANALYTICS(analytics.gtag),
-      AMP_STORY_AUTO_ADS(monetize.client, monetize.slot)
+      analytics?.gtag && AMP_ANALYTICS(analytics.gtag),
+      monetize?.client && AMP_STORY_AUTO_ADS(monetize.client, monetize.slot)
     );
 
     const schema = JSON.stringify(
@@ -167,6 +169,8 @@ const Model = () => {
         image: structeddata.image,
         authorName: author.authorName,
         authorUrl: author.authorUrl,
+        publisherName: publisher.websiteName,
+        publisherWebsite: publisher.websiteUrl,
       })
     );
 

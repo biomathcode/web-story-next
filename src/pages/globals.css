@@ -531,6 +531,21 @@ select {
   color: var(--slate11);
 }
 
+/*
+
+scroll 
+*/
+
+.scroll {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
 .TabsRoot {
   display: flex;
   flex-direction: column;
