@@ -40,7 +40,8 @@ const Toggle = ({ label, infoText, name, onChange, value }: ToggleType) => {
         checked={value === "true" ? true : false}
         name={name}
         className={styles.SwitchRoot}
-        id="airplane-mode"
+        id={label}
+        aria-label={label}
         value={value}
       >
         <Switch.Thumb className={styles.SwitchThumb} />

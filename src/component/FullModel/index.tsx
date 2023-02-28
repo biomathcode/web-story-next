@@ -19,6 +19,8 @@ function FullModel({ triggerName, children }: ModelType) {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <button
+          aria-label={triggerName}
+          id={triggerName}
           onClick={() => console.log("this")}
           className="btn violet flex center gap-10 fs-12"
         >
@@ -37,7 +39,12 @@ function FullModel({ triggerName, children }: ModelType) {
           {children}
 
           <Dialog.Close asChild>
-            <button className={styles.IconButton} aria-label="Close">
+            <button
+              aria-labelledby="Close"
+              id="Close"
+              className={styles.IconButton}
+              aria-label="Close"
+            >
               <Cross2Icon />
             </button>
           </Dialog.Close>

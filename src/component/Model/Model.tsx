@@ -220,6 +220,8 @@ const Model = () => {
         <Dialog.Content className={styles.DialogContent} style={{ zIndex: 10 }}>
           <Dialog.Description className={styles.DialogDescription}>
             <button
+              id="fullScreen"
+              aria-label="Full Screen"
               onClick={handle.enter}
               style={{ padding: "2px 5px" }}
               className="btn flex gap-10 center"
@@ -228,6 +230,8 @@ const Model = () => {
               FullScreen
             </button>
             <button
+              id="download_jsx"
+              aria-label="download jsx"
               style={{ padding: "2px 5px" }}
               className="btn flex gap-10 center"
             >
@@ -235,6 +239,8 @@ const Model = () => {
               Download JSX
             </button>
             <button
+              aria-label="Download html"
+              id="download_html"
               style={{ padding: "2px 5px" }}
               className="btn flex gap-10 center"
             >
@@ -264,7 +270,12 @@ const Model = () => {
           </FullScreen>
 
           <Dialog.Close asChild>
-            <button className={styles.IconButton} aria-label="Close">
+            <button
+              aria-labelledby="close"
+              id="close"
+              className={styles.IconButton}
+              aria-label="Close"
+            >
               <Cross2Icon />
             </button>
           </Dialog.Close>

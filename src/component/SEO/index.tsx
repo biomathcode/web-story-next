@@ -62,7 +62,12 @@ function Schema() {
           placeholder="social media link Thumbnai "
         />
       </fieldset>
-      <button className="btn flex fs-12" type="submit">
+      <button
+        aria-label="submit"
+        id="submit"
+        className="btn flex fs-12"
+        type="submit"
+      >
         Submit
       </button>
     </form>
@@ -117,7 +122,12 @@ const PublisherInfo = () => {
           </fieldset>
         );
       })}
-      <button type="submit" className="btn fs-12 m-y ">
+      <button
+        aria-label="submit"
+        id="submit"
+        type="submit"
+        className="btn fs-12 m-y "
+      >
         Submit
       </button>
     </form>
@@ -148,7 +158,12 @@ const Analytics = () => {
           defaultValue={analytics.gtag}
         />
       </fieldset>
-      <button type="submit" className="btn fs-12 mt-10 ">
+      <button
+        aria-label="submit"
+        id="submit"
+        type="submit"
+        className="btn fs-12 mt-10 "
+      >
         Submit
       </button>
     </form>
@@ -194,7 +209,12 @@ const Monetize = () => {
         />
       </fieldset>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <button type="submit" className="btn fs-12 mt-10 ">
+        <button
+          aria-label="submit"
+          id="submit"
+          type="submit"
+          className="btn fs-12 mt-10 "
+        >
           Submit
         </button>
       </div>
@@ -249,7 +269,12 @@ const AuthorInfo = () => {
           })}
         />
       </fieldset>
-      <button type="submit" className="btn fs-12 m-x">
+      <button
+        aria-label="submit"
+        id="submit"
+        type="submit"
+        className="btn fs-12 m-x"
+      >
         Submit
       </button>
     </form>

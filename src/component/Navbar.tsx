@@ -99,27 +99,28 @@ function NavBar({
             setLoading(true);
 
             setInfo(data);
-            const response = await axios(
-              config(data.username, Number(data.page))
-            );
-            console.log("this is response", response);
-            if (
-              response.data?.data?.user?.publication?.posts?.length > 0 &&
-              response.data.data.user
-            ) {
-              setUser(response.data.data.user);
-              setLoading(false);
-            } else {
-              alert(`No data found on page ${data.page}`);
-              setLoading(false);
-            }
 
-            console.log(response);
+            if (data.username.length > 1) {
+              const response = await axios(
+                config(data.username, Number(data.page))
+              );
+              if (
+                response.data?.data?.user?.publication?.posts?.length > 0 &&
+                response.data.data.user
+              ) {
+                setUser(response.data.data.user);
+                setLoading(false);
+              } else {
+                alert(`No data found on page ${data.page}`);
+                setLoading(false);
+              }
+            }
           })}
           className="flex center jc gap-10"
         >
           <fieldset>
             <input
+              aria-label="page"
               {...register("page", {
                 required: true,
               })}
@@ -133,6 +134,8 @@ function NavBar({
           </fieldset>
           <fieldset>
             <input
+              id="username"
+              aria-label="username"
               {...register("username", {
                 required: true,
               })}
@@ -143,6 +146,7 @@ function NavBar({
           </fieldset>
           <fieldset>
             <button
+              aria-label="Click to search"
               disabled={loading}
               className="btn fs-12 flex gap-10 center"
               type="submit"

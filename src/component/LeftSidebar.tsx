@@ -441,6 +441,7 @@ const LeftSidebar = ({
                 value={newState[newSelect]?.paddingX}
               />
             </fieldset>
+
             <Toggle
               key="Overlay"
               infoText="Overlay will have a transparent gray gradient from top to bottom. This will increase contrast between the image and text "

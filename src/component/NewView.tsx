@@ -122,6 +122,9 @@ function NewView({
               height: "fit-content",
               cursor: "pointer",
             }}
+            name="Previous Page"
+            id="Previous Page"
+            aria-label="Previous Page"
             onClick={() => setNewSelect(newSelect - 1)}
             disabled={newSelect === 0}
           >
@@ -244,6 +247,9 @@ function NewView({
           {newSelect === newState.length - 1 ? (
             <ToolTip text="Add new page">
               <button
+                name="Add New Page"
+                id="Add new Page"
+                aria-label="Add New Page"
                 style={{
                   padding: "10px",
                   borderRadius: "10px",
@@ -285,6 +291,9 @@ function NewView({
           ) : (
             <ToolTip text={"Next page"}>
               <button
+                name="Next Page"
+                aria-label="Next Page"
+                id="Next Page"
                 style={{
                   padding: "10px",
                   borderRadius: "10px",
@@ -305,6 +314,9 @@ function NewView({
         <ToolTip text="Delete the present page">
           {newState.length > 1 && newSelect > 0 && (
             <button
+              id="delete"
+              aria-label="delete"
+              name="delete"
               style={{
                 padding: "10px",
                 borderRadius: "10px",
@@ -320,8 +332,11 @@ function NewView({
             </button>
           )}
         </ToolTip>
-        <ToolTip text="Reset">
+        {/* <ToolTip text="Reset">
           <button
+             id="reset"
+             aria-label="reset"
+             name="reset"
             style={{
               padding: "10px",
               borderRadius: "10px",
@@ -335,9 +350,12 @@ function NewView({
           >
             <ResetIcon />
           </button>
-        </ToolTip>
+        </ToolTip> */}
         <ToolTip text="Play the animation">
           <button
+            aria-label="Click to Play animation"
+            id="animation"
+            name="Click to Play animation"
             className="flex center gap-10 inter"
             onClick={animate}
             style={{
