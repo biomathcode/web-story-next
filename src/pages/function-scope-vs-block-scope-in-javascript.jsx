@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useAmp } from "next/amp";
 
-import { structuredData } from "../component/SEO/index";
+import { StructuredData } from "../component/SEO/index";
 
 // seo
 // og:image
@@ -11,7 +11,7 @@ import { structuredData } from "../component/SEO/index";
 // html lang
 //
 
-const data = structuredData({
+const data = StructuredData({
   link: "https://webstory.coolhead.in/function-scope-vs-block-scope-in-javascript",
   title: "Function Scope vs Block Scope in Javascript",
   description:

@@ -257,6 +257,7 @@ const AuthorInfo = () => {
 };
 
 type schemaType = {
+  link?: string;
   title: string;
   description: string;
   authorName: string;
@@ -265,17 +266,18 @@ type schemaType = {
 };
 
 const StructuredData = ({
+  link,
   title,
   description,
   image,
   authorName,
   authorUrl,
 }: schemaType) => {
-  const link = slugify(title);
+  const elink = slugify(link || title);
   return {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    mainEntityOfPage: link,
+    mainEntityOfPage: elink,
     headline: title,
     description: description,
     author: {

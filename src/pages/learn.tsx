@@ -1,6 +1,6 @@
 import Footer from "@/component/Footer";
 import InfoCheckBox from "@/component/InfoCheckbox/InfoCheckbox";
-import { structuredData } from "@/component/SEO";
+import { StructuredData } from "@/component/SEO";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
@@ -99,7 +99,19 @@ function Learn() {
       <Script
         id="structedData"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            StructuredData({
+              title:
+                "Learn about AMP web stories Search Engine Optimisation or SEO",
+              description:
+                " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
+              image: "http://webstory.coolhead.in/ogimage",
+              authorName: "Pratik Sharma",
+              authorUrl: "https://coolhead.in",
+            })
+          ),
+        }}
       />
       <div className="flex center col jc gap-10 inter p-20 m-20">
         <article

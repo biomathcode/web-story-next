@@ -192,7 +192,7 @@ const Model = () => {
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
       `,
       schemaScript,
-      `${publisher.websiteName}/${slugify(structeddata.title)}`
+      `${publisher.websiteUrl}/${slugify(structeddata.title)}`
     );
 
     setCode(newData);
