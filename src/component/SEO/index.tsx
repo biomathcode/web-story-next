@@ -19,58 +19,66 @@ function Schema() {
     image: "",
   });
 
+  const slug = slugify(schema.title);
+
+  const website: publisherType = JSON.parse(
+    window.localStorage.getItem(PUBLISHER) || ""
+  );
+
   const { handleSubmit, register } = useForm();
 
   return (
-    <form
-      onSubmit={handleSubmit((data) => {
-        setSchema({
-          title: data.title,
-          description: data.description,
-          image: data.image,
-        });
-        toast.success("seo info updated");
-      })}
-      className="flex col gap-10 "
-    >
-      <fieldset className="flex gap-10 center js">
-        <label className="label">Title</label>
-        <input
-          defaultValue={schema.title}
-          {...register("title")}
-          type="text"
-          required
-          placeholder="Seo title"
-        />
-      </fieldset>
-      <fieldset className="flex gap-10 center js">
-        <label className="label">Description</label>
-        <input
-          defaultValue={schema.description}
-          {...register("description")}
-          required
-          placeholder="description of your page "
-        />
-      </fieldset>
-      <fieldset className="flex gap-10 center js">
-        <label className="label">Social Link Thumbnail</label>
-        <input
-          defaultValue={schema.image}
-          {...register("image")}
-          required
-          type="url"
-          placeholder="social media link Thumbnai "
-        />
-      </fieldset>
-      <button
-        aria-label="submit"
-        id="submit"
-        className="btn flex fs-12"
-        type="submit"
+    <>
+      <form
+        onSubmit={handleSubmit((data) => {
+          setSchema({
+            title: data.title,
+            description: data.description,
+            image: data.image,
+          });
+          toast.success("seo info updated");
+        })}
+        className="flex col gap-10 "
       >
-        Submit
-      </button>
-    </form>
+        <fieldset className="flex gap-10 center js">
+          <label className="label">Title</label>
+          <input
+            defaultValue={schema.title}
+            {...register("title")}
+            type="text"
+            required
+            placeholder="Seo title"
+          />
+        </fieldset>
+        <fieldset className="flex gap-10 center js">
+          <label className="label">Description</label>
+          <input
+            defaultValue={schema.description}
+            {...register("description")}
+            required
+            placeholder="description of your page "
+          />
+        </fieldset>
+        <fieldset className="flex gap-10 center js">
+          <label className="label">Social Link Thumbnail</label>
+          <input
+            defaultValue={schema.image}
+            {...register("image")}
+            required
+            type="url"
+            placeholder="social media link Thumbnai "
+          />
+        </fieldset>
+        <button
+          aria-label="submit"
+          id="submit"
+          className="btn flex fs-12"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </>
   );
 }
 

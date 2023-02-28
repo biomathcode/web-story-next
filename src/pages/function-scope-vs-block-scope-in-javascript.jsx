@@ -3,14 +3,6 @@ import { useAmp } from "next/amp";
 
 import { StructuredData } from "../component/SEO/index";
 
-// seo
-// og:image
-// image alt
-// google analytics
-// image format
-// html lang
-//
-
 const data = StructuredData({
   link: "https://webstory.coolhead.in/function-scope-vs-block-scope-in-javascript",
   title: "Function Scope vs Block Scope in Javascript",

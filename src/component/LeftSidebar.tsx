@@ -12,15 +12,15 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
 import { state } from "@/pages/index";
-import * as ScrollArea from "@radix-ui/react-scroll-area";
 
 import Toggle from "./Toggle/Toggle";
 import ColorComponent from "./ColorComponent";
 
 import FullModel from "./FullModel";
-import { Analytics, AuthorInfo, Monetize, PublisherInfo, Schema } from "./SEO";
-import Component from "@/pages/component";
-import MonetiseComponent from "@/pages/monetize";
+import { AuthorInfo, PublisherInfo, Schema } from "./SEO";
+import Component from "@/component/AnalyticView";
+import MonetiseComponent from "@/component/MonetizeView";
+import FormBox from "./FormBox";
 
 const LeftSidebar = ({
   inter,
@@ -457,23 +457,25 @@ const LeftSidebar = ({
         </Tabs.Content>
       </Tabs.Root>
       <div className="flex jc col  p-10 gap-10 center">
-        <Model />
         {/* Analytics, Monetisation */}
-        <FullModel triggerName="Analytics">
+        <FullModel triggerName="Advance Settings">
           <>
             <Component />
             <MonetiseComponent />
           </>
         </FullModel>
-        <FullModel triggerName="Monetize">
-          <Monetize />
-        </FullModel>
-        <FullModel triggerName="SEO">
-          <>
+
+        <FullModel triggerName="Publish">
+          <FormBox title="Author Information">
             <AuthorInfo />
+          </FormBox>
+          <FormBox title="Publication Information">
             <PublisherInfo />
+          </FormBox>
+          <FormBox title="Structured Data ">
             <Schema />
-          </>
+          </FormBox>
+          <Model />
         </FullModel>
       </div>
       <div></div>

@@ -89,7 +89,8 @@
   align-items: center;
   justify-content: center;
   color: var(--violet11);
-  position: fixed;
+  position: absolute;
+  z-index: 1;
   top: 10px;
   right: 10px;
 }

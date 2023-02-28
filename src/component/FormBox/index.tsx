@@ -1,46 +1,16 @@
-import ColorComponent from "@/component/ColorComponent";
-import { BankPlaceholder, CalendarPlaceHolder, Check } from "@/component/Icons";
-
-import { Monetize } from "@/component/SEO/index";
+import { Analytics } from "@/component/SEO/index";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { Toaster } from "react-hot-toast";
-
-function MonetiseComponent() {
+import { CalendarPlaceHolder, Check } from "@/component/Icons";
+function FormBox({ title, children }: { title: string; children: ReactNode }) {
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <Toaster />
-      <div className="flex jc center mt-10 w-100">
-        <div className="flex  center gap-10  ">
-          <BankPlaceholder />
 
-          <div
-            className="flex col gap-10 h-100  jc"
-            style={{ maxWidth: "400px" }}
-          >
-            <h2
-              style={{
-                fontWeight: 400,
-              }}
-            >
-              Add Monetization{" "}
-            </h2>
-            <p className="gray">
-              Learn more about how to add google adsense to your webstories.
-              {"  "}
-              <Link
-                href="/how-to-monetize-web-stories"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Learn more
-              </Link>
-            </p>
-          </div>
-        </div>
-      </div>
       <div className="flex jc center w-100">
         <div
           className="flex center  col gap-10"
@@ -67,7 +37,7 @@ function MonetiseComponent() {
                     fontWeight: "400",
                   }}
                 >
-                  Add Monetization of your webstory
+                  {title}
                 </h1>
                 <div
                   style={{
@@ -91,7 +61,7 @@ function MonetiseComponent() {
               }}
               className="w-100 p-10  "
             >
-              <Monetize />
+              {children}
             </div>
           )}
         </div>
@@ -100,8 +70,4 @@ function MonetiseComponent() {
   );
 }
 
-export default MonetiseComponent;
-
-//#59CB04
-
-//
+export default FormBox;

@@ -2,6 +2,7 @@ import { ComponentType, FunctionComponent, ReactNode } from "react";
 import styles from "./styles.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon, GearIcon } from "@radix-ui/react-icons";
+import classNames from "classnames";
 
 type ModelType = {
   triggerName: string;
@@ -25,7 +26,7 @@ function FullModel({ triggerName, children }: ModelType) {
       <Dialog.Portal style={{ zIndex: 10 }}>
         <Dialog.Overlay className={styles.DialogOverlay} />
         <Dialog.Content
-          className={styles.DialogContent}
+          className={classNames(styles.DialogContent, "inter")}
           style={{ zIndex: 10, overflow: "scroll" }}
         >
           {/* <Dialog.Title>Add Analytics</Dialog.Title>
