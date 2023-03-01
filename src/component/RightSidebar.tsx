@@ -57,41 +57,37 @@ const RightSidebar = ({ content }: { content: any }) => {
           padding: "10px 20px",
         }}
       >
-        {content.length > 0 ? (
-          content.map((el: any, i: any) => {
-            if (el.type === "list") {
-              console.log(el, "this is list");
-            }
-            // three types content, code, image
-            if (el?.raw?.match(/!\[(.*)\]\((.+)\)/g) && el?.type !== "list") {
-              return (
-                <Droppable
-                  data={el}
-                  type="image"
-                  href={el?.tokens[1]?.href}
-                  key={i}
-                  id={i}
-                />
-              );
-            } else {
-              return (
-                el?.text?.length > 3 && (
+        {content.length > 0
+          ? content.map((el: any, i: any) => {
+              if (el.type === "list") {
+                console.log(el, "this is list");
+              }
+              // three types content, code, image
+              if (el?.raw?.match(/!\[(.*)\]\((.+)\)/g) && el?.type !== "list") {
+                return (
                   <Droppable
                     data={el}
-                    type="text"
-                    href={el.text}
+                    type="image"
+                    href={el?.tokens[1]?.href}
                     key={i}
                     id={i}
                   />
-                )
-              );
-            }
-          })
-        ) : (
-          <div style={{ marginTop: "20px", color: "#000", zIndex: 20 }}>
-            loading...
-          </div>
-        )}
+                );
+              } else {
+                return (
+                  el?.text?.length > 3 && (
+                    <Droppable
+                      data={el}
+                      type="text"
+                      href={el.text}
+                      key={i}
+                      id={i}
+                    />
+                  )
+                );
+              }
+            })
+          : null}
         {content.length === 0 && <PlaceHolder />}
       </Tabs.Content>
     </Tabs.Root>

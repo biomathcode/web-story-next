@@ -27,6 +27,7 @@ import SliderComponent from "./SliderComponent";
 import classname from "classnames";
 import useLocalStorage from "use-local-storage";
 import { AUTHOR, PUBLISHER, SCHEMA } from "@/lib/constants";
+import InputComponent from "./InputComponent";
 
 const LeftSidebar = ({
   inter,
@@ -198,6 +199,7 @@ const LeftSidebar = ({
                   <label htmlFor="url" className="label">
                     CTA Button URL
                   </label>
+
                   <input
                     id="url"
                     aria-label="CTA button url "

@@ -17,6 +17,7 @@ import classnames from "classnames";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
+import Alert from "./Alert";
 import CTA from "./CTA";
 import ToolTip from "./ToolTip/ToolTip";
 
@@ -374,6 +375,14 @@ function NewView({
             {/* Run */}
           </button>
         </ToolTip>
+        <Alert
+          action={() => deleteState()}
+          actionName="this action"
+          title="Are you absolutely sure ?"
+          description="This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+
+        "
+        />
         {/* <ToolTip text="Reorder Pages">
           <button
             style={{

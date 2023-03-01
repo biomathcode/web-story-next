@@ -10,6 +10,7 @@ function InputComponent({ label, name, onchange, value, type, icon }) {
     <label
       aria-label={label}
       htmlFor={label}
+      className="inter"
       style={{
         border: "1px solid #eee",
 
