@@ -458,12 +458,12 @@ const LeftSidebar = ({
               onChange={handleChange}
               value={newState[newSelect]?.overlay === true ? "true" : "false"}
             />
-            <SliderComponent
+            {/* <SliderComponent
               value={newState[newSelect].fontSize}
               onChange={handleChange}
               name="slider"
               label="slider"
-            />
+            /> */}
           </div>
         </Tabs.Content>
       </Tabs.Root>

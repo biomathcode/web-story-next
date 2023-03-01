@@ -1,5 +1,5 @@
 import Select from "react-select";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import axios from "axios";
 import { config } from "../axios";
 
@@ -92,74 +92,76 @@ function NavBar({
         ) : (
           <p>loading...</p>
         )}
-        <form
-          onSubmit={handleSubmit(async (data) => {
-            setLoading(true);
+        <Suspense fallback={<p>Error happend</p>}>
+          <form
+            onSubmit={handleSubmit(async (data) => {
+              setLoading(true);
 
-            setInfo(data);
+              setInfo(data);
 
-            if (data.username.length > 1) {
-              const response = await axios(
-                config(data.username, Number(data.page))
-              );
-              if (
-                response.data?.data?.user?.publication?.posts?.length > 0 &&
-                response.data.data.user
-              ) {
-                setUser(response.data.data.user);
-                setLoading(false);
-              } else {
-                alert(`No data found on page ${data.page}`);
-                setLoading(false);
+              if (data.username.length > 1) {
+                const response = await axios(
+                  config(data.username, Number(data.page))
+                );
+                if (
+                  response.data?.data?.user?.publication?.posts?.length > 0 &&
+                  response.data.data.user
+                ) {
+                  setUser(response.data.data.user);
+                  setLoading(false);
+                } else {
+                  alert(`No data found on page ${data.page}`);
+                  setLoading(false);
+                }
               }
-            }
-          })}
-          className="flex center jc gap-10"
-        >
-          <fieldset>
-            <input
-              aria-label="page"
-              {...register("page", {
-                required: true,
-              })}
-              min={0}
-              max={10}
-              defaultValue={Number(info?.page)}
-              type="number"
-              style={{ width: "50px" }}
-              placeholder="Page"
-            />
-          </fieldset>
-          <fieldset>
-            <input
-              id="username"
-              aria-label="username"
-              {...register("username", {
-                required: true,
-              })}
-              type="text"
-              defaultValue={info?.username}
-              placeholder="username"
-            />
-          </fieldset>
-          <fieldset>
-            <button
-              aria-label="Click to search"
-              disabled={loading}
-              className="btn fs-12 flex gap-10 center"
-              type="submit"
-            >
-              {loading ? (
-                <p>Loading...</p>
-              ) : (
-                <>
-                  <MagnifyingGlassIcon />
-                  <span>Search</span>
-                </>
-              )}
-            </button>
-          </fieldset>
-        </form>
+            })}
+            className="flex center jc gap-10"
+          >
+            <fieldset>
+              <input
+                aria-label="page"
+                {...register("page", {
+                  required: true,
+                })}
+                min={0}
+                max={10}
+                defaultValue={Number(info?.page)}
+                type="number"
+                style={{ width: "50px" }}
+                placeholder="Page"
+              />
+            </fieldset>
+            <fieldset>
+              <input
+                id="username"
+                aria-label="username"
+                {...register("username", {
+                  required: true,
+                })}
+                type="text"
+                defaultValue={info?.username}
+                placeholder="username"
+              />
+            </fieldset>
+            <fieldset>
+              <button
+                aria-label="Click to search"
+                disabled={loading}
+                className="btn fs-12 flex gap-10 center"
+                type="submit"
+              >
+                {loading ? (
+                  <p>Loading...</p>
+                ) : (
+                  <>
+                    <MagnifyingGlassIcon />
+                    <span>Search</span>
+                  </>
+                )}
+              </button>
+            </fieldset>
+          </form>
+        </Suspense>
       </div>
 
       <div>
