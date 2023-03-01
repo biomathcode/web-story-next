@@ -32,15 +32,15 @@
   font-weight: 500;
   color: var(--mauve12);
   font-size: 17px;
-  font-family: "Inter";
+  /* font-family: "Inter"; */
 }
 
 .DialogDescription {
   margin: 10px 0 20px;
   color: var(--mauve11);
   font-size: 15px;
-  line-height: 1.5;
-  font-family: "Inter";
+  line-height: 1;
+  /* font-family: "Inter"; */
   display: flex;
   gap: 10px;
 }

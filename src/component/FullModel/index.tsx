@@ -41,7 +41,7 @@ function FullModel({ triggerName, children, icon }: ModelType) {
             code generation
           </Dialog.Description>
 
-          <div className="flex gap-10 center jc">{children}</div>
+          <div className="flex gap-10 col center jc">{children}</div>
 
           <Dialog.Close asChild>
             <button

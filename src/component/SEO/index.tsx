@@ -28,30 +28,49 @@ function Schema({ schema, setSchema }) {
         })}
         className="flex col gap-10 "
       >
-        <fieldset className="flex gap-10 center js">
-          <label className="label">Title</label>
+        <fieldset className="flex gap-10 col  js">
+          <div className="flex col ">
+            <label className="fs-14">Title</label>
+            <p className="label">
+              Required for creating structured data and title in the head tag
+            </p>
+          </div>
           <input
             defaultValue={schema.title}
             {...register("title")}
             type="text"
+            className="inter"
             required
             placeholder="Seo title"
           />
         </fieldset>
-        <fieldset className="flex gap-10 center js">
-          <label className="label">Description</label>
-          <input
+        <fieldset className="flex gap-10 col  js">
+          <div className="flex col">
+            <label className="fs-14">Description</label>
+            <p className="label">
+              Required for creating structured data and description meta tag
+            </p>
+          </div>
+          <textarea
             defaultValue={schema.description}
             {...register("description")}
             required
+            className="inter"
             placeholder="description of your page "
           />
         </fieldset>
-        <fieldset className="flex gap-10 center js">
-          <label className="label">Social Link Thumbnail</label>
+        <fieldset className="flex gap-10 col  js">
+          <div className="flex col">
+            <label className="fs-14">Social Link Thumbnail</label>
+            <p className="label">
+              Used for link preview on social media. size : 1200 x 630
+            </p>
+          </div>
+
           <input
             defaultValue={schema.image}
             {...register("image")}
+            className="inter"
             required
             type="url"
             placeholder="social media link Thumbnai "
@@ -77,19 +96,28 @@ const PublisherInfo = ({ publisher, setPublisher }) => {
 
   const data = [
     {
-      label: "Website",
+      label: "Website URL",
       type: "url",
       value: "websiteUrl",
+      description: "Used to create canonical link for webstory.",
+      learnmore:
+        "https://amp.dev/documentation/components/stories/amp-story#required-markup-for-amp-story",
     },
     {
       label: "Website name",
       type: "string",
       value: "websiteName",
+      description: "The name of the Web Story publisher.",
+      learnmore: "",
     },
     {
       label: "Website Logo",
       type: "url",
       value: "websiteLogo",
+      description:
+        "A URL to the Web Story publisher's logo image. The logo image should be larger than or equal to 96x96px and maintain a 1:1 aspect ratio.",
+      learnmore:
+        "https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/discovery_web_stories",
     },
   ];
   return (
@@ -99,12 +127,24 @@ const PublisherInfo = ({ publisher, setPublisher }) => {
         toast.success("Publisher info updated");
       })}
       className="flex col gap-10"
+      style={{
+        maxWidth: "500px",
+      }}
     >
       {data.map((el) => {
         return (
-          <fieldset className="flex gap-10 center js" key={el.value}>
-            <label className="label">{el.label}</label>
+          <fieldset className="flex gap-10 col  js" key={el.value}>
+            <div className="flex col">
+              <label className="fs-14">{el.label}</label>
+              <p className="label">
+                {el?.description} {"  "}
+                <a target="_blank" href={el?.learnmore} rel="noreferrer">
+                  Learn more
+                </a>
+              </p>
+            </div>
             <input
+              className="w-100 inter"
               defaultValue={publisher[el.value]}
               {...register(el.value, {
                 required: true,
@@ -146,6 +186,7 @@ const Analytics = () => {
           placeholder="GA-124"
           required
           type="text"
+          className="inter"
           {...register("gtag", {
             required: true,
           })}
@@ -230,33 +271,54 @@ const AuthorInfo = ({ author, setAuthor }) => {
         setAuthor(data), toast.success("Author info updated");
       })}
     >
-      <fieldset className="flex gap-10 center js">
-        <label className="label">Author name</label>
+      <fieldset className="flex gap-10  col js inter">
+        <div className="flex col  ">
+          <label
+            aria-label="Author Name"
+            htmlFor="authorName"
+            className="fs-14"
+          >
+            Author name
+          </label>
+          <div className="label">
+            Used for structed data to give creative credit to author.{" "}
+          </div>
+        </div>
         <input
+          id="authorName"
           required
           type="text"
+          className="inter"
           defaultValue={author.authorName}
           {...register("authorName", {
             required: true,
           })}
         />
       </fieldset>
-      <fieldset className="flex gap-10 center js">
-        <label className="label"> Author Image URL</label>
+      <fieldset className="flex gap-10 col js">
+        <div className="flex col ">
+          <label className="fs-14"> Author Image URL</label>
+          <p className="label">Image Profile Picture of the Author</p>
+        </div>
         <input
           required
           type="url"
+          className="inter"
           defaultValue={author.authorImage}
           {...register("authorImage", {
             required: true,
           })}
         />
       </fieldset>
-      <fieldset className="flex gap-10 center js">
-        <label className="label">Author Website</label>
+      <fieldset className="flex gap-10 col js">
+        <div className="flex col">
+          <label className="fs-14">Author Website</label>
+          <p className="label">author website url, used for structured data</p>
+        </div>
         <input
           required
           type="url"
+          className="inter"
           defaultValue={author.authorUrl}
           {...register("authorUrl", {
             required: true,

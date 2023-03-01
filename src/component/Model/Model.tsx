@@ -181,7 +181,7 @@ const Model = ({ isValid = false }) => {
       schemaScript +
       HTML_META(
         structeddata.title,
-        String(structeddata.description),
+        String(structeddata.description).replace(/(\r\n|\n|\r)/gm, ""),
         structeddata.image
       );
 
@@ -229,7 +229,7 @@ const Model = ({ isValid = false }) => {
         </button>
       </Dialog.Trigger>
       {isValid && (
-        <Dialog.Portal style={{ zIndex: 10 }}>
+        <Dialog.Portal style={{ zIndex: 10, fontFamily: "Inter" }}>
           <Dialog.Overlay className={styles.DialogOverlay} />
           <Dialog.Content
             className={styles.DialogContent}

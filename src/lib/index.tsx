@@ -544,7 +544,7 @@ const HTML_TEMPLATE = (
 ) => {
   return `<!DOCTYPE html>
 
-<html ⚡ amp>
+<html ⚡ amp lang="en">
   <head>
     <meta charset="utf-8" />
     ${meta}
