@@ -12,9 +12,11 @@ function InputComponent({ label, name, onchange, value, type, icon }) {
       htmlFor={label}
       className="inter"
       style={{
-        border: "1px solid #eee",
+        border: "1px solid var(--mauve8)",
+        background: "var(--mauve1)",
+        color: "var(--slate12)",
 
-        borderRadius: "10px",
+        borderRadius: "2px",
         display: "flex",
       }}
     >
@@ -22,11 +24,13 @@ function InputComponent({ label, name, onchange, value, type, icon }) {
       <span
         className="flex center jc"
         style={{
-          background: "#eee",
-          marginRight: "10px",
-          width: "40px",
+          background: "var(--mauve3)",
+          color: "var(--slate11)",
+          width: "30px",
           padding: "5spx",
           textAlign: "center",
+
+          borderRight: "1px solid var(--mauve8)",
         }}
       >
         <abbr title={label}>{icon}</abbr>
@@ -34,13 +38,25 @@ function InputComponent({ label, name, onchange, value, type, icon }) {
 
       <input
         type={type}
-        onChange={onchange}
+        value={value}
+        onChange={(e) => {
+          onchange({
+            target: {
+              name: name,
+              value: e.target.value,
+            },
+          });
+        }}
         name={name}
         id={label}
         className="fs-12"
         style={{
+          background: "var(--mauve1)",
+          color: "var(--slate12)",
           all: "unset",
           padding: "5px",
+          paddingLeft: "10px",
+          maxWidth: "50px",
         }}
       ></input>
     </label>

@@ -366,6 +366,7 @@ const LeftSidebar = ({
             background: "#eee",
             display: "flex",
             flexDirection: "column",
+            padding: "10px",
 
             gap: "10px",
             fontSize: "14px",
@@ -383,6 +384,7 @@ const LeftSidebar = ({
                 Change Text
                 <TextIcon />
               </label>
+
               <textarea
                 id="text"
                 name="text"
@@ -390,86 +392,6 @@ const LeftSidebar = ({
                 style={{ minHeight: "70px" }}
                 value={newState[newSelect]?.text}
                 onChange={(e) => handleChange(e)}
-              />
-            </fieldset>
-
-            <fieldset className="flex js  center mt-10 gap-10">
-              <label
-                htmlFor="fontSize"
-                aria-label="font Size"
-                className="label flex center gap-10"
-              >
-                Font Size
-                <FontSizeIcon />
-              </label>
-              <input
-                id="fontSize"
-                onChange={(e) => handleChange(e)}
-                name="fontSize"
-                className={inter.className}
-                type="number"
-                min="14"
-                value={String(newState[newSelect]?.fontSize)}
-              />
-            </fieldset>
-            <fieldset className="flex js  center mt-10 gap-10">
-              <label
-                aria-label="Line height"
-                htmlFor="lineHeight"
-                className="label flex center gap-10"
-              >
-                Line height
-                <LineHeightIcon />
-              </label>
-              <input
-                id="lineHeight"
-                onChange={(e) => handleChange(e)}
-                name="lineHeight"
-                className={inter.className}
-                type="number"
-                min="1"
-                max="100"
-                value={newState[newSelect]?.lineHeight}
-              />
-            </fieldset>
-            <fieldset className="flex js center">
-              <label
-                aria-label="textAlign"
-                htmlFor="textAlign"
-                className="label flex gap-10 center"
-              >
-                Text Align
-                <TextAlignBottomIcon />
-              </label>
-              <select
-                id="textAlign"
-                name="textAlign"
-                onChange={(e) => handleChange(e)}
-                value={newState[newSelect]?.textAlign}
-              >
-                <option>left</option>
-
-                <option>center</option>
-                <option>right</option>
-              </select>
-            </fieldset>
-            <fieldset className="flex js center">
-              <label
-                htmlFor="textPosition"
-                className="label flex gap-10 center"
-              >
-                Text Position
-                <TextIcon />
-              </label>
-              <input
-                id="textPosition"
-                onChange={(e) => handleChange(e)}
-                className={inter.className}
-                name="textPosition"
-                type="number"
-                min="0"
-                max="100"
-                value={newState[newSelect]?.textPosition}
               />
             </fieldset>
 
@@ -496,6 +418,27 @@ const LeftSidebar = ({
               />
             </fieldset>
             <fieldset className="flex js center">
+              <label
+                aria-label="textAlign"
+                htmlFor="textAlign"
+                className="label flex gap-10 center"
+              >
+                Text Align
+                <TextAlignBottomIcon />
+              </label>
+              <select
+                id="textAlign"
+                name="textAlign"
+                onChange={(e) => handleChange(e)}
+                value={newState[newSelect]?.textAlign}
+              >
+                <option>left</option>
+
+                <option>center</option>
+                <option>right</option>
+              </select>
+            </fieldset>
+            <fieldset className="flex js center">
               <label htmlFor="highlight" className="label">
                 Text Highlight
               </label>
@@ -513,39 +456,6 @@ const LeftSidebar = ({
               </select>
             </fieldset>
 
-            <fieldset className="flex js center">
-              <label htmlFor="paddingY" className="label flex gap-10 center">
-                Padding Vertical
-                <SpaceBetweenVerticallyIcon />
-              </label>
-              <input
-                aria-label="Padding Vertical"
-                id="paddingY"
-                type="number"
-                name="paddingY"
-                min={0}
-                max={100}
-                onChange={(e) => handleChange(e)}
-                value={newState[newSelect]?.paddingY}
-              />
-            </fieldset>
-            <fieldset className="flex js center">
-              <label htmlFor="paddingX" className="label flex gap-10 center">
-                Padding Horizontal
-                <SpaceBetweenHorizontallyIcon />
-              </label>
-              <input
-                aria-label="padding Horizontal"
-                id="paddingX"
-                type="number"
-                name="paddingX"
-                min={0}
-                max={100}
-                onChange={(e) => handleChange(e)}
-                value={newState[newSelect]?.paddingX}
-              />
-            </fieldset>
-
             <Toggle
               key="Overlay"
               infoText="Overlay will have a transparent gray gradient from top to bottom. This will increase contrast between the image and text "
@@ -554,6 +464,110 @@ const LeftSidebar = ({
               onChange={handleChange}
               value={newState[newSelect]?.overlay === true ? "true" : "false"}
             />
+
+            <fieldset className="flex js  center mt-10 gap-10">
+              <label
+                htmlFor="fontSize"
+                aria-label="font Size"
+                className="label flex center gap-10"
+              >
+                Font Size
+                {/* <FontSizeIcon /> */}
+              </label>
+              <InputComponent
+                name="fontSize"
+                label="fontSize"
+                onchange={handleChange}
+                type="number"
+                value={String(newState[newSelect]?.fontSize)}
+                icon={<FontSizeIcon />}
+              />
+            </fieldset>
+            <fieldset className="flex js  center mt-10 gap-10">
+              <label
+                aria-label="Line height"
+                htmlFor="lineHeight"
+                className="label flex center gap-10"
+              >
+                Line height
+                {/* <LineHeightIcon /> */}
+              </label>
+              <InputComponent
+                name="lineHeight"
+                label="lineHeight"
+                onchange={handleChange}
+                type="number"
+                value={String(newState[newSelect]?.lineHeight)}
+                icon={<LineHeightIcon />}
+              />
+              {/* <input
+                id="lineHeight"
+                onChange={(e) => handleChange(e)}
+                name="lineHeight"
+                className={inter.className}
+                type="number"
+                min="1"
+                max="100"
+                value={newState[newSelect]?.lineHeight}
+              /> */}
+            </fieldset>
+
+            <fieldset className="flex js center">
+              <label
+                htmlFor="textPosition"
+                className="label flex gap-10 center"
+              >
+                Text Position
+              </label>
+              <InputComponent
+                name="textPosition"
+                label="textPosition"
+                onchange={handleChange}
+                type="number"
+                value={String(newState[newSelect]?.textPosition)}
+                icon={<TextIcon />}
+              />
+
+              {/* <input
+                id="textPosition"
+                onChange={(e) => handleChange(e)}
+                className={inter.className}
+                name="textPosition"
+                type="number"
+                min="0"
+                max="100"
+                value={newState[newSelect]?.textPosition}
+              /> */}
+            </fieldset>
+
+            <fieldset className="flex js center">
+              <label htmlFor="paddingX" className="label flex gap-10 center">
+                Padding Horizontal
+              </label>
+              <InputComponent
+                name="paddingX"
+                label="paddingX"
+                onchange={handleChange}
+                type="number"
+                value={String(newState[newSelect]?.paddingX)}
+                icon={<SpaceBetweenHorizontallyIcon />}
+              />
+            </fieldset>
+
+            <fieldset className="flex js center">
+              <label htmlFor="paddingY" className="label flex gap-10 center">
+                Padding Vertical
+              </label>
+
+              <InputComponent
+                name="paddingY"
+                label="paddingY"
+                onchange={handleChange}
+                type="number"
+                value={String(newState[newSelect]?.paddingY)}
+                icon={<SpaceBetweenVerticallyIcon />}
+              />
+            </fieldset>
 
             {/* <SliderComponent
               value={newState[newSelect].fontSize}

@@ -80,6 +80,22 @@ fieldset {
   padding: 0px 5px;
 }
 
+/* selection color change 
+
+
+*/
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--mauve2);
+  background: var(--mauve12);
+}
+
+::selection {
+  color: var(--mauve2);
+  background: var(--mauve12);
+}
+
 :-webkit-autofill,
 :-webkit-autofill:hover,
 :-webkit-autofill:focus {
