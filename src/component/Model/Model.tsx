@@ -72,7 +72,7 @@ const storyObject = z.object({
   imageAnimation: z.string(),
 });
 
-const Model = () => {
+const Model = ({ isValid = false }) => {
   const [code, setCode] = useState("");
 
   const [previewLink, setPreviewLink] = useState("");
@@ -209,82 +209,95 @@ const Model = () => {
   }
 
   return (
-    <Dialog.Root>
-      <Dialog.Trigger asChild>
+    <Dialog.Root modal={false}>
+      <Dialog.Trigger disabled={false} asChild>
         <button
           onClick={() => handleChange()}
+          disabled={false}
+          style={{
+            background: isValid ? "var(--blue10)" : "var(--slate12)",
+          }}
           className="btn violet flex center gap-10"
         >
           <GearIcon />
           Generate Code
         </button>
       </Dialog.Trigger>
-      <Dialog.Portal style={{ zIndex: 10 }}>
-        <Dialog.Overlay className={styles.DialogOverlay} />
-        <Dialog.Content className={styles.DialogContent} style={{ zIndex: 10 }}>
-          <Dialog.Description className={styles.DialogDescription}>
-            <button
-              id="fullScreen"
-              aria-label="Full Screen"
-              onClick={handle.enter}
-              style={{ padding: "2px 5px" }}
-              className="btn flex gap-10 center"
-            >
-              <EnterFullScreenIcon />
-              FullScreen
-            </button>
-            <button
-              id="download_jsx"
-              aria-label="download jsx"
-              style={{ padding: "2px 5px" }}
-              className="btn flex gap-10 center"
-            >
-              <DownloadIcon />
-              Download JSX
-            </button>
-            <button
-              aria-label="Download html"
-              id="download_html"
-              style={{ padding: "2px 5px" }}
-              className="btn flex gap-10 center"
-            >
-              <DownloadIcon />
-              Download html
-            </button>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={previewLink}
-              className="btn inter flex gap-10 center "
-            >
-              <RocketIcon />
-              Preview
-            </a>
-          </Dialog.Description>
-          <FullScreen handle={handle}>
-            <Editor
-              options={options}
-              width="100%"
-              height="560px"
-              language="html"
-              theme="vs-dark"
-              className={styles.editor}
-              value={code || "somethng"}
-            />
-          </FullScreen>
+      {isValid && (
+        <Dialog.Portal style={{ zIndex: 10 }}>
+          <Dialog.Overlay className={styles.DialogOverlay} />
+          <Dialog.Content
+            className={styles.DialogContent}
+            style={{ zIndex: 10 }}
+          >
+            <Dialog.Description className={styles.DialogDescription}>
+              <button
+                id="fullScreen"
+                aria-label="Full Screen"
+                onClick={handle.enter}
+                style={{ padding: "2px 5px" }}
+                className="btn flex gap-10 center"
+              >
+                <EnterFullScreenIcon />
+                FullScreen
+              </button>
+              <button
+                id="download_jsx"
+                aria-label="download jsx"
+                style={{ padding: "2px 5px" }}
+                className="btn flex gap-10 center"
+              >
+                <DownloadIcon />
+                Download JSX
+              </button>
+              <button
+                aria-label="Download html"
+                id="download_html"
+                style={{ padding: "2px 5px" }}
+                className="btn flex gap-10 center"
+              >
+                <DownloadIcon />
+                Download html
+              </button>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={previewLink}
+                style={{
+                  background: "var(--violet10)",
+                  textDecoration: "none",
+                }}
+                className="btn inter flex gap-10 center "
+              >
+                <RocketIcon />
+                Preview
+              </a>
+            </Dialog.Description>
+            <FullScreen handle={handle}>
+              <Editor
+                options={options}
+                width="100%"
+                height="560px"
+                language="html"
+                theme="vs-dark"
+                className={styles.editor}
+                value={code || "somethng"}
+              />
+            </FullScreen>
 
-          <Dialog.Close asChild>
-            <button
-              aria-labelledby="close"
-              id="close"
-              className={styles.IconButton}
-              aria-label="Close"
-            >
-              <Cross2Icon />
-            </button>
-          </Dialog.Close>
-        </Dialog.Content>
-      </Dialog.Portal>
+            <Dialog.Close asChild>
+              <button
+                aria-labelledby="close"
+                id="close"
+                className={styles.IconButton}
+                aria-label="Close"
+              >
+                <Cross2Icon />
+              </button>
+            </Dialog.Close>
+          </Dialog.Content>
+        </Dialog.Portal>
+      )}
     </Dialog.Root>
   );
 };

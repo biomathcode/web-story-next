@@ -135,6 +135,11 @@ const LeftSidebar = ({
     image: "",
   });
 
+  const isEmpty = (object) =>
+    Object.values(object).every((x) => x === null || x === "");
+
+  const isValid = !isEmpty(author) && !isEmpty(schema) && !isEmpty(publisher);
+
   return (
     <div
       className="flex col  js"
@@ -498,40 +503,20 @@ const LeftSidebar = ({
         </FullModel>
 
         <FullModel triggerName="Publish" icon={<BackpackIcon />}>
-          <FormBox
-            isValid={
-              author?.authorImage && author?.authorName && author?.authorUrl
-                ? true
-                : false
-            }
-            title="Author Information"
-          >
+          <FormBox isValid={!isEmpty(author)} title="Author Information">
             <AuthorInfo author={author} setAuthor={setAuthor} />
           </FormBox>
           <FormBox
-            isValid={
-              publisher?.websiteLogo &&
-              publisher?.websiteName &&
-              publisher?.websiteUrl
-                ? true
-                : false
-            }
+            isValid={!isEmpty(publisher)}
             title="Publication Information"
           >
             <PublisherInfo publisher={publisher} setPublisher={setPublisher} />
           </FormBox>
-          <FormBox
-            isValid={
-              schema?.title && schema?.description && schema?.image
-                ? true
-                : false
-            }
-            title="Structured Data "
-          >
+          <FormBox isValid={!isEmpty(schema)} title="Structured Data ">
             <Schema schema={schema} setSchema={setSchema} />
           </FormBox>
           <div className="flex" style={{ justifyContent: "center" }}>
-            <Model />
+            <Model isValid={isValid} />
           </div>
         </FullModel>
       </div>

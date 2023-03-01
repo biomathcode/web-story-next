@@ -31,12 +31,13 @@ function FullModel({ triggerName, children, icon }: ModelType) {
           className={classNames(styles.DialogContent, "inter")}
           style={{ zIndex: 10, overflow: "scroll" }}
         >
-          {/* <Dialog.Title>Add Analytics</Dialog.Title>
+          <Dialog.Title>Add Aditional Information</Dialog.Title>
           <Dialog.Description className={styles.DialogDescription}>
-            <p>Add Analytics to your site</p>
-          </Dialog.Description> */}
+            Add author, publication and strucuted data information to enable
+            code generation
+          </Dialog.Description>
 
-          {children}
+          <div className="flex gap-10 col">{children}</div>
 
           <Dialog.Close asChild>
             <button
