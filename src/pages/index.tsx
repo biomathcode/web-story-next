@@ -256,6 +256,10 @@ function Home() {
           name="description"
           content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
         />
+        <meta
+          property="keywords"
+          content="webstory, no-code, amp, free, hashnode, blog, coolhead "
+        />
 
         <meta
           property="title"

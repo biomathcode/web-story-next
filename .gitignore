@@ -32,6 +32,15 @@ yarn-error.log*
 # vercel
 .vercel
 
+# next-pwa
+public/workbox-*.js
+public/fallback-*.js
+public/sw.js
+public/*.map
+public/sitemap-0.xml
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+yarn.lock
