@@ -41,3 +41,4 @@ pnpm dev
 
 [Web Story publishing checklist](https://creators.google/pt-br/content-creation-guides/modern-storytelling-with-web-stories/web-story-publishing-checklist/#follow-seo-best-practices)
 
+[Web Story Technical Details](https://amp.dev/documentation/guides-and-tutorials/learn/webstory_technical_details)
