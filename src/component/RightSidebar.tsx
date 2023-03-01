@@ -8,7 +8,7 @@ import * as ScrollArea from "@radix-ui/react-scroll-area";
 const RightSidebar = ({ content }: { content: any }) => {
   return (
     <Tabs.Root
-      className="TabsRoot"
+      className="TabsRoot rightSidebar"
       defaultValue="tab1"
       style={{ overflow: "auto", width: "100%" }}
     >

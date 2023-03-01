@@ -219,7 +219,7 @@ const LeftSidebar = ({
       }}
     >
       <Tabs.Root
-        className="TabsRoot"
+        className="TabsRoot leftSidebar"
         defaultValue="tab1"
         style={{ width: "100%" }}
       >

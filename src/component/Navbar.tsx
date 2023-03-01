@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import useLocalStorage from "use-local-storage";
 import { SCHEMA } from "@/lib/constants";
+import OnBoarding from "./OnBoarding";
 
 export interface ColourOption {
   value: string;
@@ -166,7 +167,7 @@ function NavBar({
         </Suspense>
       </div>
 
-      <div>
+      <div className="flex gap-10 center">
         <Link
           className="flex  center gap-10 fs-12"
           style={{
@@ -184,6 +185,7 @@ function NavBar({
           <RocketIcon />
           Learn
         </Link>
+        <OnBoarding />
       </div>
     </nav>
   );
