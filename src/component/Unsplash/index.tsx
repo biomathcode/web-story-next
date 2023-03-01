@@ -47,7 +47,7 @@ function Search({
 }) {
   return (
     <form
-      className="flex gap-10 center jc"
+      className="flex gap-10 center jc scroll"
       style={{ width: "100%" }}
       onSubmit={(e) => {
         setLoading(true);
@@ -109,6 +109,7 @@ function ImageContainer({ data }: { data: any }) {
         alignItems: "center",
         justifyContent: "center",
       }}
+      className="scroll"
     >
       {data.length === 0 ? (
         <PlaceHolder />

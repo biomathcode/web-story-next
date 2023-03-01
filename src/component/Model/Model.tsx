@@ -213,7 +213,7 @@ const Model = () => {
       <Dialog.Trigger asChild>
         <button
           onClick={() => handleChange()}
-          className="btn violet flex center gap-10 fs-12"
+          className="btn violet flex center gap-10"
         >
           <GearIcon />
           Generate Code

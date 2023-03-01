@@ -1,6 +1,8 @@
 import {
+  BackpackIcon,
   ColorWheelIcon,
   FontSizeIcon,
+  GearIcon,
   LineHeightIcon,
   SpaceBetweenHorizontallyIcon,
   SpaceBetweenVerticallyIcon,
@@ -21,6 +23,8 @@ import { AuthorInfo, PublisherInfo, Schema } from "./SEO";
 import Component from "@/component/AnalyticView";
 import MonetiseComponent from "@/component/MonetizeView";
 import FormBox from "./FormBox";
+import SliderComponent from "./SliderComponent";
+import classname from "classnames";
 
 const LeftSidebar = ({
   inter,
@@ -214,6 +218,7 @@ const LeftSidebar = ({
             fontSize: "14px",
           }}
           value="tab2"
+          className="scroll"
         >
           <fieldset className="flex js  col  mt-10 gap-10">
             <label htmlFor="textAnimation" className="label">
@@ -269,7 +274,7 @@ const LeftSidebar = ({
             gap: "10px",
             fontSize: "14px",
           }}
-          className={inter.className}
+          className={classname(inter.className, "scroll")}
           value="tab1"
         >
           <div className="flex gap-10 col">
@@ -453,19 +458,25 @@ const LeftSidebar = ({
               onChange={handleChange}
               value={newState[newSelect]?.overlay === true ? "true" : "false"}
             />
+            <SliderComponent
+              value={newState[newSelect].fontSize}
+              onChange={handleChange}
+              name="slider"
+              label="slider"
+            />
           </div>
         </Tabs.Content>
       </Tabs.Root>
-      <div className="flex jc col  p-10 gap-10 center">
+      <div className="flex jc   p-10 gap-10 center">
         {/* Analytics, Monetisation */}
-        <FullModel triggerName="Advance Settings">
+        <FullModel triggerName="Settings" icon={<GearIcon />}>
           <>
             <Component />
             <MonetiseComponent />
           </>
         </FullModel>
 
-        <FullModel triggerName="Publish">
+        <FullModel triggerName="Publish" icon={<BackpackIcon />}>
           <FormBox title="Author Information">
             <AuthorInfo />
           </FormBox>

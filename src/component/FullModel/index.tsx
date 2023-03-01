@@ -1,15 +1,16 @@
 import { ComponentType, FunctionComponent, ReactNode } from "react";
 import styles from "./styles.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Cross2Icon, GearIcon } from "@radix-ui/react-icons";
+import { BackpackIcon, Cross2Icon, GearIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 
 type ModelType = {
   triggerName: string;
   children: ReactNode;
+  icon: any;
 };
 
-function FullModel({ triggerName, children }: ModelType) {
+function FullModel({ triggerName, children, icon }: ModelType) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -19,7 +20,8 @@ function FullModel({ triggerName, children }: ModelType) {
           onClick={() => console.log("this")}
           className="btn violet flex center gap-10 fs-12"
         >
-          <GearIcon />
+          {icon}
+
           {triggerName}
         </button>
       </Dialog.Trigger>
