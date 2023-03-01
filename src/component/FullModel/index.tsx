@@ -19,6 +19,10 @@ function FullModel({ triggerName, children, icon }: ModelType) {
           id={triggerName}
           onClick={() => console.log("this")}
           className="btn violet flex center gap-10 fs-12"
+          style={{
+            background:
+              triggerName === "Publish" ? "var(--violet10)" : "var(--slate12)",
+          }}
         >
           {icon}
 

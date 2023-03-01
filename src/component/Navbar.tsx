@@ -110,7 +110,9 @@ function NavBar({
                   setUser(response.data.data.user);
                   setLoading(false);
                 } else {
-                  alert(`No data found on page ${data.page}`);
+                  alert(
+                    `No data found on page ${data.page} and username ${data.username}`
+                  );
                   setLoading(false);
                 }
               }

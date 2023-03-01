@@ -2107,7 +2107,7 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "1.0.0"
 
-"@radix-ui/react-visually-hidden@1.0.1":
+"@radix-ui/react-visually-hidden@^1.0.1", "@radix-ui/react-visually-hidden@1.0.1":
   "integrity" "sha512-K1hJcCMfWfiYUibRqf3V8r5Drpyf7rh44jnrwAbdvI5iCCijilBBeyQv9SKidYNZIopMdCyR9FnIjkHxHN0FcQ=="
   "resolved" "https://registry.npmjs.org/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.0.1.tgz"
   "version" "1.0.1"

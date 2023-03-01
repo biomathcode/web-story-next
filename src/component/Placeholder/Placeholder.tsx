@@ -11,7 +11,7 @@ function PlaceHolder() {
           textAlign: "center",
         }}
       >
-        Search Images and drag them to the Canvas
+        Click hold the 6 dots icon and drag them to the Canvas
       </p>
     </div>
   );
