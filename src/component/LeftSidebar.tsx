@@ -13,7 +13,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
-import { state } from "@/pages/index";
+import { authorType, publisherType, seoType, state } from "@/pages/index";
 
 import Toggle from "./Toggle/Toggle";
 import ColorComponent from "./ColorComponent";
@@ -25,6 +25,8 @@ import MonetiseComponent from "@/component/MonetizeView";
 import FormBox from "./FormBox";
 import SliderComponent from "./SliderComponent";
 import classname from "classnames";
+import useLocalStorage from "use-local-storage";
+import { AUTHOR, PUBLISHER, SCHEMA } from "@/lib/constants";
 
 const LeftSidebar = ({
   inter,
@@ -114,6 +116,25 @@ const LeftSidebar = ({
 
     setNewState(state);
   }
+
+  const [author, setAuthor] = useLocalStorage<authorType>(AUTHOR, {
+    authorName: "",
+    authorUrl: "",
+    authorImage: "",
+  });
+
+  const [publisher, setPublisher] = useLocalStorage<publisherType>(PUBLISHER, {
+    websiteUrl: "",
+    websiteName: "",
+    websiteLogo: "",
+  });
+
+  const [schema, setSchema] = useLocalStorage<seoType>(SCHEMA, {
+    title: "",
+    description: "",
+    image: "",
+  });
+
   return (
     <div
       className="flex col  js"
@@ -477,16 +498,41 @@ const LeftSidebar = ({
         </FullModel>
 
         <FullModel triggerName="Publish" icon={<BackpackIcon />}>
-          <FormBox title="Author Information">
-            <AuthorInfo />
+          <FormBox
+            isValid={
+              author?.authorImage && author?.authorName && author?.authorUrl
+                ? true
+                : false
+            }
+            title="Author Information"
+          >
+            <AuthorInfo author={author} setAuthor={setAuthor} />
           </FormBox>
-          <FormBox title="Publication Information">
-            <PublisherInfo />
+          <FormBox
+            isValid={
+              publisher?.websiteLogo &&
+              publisher?.websiteName &&
+              publisher?.websiteUrl
+                ? true
+                : false
+            }
+            title="Publication Information"
+          >
+            <PublisherInfo publisher={publisher} setPublisher={setPublisher} />
           </FormBox>
-          <FormBox title="Structured Data ">
-            <Schema />
+          <FormBox
+            isValid={
+              schema?.title && schema?.description && schema?.image
+                ? true
+                : false
+            }
+            title="Structured Data "
+          >
+            <Schema schema={schema} setSchema={setSchema} />
           </FormBox>
-          <Model />
+          <div className="flex" style={{ justifyContent: "center" }}>
+            <Model />
+          </div>
         </FullModel>
       </div>
       <div></div>

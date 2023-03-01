@@ -4,7 +4,15 @@ import Link from "next/link";
 import { ReactNode, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { CalendarPlaceHolder, Check } from "@/component/Icons";
-function FormBox({ title, children }: { title: string; children: ReactNode }) {
+function FormBox({
+  title,
+  children,
+  isValid,
+}: {
+  title: string;
+  children: ReactNode;
+  isValid: boolean;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -42,7 +50,7 @@ function FormBox({ title, children }: { title: string; children: ReactNode }) {
                 <div
                   style={{
                     padding: "5px",
-                    background: open ? "#1B91FB" : "#444",
+                    background: isValid ? "#1B91FB" : "#444",
                     borderRadius: "50%",
                     width: "40px",
                     height: "40px",

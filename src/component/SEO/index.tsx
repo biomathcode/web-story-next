@@ -12,19 +12,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import useLocalStorage from "use-local-storage";
 
-function Schema() {
-  const [schema, setSchema] = useLocalStorage<seoType>(SCHEMA, {
-    title: "",
-    description: "",
-    image: "",
-  });
-
-  const slug = slugify(schema.title);
-
-  const website: publisherType = JSON.parse(
-    window.localStorage.getItem(PUBLISHER) || ""
-  );
-
+function Schema({ schema, setSchema }) {
   const { handleSubmit, register } = useForm();
 
   return (
@@ -69,27 +57,23 @@ function Schema() {
             placeholder="social media link Thumbnai "
           />
         </fieldset>
-        <button
-          aria-label="submit"
-          id="submit"
-          className="btn flex fs-12"
-          type="submit"
-        >
-          Submit
-        </button>
+        <div className="flex" style={{ justifyContent: "flex-end" }}>
+          <button
+            aria-label="submit"
+            id="submit"
+            className="btn flex fs-12"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </>
   );
 }
 
-const PublisherInfo = () => {
+const PublisherInfo = ({ publisher, setPublisher }) => {
   const { handleSubmit, register } = useForm();
-
-  const [publisher, setPublisher] = useLocalStorage<publisherType>(PUBLISHER, {
-    websiteUrl: "",
-    websiteName: "",
-    websiteLogo: "",
-  });
 
   const data = [
     {
@@ -130,14 +114,16 @@ const PublisherInfo = () => {
           </fieldset>
         );
       })}
-      <button
-        aria-label="submit"
-        id="submit"
-        type="submit"
-        className="btn fs-12 m-y "
-      >
-        Submit
-      </button>
+      <div className="flex" style={{ justifyContent: "flex-end" }}>
+        <button
+          aria-label="submit"
+          id="submit"
+          type="submit"
+          className="btn fs-12 m-y "
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 };
@@ -230,13 +216,13 @@ const Monetize = () => {
   );
 };
 
-const AuthorInfo = () => {
+const AuthorInfo = ({ author, setAuthor }) => {
   const { handleSubmit, register } = useForm();
-  const [author, setAuthor] = useLocalStorage<any>(AUTHOR, {
-    authorName: "",
-    authorUrl: "",
-    authorImage: "",
-  });
+  // const [author, setAuthor] = useLocalStorage<any>(AUTHOR, {
+  //   authorName: "",
+  //   authorUrl: "",
+  //   authorImage: "",
+  // });
   return (
     <form
       className="flex col gap-10"
@@ -277,14 +263,16 @@ const AuthorInfo = () => {
           })}
         />
       </fieldset>
-      <button
-        aria-label="submit"
-        id="submit"
-        type="submit"
-        className="btn fs-12 m-x"
-      >
-        Submit
-      </button>
+      <div className="flex" style={{ justifyContent: "flex-end" }}>
+        <button
+          aria-label="submit"
+          id="submit"
+          type="submit"
+          className="btn fs-12 m-x"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 };
