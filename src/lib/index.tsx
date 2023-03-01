@@ -458,7 +458,6 @@ export default function IndexPage() {
 const HTML_META = (title: string, description: string, image: string) => {
   return `
   <title>${title}</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <meta
     name="description"
     content="${description}"
@@ -557,7 +556,6 @@ const HTML_TEMPLATE = (
       custom-element="amp-story"
       src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
     ></script>
-    <title>Hello, AMPs</title>
     <link
     rel="canonical"
     href="${canonicalLink}"
@@ -637,10 +635,9 @@ const HTML_TEMPLATE = (
      height: 100%;
       background: linear-gradient(to bottom, transparent 0%, black 100%);
    }
- 
-  
-   
-      
+   h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+  }      
     ${styles}
 
     </style>

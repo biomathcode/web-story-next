@@ -18,6 +18,7 @@ import {
   AMP_STORY_AUTO_ADS,
   AMP_STORY_PAGE,
   AMP_TEXT,
+  HTML_META,
   HTML_TEMPLATE,
   slugify,
 } from "@/lib";
@@ -174,7 +175,15 @@ const Model = ({ isValid = false }) => {
       })
     );
 
-    const schemaScript = `<script type="application/ld+json">${schema}</script>`;
+    const schemaScript = `<script type="application/ld+json">${schema}</script> \n`;
+
+    const meta =
+      schemaScript +
+      HTML_META(
+        structeddata.title,
+        String(structeddata.description),
+        structeddata.image
+      );
 
     const newData = HTML_TEMPLATE(
       ampStory,
@@ -185,17 +194,13 @@ const Model = ({ isValid = false }) => {
         text-align: center;
         font-family: 'Inter', sans-serif;
       }
-    h1{
-      font-size: 14px;
-      margin-top:  50%;
-    }
       `,
       `
       <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
       `,
-      schemaScript,
+      meta,
       `${publisher.websiteUrl}/${slugify(structeddata.title)}`
     );
 
