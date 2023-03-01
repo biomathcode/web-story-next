@@ -142,8 +142,8 @@ function NewView({
             transition: "all 100ms linear 0s",
             objectFit: "cover",
             backgroundRepeat: "no-repeat",
-            width: "350px",
-            height: "620px",
+            width: "375px",
+            height: "667x",
             borderRadius: "10px",
             border: "1px solid #eee",
             overflow: "hidden",
@@ -162,8 +162,8 @@ function NewView({
               transition: "all ease-in 216ms",
               backgroundSize: "cover",
               backgroundPosition: "center",
-              width: "350px",
-              height: "620px",
+              width: "375px",
+              height: "667px",
               zIndex: 0,
             }}
           ></div>

@@ -658,10 +658,9 @@ const HTML_TEMPLATE = (
 const AMP_HIGHLIGHTED_TEXT = (
   content: string,
   animation: animationType = "fade-in",
-  tag: string = "p",
-
   color?: string,
   background?: string,
+  tag: string = "p",
   textPosition: number = 36,
   fontSize: number = 24,
   textAlign: string = "center",
@@ -673,16 +672,21 @@ const AMP_HIGHLIGHTED_TEXT = (
   <${tag}
   style="color:${color};
   position:absolute;
-  top: ${textPosition}%;"
+  top: ${textPosition}%;
+  font-size: ${fontSize}px;
+  padding:0px;
+  "
   animate-in="${animation}"
   >
   <span
   style="background:${background};
-  position:absolute;
   padding: ${paddingVertical}px ${paddingHorizontal}px;
-  font-size: ${fontSize}px;
-  text-align: ${textAlign}px;
+  text-align: ${textAlign};
   line-height: ${lineHeight}px;
+  display: inline;
+  box-decoration-break: clone;
+  border-radius: 10px;
+ -webkit-box-decoration-break: clone;
   "
   >
 

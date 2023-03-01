@@ -121,21 +121,7 @@ const Model = ({ isValid = false }) => {
 
           const text =
             el.highlight === "box"
-              ? AMP_TEXT(" ", "drop")
-              : AMP_HIGHLIGHTED_TEXT("", "fade-in");
-
-          const overlay = el.overlay
-            ? AMP_GRID_LAYER(AMP_OVERLAY(), "fill")
-            : "";
-
-          return AMP_STORY_PAGE(
-            AMP_GRID_LAYER(
-              AMP_IMAGE(el.image, 360, 720, "fill", el.imageAnimation),
-              "fill"
-            ) +
-              overlay +
-              AMP_GRID_LAYER(
-                AMP_TEXT(
+              ? AMP_TEXT(
                   el.text,
                   el.textAnimation,
                   el.color,
@@ -147,9 +133,32 @@ const Model = ({ isValid = false }) => {
                   el.paddingY.toString(),
                   el.paddingX.toString(),
                   el.lineHeight.toString()
-                ),
-                "vertical"
-              ) +
+                )
+              : AMP_HIGHLIGHTED_TEXT(
+                  el.text,
+                  el.textAnimation,
+                  el.color,
+                  el.background,
+                  tag,
+                  el.textPosition,
+                  el.fontSize,
+                  el.textAlign,
+                  el.paddingY,
+                  el.paddingX,
+                  el.lineHeight
+                );
+
+          const overlay = el.overlay
+            ? AMP_GRID_LAYER(AMP_OVERLAY(), "fill")
+            : "";
+
+          return AMP_STORY_PAGE(
+            AMP_GRID_LAYER(
+              AMP_IMAGE(el.image, 360, 720, "fill", el.imageAnimation),
+              "fill"
+            ) +
+              overlay +
+              AMP_GRID_LAYER(text, "vertical") +
               cta,
             i
           );
