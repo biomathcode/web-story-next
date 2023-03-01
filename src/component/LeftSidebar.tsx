@@ -595,28 +595,31 @@ const LeftSidebar = ({
         />
         <div className="flex gap-10">
           <FullModel triggerName="Settings" icon={<GearIcon />}>
-            <>
+            <div className="flex col gap-10 center">
               <Component />
               <MonetiseComponent />
-            </>
+            </div>
           </FullModel>
 
           <FullModel triggerName="Publish" icon={<BackpackIcon />}>
-            <FormBox isValid={!isEmpty(author)} title="Author Information">
-              <AuthorInfo author={author} setAuthor={setAuthor} />
-            </FormBox>
-            <FormBox
-              isValid={!isEmpty(publisher)}
-              title="Publication Information"
-            >
-              <PublisherInfo
-                publisher={publisher}
-                setPublisher={setPublisher}
-              />
-            </FormBox>
-            <FormBox isValid={!isEmpty(schema)} title="Structured Data ">
-              <Schema schema={schema} setSchema={setSchema} />
-            </FormBox>
+            <div className="flex col gap-10">
+              <FormBox isValid={!isEmpty(author)} title="Author Information">
+                <AuthorInfo author={author} setAuthor={setAuthor} />
+              </FormBox>
+              <FormBox
+                isValid={!isEmpty(publisher)}
+                title="Publication Information"
+              >
+                <PublisherInfo
+                  publisher={publisher}
+                  setPublisher={setPublisher}
+                />
+              </FormBox>
+              <FormBox isValid={!isEmpty(schema)} title="Structured Data ">
+                <Schema schema={schema} setSchema={setSchema} />
+              </FormBox>
+            </div>
+
             <div className="flex" style={{ justifyContent: "center" }}>
               <Model isValid={isValid} />
             </div>
@@ -629,19 +632,3 @@ const LeftSidebar = ({
 };
 
 export default LeftSidebar;
-
-const CTA_Form = ({
-  on,
-  url,
-  label,
-}: {
-  on: boolean;
-  url: string;
-  label: string;
-}) => {
-  return (
-    <div>
-      <label>CTA FORM</label>
-    </div>
-  );
-};
