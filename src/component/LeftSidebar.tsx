@@ -1,9 +1,11 @@
 import {
   BackpackIcon,
   ColorWheelIcon,
+  FileIcon,
   FontSizeIcon,
   GearIcon,
   LineHeightIcon,
+  PlusCircledIcon,
   SpaceBetweenHorizontallyIcon,
   SpaceBetweenVerticallyIcon,
   TextAlignBottomIcon,
@@ -28,6 +30,8 @@ import classname from "classnames";
 import useLocalStorage from "use-local-storage";
 import { AUTHOR, PUBLISHER, SCHEMA } from "@/lib/constants";
 import InputComponent from "./InputComponent";
+import Alert from "./Alert";
+import { nanoid } from "nanoid";
 
 const LeftSidebar = ({
   inter,
@@ -118,6 +122,28 @@ const LeftSidebar = ({
     setNewState(state);
   }
 
+  const [template, setTemplate] = useLocalStorage("template", [
+    {
+      name: "",
+      id: nanoid(),
+      paddingX: 10,
+      paddingY: 10,
+      fontSize: 24,
+      textPosition: 36,
+      textAlign: "center",
+      color: "",
+      lineHeight: 28,
+      background: "",
+      highlight: "box",
+      cta: false,
+      url: "",
+      ctaText: "",
+      textAnimation: "drop",
+      imageAnimation: "drop",
+      overlay: true,
+    },
+  ]);
+
   const [author, setAuthor] = useLocalStorage<authorType>(AUTHOR, {
     authorName: "",
     authorUrl: "",
@@ -135,6 +161,48 @@ const LeftSidebar = ({
     description: "",
     image: "",
   });
+
+  const createNewTemplate = ({
+    name,
+    fontSize,
+    lineHeight,
+    textPosition,
+    textAlign,
+    color,
+    background,
+    highlight,
+    textAnimation,
+    imageAnimation,
+    overlay,
+    cta,
+    url,
+    ctaText,
+    paddingX,
+    paddingY,
+  }) => {
+    setTemplate([
+      ...template,
+      {
+        name: name,
+        id: nanoid(),
+        fontSize,
+        lineHeight,
+        textPosition,
+        textAlign,
+        color,
+        background,
+        highlight,
+        textAnimation,
+        imageAnimation,
+        overlay,
+        cta,
+        url,
+        ctaText,
+        paddingX,
+        paddingY,
+      },
+    ]);
+  };
 
   const isEmpty = (object) =>
     Object.values(object).every((x) => x === null || x === "");
@@ -486,6 +554,7 @@ const LeftSidebar = ({
               onChange={handleChange}
               value={newState[newSelect]?.overlay === true ? "true" : "false"}
             />
+
             {/* <SliderComponent
               value={newState[newSelect].fontSize}
               onChange={handleChange}
@@ -495,32 +564,50 @@ const LeftSidebar = ({
           </div>
         </Tabs.Content>
       </Tabs.Root>
-      <div className="flex jc   p-10 gap-10 center">
+      <div className="flex jc col   p-10 gap-10 center">
         {/* Analytics, Monetisation */}
-        <FullModel triggerName="Settings" icon={<GearIcon />}>
-          <>
-            <Component />
-            <MonetiseComponent />
-          </>
-        </FullModel>
+        <Alert
+          icon={<PlusCircledIcon />}
+          triggerName="Make Template"
+          action={(e) =>
+            createNewTemplate({
+              ...newState[newSelect],
+              name: "new Template",
+            })
+          }
+          actionName="createTemplate"
+          title="Give your template a name"
+          description="Give your font setting a name, it will help your remember it"
+        />
+        <div className="flex gap-10">
+          <FullModel triggerName="Settings" icon={<GearIcon />}>
+            <>
+              <Component />
+              <MonetiseComponent />
+            </>
+          </FullModel>
 
-        <FullModel triggerName="Publish" icon={<BackpackIcon />}>
-          <FormBox isValid={!isEmpty(author)} title="Author Information">
-            <AuthorInfo author={author} setAuthor={setAuthor} />
-          </FormBox>
-          <FormBox
-            isValid={!isEmpty(publisher)}
-            title="Publication Information"
-          >
-            <PublisherInfo publisher={publisher} setPublisher={setPublisher} />
-          </FormBox>
-          <FormBox isValid={!isEmpty(schema)} title="Structured Data ">
-            <Schema schema={schema} setSchema={setSchema} />
-          </FormBox>
-          <div className="flex" style={{ justifyContent: "center" }}>
-            <Model isValid={isValid} />
-          </div>
-        </FullModel>
+          <FullModel triggerName="Publish" icon={<BackpackIcon />}>
+            <FormBox isValid={!isEmpty(author)} title="Author Information">
+              <AuthorInfo author={author} setAuthor={setAuthor} />
+            </FormBox>
+            <FormBox
+              isValid={!isEmpty(publisher)}
+              title="Publication Information"
+            >
+              <PublisherInfo
+                publisher={publisher}
+                setPublisher={setPublisher}
+              />
+            </FormBox>
+            <FormBox isValid={!isEmpty(schema)} title="Structured Data ">
+              <Schema schema={schema} setSchema={setSchema} />
+            </FormBox>
+            <div className="flex" style={{ justifyContent: "center" }}>
+              <Model isValid={isValid} />
+            </div>
+          </FullModel>
+        </div>
       </div>
       <div></div>
     </div>

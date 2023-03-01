@@ -4,7 +4,14 @@ import styles from "./styles.module.css";
 import classname from "classnames";
 import { TrashIcon } from "@radix-ui/react-icons";
 
-const Alert = ({ actionName, action, title, description }) => (
+const Alert = ({
+  actionName,
+  action,
+  title,
+  description,
+  icon,
+  triggerName,
+}) => (
   <AlertDialog.Root>
     <AlertDialog.Trigger asChild>
       <button
@@ -19,9 +26,17 @@ const Alert = ({ actionName, action, title, description }) => (
           fontSize: "12px",
         }}
         id="delete"
-        className="Button violet"
+        className={classname(
+          styles.Button,
+          styles.violet,
+          "flex",
+          "center",
+          "gap-10"
+        )}
       >
-        <TrashIcon />
+        {triggerName}
+
+        {icon}
       </button>
     </AlertDialog.Trigger>
     <AlertDialog.Portal style={{ zIndex: 10 }}>

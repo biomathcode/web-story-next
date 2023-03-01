@@ -312,7 +312,7 @@ function NewView({
         </>
       </div>
       <div className="flex gap-10 center mt-10">
-        <ToolTip text="Delete the present page">
+        {/* <ToolTip text="Delete the present page">
           {newState.length > 1 && newSelect > 0 && (
             <button
               id="delete"
@@ -332,7 +332,7 @@ function NewView({
               <TrashIcon />
             </button>
           )}
-        </ToolTip>
+        </ToolTip> */}
         {/* <ToolTip text="Reset">
           <button
              id="reset"
@@ -376,6 +376,8 @@ function NewView({
           </button>
         </ToolTip>
         <Alert
+          icon={<TrashIcon />}
+          triggerName=""
           action={() => deleteState()}
           actionName="this action"
           title="Are you absolutely sure ?"
