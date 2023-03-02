@@ -415,13 +415,13 @@ export default function IndexPage() {
           <script
             type="application/json"
             dangerouslySetInnerHTML={{
-              __html: {
+              __html: JSON.stringify({
                 "ad-attributes": {
                   type: "adsense",
                   "data-ad-client": "ca-pub-7971530262943091",
                   "data-ad-slot": "2891356213",
                 },
-              },
+              }),
             }}
           ></script>
         </amp-story-auto-ads>
