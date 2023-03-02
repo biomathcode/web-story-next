@@ -86,7 +86,10 @@ function NewView({
 
   console.log(animationMap[newState[newSelect]?.textAnimation]);
   return (
-    <div className="flex center col jc  " suppressHydrationWarning={true}>
+    <div
+      className="flex center col jc viewEditor "
+      suppressHydrationWarning={true}
+    >
       <div
         className="flex center jc "
         style={{ margin: "10px 0px", width: "400px" }}
@@ -357,7 +360,7 @@ function NewView({
             aria-label="Click to Play animation"
             id="animation"
             name="Click to Play animation"
-            className="flex center gap-10 inter"
+            className="flex center gap-10 inter "
             onClick={animate}
             style={{
               padding: "10px",
