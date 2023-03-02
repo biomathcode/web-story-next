@@ -63,7 +63,7 @@ export default function IndexPage() {
           rel="stylesheet"
         ></link>
         <script
-          type="application/json"
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(data),
           }}
