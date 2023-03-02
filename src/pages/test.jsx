@@ -413,7 +413,7 @@ export default function IndexPage() {
 
         <amp-story-auto-ads>
           <script
-            type="application/ld+json"
+            type="application/json"
             dangerouslySetInnerHTML={{
               __html: {
                 "ad-attributes": {
