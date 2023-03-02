@@ -76,6 +76,8 @@ const storyObject = z.object({
 const Model = ({ isValid = false }) => {
   const [code, setCode] = useState("");
 
+  const [nextcode, setNextCode] = useState("");
+
   const [previewLink, setPreviewLink] = useState("");
 
   const options = {

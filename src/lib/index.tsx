@@ -727,6 +727,81 @@ const AMP_TEXT = (
   </${tag}>`;
 };
 
+const AMP_NEXT_HIGHLIGHTED_TEXT = (
+  content: string,
+  animation: animationType = "fade-in",
+  color?: string,
+  background?: string,
+  tag: string = "p",
+  textPosition: number = 36,
+  fontSize: number = 24,
+  textAlign: string = "center",
+  paddingVertical: number = 10,
+  paddingHorizontal: number = 10,
+  lineHeight: number = 28
+) => {
+  return `
+ <${tag}
+  style={{
+  color:"${color}";
+  position:"absolute";
+  top: "${textPosition}%";
+  font-size: "${fontSize}px";
+  padding:0px;
+  }}
+  animate-in="${animation}"
+  >
+  <span
+  style={{
+    borderRadius: "10px",
+    boxDecorationBreak: "clone",
+    WebkitBoxDecorationBreak: "clone",
+    display: "inline",
+    background:"${background}";
+    padding: "${paddingVertical}px ${paddingHorizontal}px";
+    text-align: "${textAlign}";
+    line-height: "${lineHeight}px";
+  }}
+  >
+
+   ${content}
+   </span>
+  </${tag}>
+ `;
+};
+
+const AMP_NEXT_TEXT = (
+  content: string,
+  animation: animationType = "fade-in",
+  color?: string,
+  background?: string,
+
+  tag: string = "p",
+  textPosition: number = 36,
+  fontSize?: number,
+  textAlign?: string,
+  paddingVertical?: number,
+  paddingHorizontal?: number,
+  lineHeight?: number
+) => {
+  return `
+  <${tag}
+  style={{
+    color: "${color}",
+    background: "${background}",
+    position: "absolute", 
+    top: "${textPosition}%",
+    fontSize: "${fontSize}px",
+    padding: "${paddingVertical}px ${paddingHorizontal}px", 
+    textAlign: "${textAlign}", 
+    lineHeight: "${lineHeight}px",
+  }}
+  animate-in="${animation}"
+  >
+  ${content}
+  </${tag}>`;
+};
+
 const AMP_OVERLAY = (): string => {
   return `
   <div
@@ -815,4 +890,6 @@ export {
   AMP_STYLES,
   AMP_STORY_AUTO_ADS,
   AMP_HIGHLIGHTED_TEXT,
+  AMP_NEXT_HIGHLIGHTED_TEXT,
+  AMP_NEXT_TEXT,
 };
