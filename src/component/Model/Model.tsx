@@ -13,6 +13,10 @@ import {
   AMP_GRID_LAYER,
   AMP_HIGHLIGHTED_TEXT,
   AMP_IMAGE,
+  AMP_NEXT_HIGHLIGHTED_TEXT,
+  AMP_NEXT_OVERLAY,
+  AMP_NEXT_STORY_AUTO_ADS,
+  AMP_NEXT_TEXT,
   AMP_OVERLAY,
   AMP_STORY,
   AMP_STORY_AUTO_ADS,
@@ -53,6 +57,7 @@ import {
   STATE,
 } from "@/lib/constants";
 import { StructuredData } from "../SEO";
+import Toggle from "../Toggle/Toggle";
 
 const storyObject = z.object({
   image: z.string().url(),
@@ -79,6 +84,8 @@ const Model = ({ isValid = false }) => {
   const [nextcode, setNextCode] = useState("");
 
   const [previewLink, setPreviewLink] = useState("");
+
+  const [isNext, setIsNext] = useState(false);
 
   const options = {
     selectOnLineNumbers: true,
@@ -113,6 +120,67 @@ const Model = ({ isValid = false }) => {
     const author: authorType = authorinfo && JSON.parse(authorinfo);
 
     const structeddata: seoType = structedinfo && JSON.parse(structedinfo);
+
+    const nextStory = AMP_STORY(
+      data
+        .map((el: state, i: any) => {
+          const cta = el.cta ? AMP_CTA_LAYER(el.url, el.ctaText) : "";
+
+          const tag = i === 0 ? "h1" : "p";
+
+          const text =
+            el.highlight === "box"
+              ? AMP_NEXT_TEXT(
+                  el.text,
+                  el.textAnimation,
+                  el.color,
+                  el.background,
+                  tag,
+                  el.textPosition,
+                  el.fontSize,
+                  el.textAlign,
+                  el.paddingY,
+                  el.paddingX,
+                  el.lineHeight
+                )
+              : AMP_NEXT_HIGHLIGHTED_TEXT(
+                  el.text,
+                  el.textAnimation,
+                  el.color,
+                  el.background,
+                  tag,
+                  el.textPosition,
+                  el.fontSize,
+                  el.textAlign,
+                  el.paddingY,
+                  el.paddingX,
+                  el.lineHeight
+                );
+
+          const overlay = el.overlay
+            ? AMP_GRID_LAYER(AMP_NEXT_OVERLAY(), "fill")
+            : "";
+
+          return AMP_STORY_PAGE(
+            AMP_GRID_LAYER(
+              AMP_IMAGE(el.image, 360, 720, "fill", el.imageAnimation),
+              "fill"
+            ) +
+              overlay +
+              AMP_GRID_LAYER(text, "vertical") +
+              cta,
+            i
+          );
+        })
+        .join("\n"),
+      structeddata.title,
+      publisher.websiteName,
+      publisher.websiteLogo,
+      data[0].image,
+      analytics?.gtag && AMP_ANALYTICS(analytics.gtag),
+      monetize?.client &&
+        AMP_NEXT_STORY_AUTO_ADS(monetize.client, monetize.slot)
+    );
 
     const ampStory = AMP_STORY(
       data
@@ -215,6 +283,8 @@ const Model = ({ isValid = false }) => {
       `${publisher.websiteUrl}/${slugify(structeddata.title)}`
     );
 
+    setNextCode(nextStory);
+
     setCode(newData);
 
     const baseData = btoa(unescape(encodeURIComponent(newData)));
@@ -288,16 +358,23 @@ const Model = ({ isValid = false }) => {
                 <RocketIcon />
                 Preview
               </a>
+              <Toggle
+                name="isNext"
+                label="Next"
+                infoText="Get the code for nextjs"
+                onChange={(e) => setIsNext(e.target.value)}
+                value={isNext ? "true" : "false"}
+              />
             </Dialog.Description>
             <FullScreen handle={handle}>
               <Editor
                 options={options}
                 width="100%"
                 height="560px"
-                language="html"
+                language={isNext ? "javascript" : "html"}
                 theme="vs-dark"
                 className={styles.editor}
-                value={code || "somethng"}
+                value={isNext ? nextcode : code}
               />
             </FullScreen>
 

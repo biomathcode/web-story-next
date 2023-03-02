@@ -743,11 +743,11 @@ const AMP_NEXT_HIGHLIGHTED_TEXT = (
   return `
  <${tag}
   style={{
-  color:"${color}";
-  position:"absolute";
-  top: "${textPosition}%";
-  font-size: "${fontSize}px";
-  padding:0px;
+  color:"${color}",
+  position:"absolute",
+  top: "${textPosition}%",
+  fontSize: "${fontSize}px",
+  padding:"0px",
   }}
   animate-in="${animation}"
   >
@@ -757,10 +757,10 @@ const AMP_NEXT_HIGHLIGHTED_TEXT = (
     boxDecorationBreak: "clone",
     WebkitBoxDecorationBreak: "clone",
     display: "inline",
-    background:"${background}";
-    padding: "${paddingVertical}px ${paddingHorizontal}px";
-    text-align: "${textAlign}";
-    line-height: "${lineHeight}px";
+    background:"${background}",
+    padding: "${paddingVertical}px ${paddingHorizontal}px",
+    textAlign: "${textAlign}",
+    lineHeight: "${lineHeight}px",
   }}
   >
 
@@ -812,6 +812,10 @@ const AMP_OVERLAY = (): string => {
   `;
 };
 
+const AMP_NEXT_OVERLAY = (): string => {
+  return `<div className="overlay"></div>`;
+};
+
 const AMP_CTA_LAYER = (href: string, text: string): string => {
   return `
 
@@ -848,6 +852,26 @@ const AMP_STORY_AUTO_ADS = (client: string, slot: string) => {
   </script>
 </amp-story-auto-ads>
   
+  `;
+};
+
+const AMP_NEXT_STORY_AUTO_ADS = (client: string, slot: string) => {
+  const data = JSON.stringify({
+    "ad-attributes": {
+      type: "adsense",
+      "data-ad-client": client,
+      "data-ad-slot": slot,
+    },
+  });
+
+  return `
+  <amp-story-auto-ads>
+  <script type="application/json"
+  dangerouslySetInnerHTML={{__html: ${data}}}
+  >
+  
+  </script>
+</amp-story-auto-ads>
   `;
 };
 
@@ -892,4 +916,6 @@ export {
   AMP_HIGHLIGHTED_TEXT,
   AMP_NEXT_HIGHLIGHTED_TEXT,
   AMP_NEXT_TEXT,
+  AMP_NEXT_STORY_AUTO_ADS,
+  AMP_NEXT_OVERLAY,
 };
