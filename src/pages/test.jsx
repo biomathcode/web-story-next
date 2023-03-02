@@ -5,13 +5,38 @@ export const config = {
   amp: true,
 };
 
+const data = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  mainEntityOfPage: "notes-on-api-modelling",
+  headline: "Notes on API Modelling",
+  description:
+    "Notes taken from the book  Designing Great Web APIs By James Higginbotham.The goal of API modelling is to translate the product requirements into the beginnings of a high-level API design. API modelling ensures that both developers and end users hav...",
+  author: {
+    "@type": "Person",
+    name: "Pratik Sharma",
+    url: "http://coolhead.in",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Coolhead",
+    url: "https://webstory.coolhead.in",
+  },
+  image: {
+    "@type": "ImageObject",
+    url: "https://cdn.hashnode.com/res/hashnode/image/unsplash/RyrFRsVoe2Q/upload/v1646386860067/z7UXATirf.jpeg",
+  },
+  datePublished: "2023-03-02T12:34:49.628Z",
+  dateModified: "2023-03-02T12:34:49.628Z",
+  isAccessibleForFree: "http://schema.org/True",
+});
 export default function IndexPage() {
   const isAmp = useAmp();
   return (
     <>
       <Head>
         <title>Notes on API Modelling</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+
         <meta
           name="description"
           content="Notes taken from the book  Designing Great Web APIs By James HigginbothamThe goal of API modelling is to translate the product requirements into the beginnings of a high-level API design. API modelling ensures that both developers and end users hav..."
@@ -38,33 +63,9 @@ export default function IndexPage() {
           rel="stylesheet"
         ></link>
         <script
-          type="application/ld+json"
+          type="application/json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "NewsArticle",
-              mainEntityOfPage: "notes-on-api-modelling",
-              headline: "Notes on API Modelling",
-              description:
-                "Notes taken from the book  Designing Great Web APIs By James Higginbotham\n\nThe goal of API modelling is to translate the product requirements into the beginnings of a high-level API design. API modelling ensures that both developers and end users hav...",
-              author: {
-                "@type": "Person",
-                name: "Pratik Sharma",
-                url: "http://coolhead.in",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Coolhead",
-                url: "https://webstory.coolhead.in",
-              },
-              image: {
-                "@type": "ImageObject",
-                url: "https://cdn.hashnode.com/res/hashnode/image/unsplash/RyrFRsVoe2Q/upload/v1646386860067/z7UXATirf.jpeg",
-              },
-              datePublished: "2023-03-02T12:34:49.628Z",
-              dateModified: "2023-03-02T12:34:49.628Z",
-              isAccessibleForFree: "http://schema.org/True",
-            }),
+            __html: JSON.stringify(data),
           }}
           key="product-jsonld"
         />
@@ -81,7 +82,7 @@ export default function IndexPage() {
       </style>
 
       <amp-story
-        standalone
+        standalone=""
         title="Notes on API Modelling"
         publisher="Coolhead"
         publisher-logo-src="https://webstory.coolhead.in/apple-icon.png"
@@ -412,7 +413,7 @@ export default function IndexPage() {
 
         <amp-story-auto-ads>
           <script
-            type="application/json"
+            type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: {
                 "ad-attributes": {
