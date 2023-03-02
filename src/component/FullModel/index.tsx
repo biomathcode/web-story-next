@@ -17,8 +17,7 @@ function FullModel({ triggerName, children, icon }: ModelType) {
         <button
           aria-label={triggerName}
           id={triggerName}
-          onClick={() => console.log("this")}
-          className="btn violet flex center gap-10 fs-12"
+          className="btn violet flex center gap-10 fs-12 publish"
           style={{
             background:
               triggerName === "Publish" ? "var(--violet10)" : "var(--slate12)",

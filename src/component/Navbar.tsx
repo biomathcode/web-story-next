@@ -74,6 +74,7 @@ function NavBar({
       <div className="flex center gap-10 ">
         {user ? (
           <Select
+            id="select"
             aria-label="Search"
             className="select"
             options={options}
@@ -122,6 +123,7 @@ function NavBar({
           >
             <fieldset>
               <input
+                id="page"
                 aria-label="page"
                 {...register("page", {
                   required: true,
@@ -148,6 +150,7 @@ function NavBar({
             </fieldset>
             <fieldset>
               <button
+                id="search"
                 aria-label="Click to search"
                 disabled={loading}
                 className="btn fs-12 flex gap-10 center"

@@ -7,12 +7,48 @@ class OnBoarding extends Component {
     run: false,
     steps: [
       {
+        target: ".viewEditor",
+        content: "Canvas Preview: A Simple Preview of ",
+      },
+      {
         target: ".rightSidebar",
-        content: "This is super awesome feature ",
+        content:
+          "ContentDisplay: Drag and drop content from here to canvas preview",
       },
       {
         target: ".leftSidebar",
-        content: "Everyone's learning Joyride!",
+        content: "Editor: Change Editor setting to customize as per your needs",
+      },
+      {
+        target: "#select",
+        content: "Change the Blog that you want to work on ",
+      },
+      {
+        target: "#username",
+        content: "Hashnode username: Change it to get your blog data ",
+      },
+      {
+        target: "#search",
+        content: "Click to fetch your blog data",
+      },
+
+      {
+        target: "#page",
+        content: "Change page to get new Blogs from hashnode",
+      },
+      {
+        target: "#animation",
+        content:
+          "Play the animation to get a short preview of the animation in action",
+      },
+      {
+        target: "#Publish",
+        content:
+          "Click to add author, publication and seo info to generate webstory code",
+      },
+      {
+        target: "#Settings",
+        content: "Add Monetization and Analytics",
       },
     ],
   };
@@ -32,7 +68,11 @@ class OnBoarding extends Component {
           steps={steps}
           continuous
           showProgress
-          showSkipButton
+          styles={{
+            options: {
+              primaryColor: "var(--violet11)",
+            },
+          }}
         />
         <button className="btn flex gap-10 fs-12" onClick={this.handleClick}>
           <ChatBubbleIcon />

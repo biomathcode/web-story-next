@@ -86,10 +86,7 @@ function NewView({
 
   console.log(animationMap[newState[newSelect]?.textAnimation]);
   return (
-    <div
-      className="flex center col jc viewEditor "
-      suppressHydrationWarning={true}
-    >
+    <div className="flex center col jc  " suppressHydrationWarning={true}>
       <div
         className="flex center jc "
         style={{ margin: "10px 0px", width: "400px" }}
@@ -115,7 +112,7 @@ function NewView({
             );
           })}
       </div>
-      <div className="flex center gap-10">
+      <div className="flex center gap-10 viewEditor">
         <ToolTip text="Previous Page">
           <button
             style={{
