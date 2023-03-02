@@ -20,7 +20,7 @@ import { authorType, publisherType, seoType, state } from "@/pages/index";
 import Toggle from "./Toggle/Toggle";
 import ColorComponent from "./ColorComponent";
 
-import FullModel from "./FullModel";
+import FullModel from "./FullModel/index";
 import { AuthorInfo, PublisherInfo, Schema } from "./SEO";
 import Component from "@/component/AnalyticView";
 import MonetiseComponent from "@/component/MonetizeView";
@@ -580,7 +580,7 @@ const LeftSidebar = ({
       </Tabs.Root>
       <div className="flex jc col   p-10 gap-10 center">
         {/* Analytics, Monetisation */}
-        <Alert
+        {/* <Alert
           icon={<PlusCircledIcon />}
           triggerName="Make Template"
           action={(e) =>
@@ -592,7 +592,7 @@ const LeftSidebar = ({
           actionName="createTemplate"
           title="Give your template a name"
           description="Give your font setting a name, it will help your remember it"
-        />
+        /> */}
         <div className="flex gap-10">
           <FullModel triggerName="Settings" icon={<GearIcon />}>
             <div className="flex col gap-10 center">
