@@ -24,6 +24,8 @@ import {
   AMP_TEXT,
   HTML_META,
   HTML_TEMPLATE,
+  NEXTJS_TEMPLATE,
+  NEXT_HEAD,
   slugify,
 } from "@/lib";
 import Editor from "@monaco-editor/react";
@@ -182,6 +184,20 @@ const Model = ({ isValid = false }) => {
         AMP_NEXT_STORY_AUTO_ADS(monetize.client, monetize.slot)
     );
 
+    const nextStyles = `
+    <style jsx>
+        {\`
+          
+          .overlay {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, black 100%);
+          }
+        \`}
+      </style>
+    
+    `;
+
     const ampStory = AMP_STORY(
       data
         .map((el: state, i: any) => {
@@ -254,6 +270,18 @@ const Model = ({ isValid = false }) => {
       })
     );
 
+    const nextFile = NEXTJS_TEMPLATE(
+      nextStory,
+      NEXT_HEAD(
+        structeddata.title,
+        String(structeddata.description).replace(/(\r\n|\n|\r)/gm, ""),
+        structeddata.image,
+        `${publisher.websiteUrl}/${slugify(structeddata.title)}`,
+        schema
+      ),
+      nextStyles
+    );
+
     const schemaScript = `<script type="application/ld+json">${schema}</script> \n`;
 
     const meta =
@@ -283,7 +311,7 @@ const Model = ({ isValid = false }) => {
       `${publisher.websiteUrl}/${slugify(structeddata.title)}`
     );
 
-    setNextCode(nextStory);
+    setNextCode(nextFile);
 
     setCode(newData);
 
