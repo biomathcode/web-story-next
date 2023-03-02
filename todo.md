@@ -25,7 +25,7 @@ Features:
 [x] add Analytics (google analytics Code)
 [x] Publisher Info (one time input)
 [x] When page selection changes, change the title, description, 
-[ ] Add description to author, publication, and seo form 
+[x] Add description to author, publication, and seo form 
 [ ]  
 
 Bugs: 
@@ -54,7 +54,7 @@ ROADMAP:
 [] Sortable pages
 [] export and import feature
 [] Add Multiple fonts - research
-[] Code generation for Nextjs 
+[x] Code generation for Nextjs 
 [] Code Validation with actions to improve - 2 hours
 [] Create Template - 2 hour
 [] Component tab in the RightSidebar - 1 hour

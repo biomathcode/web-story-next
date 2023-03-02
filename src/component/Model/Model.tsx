@@ -89,6 +89,15 @@ const Model = ({ isValid = false }) => {
 
   const [isNext, setIsNext] = useState(false);
 
+  const downloadTxtFile = () => {
+    const element = document.createElement("a");
+    const file = new Blob([code], { type: "text/plain" });
+    element.href = URL.createObjectURL(file);
+    element.download = "index.html";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
+
   const options = {
     selectOnLineNumbers: true,
     minimap: {
@@ -369,6 +378,7 @@ const Model = ({ isValid = false }) => {
                 id="download_html"
                 style={{ padding: "2px 5px" }}
                 className="btn flex gap-10 center"
+                onClick={downloadTxtFile}
               >
                 <DownloadIcon />
                 Download html
