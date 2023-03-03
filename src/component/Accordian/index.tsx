@@ -4,24 +4,25 @@ import classNames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";
 
-const AccordianContainer = () => (
+type headerType = {
+  title: string;
+  description: string;
+};
+
+const AccordianContainer = ({ header }: { header: headerType[] }) => (
   <Accordion.Root className={styles.AccordionRoot} type="multiple">
-    <Accordion.Item className={styles.AccordionItem} value="item-3">
-      <AccordionTrigger>Can it be animated?</AccordionTrigger>
-      <Accordion.Content className={styles.AccordionContent}>
-        <div className={styles.AccordionContentText}>
-          Yes! You can animate the Accordion with CSS or JavaScript.
-        </div>
-      </Accordion.Content>
-    </Accordion.Item>
-    <Accordion.Item className={styles.AccordionItem} value="item-2">
-      <AccordionTrigger>Can it be animated?</AccordionTrigger>
-      <Accordion.Content className={styles.AccordionContent}>
-        <div className={styles.AccordionContentText}>
-          Yes! You can animate the Accordion with CSS or JavaScript.
-        </div>
-      </Accordion.Content>
-    </Accordion.Item>
+    {header.map((el) => (
+      <Accordion.Item
+        className={styles.AccordionItem}
+        key={el.title}
+        value={el.title}
+      >
+        <AccordionTrigger>{el.title}</AccordionTrigger>
+        <Accordion.Content className={styles.AccordionContent}>
+          <div className={styles.AccordionContentText}>{el.description}</div>
+        </Accordion.Content>
+      </Accordion.Item>
+    ))}
   </Accordion.Root>
 );
 

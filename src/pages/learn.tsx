@@ -1,9 +1,71 @@
+import AccordianContainer from "@/component/Accordian";
 import Footer from "@/component/Footer";
 import InfoCheckBox from "@/component/InfoCheckbox/InfoCheckbox";
 import { StructuredData } from "@/component/SEO";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
+
+const header = [
+  {
+    title: "How to monetize web stories with google adsense ?",
+    description:
+      "Connect your site to google adsense, Create display ad,  Copy the data ad client and data ad slot string.",
+  },
+  {
+    title: "Can web stories increase blog view?",
+    description:
+      "Yes, web stories are given preference in the discovery feature of google search. Add call to action button to your web story to your main blog or article.",
+  },
+  {
+    title: "How to add google analytics in web stories ?",
+    description:
+      "Sign in to Google analytics. Click on Gear icon with the label Admin. Click on the Create Property. After completing the form about Property details. Recommended that you create a Google Analytics 4 property. Add the g-tab inside the amp story auto analytics component and add the tag as a child of amp story component.",
+  },
+];
+
+const data = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How to monetize web stories with google adsense ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Connect your site to google adsense, Create display ad,  Copy the data ad client and data ad slot string.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can web stories increase blog view?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, web stories are given preference in the discovery feature of google search. Add call to action button to your web story to your main blog or article.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How to add google analytics in web stories ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sign in to Google analytics. Click on Gear icon with the label Admin. Click on the Create Property. After completing the form about Property details. Recommended that you create a Google Analytics 4 property. Add the g-tab inside the amp story auto analytics component and add the tag as a child of amp story component.",
+        },
+      },
+    ],
+  },
+  StructuredData({
+    title: "Learn about AMP web stories Search Engine Optimisation or SEO",
+    description:
+      " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
+    image: "http://webstory.coolhead.in/ogimage",
+    authorName: "Pratik Sharma",
+    authorUrl: "https://coolhead.in",
+    publisherWebsite: "https://coolhead.in",
+    publisherName: "Coolhead",
+  }),
+];
 
 function Learn() {
   const resources = [
@@ -100,19 +162,7 @@ function Learn() {
         id="structedData"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            StructuredData({
-              title:
-                "Learn about AMP web stories Search Engine Optimisation or SEO",
-              description:
-                " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
-              image: "http://webstory.coolhead.in/ogimage",
-              authorName: "Pratik Sharma",
-              authorUrl: "https://coolhead.in",
-              publisherWebsite: "https://coolhead.in",
-              publisherName: "Coolhead",
-            })
-          ),
+          __html: JSON.stringify(data),
         }}
       />
       <div className="flex center col jc gap-10 inter p-20 m-20">
@@ -234,6 +284,9 @@ function Learn() {
               );
             })}
           </ul>
+
+          <h4>Frequently asked questions </h4>
+          <AccordianContainer header={header} />
         </article>
         <Footer />
       </div>
