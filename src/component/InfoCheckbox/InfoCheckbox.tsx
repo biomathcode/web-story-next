@@ -5,10 +5,6 @@ import {
   InfoCircledIcon,
 } from "@radix-ui/react-icons";
 
-// action cards
-// info cards
-//
-
 type InfoCheckBoxType = {
   icon: "success" | "warning" | "info" | "danger";
   title: string;

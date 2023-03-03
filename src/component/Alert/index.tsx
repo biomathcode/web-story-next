@@ -25,6 +25,7 @@ const Alert = ({
           fontFamily: "Inter",
           fontSize: "12px",
         }}
+        aria-label="delete"
         id="delete"
         className={classname(
           styles.Button,

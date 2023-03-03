@@ -1,12 +1,10 @@
 import {
   BackpackIcon,
   ColorWheelIcon,
-  FileIcon,
   FontSizeIcon,
   GearIcon,
   LineHeightIcon,
   LockClosedIcon,
-  PlusCircledIcon,
   SpaceBetweenHorizontallyIcon,
   SpaceBetweenVerticallyIcon,
   TextAlignBottomIcon,

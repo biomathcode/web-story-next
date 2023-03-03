@@ -25,6 +25,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/new-amp.jsx", "src/pages/new-amp.jsx", "src/lib/supabase.ts", "src/lib/supabase.ts", "src/pages/test.jsx", "src/pages/test.jsx", "src/context/data.jsx", "src/context/data.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/new-amp.jsx", "src/pages/new-amp.jsx", "src/lib/supabase.ts", "src/lib/supabase.ts", "src/pages/test.jsx", "src/pages/test.jsx", "src/context/data.tsx", "src/context/data.tsx"],
   "exclude": ["node_modules"]
 }

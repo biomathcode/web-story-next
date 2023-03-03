@@ -1,12 +1,3 @@
-// title
-// info
-// children
-// open
-// setOpen
-
-// use case for Code generated display
-// Copy, Download File
-
 import {
   AMP_ANALYTICS,
   AMP_CTA_LAYER,
@@ -33,15 +24,12 @@ import * as Dialog from "@radix-ui/react-dialog";
 import {
   Cross2Icon,
   DownloadIcon,
-  EnterFullScreenIcon,
   GearIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
-import useLocalStorage from "use-local-storage";
 
-import { z } from "zod";
 import styles from "./Model.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   analyticsType,
   authorType,
@@ -60,25 +48,7 @@ import {
 } from "@/lib/constants";
 import { StructuredData } from "../SEO";
 import Toggle from "../Toggle/Toggle";
-
-const storyObject = z.object({
-  image: z.string().url(),
-  paddingX: z.number(),
-  paddingY: z.number(),
-  fontSize: z.number(),
-  textAlign: z.enum(["left", "right", "center"]),
-  text: z.string(),
-  color: z.string(),
-  lineHeight: z.string(),
-  background: z.string(),
-  highlight: z.enum(["box", "mark"]),
-  cta: z.boolean(),
-  url: z.string().url(),
-  ctaText: z.string(),
-  overlay: z.boolean(),
-  textAnimation: z.string(),
-  imageAnimation: z.string(),
-});
+import InfoCheckBox from "../InfoCheckbox/InfoCheckbox";
 
 const Model = ({ isValid = false }) => {
   const [code, setCode] = useState("");
@@ -367,6 +337,18 @@ const Model = ({ isValid = false }) => {
               >
                 <div className="flex gap-10 center">
                   <button
+                    aria-label="Download html"
+                    id="download_html"
+                    // style={{ padding: "2px 5px" }}
+                    className="btn flex gap-10 center fs-12"
+                    onClick={(e) =>
+                      downloadTxtFile(code, slugify(structeddata.title))
+                    }
+                  >
+                    <DownloadIcon />
+                    Download html
+                  </button>
+                  <button
                     id="download_jsx"
                     aria-label="download jsx"
                     className="btn flex gap-10 center fs-12"
@@ -380,18 +362,6 @@ const Model = ({ isValid = false }) => {
                   >
                     <DownloadIcon />
                     Download JSX
-                  </button>
-                  <button
-                    aria-label="Download html"
-                    id="download_html"
-                    // style={{ padding: "2px 5px" }}
-                    className="btn flex gap-10 center fs-12"
-                    onClick={(e) =>
-                      downloadTxtFile(code, slugify(structeddata.title))
-                    }
-                  >
-                    <DownloadIcon />
-                    Download html
                   </button>
                 </div>
 
@@ -429,9 +399,14 @@ const Model = ({ isValid = false }) => {
               className={styles.editor}
               value={isNext ? nextcode : code}
             />
-            <div>
-              Please add a canonical link inside the html, before deploying the
-              webstory
+            <div
+              style={{
+                padding: "5px",
+                border: "1px solid var(--blue10)",
+              }}
+            >
+              Please add a canonical link within the head tag, before deploying
+              the webstory
             </div>
 
             <Dialog.Close asChild>
