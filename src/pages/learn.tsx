@@ -196,17 +196,31 @@ function Learn() {
               amazing.
             </li>
           </ul>
+          <h3>Recommended Articles</h3>
           <p
             style={{
               border: "1px solid #444",
               borderRadius: "4px",
               padding: "20px",
-              margin: "40px 0px",
+              margin: "20px 0px",
             }}
           >
             Read this next article{" "}
             <Link href="/how-to-monetize-web-stories">
               How to monetize web Stories ?
+            </Link>
+          </p>
+          <p
+            style={{
+              border: "1px solid #444",
+              borderRadius: "4px",
+              padding: "20px",
+              margin: "20px 0px",
+            }}
+          >
+            Read this next article{" "}
+            <Link href="/how-to-add-google-analytics-in-web-stories">
+              How to add google analytics in web stories ?
             </Link>
           </p>
 
