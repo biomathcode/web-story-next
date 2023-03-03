@@ -204,6 +204,8 @@ function Home() {
 
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
+      setActiveId(null);
+
       return;
     } else {
       if (active.id && active.data.current.title) {
@@ -229,6 +231,7 @@ function Home() {
         setNewState(state);
       }
     }
+    console.log("this works");
     setActiveId(null);
   };
 
@@ -395,6 +398,7 @@ function Home() {
                 }}
               >
                 <NewView
+                  dragActive={activeId}
                   newState={newState}
                   newSelect={newSelect}
                   setNewSelect={setNewSelect}

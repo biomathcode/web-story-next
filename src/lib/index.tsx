@@ -95,12 +95,6 @@ export type animationType =
   | "zoom-in"
   | "zoom-out";
 
-const HTML_TEMPLATE_STARTER = (children: string) => {
-  return `<p>${children}</p>`;
-};
-
-const NEXT_SEO = () => {};
-
 const NEXT_HEAD = (
   title: string,
   description: string,
@@ -111,7 +105,6 @@ const NEXT_HEAD = (
   return `
   <Head>
         <title>${title}</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta
           name="description"
           content="${description}"
@@ -584,7 +577,7 @@ const AMP_NEXT_STORY_AUTO_ADS = (client: string, slot: string) => {
   return `
   <amp-story-auto-ads>
   <script type="application/json"
-  dangerouslySetInnerHTML={{__html: ${data}}}
+  dangerouslySetInnerHTML={{__html: JSON.stringify(${data})}}
   >
   
   </script>

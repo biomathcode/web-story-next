@@ -4,7 +4,7 @@ import styles from "./Toggle.module.css";
 import InfoCard from "../InfoCard/InfoCard";
 
 type ToggleType = {
-  label: string;
+  label?: string;
   infoText: string;
   // open: boolean;
   value: string;
@@ -16,16 +16,18 @@ type ToggleType = {
 const Toggle = ({ label, infoText, name, onChange, value }: ToggleType) => {
   return (
     <div className="flex js">
-      <div className="flex gap-10 center">
-        <label
-          className={styles.Label}
-          htmlFor={label}
-          style={{ paddingRight: 15 }}
-        >
-          {label}
-        </label>
-        <InfoCard text={infoText} />
-      </div>
+      {label && (
+        <div className="flex gap-10 center">
+          <label
+            className={styles.Label}
+            htmlFor={label}
+            style={{ paddingRight: 15 }}
+          >
+            {label}
+          </label>
+          <InfoCard text={infoText} />
+        </div>
+      )}
 
       <Switch.Root
         onCheckedChange={(e) => {

@@ -33,11 +33,13 @@ const image = [
 ];
 
 function NewView({
+  dragActive,
   newState,
   setNewState,
   newSelect,
   setNewSelect,
 }: {
+  dragActive: any;
   newState: state[];
   setNewState: any;
   newSelect: any;
@@ -84,7 +86,8 @@ function NewView({
     }
   });
 
-  console.log(animationMap[newState[newSelect]?.textAnimation]);
+  console.log(dragActive, "this is dragActive");
+
   return (
     <div className="flex center col jc  " suppressHydrationWarning={true}>
       <div
@@ -187,6 +190,25 @@ function NewView({
               />
             )}
           </div>
+
+          {dragActive !== undefined && dragActive !== null && (
+            <div
+              style={{
+                zIndex: 10,
+                position: "absolute",
+                color: "white",
+                background: "rgba(255,255,255, 0.2)",
+                width: "100%",
+                height: "100%",
+                fontSize: "24px",
+                border: "2px solid #eee",
+                borderRadius: "4px",
+              }}
+              className="dragOverlay flex center jc  "
+            >
+              Drag here
+            </div>
+          )}
 
           {newState[newSelect]?.overlay && (
             <div

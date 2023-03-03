@@ -38,7 +38,7 @@ import {
   RocketIcon,
 } from "@radix-ui/react-icons";
 import useLocalStorage from "use-local-storage";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
+
 import { z } from "zod";
 import styles from "./Model.module.css";
 import { useEffect, useState } from "react";
@@ -106,8 +106,6 @@ const Model = ({ isValid = false }) => {
     },
     fontSize: 14,
   };
-
-  const handle = useFullScreenHandle();
 
   function handleChange() {
     const item = window.localStorage.getItem(STATE);
@@ -354,67 +352,70 @@ const Model = ({ isValid = false }) => {
             style={{ zIndex: 10 }}
           >
             <Dialog.Description className={styles.DialogDescription}>
-              <button
-                id="fullScreen"
-                aria-label="Full Screen"
-                onClick={handle.enter}
-                style={{ padding: "2px 5px" }}
-                className="btn flex gap-10 center"
-              >
-                <EnterFullScreenIcon />
-                FullScreen
-              </button>
-              <button
-                id="download_jsx"
-                aria-label="download jsx"
-                style={{ padding: "2px 5px" }}
-                className="btn flex gap-10 center"
-              >
-                <DownloadIcon />
-                Download JSX
-              </button>
-              <button
-                aria-label="Download html"
-                id="download_html"
-                style={{ padding: "2px 5px" }}
-                className="btn flex gap-10 center"
-                onClick={downloadTxtFile}
-              >
-                <DownloadIcon />
-                Download html
-              </button>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href={previewLink}
+              <div
                 style={{
-                  background: "var(--violet10)",
-                  textDecoration: "none",
+                  width: "90%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignContent: "center",
+                  alignItems: "center",
                 }}
-                className="btn inter flex gap-10 center "
               >
-                <RocketIcon />
-                Preview
-              </a>
-              <Toggle
-                name="isNext"
-                label="Next"
-                infoText="Get the code for nextjs"
-                onChange={(e) => setIsNext(e.target.value)}
-                value={isNext ? "true" : "false"}
-              />
+                <div className="flex gap-10 center">
+                  <button
+                    id="download_jsx"
+                    aria-label="download jsx"
+                    className="btn flex gap-10 center fs-12"
+                  >
+                    <DownloadIcon />
+                    Download JSX
+                  </button>
+                  <button
+                    aria-label="Download html"
+                    id="download_html"
+                    // style={{ padding: "2px 5px" }}
+                    className="btn flex gap-10 center fs-12"
+                    onClick={downloadTxtFile}
+                  >
+                    <DownloadIcon />
+                    Download html
+                  </button>
+                </div>
+
+                <div className="flex gap-10 center ">
+                  <label>HTML</label>
+                  <Toggle
+                    name="isNext"
+                    infoText="Get the code for nextjs"
+                    onChange={(e) => setIsNext(e.target.value)}
+                    value={isNext ? "true" : "false"}
+                  />
+                  <label>NEXTJS</label>
+                </div>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={previewLink}
+                  style={{
+                    background: "var(--violet10)",
+                    textDecoration: "none",
+                  }}
+                  className="btn inter flex gap-10 center fs-12 "
+                >
+                  <RocketIcon />
+                  Preview
+                </a>
+              </div>
             </Dialog.Description>
-            <FullScreen handle={handle}>
-              <Editor
-                options={options}
-                width="100%"
-                height="560px"
-                language={isNext ? "javascript" : "html"}
-                theme="vs-dark"
-                className={styles.editor}
-                value={isNext ? nextcode : code}
-              />
-            </FullScreen>
+            <Editor
+              options={options}
+              width="100%"
+              height="560px"
+              language={isNext ? "javascript" : "html"}
+              theme="vs-dark"
+              className={styles.editor}
+              value={isNext ? nextcode : code}
+            />
 
             <Dialog.Close asChild>
               <button
