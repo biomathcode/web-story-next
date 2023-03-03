@@ -9,15 +9,15 @@ import Image from "next/image";
 import Script from "next/script";
 
 const info = {
-  title: "How to add google analytics in web Stories ?",
-  description: "Intructions to add google analytics in web stories",
+  title: "how to monetize web stories ?",
+  description: "Intructions to add google adsense in web stories",
   image:
-    "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1494887205043-c5f291293cf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
 };
 
 const data = [
   StructuredData({
-    link: "https://webstory.coolhead.in/how-to-add-google-analytics-in-web-stories",
+    link: "https://webstory.coolhead.in/how-to-monetize-web-stories",
     title: info.title,
     description: info.description,
     authorName: "Pratik Sharma",
