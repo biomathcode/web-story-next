@@ -58,7 +58,7 @@ ROADMAP:
 [] Code Validation with actions to improve - 2 hours
 [] Create Template - 2 hour
 [] Component tab in the RightSidebar - 1 hour
-[] Making Learning material for people to make better seo optimized web stories - 6 hours
+[x] Making Learning material for people to make better seo optimized web stories - 6 hours
 
 
 

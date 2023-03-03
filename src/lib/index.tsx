@@ -170,14 +170,14 @@ const HTML_META = (title: string, description: string, image: string) => {
 
 const NEXTJS_TEMPLATE = (children: string, head: string, styles: string) => {
   return `import Head from "next/head";
-  import { useAmp } from "next/amp";
+ 
   
   export const config = {
     amp: true,
   };
   
   export default function IndexPage() {
-    const isAmp = useAmp();
+
     return (
       <>
       ${head}
@@ -197,11 +197,12 @@ const AMP_STORY = (
   publisherLogo: string,
   posterSrc: string,
   analytics: string = "",
-  ads: string = ""
+  ads: string = "",
+  standalone: string = "standalone"
 ): string => {
   return `
     <amp-story
-        standalone
+        ${standalone}
         title="${title}"
         publisher="${publisher}"
         publisher-logo-src="${publisherLogo}"

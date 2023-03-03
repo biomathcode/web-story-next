@@ -171,6 +171,7 @@ function NavBar({
       </div>
 
       <div className="flex gap-10 center">
+        <OnBoarding />
         <Link
           className="flex  center gap-10 fs-12"
           style={{
@@ -188,7 +189,6 @@ function NavBar({
           <RocketIcon />
           Learn
         </Link>
-        <OnBoarding />
       </div>
     </nav>
   );

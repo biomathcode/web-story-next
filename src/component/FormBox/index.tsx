@@ -27,7 +27,7 @@ function FormBox({
             borderRadius: "4px",
             minWidth: "600px",
 
-            margin: "40px",
+            margin: "10px",
           }}
         >
           <div className="flex center jc w-100  gap-10 ">

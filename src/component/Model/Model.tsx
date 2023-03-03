@@ -89,11 +89,11 @@ const Model = ({ isValid = false }) => {
 
   const [isNext, setIsNext] = useState(false);
 
-  const downloadTxtFile = () => {
+  const downloadTxtFile = (code: string, name: string, type = "html") => {
     const element = document.createElement("a");
     const file = new Blob([code], { type: "text/plain" });
     element.href = URL.createObjectURL(file);
-    element.download = "index.html";
+    element.download = `${name}.jsx`;
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
   };
@@ -106,6 +106,9 @@ const Model = ({ isValid = false }) => {
     },
     fontSize: 14,
   };
+
+  const structedinfo = window.localStorage.getItem(SCHEMA);
+  const structeddata: seoType = structedinfo && JSON.parse(structedinfo);
 
   function handleChange() {
     const item = window.localStorage.getItem(STATE);
@@ -188,7 +191,8 @@ const Model = ({ isValid = false }) => {
       data[0].image,
       analytics?.gtag && AMP_ANALYTICS(analytics.gtag),
       monetize?.client &&
-        AMP_NEXT_STORY_AUTO_ADS(monetize.client, monetize.slot)
+        AMP_NEXT_STORY_AUTO_ADS(monetize.client, monetize.slot),
+      'standalone=""'
     );
 
     const nextStyles = `
@@ -315,7 +319,7 @@ const Model = ({ isValid = false }) => {
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
       `,
       meta,
-      `${publisher.websiteUrl}/${slugify(structeddata.title)}`
+      ``
     );
 
     setNextCode(nextFile);
@@ -366,6 +370,13 @@ const Model = ({ isValid = false }) => {
                     id="download_jsx"
                     aria-label="download jsx"
                     className="btn flex gap-10 center fs-12"
+                    onClick={(e) =>
+                      downloadTxtFile(
+                        nextcode,
+                        slugify(structeddata.title),
+                        "jsx"
+                      )
+                    }
                   >
                     <DownloadIcon />
                     Download JSX
@@ -375,7 +386,9 @@ const Model = ({ isValid = false }) => {
                     id="download_html"
                     // style={{ padding: "2px 5px" }}
                     className="btn flex gap-10 center fs-12"
-                    onClick={downloadTxtFile}
+                    onClick={(e) =>
+                      downloadTxtFile(code, slugify(structeddata.title))
+                    }
                   >
                     <DownloadIcon />
                     Download html
@@ -416,6 +429,10 @@ const Model = ({ isValid = false }) => {
               className={styles.editor}
               value={isNext ? nextcode : code}
             />
+            <div>
+              Please add a canonical link inside the html, before deploying the
+              webstory
+            </div>
 
             <Dialog.Close asChild>
               <button

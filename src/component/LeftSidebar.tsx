@@ -5,6 +5,7 @@ import {
   FontSizeIcon,
   GearIcon,
   LineHeightIcon,
+  LockClosedIcon,
   PlusCircledIcon,
   SpaceBetweenHorizontallyIcon,
   SpaceBetweenVerticallyIcon,
@@ -618,9 +619,25 @@ const LeftSidebar = ({
               <Schema schema={schema} setSchema={setSchema} />
             </FormBox>
 
-            <div className="flex" style={{ justifyContent: "center" }}>
-              <Model isValid={isValid} />
-            </div>
+            {isValid ? (
+              <div className="flex" style={{ justifyContent: "center" }}>
+                <Model isValid={isValid} />
+              </div>
+            ) : (
+              <div>
+                <button
+                  onClick={() =>
+                    alert(
+                      "Please fill Author, Publication and SEO information to continue"
+                    )
+                  }
+                  className="flex gap-10 btn"
+                >
+                  <LockClosedIcon />
+                  Generate Code
+                </button>
+              </div>
+            )}
           </FullModel>
         </div>
       </div>
