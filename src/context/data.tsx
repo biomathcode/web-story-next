@@ -59,14 +59,14 @@ type ProductPayload = {
 export type ProductActions =
   ActionMap<ProductPayload>[keyof ActionMap<ProductPayload>];
 
-const TasksContext = createContext<TemplateType[]>(initialTasks);
+export const TasksContext = createContext<TemplateType[]>(initialTasks);
 
-const TasksDispatchContext =
-  createContext<Dispatch<ProductActions> | null>(null);
+export const TasksDispatchContext = createContext<Dispatch<ProductActions>>(
+  () => null
+);
 
 export function TasksProvider({ children }) {
-  const [initTasks, setInitTasks] = useLocalStorage("template", initialTasks);
-  const [tasks, dispatch] = useReducer(tasksReducer, initTasks);
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
   return (
     <TasksContext.Provider value={tasks}>
@@ -97,7 +97,6 @@ function tasksReducer(tasks: TemplateType[], action: ProductActions) {
         },
       ];
     }
-
     case Types.Delete: {
       return tasks.filter((t) => t.id !== action.payload.id);
     }
