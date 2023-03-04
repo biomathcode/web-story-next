@@ -325,7 +325,7 @@ function Home() {
         id="this"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
+          __html: JSON.stringify([
             StructuredData({
               title:
                 "Webstory code generator- no code editor to create google web stories for free",
@@ -336,8 +336,9 @@ function Home() {
               authorUrl: "https://coolhead.in",
               publisherName: "Coolhead",
               publisherWebsite: "https://coolhead.in",
-            })
-          ),
+            }),
+            {},
+          ]),
         }}
       />
       <Toaster />
