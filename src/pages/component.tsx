@@ -52,7 +52,7 @@ function AddTask() {
         onChange={(e) => setValue(e.target.value)}
         placeholder="name"
       />
-      <button className="btn" type="submit">
+      <button className="btn fs-12" type="submit">
         Submit
       </button>
     </form>
