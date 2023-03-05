@@ -14,23 +14,36 @@ import * as Tabs from "@radix-ui/react-tabs";
 
 import { AnimationOptions } from "@/lib";
 import Model from "./Model/Model";
-import { authorType, publisherType, seoType, state } from "@/pages/index";
+import {
+  analyticsType,
+  authorType,
+  monetizeType,
+  publisherType,
+  seoType,
+  state,
+} from "@/pages/index";
 
 import Toggle from "./Toggle/Toggle";
 import ColorComponent from "./ColorComponent";
 
 import FullModel from "./FullModel/index";
-import { AuthorInfo, PublisherInfo, Schema } from "./SEO";
-import Component from "@/component/AnalyticView";
-import MonetiseComponent from "@/component/MonetizeView";
+import { Analytics, AuthorInfo, Monetize, PublisherInfo, Schema } from "./SEO";
+
 import FormBox from "./FormBox";
 import SliderComponent from "./SliderComponent";
 import classname from "classnames";
 import useLocalStorage from "use-local-storage";
-import { AUTHOR, PUBLISHER, SCHEMA } from "@/lib/constants";
+import {
+  ANALYTICS,
+  AUTHOR,
+  MONETIZE,
+  PUBLISHER,
+  SCHEMA,
+} from "@/lib/constants";
 import InputComponent from "./InputComponent";
-import Alert from "./Alert";
 import { nanoid } from "nanoid";
+import { BankPlaceholder, CalendarPlaceHolder } from "./Icons";
+import Link from "next/link";
 
 const LeftSidebar = ({
   inter,
@@ -161,47 +174,13 @@ const LeftSidebar = ({
     image: "",
   });
 
-  const createNewTemplate = ({
-    name,
-    fontSize,
-    lineHeight,
-    textPosition,
-    textAlign,
-    color,
-    background,
-    highlight,
-    textAnimation,
-    imageAnimation,
-    overlay,
-    cta,
-    url,
-    ctaText,
-    paddingX,
-    paddingY,
-  }) => {
-    setTemplate([
-      ...template,
-      {
-        name: name,
-        id: nanoid(),
-        fontSize,
-        lineHeight,
-        textPosition,
-        textAlign,
-        color,
-        background,
-        highlight,
-        textAnimation,
-        imageAnimation,
-        overlay,
-        cta,
-        url,
-        ctaText,
-        paddingX,
-        paddingY,
-      },
-    ]);
-  };
+  const [analytics, setAnalytics] = useLocalStorage<analyticsType>(ANALYTICS, {
+    gtag: "",
+  });
+  const [monetize, setMonetize] = useLocalStorage<monetizeType>(MONETIZE, {
+    client: "",
+    slot: "",
+  });
 
   const isEmpty = (object) =>
     Object.values(object).every((x) => x === null || x === "");
@@ -578,26 +557,102 @@ const LeftSidebar = ({
         </Tabs.Content>
       </Tabs.Root>
       <div className="flex jc col   p-10 gap-10 center">
-        {/* Analytics, Monetisation */}
-        {/* <Alert
-          icon={<PlusCircledIcon />}
-          triggerName="Make Template"
-          action={(e) =>
-            createNewTemplate({
-              ...newState[newSelect],
-              name: "new Template",
-            })
-          }
-          actionName="createTemplate"
-          title="Give your template a name"
-          description="Give your font setting a name, it will help your remember it"
-        /> */}
         <div className="flex gap-10">
-          <FullModel triggerName="Settings" icon={<GearIcon />}>
-            <div className="flex col gap-10 center">
+          <FullModel
+            title="Settings"
+            description="Add monetization and description information"
+            triggerName="Settings"
+            icon={<GearIcon />}
+          >
+            {/* <div className="flex col gap-10 center">
               <Component />
               <MonetiseComponent />
-            </div>
+            </div> */}
+            <FormBox
+              isValid={!isEmpty(analytics)}
+              title="Add Analytics of your webstory"
+            >
+              <div className="flex  ja center gap-10 h-100  ">
+                <CalendarPlaceHolder height={100} width={200} />
+
+                <div
+                  style={{ maxWidth: "300px" }}
+                  className="flex col gap-10 h-100  jc"
+                >
+                  <h2
+                    style={{
+                      fontWeight: 400,
+                      fontSize: "16px",
+                    }}
+                  >
+                    Add Analytics{" "}
+                  </h2>
+                  <p className="gray label">
+                    Learn more about how to add google analytics to your
+                    webstories.
+                    {"  "}
+                    <Link
+                      href="/how-to-add-google-analytics-in-web-stories"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Learn more
+                    </Link>
+                  </p>
+                </div>
+              </div>
+              <hr
+                style={{
+                  border: "1px solid #eee",
+                  margin: "20px",
+                  borderRadius: "4px",
+                }}
+              />
+              <Analytics analytics={analytics} setAnalytics={setAnalytics} />
+            </FormBox>
+            <FormBox
+              isValid={!isEmpty(monetize)}
+              title="Add adsense details for monetization"
+            >
+              <div className="flex  center gap-10  ">
+                <BankPlaceholder height={100} width={200} />
+
+                <div
+                  className="flex col gap-10 h-100  jc"
+                  style={{ maxWidth: "300px" }}
+                >
+                  <h2
+                    style={{
+                      fontWeight: 400,
+                      fontSize: "16px",
+                    }}
+                  >
+                    Add Monetization{" "}
+                  </h2>
+                  <p className="gray label">
+                    Learn more about how to add google adsense to your
+                    webstories.
+                    {"  "}
+                    <Link
+                      href="/how-to-monetize-web-stories"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Learn more
+                    </Link>
+                  </p>
+                </div>
+              </div>
+              <hr
+                style={{
+                  border: "1px solid #eee",
+                  margin: "20px",
+                  borderRadius: "4px",
+                }}
+              />
+
+              <Monetize monetize={monetize} setMonetize={setMonetize} />
+            </FormBox>
           </FullModel>
 
           <FullModel triggerName="Publish" icon={<BackpackIcon />}>

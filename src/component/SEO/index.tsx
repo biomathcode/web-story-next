@@ -168,20 +168,19 @@ const PublisherInfo = ({ publisher, setPublisher }) => {
   );
 };
 
-const Analytics = () => {
+const Analytics = ({ analytics, setAnalytics }) => {
   const { handleSubmit, register } = useForm();
-  const [analytics, setAnalytics] = useLocalStorage<analyticsType>(ANALYTICS, {
-    gtag: "",
-  });
+
   return (
     <form
       onSubmit={handleSubmit((data: any) => {
         setAnalytics(data);
         toast.success("Analytics info updated!!");
       })}
+      className="mt-10"
     >
-      <fieldset className="flex center gap-10 js">
-        <label className="">Google Analytics G-tag</label>
+      <fieldset className="flex  col gap-10 js">
+        <label className="fs-14">Google Analytics G-tag</label>
         <input
           placeholder="GA-124"
           required
@@ -193,34 +192,33 @@ const Analytics = () => {
           defaultValue={analytics.gtag}
         />
       </fieldset>
-      <button
-        aria-label="submit"
-        id="submit"
-        type="submit"
-        className="btn fs-12 mt-10 "
-      >
-        Submit
-      </button>
+      <div className="flex" style={{ justifyContent: "flex-end" }}>
+        <button
+          aria-label="submit"
+          id="submit"
+          type="submit"
+          className="btn fs-12 mt-10 "
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 };
 
-const Monetize = () => {
+const Monetize = ({ monetize, setMonetize }) => {
   const { handleSubmit, register } = useForm();
-  const [monetize, setMonetize] = useLocalStorage<monetizeType>(MONETIZE, {
-    client: "",
-    slot: "",
-  });
+
   return (
     <form
-      className="flex col gap-10"
+      className="flex col  gap-10 w-100  mt-10"
       onSubmit={handleSubmit((data: any) => {
         setMonetize(data);
         toast.success("Monetization info updated");
       })}
     >
-      <fieldset className="flex center gap-10 js">
-        <label className="">Data ad client</label>
+      <fieldset className="flex  col gap-10 js">
+        <label className="fs-14">Data ad client</label>
         <input
           placeholder="ca-pub-7971530223412"
           required
@@ -231,8 +229,8 @@ const Monetize = () => {
           defaultValue={monetize.client}
         />
       </fieldset>
-      <fieldset className="flex center gap-10 js">
-        <label className="">Data ad Slot</label>
+      <fieldset className="flex  col gap-10 js">
+        <label className="fs-14">Data ad Slot</label>
         <input
           placeholder="21342392052"
           required

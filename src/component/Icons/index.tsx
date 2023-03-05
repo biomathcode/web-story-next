@@ -1106,12 +1106,12 @@ export function BusPlaceholder() {
   );
 }
 
-export function BankPlaceholder() {
+export function BankPlaceholder({ width = 375, height = 235 }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="376"
-      height="234"
+      width={width}
+      height={height}
       fill="none"
       viewBox="0 0 376 234"
     >

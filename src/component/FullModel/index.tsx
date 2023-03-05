@@ -8,9 +8,17 @@ type ModelType = {
   triggerName: string;
   children: ReactNode;
   icon: any;
+  title?: string;
+  description?: string;
 };
 
-function FullModel({ triggerName, children, icon }: ModelType) {
+function FullModel({
+  triggerName,
+  children,
+  icon,
+  title = "Add Aditional Information",
+  description = "Add author, publication and strucuted data information to  code generation",
+}: ModelType) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -34,10 +42,9 @@ function FullModel({ triggerName, children, icon }: ModelType) {
           className={classNames(styles.DialogContent, "inter")}
           style={{ zIndex: 10, overflow: "scroll" }}
         >
-          <Dialog.Title>Add Aditional Information</Dialog.Title>
+          <Dialog.Title>{title}</Dialog.Title>
           <Dialog.Description className={styles.DialogDescription}>
-            Add author, publication and strucuted data information to enable
-            code generation
+            {description}
           </Dialog.Description>
 
           <div className="flex gap-10 col center jc">{children}</div>

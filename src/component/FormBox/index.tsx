@@ -19,7 +19,7 @@ function FormBox({
     <>
       <Toaster />
 
-      <div className="flex jc center w-100">
+      <div className="flex jc center ">
         <div
           className="flex center  col gap-10"
           style={{

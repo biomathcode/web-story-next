@@ -5,12 +5,13 @@ import PlaceHolder from "./Placeholder/Placeholder";
 import UnsplashContainer from "./Unsplash";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { useTasks } from "@/context/data";
+import { CalendarPlaceHolder } from "./Icons";
 
 const TemplateComponent = () => {
   const getData = useTasks();
 
   return (
-    <div className="flex col gap-10">
+    <div className="flex col gap-10 scroll" style={{ overflow: "auto" }}>
       {getData.map((el) => (
         <Droppable
           data={el}
@@ -20,6 +21,12 @@ const TemplateComponent = () => {
           id={el.id}
         />
       ))}
+      {getData.length === 0 && (
+        <div className="flex col gap-10 center">
+          {" "}
+          <CalendarPlaceHolder /> <p className="label">No templates found</p>
+        </div>
+      )}
     </div>
   );
 };
