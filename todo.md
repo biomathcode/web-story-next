@@ -26,7 +26,6 @@ Features:
 [x] Publisher Info (one time input)
 [x] When page selection changes, change the title, description, 
 [x] Add description to author, publication, and seo form 
-[ ]  
 
 Bugs: 
 
@@ -55,9 +54,9 @@ ROADMAP:
 [] export and import feature
 [] Add Multiple fonts - research
 [x] Code generation for Nextjs 
-[] Code Validation with actions to improve - 2 hours
-[] Create Template - 2 hour
-[] Component tab in the RightSidebar - 1 hour
+[x] Code Validation with actions to improve - 2 hours
+[x] Create Template - 2 hour
+[x] Component tab in the RightSidebar - 1 hour
 [x] Making Learning material for people to make better seo optimized web stories - 6 hours
 
 

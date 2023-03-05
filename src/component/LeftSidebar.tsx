@@ -693,8 +693,23 @@ const LeftSidebar = ({
             )}
           </FullModel>
         </div>
+        <h1 style={{ fontSize: "14px", fontWeight: 400 }}>
+          Web story code generator
+        </h1>
+        <p className="label flex gap-10">
+          Created by
+          <Link
+            className="flex  center gap-10 fs-12"
+            href="https://twitter.com/BioMathCode"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="twitter profile link"
+          >
+            {" "}
+            @biomathcode
+          </Link>
+        </p>
       </div>
-      <div></div>
     </div>
   );
 };

@@ -3,7 +3,11 @@ import { Suspense, useState } from "react";
 import axios from "axios";
 import { config } from "../axios";
 
-import { MagnifyingGlassIcon, RocketIcon } from "@radix-ui/react-icons";
+import {
+  GitHubLogoIcon,
+  MagnifyingGlassIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import useLocalStorage from "use-local-storage";
@@ -188,6 +192,23 @@ function NavBar({
         >
           <RocketIcon />
           Learn
+        </Link>
+        <Link
+          className="flex  center gap-10 fs-12"
+          style={{
+            color: "var(--slate2)",
+            padding: "10px 15px",
+            background: "var(--slate12)",
+            borderRadius: "5px",
+
+            textDecorationStyle: "solid",
+          }}
+          href="https://github.com/biomathcode/web-story-next"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="github link"
+        >
+          <GitHubLogoIcon />
         </Link>
       </div>
     </nav>
