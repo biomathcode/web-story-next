@@ -4,6 +4,25 @@ import PlaceHolder from "./Placeholder/Placeholder";
 
 import UnsplashContainer from "./Unsplash";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
+import { useTasks } from "@/context/data";
+
+const TemplateComponent = () => {
+  const getData = useTasks();
+
+  return (
+    <div className="flex col gap-10">
+      {getData.map((el) => (
+        <Droppable
+          data={el}
+          type="template"
+          href={"Lorem ipsum"}
+          key={el.id}
+          id={el.id}
+        />
+      ))}
+    </div>
+  );
+};
 
 const RightSidebar = ({ content }: { content: any }) => {
   return (
@@ -19,7 +38,29 @@ const RightSidebar = ({ content }: { content: any }) => {
         <Tabs.Trigger className="TabsTrigger" value="tab2">
           Unsplash
         </Tabs.Trigger>
+        <Tabs.Trigger className="TabsTrigger" value="tab3">
+          Template
+        </Tabs.Trigger>
       </Tabs.List>
+      <Tabs.Content
+        value="tab3"
+        className="scroll"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          maxHeight: "calc(100vh - 150px ) ",
+
+          overflow: "scroll",
+
+          // maxWidth: "300px",
+
+          minWidth: "150px",
+          padding: "10px 20px",
+        }}
+      >
+        <TemplateComponent />
+      </Tabs.Content>
       <Tabs.Content
         className="flex  center jc scroll"
         style={{
@@ -47,7 +88,7 @@ const RightSidebar = ({ content }: { content: any }) => {
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          height: "calc(100vh - 150px ) ",
+          maxHeight: "calc(100vh - 150px ) ",
 
           overflow: "scroll",
 

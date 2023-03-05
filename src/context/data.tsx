@@ -1,3 +1,4 @@
+import { animationType } from "@/lib";
 import {
   createContext,
   Dispatch,
@@ -5,34 +6,45 @@ import {
   useEffect,
   useReducer,
 } from "react";
-import useLocalStorage from "use-local-storage";
 
-// fontSize: 12,
-// lineHeight: 28,
-// textPosition: 36,
-// textAlign: "center",
-// color: "rgba(255, 255, 255, 0.9)",
-// background: "rgba(255, 255,255, 0.1)",
-// highlight: "mark",
-// textAnimation: "fade-in",
-// imageAnimation: "fade-in",
-// overlay: true,
-// cta: false,
-// url: "",
-// ctaText: "",
-// paddingX: 20,
-// paddingY: 10,
-
-interface TemplateType {
+export interface TemplateType {
   id: string;
   name: string;
-  price: number;
+  fontSize: number;
+  lineHeight: number;
+  textPosition: number;
+  textAlign: string;
+  color: string;
+  background: string;
+  highlight: string;
+  textAnimation: animationType;
+  imageAnimation: animationType;
+  overlay: boolean;
+  cta: boolean;
+  url: string;
+  ctaText: string;
+  paddingX: number;
+  paddingY: number;
 }
 const initialTasks: TemplateType[] = [
   {
-    id: "0",
-    name: "Template 1",
-    price: 100,
+    id: "0_00-P715y8My3f3ijOZ1",
+    name: "black and white",
+    fontSize: 16,
+    lineHeight: 20,
+    textPosition: 36,
+    textAlign: "center",
+    color: "#ffffff",
+    background: "#000000",
+    highlight: "box",
+    textAnimation: "fade-in",
+    imageAnimation: "fade-in",
+    overlay: false,
+    cta: false,
+    url: "",
+    ctaText: "",
+    paddingX: 10,
+    paddingY: 20,
   },
 ];
 type ActionMap<M extends { [index: string]: any }> = {
@@ -53,11 +65,7 @@ export enum Types {
   Init = "init",
 }
 type ProductPayload = {
-  [Types.Create]: {
-    id: string;
-    name: string;
-    price: number;
-  };
+  [Types.Create]: TemplateType;
   [Types.Delete]: {
     id: string;
   };
@@ -78,8 +86,6 @@ export function TasksProvider({ children }) {
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("template") || "")) {
-      //checking if there already is a state in localstorage
-      //if yes, update the current state with the stored one
       dispatch({
         type: Types.Init,
         payload: JSON.parse(localStorage.getItem("template") || " "),
@@ -91,8 +97,6 @@ export function TasksProvider({ children }) {
     if (tasks !== initialTasks) {
       console.log("this is called", tasks);
       localStorage.setItem("template", JSON.stringify(tasks));
-
-      //create and/or set a new localstorage variable called "state"
     }
   }, [tasks]);
 
@@ -116,12 +120,45 @@ export function useTasksDispatch() {
 function tasksReducer(tasks: TemplateType[], action: ProductActions) {
   switch (action.type) {
     case Types.Create: {
+      const {
+        id,
+        name,
+        fontSize,
+        lineHeight,
+        textPosition,
+        textAlign,
+        color,
+        background,
+        highlight,
+        textAnimation,
+        imageAnimation,
+        overlay,
+        cta,
+        url,
+        ctaText,
+        paddingX,
+        paddingY,
+      } = action.payload;
       return [
         ...tasks,
         {
-          id: action.payload.id,
-          name: action.payload.name,
-          price: action.payload.price,
+          id,
+          name,
+          fontSize,
+          lineHeight,
+          textPosition,
+          textAlign,
+          color,
+          background,
+          highlight,
+          textAnimation,
+          imageAnimation,
+          overlay,
+          cta,
+          url,
+          ctaText,
+          paddingX,
+          paddingY,
         },
       ];
     }

@@ -9,7 +9,7 @@ type ColorComponentType = {
 };
 
 function stringToRGB(color: string) {
-  const obj = color.match(/[\d\.]+/g)?.map(Number);
+  const obj = color?.match(/[\d\.]+/g)?.map(Number) || [255, 255, 255, 0.1];
 
   const rgbaObj = obj && {
     r: obj[0],

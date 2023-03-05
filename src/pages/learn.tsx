@@ -256,7 +256,7 @@ function Learn() {
             }}
           >
             Read this next article{" "}
-            <Link href="/how-to-monetize-web-stories">
+            <Link href="/how-to-monetize-web-story">
               How to monetize web Stories ?
             </Link>
           </p>

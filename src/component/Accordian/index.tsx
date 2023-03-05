@@ -3,6 +3,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 import classNames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import styles from "./styles.module.css";
+import { Inter } from "@next/font/google";
 
 type headerType = {
   title: string;

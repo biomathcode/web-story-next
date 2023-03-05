@@ -11,6 +11,7 @@ import {
   ResetIcon,
   PlayIcon,
   PauseIcon,
+  PlusCircledIcon,
 } from "@radix-ui/react-icons";
 import classnames from "classnames";
 
@@ -85,8 +86,6 @@ function NewView({
       setNewSelect((w: any) => w + 1);
     }
   });
-
-  console.log(dragActive, "this is dragActive");
 
   return (
     <div className="flex center col jc  " suppressHydrationWarning={true}>
@@ -398,6 +397,18 @@ function NewView({
           </button>
         </ToolTip>
         <Alert
+          action={() => {}}
+          data={newState[newSelect]}
+          actionName="Create Template"
+          title={"Create Template"}
+          type="Create Template"
+          buttonText="Create Template"
+          icon={<PlusCircledIcon />}
+          description={""}
+          triggerName="Create Template"
+        />
+        <Alert
+          type="delete"
           icon={<TrashIcon />}
           triggerName=""
           action={() => deleteState()}

@@ -1,13 +1,16 @@
+import Alert from "@/component/Alert";
 import {
   TasksProvider,
   Types,
   useTasks,
   useTasksDispatch,
 } from "@/context/data";
+import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { nanoid } from "nanoid";
 import { useContext, useState } from "react";
 
 function Component() {
+  const [value, setValue] = useState("");
   return (
     <TasksProvider>
       <div
@@ -15,47 +18,23 @@ function Component() {
         style={{ width: "100vw", textAlign: "center", marginTop: "100px" }}
       >
         <div className="flex w-100 col gap-10">
-          <AddTask />
-
           <ChildrenComponent />
+          <Alert
+            action={() => {
+              console.log(value);
+              setValue("");
+            }}
+            actionName="Create Template"
+            title={"Create Template"}
+            type="Create Template"
+            buttonText="Create Template"
+            icon={<PlusCircledIcon />}
+            description={""}
+            triggerName="Create Template"
+          />
         </div>
       </div>
     </TasksProvider>
-  );
-}
-
-function AddTask() {
-  const dispatch = useTasksDispatch();
-  const [value, setValue] = useState("");
-  return (
-    <form
-      className="flex gap-10 jc center"
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (value.length === 0) {
-          return;
-        }
-        dispatch({
-          type: Types.Create,
-          payload: {
-            id: nanoid(),
-            name: value,
-            price: 10,
-          },
-        });
-        setValue("");
-      }}
-    >
-      <input
-        name="value"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="name"
-      />
-      <button className="btn fs-12" type="submit">
-        Submit
-      </button>
-    </form>
   );
 }
 
