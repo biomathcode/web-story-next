@@ -39,10 +39,10 @@ export default function IndexPage() {
           href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           rel="stylesheet"
         ></link>
-        {/* <link
+        <link
           rel="canonical"
           href="https://webstory.coolhead.in/10-mistakes-of-entrepreneurs-guy-kawasaki-coolhead-webstory"
-        /> */}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
