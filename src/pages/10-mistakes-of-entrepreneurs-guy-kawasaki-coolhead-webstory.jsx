@@ -187,8 +187,8 @@ export default function IndexPage() {
                 position: "absolute",
                 top: "57%",
                 fontSize: "25px",
-                padding: "14px 8px",
-                textAlign: "center",
+                padding: "14px 20px",
+                textAlign: "left",
                 lineHeight: "78px",
                 fontFamily: "Inter",
               }}
@@ -301,7 +301,7 @@ export default function IndexPage() {
               }}
               animate-in="fly-in-bottom"
             >
-              6. Use too many slides. Solution: 10 slides, focus on story
+              5. Use too many slides. Solution: 10 slides, focus on story
             </p>
           </amp-story-grid-layer>
         </amp-story-page>
@@ -491,6 +491,7 @@ export default function IndexPage() {
             </a>
           </amp-story-page-outlink>
         </amp-story-page>
+        <amp-story-auto-analytics gtag-id="G-5K7VWB3071"></amp-story-auto-analytics>
 
         <amp-story-auto-ads>
           <script
