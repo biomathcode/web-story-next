@@ -184,28 +184,44 @@ const Droppable = ({
           </svg>
         </button>
         {isHover && (
-          <div
-            style={{
-              position: "absolute",
-              right: "1px",
-              top: "0px",
-              zIndex: 14,
-            }}
-          >
-            <button
-              className="btn fs-12"
-              onClick={() =>
-                dispatch({
-                  type: Types.Delete,
-                  payload: {
-                    id: id,
-                  },
-                })
-              }
+          <>
+            <div
+              style={{
+                position: "absolute",
+                right: "1px",
+                top: "0px",
+                zIndex: 14,
+              }}
             >
-              <TrashIcon />
-            </button>
-          </div>
+              <button
+                className="btn fs-12"
+                onClick={() =>
+                  dispatch({
+                    type: Types.Delete,
+                    payload: {
+                      id: id,
+                    },
+                  })
+                }
+              >
+                <TrashIcon />
+              </button>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                right: "1px",
+                bottom: "0px",
+                color: "#fff",
+                padding: "0px 10px",
+                borderRadius: "4px",
+                background: "#000",
+                zIndex: 14,
+              }}
+            >
+              <div>{data?.name}</div>
+            </div>
+          </>
         )}
 
         <p

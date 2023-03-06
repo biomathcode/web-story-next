@@ -407,17 +407,20 @@ function NewView({
           description={""}
           triggerName="Create Template"
         />
-        <Alert
-          type="delete"
-          icon={<TrashIcon />}
-          triggerName=""
-          action={() => deleteState()}
-          actionName="this action"
-          title="Are you absolutely sure ?"
-          description="This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+        {newSelect !== 0 && (
+          <Alert
+            action={() => deleteState()}
+            type="delete"
+            icon={<TrashIcon />}
+            triggerName=""
+            actionName="this action"
+            title="Are you absolutely sure ?"
+            description="This action cannot be undone. This will permanently delete your account and remove your data from our servers.
 
         "
-        />
+          />
+        )}
+
         {/* <ToolTip text="Reorder Pages">
           <button
             style={{

@@ -63,7 +63,7 @@ const Model = ({ isValid = false }) => {
     const element = document.createElement("a");
     const file = new Blob([code], { type: "text/plain" });
     element.href = URL.createObjectURL(file);
-    element.download = `${name}.jsx`;
+    element.download = `${name}.${type}`;
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
   };
@@ -342,7 +342,7 @@ const Model = ({ isValid = false }) => {
                     // style={{ padding: "2px 5px" }}
                     className="btn flex gap-10 center fs-12"
                     onClick={(e) =>
-                      downloadTxtFile(code, slugify(structeddata.title))
+                      downloadTxtFile(code, slugify(structeddata.title), "html")
                     }
                   >
                     <DownloadIcon />

@@ -126,7 +126,7 @@ const Alert = ({
               </button>
             </AlertDialog.Cancel>
             <AlertDialog.Action
-              disabled={input.length > 0 ? false : true}
+              disabled={input.length > 0 || type === "delete" ? false : true}
               asChild
             >
               <button
@@ -148,7 +148,9 @@ const Alert = ({
                       }
                 }
                 style={{ transition: "all ease-in 216ms" }}
-                className={input.length > 0 ? "btn fs-12" : " fs-12"}
+                className={
+                  input.length > 0 || type === "delete" ? "btn fs-12" : " fs-12"
+                }
                 // className={[styles.Button, styles.red].join(" ")}
               >
                 {buttonText}
