@@ -291,7 +291,7 @@ function Home() {
           />
           <meta
             property="og:image"
-            content="https://webstory.coolhead.in/ogimage.png"
+            content="https://webstory.coolhead.in/og.jpeg"
           />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
@@ -305,7 +305,7 @@ function Home() {
           />
           <meta
             name="twitter:image"
-            content=" http://webstory.coolhead.in/ogimage.png"
+            content=" https://webstory.coolhead.in/og.jpeg"
           />
           <meta
             name="twitter:image:alt"
@@ -333,20 +333,19 @@ function Home() {
           id="this"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
+            __html: JSON.stringify(
               StructuredData({
                 title:
                   "Webstory code generator- no code editor to create google web stories for free",
                 description:
                   " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
-                image: "http://webstory.coolhead.in/ogimage",
+                image: "https://webstory.coolhead.in/og.jpeg",
                 authorName: "Pratik Sharma",
                 authorUrl: "https://coolhead.in",
                 publisherName: "Coolhead",
                 publisherWebsite: "https://coolhead.in",
-              }),
-              {},
-            ]),
+              })
+            ),
           }}
         />
         <Toaster />
