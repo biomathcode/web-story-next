@@ -255,199 +255,200 @@ function Home() {
   }
 
   return (
-    <TasksProvider>
-      <div className={inter.className}>
-        <Head>
-          <title>
-            Webstory code generator- no code editor to create google web stories
-            for free
-          </title>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:creator" content="@biomathcode" />
-          <meta
-            name="twitter:title"
-            content="Webstory code generator- no code editor to create google web stories for free"
-          />
-          <meta
-            name="twitter:description"
-            content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories."
-          />
-          <meta
-            name="twitter:image"
-            content="https://webstory.coolhead.in/og.jpeg"
-          />
-          <meta title="Webstory code generator- no code editor to create google web stories for free" />
-          <meta
-            name="description"
-            content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
-          />
-          <meta
-            property="keywords"
-            content="webstory, no-code, amp, free, hashnode, blog, coolhead "
-          />
-
-          <meta
-            property="title"
-            content="Webstory code generator- no code editor to create google web stories for free"
-          />
-
-          <meta
-            property="description"
-            content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
-          />
-          <meta
-            property="og:title"
-            content="Webstory code generator- no code editor to create google web stories for free"
-          />
-          <meta
-            property="og:description"
-            content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
-          />
-          <meta
-            property="og:image"
-            content="https://webstory.coolhead.in/og.jpeg"
-          />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/apple-icon.png" />
-          <meta name="msapplication-TileColor" content="#ffffff" />
-          <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-          <meta name="theme-color" content="#ffffff" />
-
-          <meta property="og:url" content="http://webstory.coolhead.in" />
-          <meta property="og:site" content="http://webstory.coolhead.in" />
-        </Head>
-
-        <Script
-          id="this"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              StructuredData({
-                title:
-                  "Webstory code generator- no code editor to create google web stories for free",
-                description:
-                  " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
-                image: "https://webstory.coolhead.in/og.jpeg",
-                authorName: "Pratik Sharma",
-                authorUrl: "https://coolhead.in",
-                publisherName: "Coolhead",
-                publisherWebsite: "https://coolhead.in",
-              })
-            ),
-          }}
+    <>
+      <Head>
+        <title>
+          Webstory code generator- no code editor to create google web stories
+          for free
+        </title>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
         />
-        <Toaster />
-
-        <NavBar
-          page={select}
-          setPage={setSelect}
-          user={user}
-          setUser={setUser}
-          info={info}
-          setInfo={setInfo}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@biomathcode" />
+        <meta
+          name="twitter:title"
+          content="Webstory code generator- no code editor to create google web stories for free"
+        />
+        <meta
+          name="twitter:description"
+          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories."
+        />
+        <meta
+          name="twitter:image"
+          content="https://webstory.coolhead.in/og.jpeg"
+        />
+        <meta title="Webstory code generator- no code editor to create google web stories for free" />
+        <meta
+          name="description"
+          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
+        />
+        <meta
+          property="keywords"
+          content="webstory, no-code, amp, free, hashnode, blog, coolhead "
         />
 
-        <div
-          style={{
-            display: "flex",
-            gap: "20px",
-            width: "100vw",
-            height: "calc(100vh - 60px ) ",
-          }}
-        >
-          <PanelGroup direction="horizontal">
-            <DndContext
-              sensors={sensors}
-              onDragStart={handleDragStart}
-              onDragEnd={(e) => handleDragEnd(e)}
-            >
-              <Panel defaultSize={25} minSize={20}>
-                <RightSidebar content={content} />
-              </Panel>
-              <PanelResizeHandle
-                style={{
-                  width: "10px",
-                  height: "calc(100vh - 60px ) ",
-                  display: "flex",
-                  justifyContent: "center",
+        <meta
+          property="title"
+          content="Webstory code generator- no code editor to create google web stories for free"
+        />
 
-                  background: "#eee",
-                }}
+        <meta
+          property="description"
+          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
+        />
+        <meta
+          property="og:title"
+          content="Webstory code generator- no code editor to create google web stories for free"
+        />
+        <meta
+          property="og:description"
+          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
+        />
+        <meta
+          property="og:image"
+          content="https://webstory.coolhead.in/og.jpeg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <meta property="og:url" content="https://webstory.coolhead.in" />
+        <meta property="og:site" content="https://webstory.coolhead.in" />
+      </Head>
+      <Script
+        id="this"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            StructuredData({
+              title:
+                "Webstory code generator- no code editor to create google web stories for free",
+              description:
+                " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
+              image: "https://webstory.coolhead.in/og.jpeg",
+              authorName: "Pratik Sharma",
+              authorUrl: "https://coolhead.in",
+              publisherName: "Coolhead",
+              publisherWebsite: "https://coolhead.in",
+            })
+          ),
+        }}
+      />
+      <TasksProvider>
+        <div className={inter.className}>
+          <Toaster />
+
+          <NavBar
+            page={select}
+            setPage={setSelect}
+            user={user}
+            setUser={setUser}
+            info={info}
+            setInfo={setInfo}
+          />
+
+          <div
+            style={{
+              display: "flex",
+              gap: "20px",
+              width: "100vw",
+              height: "calc(100vh - 60px ) ",
+            }}
+          >
+            <PanelGroup direction="horizontal">
+              <DndContext
+                sensors={sensors}
+                onDragStart={handleDragStart}
+                onDragEnd={(e) => handleDragEnd(e)}
               >
-                <svg className="drag_handler" viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M18,16V13H15V22H13V2H15V11H18V8L22,12L18,16M2,12L6,16V13H9V22H11V2H9V11H6V8L2,12Z"
-                  ></path>
-                </svg>
-              </PanelResizeHandle>
-              <Panel minSize={40}>
-                <div
+                <Panel defaultSize={25} minSize={20}>
+                  <RightSidebar content={content} />
+                </Panel>
+                <PanelResizeHandle
                   style={{
+                    width: "10px",
                     height: "calc(100vh - 60px ) ",
-
                     display: "flex",
-                    flexDirection: "column",
                     justifyContent: "center",
-                    gap: "10px",
-                    minWidth: "300px",
+
+                    background: "#eee",
                   }}
                 >
-                  <NewView
-                    dragActive={activeId}
-                    newState={newState}
+                  <svg className="drag_handler" viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M18,16V13H15V22H13V2H15V11H18V8L22,12L18,16M2,12L6,16V13H9V22H11V2H9V11H6V8L2,12Z"
+                    ></path>
+                  </svg>
+                </PanelResizeHandle>
+                <Panel minSize={40}>
+                  <div
+                    style={{
+                      height: "calc(100vh - 60px ) ",
+
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      gap: "10px",
+                      minWidth: "300px",
+                    }}
+                  >
+                    <NewView
+                      dragActive={activeId}
+                      newState={newState}
+                      newSelect={newSelect}
+                      setNewSelect={setNewSelect}
+                      setNewState={setNewState}
+                    />
+                  </div>
+                </Panel>
+
+                <DragOverlay>
+                  {activeId ? <Item data={activeId} /> : null}
+                </DragOverlay>
+
+                <PanelResizeHandle
+                  style={{
+                    width: "10px",
+                    height: "calc(100vh - 60px ) ",
+                    display: "flex",
+                    justifyContent: "center",
+
+                    background: "#eee",
+                  }}
+                >
+                  <svg className="drag_handler" viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M18,16V13H15V22H13V2H15V11H18V8L22,12L18,16M2,12L6,16V13H9V22H11V2H9V11H6V8L2,12Z"
+                    ></path>
+                  </svg>
+                </PanelResizeHandle>
+                <Panel
+                  defaultSize={20}
+                  minSize={20}
+                  style={{ background: "#eee" }}
+                >
+                  <LeftSidebar
+                    inter={inter}
                     newSelect={newSelect}
-                    setNewSelect={setNewSelect}
+                    newState={newState}
                     setNewState={setNewState}
                   />
-                </div>
-              </Panel>
-
-              <DragOverlay>
-                {activeId ? <Item data={activeId} /> : null}
-              </DragOverlay>
-
-              <PanelResizeHandle
-                style={{
-                  width: "10px",
-                  height: "calc(100vh - 60px ) ",
-                  display: "flex",
-                  justifyContent: "center",
-
-                  background: "#eee",
-                }}
-              >
-                <svg className="drag_handler" viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M18,16V13H15V22H13V2H15V11H18V8L22,12L18,16M2,12L6,16V13H9V22H11V2H9V11H6V8L2,12Z"
-                  ></path>
-                </svg>
-              </PanelResizeHandle>
-              <Panel
-                defaultSize={20}
-                minSize={20}
-                style={{ background: "#eee" }}
-              >
-                <LeftSidebar
-                  inter={inter}
-                  newSelect={newSelect}
-                  newState={newState}
-                  setNewState={setNewState}
-                />
-              </Panel>
-            </DndContext>
-          </PanelGroup>
+                </Panel>
+              </DndContext>
+            </PanelGroup>
+          </div>
         </div>
-      </div>
-    </TasksProvider>
+      </TasksProvider>
+    </>
   );
 }
 
