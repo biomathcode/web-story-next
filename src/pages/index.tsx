@@ -262,6 +262,24 @@ function Home() {
             Webstory code generator- no code editor to create google web stories
             for free
           </title>
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:creator" content="@biomathcode" />
+          <meta
+            name="twitter:title"
+            content="Webstory code generator- no code editor to create google web stories for free"
+          />
+          <meta
+            name="twitter:description"
+            content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories."
+          />
+          <meta
+            name="twitter:image"
+            content="https://webstory.coolhead.in/og.jpeg"
+          />
           <meta title="Webstory code generator- no code editor to create google web stories for free" />
           <meta
             name="description"
@@ -295,28 +313,7 @@ function Home() {
           />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
-          <meta
-            name="twitter:title"
-            content="Webstory code generator- no code editor to create google web stories for free"
-          />
-          <meta
-            name="twitter:description"
-            content=" Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
-          />
-          <meta
-            name="twitter:image"
-            content=" https://webstory.coolhead.in/og.jpeg"
-          />
-          <meta
-            name="twitter:image:alt"
-            content="Webstory code generator - no code tool editor "
-          />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
-          <meta property="og:type" content="article" />
-          <meta name="twitter:card" content="summary_large_image" />
+
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/apple-icon.png" />
           <meta name="msapplication-TileColor" content="#ffffff" />
@@ -325,8 +322,6 @@ function Home() {
 
           <meta property="og:url" content="http://webstory.coolhead.in" />
           <meta property="og:site" content="http://webstory.coolhead.in" />
-
-          <meta name="twitter:creator" content="@biomathcode" />
         </Head>
 
         <Script
