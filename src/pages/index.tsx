@@ -279,7 +279,10 @@ function Home() {
           name="twitter:image"
           content="https://webstory.coolhead.in/og.jpeg"
         />
-        <meta title="Webstory code generator- no code editor to create google web stories for free" />
+        <meta
+          name="title"
+          content="Webstory code generator- no code editor to create google web stories for free"
+        />
         <meta
           name="description"
           content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
@@ -291,7 +294,7 @@ function Home() {
 
         <meta
           property="title"
-          content="Webstory code generator- no code editor to create google web stories for free"
+          content="Webstory code generator- free no code editor web stories "
         />
 
         <meta
@@ -300,7 +303,7 @@ function Home() {
         />
         <meta
           property="og:title"
-          content="Webstory code generator- no code editor to create google web stories for free"
+          content="Webstory code generator- free no code editor web stories "
         />
         <meta
           property="og:description"
