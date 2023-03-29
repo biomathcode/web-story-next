@@ -284,7 +284,7 @@ function Learn() {
               margin: "20px 0px",
             }}
           >
-            Read this next article{" "}
+            Read to learn about monetization{" "}
             <Link href="/how-to-monetize-web-story">
               How to monetize web Stories ?
             </Link>
@@ -297,9 +297,23 @@ function Learn() {
               margin: "20px 0px",
             }}
           >
-            Read this next article{" "}
+            Read to learn about analytics{" "}
             <Link href="/how-to-add-google-analytics-in-web-stories">
               How to add google analytics in web stories ?
+            </Link>
+          </p>
+
+          <p
+            style={{
+              border: "1px solid #444",
+              borderRadius: "4px",
+              padding: "20px",
+              margin: "20px 0px",
+            }}
+          >
+            Tips for SEO{" "}
+            <Link href="/10-seo-tips-for-google-web-stories">
+              10 SEO Tips to increase views google web stories ?
             </Link>
           </p>
 
