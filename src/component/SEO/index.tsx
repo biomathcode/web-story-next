@@ -350,34 +350,31 @@ const StructuredData = ({
   publisherWebsite,
 }: schemaType) => {
   const elink = slugify(link || title);
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      mainEntityOfPage: elink,
-      headline: title,
-      description: description,
-      author: {
-        "@type": "Person",
-        name: authorName,
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    mainEntityOfPage: elink,
+    headline: title,
+    description: description,
+    author: {
+      "@type": "Person",
+      name: authorName,
 
-        url: authorUrl,
-      },
-      publisher: {
-        "@type": "Organization",
-        name: publisherName,
-        url: publisherWebsite,
-      },
-      image: {
-        "@type": "ImageObject",
-        url: image,
-      },
-      datePublished: new Date().toISOString(),
-      dateModified: new Date().toISOString(),
-      isAccessibleForFree: "http://schema.org/True",
+      url: authorUrl,
     },
-    {},
-  ];
+    publisher: {
+      "@type": "Organization",
+      name: publisherName,
+      url: publisherWebsite,
+    },
+    image: {
+      "@type": "ImageObject",
+      url: image,
+    },
+    datePublished: new Date().toISOString(),
+    dateModified: new Date().toISOString(),
+    isAccessibleForFree: "http://schema.org/True",
+  };
 };
 
 export {
