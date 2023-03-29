@@ -1,9 +1,6 @@
-import CodeBlock from "@/component/Codeblock";
 import Footer from "@/component/Footer";
-import InfoCarousel from "@/component/InfoCarousel";
-import InfoCheckBox from "@/component/InfoCheckbox/InfoCheckbox";
+
 import { StructuredData } from "@/component/SEO";
-import { AMP_STORY_AUTO_ADS } from "@/lib";
 import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";

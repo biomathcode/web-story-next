@@ -174,7 +174,14 @@ function Learn() {
             padding: "20px",
           }}
         >
-          <h1>Learn about AMP web stories Search Engine Optimisation or SEO</h1>
+          <h1
+            style={{
+              fontSize: "36px",
+              fontWeight: 300,
+            }}
+          >
+            Learn about AMP web stories Search Engine Optimisation
+          </h1>
           <p
             style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}
           >
@@ -214,10 +221,32 @@ function Learn() {
             description=" Make sure your amp html is valid. You can visit https://search.google.com/test/amp
              "
           />
+          <section>
+            <h2
+              className="mt-y"
+              style={{ fontWeight: "300", margin: "50px 0px" }}
+            >
+              Watch- Create Your First Web Story
+            </h2>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/2Mej5yNwncQ"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </section>
 
-          <h2 className="mt-y">Tips To Make Better web stories</h2>
+          <h2
+            className="mt-y"
+            style={{ fontWeight: "500", margin: "50px 0px" }}
+          >
+            Tips To Make Better web stories
+          </h2>
 
-          <ul className="flex col gap-10">
+          <ul className="flex col gap-20">
             <li>Add Structued data to your webstories.</li>
             <li>
               Make sure there is enough contract between the text and the
