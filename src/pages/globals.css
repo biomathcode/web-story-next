@@ -451,6 +451,10 @@ fieldset {
   gap: 10px;
 }
 
+.gap-20 {
+  gap: 20px;
+}
+
 .center {
   align-items: center;
   align-content: center;
