@@ -59,6 +59,12 @@ function NewView({
     setNewSelect(newSelect - 1);
   }
 
+  function resetState() {
+    const state = newState.filter((el: any, i: any) => i === 0);
+    setNewState(state);
+    setNewSelect(0);
+  }
+
   const [mouseOver, setMouseOver] = useState(false);
 
   const [animation, setAnimation] = useState(false);
@@ -413,11 +419,26 @@ function NewView({
             type="delete"
             icon={<TrashIcon />}
             triggerName=""
-            actionName="this action"
+            actionName="delete action"
             title="Are you absolutely sure ?"
-            description="This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+            description="This action cannot be undone. This will permanently delete.
 
         "
+          />
+        )}
+
+        {newSelect !== 0 && (
+          <Alert
+            buttonText="Reset"
+            action={() => resetState()}
+            type="delete"
+            icon={<ResetIcon />}
+            triggerName="reset "
+            actionName="reset action"
+            title="Are you absolutely sure ?"
+            description="This action cannot be undone. This will permanently reset view.
+
+              "
           />
         )}
 
