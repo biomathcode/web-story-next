@@ -3,20 +3,18 @@ import { useAmp } from "next/amp";
 
 import { StructuredData } from "../component/SEO/index";
 
-const data = [
-  StructuredData({
-    link: "https://webstory.coolhead.in/function-scope-vs-block-scope-in-javascript",
-    title: "Function Scope vs Block Scope in Javascript",
-    description:
-      "Difference between function scope and block scope in javascript. Scopes in Javascript",
-    authorName: "Pratik Sharma",
-    authorUrl: "http://coolhead.in",
-    image:
-      "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    publisherName: "Coolhead",
-    publisherWebsite: "https://coolhead.in",
-  }),
-];
+const data = StructuredData({
+  link: "https://webstory.coolhead.in/function-scope-vs-block-scope-in-javascript",
+  title: "Function Scope vs Block Scope in Javascript",
+  description:
+    "Difference between function scope and block scope in javascript. Scopes in Javascript",
+  authorName: "Pratik Sharma",
+  authorUrl: "http://coolhead.in",
+  image:
+    "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+  publisherName: "Coolhead",
+  publisherWebsite: "https://coolhead.in",
+});
 
 export const config = {
   amp: true,
