@@ -15,18 +15,16 @@ const info = {
     "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
 };
 
-const data = [
-  StructuredData({
-    link: "https://webstory.coolhead.in/how-to-add-google-analytics-in-web-stories",
-    title: info.title,
-    description: info.description,
-    authorName: "Pratik Sharma",
-    authorUrl: "http://coolhead.in",
-    image: info.image,
-    publisherName: "Coolhead",
-    publisherWebsite: "https://coolhead.in",
-  }),
-];
+const data = StructuredData({
+  link: "https://webstory.coolhead.in/how-to-add-google-analytics-in-web-stories",
+  title: info.title,
+  description: info.description,
+  authorName: "Pratik Sharma",
+  authorUrl: "http://coolhead.in",
+  image: info.image,
+  publisherName: "Coolhead",
+  publisherWebsite: "https://coolhead.in",
+});
 
 function Blog() {
   return (

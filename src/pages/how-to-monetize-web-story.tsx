@@ -15,18 +15,16 @@ const info = {
     "https://images.unsplash.com/photo-1494887205043-c5f291293cf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
 };
 
-const data = [
-  StructuredData({
-    link: "https://webstory.coolhead.in/how-to-monetize-web-stories",
-    title: info.title,
-    description: info.description,
-    authorName: "Pratik Sharma",
-    authorUrl: "http://coolhead.in",
-    image: info.image,
-    publisherName: "Coolhead",
-    publisherWebsite: "https://coolhead.in",
-  }),
-];
+const data = StructuredData({
+  link: "https://webstory.coolhead.in/how-to-monetize-web-stories",
+  title: info.title,
+  description: info.description,
+  authorName: "Pratik Sharma",
+  authorUrl: "http://coolhead.in",
+  image: info.image,
+  publisherName: "Coolhead",
+  publisherWebsite: "https://coolhead.in",
+});
 
 function Monetization() {
   return (
