@@ -312,7 +312,7 @@ function Learn() {
             }}
           >
             Tips for SEO{" "}
-            <Link href="/10-seo-tips-for-google-web-stories">
+            <Link href="/seo-tips-for-google-web-stories">
               10 SEO Tips to increase views google web stories ?
             </Link>
           </p>
