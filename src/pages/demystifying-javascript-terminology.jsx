@@ -37,10 +37,10 @@ export default function IndexPage() {
           href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           rel="stylesheet"
         ></link>
-        {/* <link
+        <link
           rel="canonical"
           href="https://webstory.coolhead.in/demystifying-javascript-terminology"
-        ></link> */}
+        ></link>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
