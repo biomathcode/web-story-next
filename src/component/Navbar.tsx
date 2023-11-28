@@ -70,11 +70,13 @@ function NavBar({
               setLoading(true);
 
               if (data.username.length > 1) {
-                const response = await axios.get(data.username);
+                const response = await axios.get(
+                  `/api/hello?url=${data.username}`
+                );
+                console.log(response);
                 if (response) {
-                  console.log(response.data);
-                  const el = await mdParser(response.data);
-                  console.log("promise", el);
+                  const el = await mdParser(response.data.data);
+
                   setData(el);
 
                   setLoading(false);
