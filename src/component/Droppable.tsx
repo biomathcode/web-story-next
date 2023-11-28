@@ -107,7 +107,7 @@ export const Item = ({ data }: { data: any }) => {
         </svg>
       </button>
       {type === "image" ? (
-        <Image alt={href} src={href} width={240} height={360} />
+        <img alt={href} src={href} width={240} height={360} />
       ) : (
         <p className="fs-14">{data.content}</p>
       )}
@@ -303,7 +303,7 @@ const Droppable = ({
         </svg>
       </button>
       {type === "image" ? (
-        <Image alt={href} src={href} width={240} height={360} />
+        <img alt={href} src={href} width={240} height={360} />
       ) : (
         <p className="fs-14">{href}</p>
       )}

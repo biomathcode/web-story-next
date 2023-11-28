@@ -100,7 +100,7 @@ function Blog() {
               <span data-title="March 2, 2023 12:00">March 2, 2023</span>
             </p>
             <div className="flex center jc">
-              <Image
+              <img
                 alt="analytics  preview"
                 style={{ borderRadius: "4px" }}
                 width={600}

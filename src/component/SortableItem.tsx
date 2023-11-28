@@ -122,7 +122,7 @@ export function SortableItem(props: any) {
             <div className="SortableItem" ref={setNodeRef} style={style}>
               <DragHandle />
               {props.type === "image" ? (
-                <Image src={props.children} alt="sortable image" />
+                <img src={props.children} alt="sortable image" />
               ) : (
                 <p style={{ fontSize: font + "px" }}>{props.children}</p>
               )}
