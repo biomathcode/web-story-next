@@ -5,6 +5,7 @@ import fetch from "node-fetch";
 
 type Data = {
   data?: string;
+  msg?: string;
 };
 
 export default async function handler(
