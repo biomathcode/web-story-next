@@ -126,14 +126,7 @@ const image = [
 function Home() {
   const [content, setContent] = useState<ContentType[]>([]);
 
-  const [select, setSelect] = useState(0);
-
-  const [user, setUser] = useState<userState | null>(null);
-
-  const [info, setInfo] = useLocalStorage(INFO, {
-    username: "biomathcode",
-    page: 0,
-  });
+  const [url, setUrl] = useState("https://coolhead.in");
 
   const [newSelect, setNewSelect] = useState(0);
 
@@ -173,35 +166,6 @@ function Home() {
       overlay: false,
     },
   ]);
-
-  useEffect(() => {
-    if (user) {
-      if (user?.publication?.posts?.length > 0 && user?.name !== null) {
-        setContent(
-          mdParser(user.publication.posts[select]?.contentMarkdown) as []
-        );
-
-        setSchema({
-          title: user.publication.posts[select].title,
-          description: user.publication.posts[select].brief,
-          image: user.publication.posts[select].coverImage,
-        });
-      }
-    }
-  }, [user, select]);
-
-  useEffect(() => {
-    async function fetchFunction() {
-      const response = await axios(config(info.username, Number(info.page)));
-
-      setUser(response.data.data.user);
-
-      console.log(response.data.data.user);
-      return response.data;
-    }
-
-    fetchFunction();
-  }, [info.page, info.username]);
 
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
@@ -348,14 +312,7 @@ function Home() {
         <div className={inter.className}>
           <Toaster />
 
-          <NavBar
-            page={select}
-            setPage={setSelect}
-            user={user}
-            setUser={setUser}
-            info={info}
-            setInfo={setInfo}
-          />
+          <NavBar url={url} setUrl={setUrl} setData={setContent} />
 
           <div
             style={{

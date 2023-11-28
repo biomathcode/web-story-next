@@ -13,6 +13,7 @@ import Link from "next/link";
 import useLocalStorage from "use-local-storage";
 import { SCHEMA } from "@/lib/constants";
 import OnBoarding from "./OnBoarding";
+import mdParser from "@/lib/markdownParser";
 
 export interface ColourOption {
   value: string;
@@ -36,28 +37,15 @@ export const colourOptions: ColourOption[] = [
 ];
 
 function NavBar({
-  user,
-  page,
-  setPage,
-  setUser,
-  info,
-  setInfo,
+  url,
+  setUrl,
+  setData,
 }: {
-  user: any;
-  page: any;
-  setPage: any;
-  setUser: any;
-  info: any;
-  setInfo: any;
+  url: string;
+  setUrl: any;
+  setData: any;
 }) {
-  const options = user?.publication?.posts?.map((el: any) => {
-    return {
-      value: el.title,
-      label: el.title,
-    };
-  });
-
-  const [value, setValue] = useState(user && user.name !== null && options[0]);
+  const [value, setValue] = useState(url);
 
   const [loading, setLoading] = useState(false);
 
@@ -76,44 +64,19 @@ function NavBar({
       className="flex center ja gap-10"
     >
       <div className="flex center gap-10 ">
-        {user ? (
-          <Select
-            id="select"
-            aria-label="Search"
-            className="select"
-            options={options}
-            value={value}
-            onChange={(newValue: any) => {
-              console.log("this is the new Value", newValue);
-              const index = options.findIndex(
-                (el: any) => el.value === newValue.value
-              );
-
-              setValue(options[index]);
-
-              console.log(index, "new index");
-              setPage(index);
-            }}
-          />
-        ) : (
-          <p>loading...</p>
-        )}
         <Suspense fallback={<p>Error happend</p>}>
           <form
             onSubmit={handleSubmit(async (data) => {
               setLoading(true);
 
-              setInfo(data);
-
               if (data.username.length > 1) {
-                const response = await axios(
-                  config(data.username, Number(data.page))
-                );
-                if (
-                  response.data?.data?.user?.publication?.posts?.length > 0 &&
-                  response.data.data.user
-                ) {
-                  setUser(response.data.data.user);
+                const response = await axios.get(data.username);
+                if (response) {
+                  console.log(response.data);
+                  const el = await mdParser(response.data);
+                  console.log("promise", el);
+                  setData(el);
+
                   setLoading(false);
                 } else {
                   alert(
@@ -127,29 +90,15 @@ function NavBar({
           >
             <fieldset>
               <input
-                id="page"
-                aria-label="page"
-                {...register("page", {
-                  required: true,
-                })}
-                min={0}
-                max={10}
-                defaultValue={Number(info?.page)}
-                type="number"
-                style={{ width: "50px" }}
-                placeholder="Page"
-              />
-            </fieldset>
-            <fieldset>
-              <input
                 id="username"
                 aria-label="username"
                 {...register("username", {
                   required: true,
                 })}
                 type="text"
-                defaultValue={info?.username}
-                placeholder="username"
+                className="fs-12 inter"
+                defaultValue={url}
+                placeholder="https://coolhead.in"
               />
             </fieldset>
             <fieldset>
