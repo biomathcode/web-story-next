@@ -28,6 +28,7 @@ import {
   DownloadIcon,
   EyeOpenIcon,
   GearIcon,
+  MobileIcon,
 } from "@radix-ui/react-icons";
 
 import styles from "./Model.module.css";
@@ -60,7 +61,9 @@ const Model = ({ isValid = false }) => {
   const [previewLink, setPreviewLink] = useState("");
 
   const [isNext, setIsNext] = useState(false);
-  const [viewMode, setViewMode] = useState<"code" | "preview">("code");
+  const [viewMode, setViewMode] = useState<"code" | "preview" | "mobile">(
+    "code"
+  );
   const [copyStatus, setCopyStatus] = useState("");
 
   const activeCode = isNext ? nextcode : code;
@@ -443,6 +446,19 @@ const Model = ({ isValid = false }) => {
                     <EyeOpenIcon />
                     Preview here
                   </button>
+                  <button
+                    aria-pressed={viewMode === "mobile"}
+                    className={
+                      viewMode === "mobile"
+                        ? "btn flex gap-10 center fs-12"
+                        : "btn subtle flex gap-10 center fs-12"
+                    }
+                    onClick={() => setViewMode("mobile")}
+                    type="button"
+                  >
+                    <MobileIcon />
+                    Mobile preview
+                  </button>
                 </div>
 
                 <div className={styles.ToolbarGroup}>
@@ -470,7 +486,7 @@ const Model = ({ isValid = false }) => {
                 className={styles.editor}
                 value={activeCode}
               />
-            ) : (
+            ) : viewMode === "preview" ? (
               <div className={styles.PreviewShell}>
                 <iframe
                   title="Generated Web Story preview"
@@ -495,6 +511,34 @@ const Model = ({ isValid = false }) => {
                       Open AMP Playground
                     </a>
                   ) : null}
+                </div>
+              </div>
+            ) : (
+              <div className={styles.MobilePreviewShell}>
+                <div className={styles.MobileDevice}>
+                  <div className={styles.MobileSpeaker} aria-hidden="true" />
+                  <iframe
+                    title="Generated Web Story mobile preview"
+                    className={styles.MobilePreviewFrame}
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                    srcDoc={code}
+                  />
+                </div>
+                <div className={styles.PreviewAside}>
+                  <h2>Mobile Web Story preview</h2>
+                  <p>
+                    This renders the generated story in a 9:16 mobile frame, so
+                    you can check slide composition, text contrast, CTA
+                    placement, and animation behavior before copying the code.
+                  </p>
+                  <button
+                    className="btn flex gap-10 center fs-12"
+                    onClick={() => copyToClipboard(code, "HTML")}
+                    type="button"
+                  >
+                    <ClipboardCopyIcon />
+                    Copy HTML
+                  </button>
                 </div>
               </div>
             )}

@@ -109,6 +109,50 @@
   line-height: 1.5;
 }
 
+.MobilePreviewShell {
+  display: grid;
+  grid-template-columns: minmax(320px, 390px) minmax(220px, 1fr);
+  gap: 20px;
+  min-height: 560px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  background: #eef2f7;
+}
+
+.MobileDevice {
+  position: relative;
+  width: min(100%, 360px);
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  padding: 18px 12px 14px;
+  border: 10px solid #111827;
+  border-radius: 34px;
+  background: #111827;
+  box-shadow: 0 22px 60px rgba(17, 24, 39, 0.28);
+}
+
+.MobileSpeaker {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 70px;
+  height: 5px;
+  border-radius: 999px;
+  background: #374151;
+  transform: translateX(-50%);
+}
+
+.MobilePreviewFrame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 22px;
+  background: #000;
+}
+
 .Button {
   display: inline-flex;
   align-items: center;
