@@ -1,4 +1,4 @@
-# Create Webstory from hashnode 
+# Create Webstory from Webpages url 
 
 This is a code generator to create google web stories. 
 
