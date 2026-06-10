@@ -898,6 +898,334 @@ scroll
   line-height: 1.4;
 }
 
+.examples-page {
+  min-height: 100vh;
+  padding: 30px 20px 70px;
+  background: #f6f7f9;
+}
+
+.examples-hero {
+  display: flex;
+  max-width: 1160px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 auto 28px;
+}
+
+.examples-hero h1 {
+  max-width: 760px;
+  margin: 10px 0;
+  color: var(--brand-strong);
+  font-size: 42px;
+  line-height: 1.05;
+}
+
+.examples-hero p {
+  max-width: 760px;
+  color: #475467;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.examples-grid {
+  display: grid;
+  max-width: 1160px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0 auto;
+}
+
+.example-card {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 420px;
+  padding: 16px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--panel-shadow);
+}
+
+.example-preview-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.example-card-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.example-card-copy h2 {
+  margin: 0;
+  color: var(--brand-strong);
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.example-card-copy h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.example-card-copy h2 a:hover {
+  color: var(--brand);
+}
+
+.example-card-copy p {
+  margin: 0;
+  color: #475467;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.example-card-copy dl {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.example-card-copy dl div {
+  display: grid;
+  gap: 2px;
+}
+
+.example-card-copy dt {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.example-card-copy dd {
+  margin: 0;
+  color: var(--brand-strong);
+  font-size: 12px;
+}
+
+.example-phone {
+  display: flex;
+  width: 210px;
+  height: 374px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  border: 8px solid #111827;
+  border-radius: 28px;
+  background: #111827;
+  box-shadow: 0 18px 40px rgba(17, 24, 39, 0.2);
+}
+
+.example-slide {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background-position: center;
+  background-size: cover;
+}
+
+.example-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.72));
+}
+
+.example-slide p {
+  position: absolute;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  margin: 0;
+  padding: 0 12px;
+}
+
+.example-slide p span {
+  border-radius: 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.example-slide-cta {
+  position: absolute;
+  right: 12px;
+  bottom: 16px;
+  z-index: 3;
+  max-width: calc(100% - 24px);
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: #111827;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.example-detail-page {
+  min-height: 100vh;
+  padding: 30px 20px 70px;
+  background: #f6f7f9;
+}
+
+.example-detail-hero {
+  display: grid;
+  max-width: 1120px;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: end;
+  margin: 0 auto 24px;
+}
+
+.example-detail-hero h1 {
+  max-width: 760px;
+  margin: 10px 0;
+  color: var(--brand-strong);
+  font-size: 44px;
+  line-height: 1.05;
+}
+
+.example-detail-hero p {
+  max-width: 720px;
+  color: #475467;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.example-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.example-detail-hero dl {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--panel-shadow);
+}
+
+.example-detail-hero dt,
+.example-detail-slides span {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.example-detail-hero dd {
+  margin: 2px 0 0;
+  color: var(--brand-strong);
+  font-size: 13px;
+}
+
+.example-detail-stage {
+  display: grid;
+  max-width: 1120px;
+  grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--panel-shadow);
+}
+
+.example-detail-stage .example-phone {
+  width: min(100%, 360px);
+  height: 640px;
+  margin: 0 auto;
+}
+
+.example-detail-stage .example-slide p {
+  padding: 0 18px;
+}
+
+.example-detail-stage .example-slide-cta {
+  right: 18px;
+  bottom: 22px;
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.example-detail-slides {
+  display: grid;
+  gap: 12px;
+}
+
+.example-detail-slides h2 {
+  margin: 0 0 6px;
+  color: var(--brand-strong);
+  font-size: 22px;
+}
+
+.example-detail-slides article {
+  padding: 14px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.example-detail-slides p {
+  margin: 4px 0 0;
+  color: #344054;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  .examples-hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .example-detail-hero,
+  .example-detail-stage {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .example-card {
+    grid-template-columns: 1fr;
+  }
+
+  .example-phone {
+    margin: 0 auto;
+  }
+
+  .examples-hero h1 {
+    font-size: 32px;
+  }
+
+  .example-detail-hero h1 {
+    font-size: 34px;
+  }
+
+  .example-detail-stage {
+    padding: 14px;
+  }
+
+  .example-detail-stage .example-phone {
+    height: 560px;
+  }
+}
+
 .drag_handler {
   width: 18px;
   color: #98a2b3;
@@ -988,6 +1316,16 @@ scroll
 
 .nav-link-button.secondary {
   background: var(--brand-strong);
+}
+
+.nav-link-button.subtle {
+  background: #eef2ff;
+  color: var(--brand-strong);
+}
+
+.nav-link-button.subtle:hover {
+  background: #dbeafe;
+  color: var(--brand-strong);
 }
 
 .nav-link-button.icon-only {

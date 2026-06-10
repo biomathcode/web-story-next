@@ -149,6 +149,14 @@ function NavBar({
           <RocketIcon />
           Learn
         </Link>
+        <Link
+          className="nav-link-button subtle"
+          href="/examples"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Examples
+        </Link>
         <div className="social-link-group" aria-label="Social links">
           {socialLinks.map(({ href, label, icon: Icon }) => (
             <Link

@@ -19,6 +19,11 @@ export type SeoArticle = SeoResourceLink & {
 
 export const seoResourceLinks: SeoResourceLink[] = [
   {
+    href: "/examples",
+    title: "Google Web Stories Examples Gallery",
+    description: "Preview real-life stories created with this editor.",
+  },
+  {
     href: "/best-free-web-stories-generator",
     title: "Best Free Web Stories Generator",
     description: "Create Google Web Stories for free with no sign up required.",
@@ -51,12 +56,12 @@ export const seoResourceLinks: SeoResourceLink[] = [
 ];
 
 export const editorLearnLinks: Record<string, SeoResourceLink[]> = {
-  content: [seoResourceLinks[0], seoResourceLinks[3], seoResourceLinks[5]],
-  unsplash: [seoResourceLinks[1], seoResourceLinks[5], seoResourceLinks[3]],
-  template: [seoResourceLinks[4], seoResourceLinks[1], seoResourceLinks[0]],
-  styles: [seoResourceLinks[5], seoResourceLinks[1], seoResourceLinks[3]],
-  animation: [seoResourceLinks[1], seoResourceLinks[3], seoResourceLinks[5]],
-  cta: [seoResourceLinks[2], seoResourceLinks[3], seoResourceLinks[4]],
+  content: [seoResourceLinks[0], seoResourceLinks[1], seoResourceLinks[4]],
+  unsplash: [seoResourceLinks[0], seoResourceLinks[2], seoResourceLinks[6]],
+  template: [seoResourceLinks[0], seoResourceLinks[5], seoResourceLinks[1]],
+  styles: [seoResourceLinks[6], seoResourceLinks[0], seoResourceLinks[4]],
+  animation: [seoResourceLinks[0], seoResourceLinks[4], seoResourceLinks[6]],
+  cta: [seoResourceLinks[3], seoResourceLinks[4], seoResourceLinks[5]],
 };
 
 export const seoArticles: Record<string, SeoArticle> = {
