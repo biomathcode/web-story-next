@@ -1,0 +1,10 @@
+export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+
+if command -v pnpm >/dev/null 2>&1; then
+  pnpm lint
+elif [ -x /opt/homebrew/bin/pnpm ]; then
+  /opt/homebrew/bin/pnpm lint
+else
+  echo "pnpm is required to run the pre-commit lint hook"
+  exit 127
+fi

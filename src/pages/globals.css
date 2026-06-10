@@ -29,6 +29,42 @@
   --text-muted: #667085;
   --brand: #1d4ed8;
   --brand-strong: #111827;
+  --blackA4: var(--black-a4);
+  --blackA7: var(--black-a7);
+  --blackA8: var(--black-a8);
+  --blackA9: var(--black-a9);
+  --blackA10: var(--black-a10);
+  --blackA11: var(--black-a11);
+  --mauve1: var(--mauve-1);
+  --mauve2: var(--mauve-2);
+  --mauve3: var(--mauve-3);
+  --mauve4: var(--mauve-4);
+  --mauve5: var(--mauve-5);
+  --mauve6: var(--mauve-6);
+  --mauve7: var(--mauve-7);
+  --mauve8: var(--mauve-8);
+  --mauve10: var(--mauve-10);
+  --mauve11: var(--mauve-11);
+  --mauve12: var(--mauve-12);
+  --slate11: var(--slate-11);
+  --slate12: var(--slate-12);
+  --green4: var(--green-4);
+  --green5: var(--green-5);
+  --green7: var(--green-7);
+  --green11: var(--green-11);
+  --blue10: var(--blue-10);
+  --blue11: var(--blue-11);
+  --indigo9: var(--indigo-9);
+  --violet3: var(--violet-3);
+  --violet4: var(--violet-4);
+  --violet7: var(--violet-7);
+  --violet8: var(--violet-8);
+  --violet10: var(--violet-10);
+  --violet11: var(--violet-11);
+  --red4: #ffdbdc;
+  --red5: #ffcdce;
+  --red7: #f3aeaf;
+  --red11: #ce2c31;
 }
 
 * {
