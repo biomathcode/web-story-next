@@ -4,7 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { CSSProperties } from "@stitches/react";
 import Image from "next/image";
-import { useState } from "react";
+import { memo, useMemo, useState } from "react";
 import CodeBlock from "./Codeblock";
 
 export const Item = ({ data }: { data: any }) => {
@@ -126,16 +126,21 @@ const Droppable = ({
   type: string;
   data: any;
 }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: id + 1,
-    data: {
+  const draggableData = useMemo(
+    () => ({
       id: id,
       type: type,
       content: href,
       href: href,
       title: href,
       data: data,
-    },
+    }),
+    [data, href, id, type]
+  );
+
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: id + 1,
+    data: draggableData,
   });
   const style: React.CSSProperties = {
     display: "flex",
@@ -311,4 +316,52 @@ const Droppable = ({
   );
 };
 
-export default Droppable;
+const templateKeys = [
+  "id",
+  "name",
+  "fontSize",
+  "lineHeight",
+  "textPosition",
+  "textAlign",
+  "color",
+  "background",
+  "highlight",
+  "textAnimation",
+  "imageAnimation",
+  "overlay",
+  "cta",
+  "url",
+  "ctaText",
+  "paddingX",
+  "paddingY",
+];
+
+const areDataItemsEqual = (previous: any, next: any, type: string) => {
+  if (previous === next) {
+    return true;
+  }
+
+  if (!previous || !next) {
+    return false;
+  }
+
+  if (type === "template") {
+    return templateKeys.every((key) => previous[key] === next[key]);
+  }
+
+  return (
+    previous.text === next.text &&
+    previous.raw === next.raw &&
+    previous.lang === next.lang &&
+    previous.type === next.type
+  );
+};
+
+export default memo(
+  Droppable,
+  (previous, next) =>
+    previous.id === next.id &&
+    previous.href === next.href &&
+    previous.type === next.type &&
+    areDataItemsEqual(previous.data, next.data, previous.type)
+);

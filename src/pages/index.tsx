@@ -1,10 +1,5 @@
-import { Inter } from "@next/font/google";
-
 import { useEffect, useState } from "react";
 
-import axios from "axios";
-import { config } from "../axios/index";
-import mdParser from "@/lib/markdownParser";
 import useLocalStorage from "use-local-storage";
 
 import {
@@ -23,7 +18,11 @@ import NewView from "@/component/NewView";
 
 import LeftSidebar from "@/component/LeftSidebar";
 import RightSidebar from "@/component/RightSidebar";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import {
+  Group as PanelGroup,
+  Panel,
+  Separator as PanelResizeHandle,
+} from "react-resizable-panels";
 import { Item } from "@/component/Droppable";
 import { animationType } from "@/lib";
 import Script from "next/script";
@@ -32,9 +31,54 @@ import withNoSSR from "@/component/Nossr";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import { INFO, SCHEMA, STATE } from "@/lib/constants";
-import { TasksContext, TasksProvider } from "@/context/data";
+import { TasksProvider } from "@/context/data";
+import { registerWebMcpTools } from "@/lib/webmcp";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = { className: "inter" };
+
+const seo = {
+  title: "Best Free Web Stories Generator - No Sign Up Required",
+  description:
+    "Create Google Web Stories for free with a no-code editor. No Google Web Stories login or sign up required. Generate AMP-ready stories, examples, SEO metadata, structured data, analytics, and monetization markup in minutes.",
+  url: "https://webstory.coolhead.in",
+  image: "https://webstory.coolhead.in/og.jpeg",
+  keywords:
+    "best free web stories generator, google web stories, chrome web stories, google web stories examples, google web stories app, create google web stories, google web stories login, free web story generator, no sign up web stories, no-code AMP stories, structured data, carousel rich results, SEO",
+};
+
+const webApplicationStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Coolhead Web Story Generator",
+  alternateName: [
+    "Best Free Web Stories Generator",
+    "Google Web Stories App",
+    "Chrome Web Stories Generator",
+  ],
+  url: seo.url,
+  image: seo.image,
+  applicationCategory: "DesignApplication",
+  operatingSystem: "Any",
+  browserRequirements: "Requires a modern browser such as Google Chrome",
+  isAccessibleForFree: true,
+  sameAs: [
+    "https://coolhead.in",
+    "https://github.com/biomathcode",
+    "https://linkedin.com/in/biomathcode",
+  ],
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  featureList: [
+    "Create Google Web Stories",
+    "Google Web Stories examples",
+    "Structured data for rich results",
+    "No Google Web Stories login required",
+  ],
+  description: seo.description,
+};
 
 export type state = {
   image: string;
@@ -167,6 +211,28 @@ function Home() {
     },
   ]);
 
+  useEffect(() => {
+    const unregister = registerWebMcpTools({
+      getStoryState: () => newState,
+      setStoryText: (slideIndex, text) => {
+        setNewState(
+          newState.map((slide, index) =>
+            index === slideIndex ? { ...slide, text } : slide
+          )
+        );
+        setNewSelect(slideIndex);
+      },
+      setSeo: (nextSeo) => {
+        setSchema({
+          ...schema,
+          ...nextSeo,
+        });
+      },
+    });
+
+    return unregister;
+  }, [newState, schema, setNewState, setSchema]);
+
   const handleDragEnd = ({ active, over }: { active: any; over: any }) => {
     if (!over) {
       setActiveId(null);
@@ -202,7 +268,6 @@ function Home() {
         setNewState(state);
       }
     }
-    console.log("this works");
     setActiveId(null);
   };
 
@@ -214,69 +279,31 @@ function Home() {
   );
 
   function handleDragStart(event: any) {
-    console.log(event.active.id);
     setActiveId(event.active.data.current);
   }
 
   return (
     <>
       <Head>
-        <title>
-          Webstory code generator- no code editor to create google web stories
-          for free
-        </title>
+        <title>{seo.title}</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
         />
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta name="application-name" content="Coolhead Web Story Generator" />
+        <link rel="canonical" href={seo.url} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@biomathcode" />
-        <meta
-          name="twitter:title"
-          content="Webstory code generator- no code editor to create google web stories for free"
-        />
-        <meta
-          name="twitter:description"
-          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories."
-        />
-        <meta
-          name="twitter:image"
-          content="https://webstory.coolhead.in/og.jpeg"
-        />
-        <meta
-          name="title"
-          content="Webstory code generator- no code editor to create google web stories for free"
-        />
-        <meta
-          name="description"
-          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
-        />
-        <meta
-          property="keywords"
-          content="webstory, no-code, amp, free, hashnode, blog, coolhead "
-        />
-
-        <meta
-          property="title"
-          content="Webstory code generator- free no code editor web stories "
-        />
-
-        <meta
-          property="description"
-          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
-        />
-        <meta
-          property="og:title"
-          content="Webstory code generator- free no code editor web stories "
-        />
-        <meta
-          property="og:description"
-          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
-        />
-        <meta
-          property="og:image"
-          content="https://webstory.coolhead.in/og.jpeg"
-        />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={seo.image} />
+        <meta name="title" content={seo.title} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={seo.image} />
+        <meta property="og:type" content="website" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
@@ -286,61 +313,51 @@ function Home() {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
 
-        <meta property="og:url" content="https://webstory.coolhead.in" />
-        <meta property="og:site" content="https://webstory.coolhead.in" />
+        <meta property="og:url" content={seo.url} />
+        <meta property="og:site_name" content="Coolhead Web Story" />
       </Head>
       <Script
         id="this"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            StructuredData({
-              title:
-                "Webstory code generator- no code editor to create google web stories for free",
-              description:
-                " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
-              image: "https://webstory.coolhead.in/og.jpeg",
-              authorName: "Pratik Sharma",
-              authorUrl: "https://coolhead.in",
-              publisherName: "Coolhead",
-              publisherWebsite: "https://coolhead.in",
-            })
+            [
+              StructuredData({
+                link: seo.url,
+                title: seo.title,
+                description: seo.description,
+                image: seo.image,
+                authorName: "Pratik Sharma",
+                authorUrl: "https://coolhead.in",
+                publisherName: "Coolhead",
+                publisherWebsite: "https://coolhead.in",
+              }),
+              webApplicationStructuredData,
+            ]
           ),
         }}
       />
       <TasksProvider>
-        <div className={inter.className}>
+        <div className={`${inter.className} app-shell`}>
           <Toaster />
 
           <NavBar url={url} setUrl={setUrl} setData={setContent} />
 
-          <div
-            style={{
-              display: "flex",
-              gap: "20px",
-              width: "100vw",
-              height: "calc(100vh - 60px ) ",
-            }}
-          >
-            <PanelGroup direction="horizontal">
+          <div className="editor-shell">
+            <PanelGroup orientation="horizontal">
               <DndContext
                 sensors={sensors}
                 onDragStart={handleDragStart}
                 onDragEnd={(e) => handleDragEnd(e)}
               >
-                <Panel defaultSize={25} minSize={20}>
+                <Panel
+                  defaultSize={28}
+                  minSize={22}
+                  className="side-panel left"
+                >
                   <RightSidebar content={content} />
                 </Panel>
-                <PanelResizeHandle
-                  style={{
-                    width: "10px",
-                    height: "calc(100vh - 60px ) ",
-                    display: "flex",
-                    justifyContent: "center",
-
-                    background: "#eee",
-                  }}
-                >
+                <PanelResizeHandle className="resize-handle">
                   <svg className="drag_handler" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -348,18 +365,8 @@ function Home() {
                     ></path>
                   </svg>
                 </PanelResizeHandle>
-                <Panel minSize={40}>
-                  <div
-                    style={{
-                      height: "calc(100vh - 60px ) ",
-
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      gap: "10px",
-                      minWidth: "300px",
-                    }}
-                  >
+                <Panel defaultSize={46} minSize={36}>
+                  <div className="canvas-stage">
                     <NewView
                       dragActive={activeId}
                       newState={newState}
@@ -374,16 +381,7 @@ function Home() {
                   {activeId ? <Item data={activeId} /> : null}
                 </DragOverlay>
 
-                <PanelResizeHandle
-                  style={{
-                    width: "10px",
-                    height: "calc(100vh - 60px ) ",
-                    display: "flex",
-                    justifyContent: "center",
-
-                    background: "#eee",
-                  }}
-                >
+                <PanelResizeHandle className="resize-handle">
                   <svg className="drag_handler" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -392,9 +390,9 @@ function Home() {
                   </svg>
                 </PanelResizeHandle>
                 <Panel
-                  defaultSize={20}
-                  minSize={20}
-                  style={{ background: "#eee" }}
+                  defaultSize={26}
+                  minSize={22}
+                  className="side-panel right"
                 >
                   <LeftSidebar
                     inter={inter}

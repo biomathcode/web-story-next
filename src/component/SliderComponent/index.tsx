@@ -26,10 +26,7 @@ function SliderComponent({ label, name, value, onChange }) {
         <Slider.Track className={styles.SliderTrack}>
           <Slider.Range className={styles.SliderRange} />
         </Slider.Track>
-        <Slider.Thumb
-          onChange={(e) => console.log(e)}
-          className={styles.SliderThumb}
-        />
+        <Slider.Thumb className={styles.SliderThumb} />
       </Slider.Root>
       <div>{value}</div>
     </div>

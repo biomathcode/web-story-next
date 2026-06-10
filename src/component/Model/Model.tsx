@@ -22,10 +22,12 @@ import {
 import Editor from "@monaco-editor/react";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
+  ClipboardCopyIcon,
+  CodeIcon,
   Cross2Icon,
   DownloadIcon,
+  EyeOpenIcon,
   GearIcon,
-  RocketIcon,
 } from "@radix-ui/react-icons";
 
 import styles from "./Model.module.css";
@@ -58,6 +60,12 @@ const Model = ({ isValid = false }) => {
   const [previewLink, setPreviewLink] = useState("");
 
   const [isNext, setIsNext] = useState(false);
+  const [viewMode, setViewMode] = useState<"code" | "preview">("code");
+  const [copyStatus, setCopyStatus] = useState("");
+
+  const activeCode = isNext ? nextcode : code;
+  const activeLanguage = isNext ? "javascript" : "html";
+  const activeLabel = isNext ? "Next JSX" : "HTML";
 
   const downloadTxtFile = (code: string, name: string, type = "html") => {
     const element = document.createElement("a");
@@ -68,10 +76,30 @@ const Model = ({ isValid = false }) => {
     element.click();
   };
 
+  const copyToClipboard = async (value: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopyStatus(`${label} copied`);
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = value;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      setCopyStatus(`${label} copied`);
+    }
+
+    window.setTimeout(() => setCopyStatus(""), 2000);
+  };
+
   const options = {
     selectOnLineNumbers: true,
     minimap: {
-      autohide: true,
+      autohide: "mouseover" as const,
       enabled: false,
     },
     fontSize: 14,
@@ -301,6 +329,7 @@ const Model = ({ isValid = false }) => {
     const previewLink = `https://playground.amp.dev/#share=${baseData}`;
 
     setPreviewLink(previewLink);
+    setViewMode("code");
   }
 
   return (
@@ -319,23 +348,45 @@ const Model = ({ isValid = false }) => {
         </button>
       </Dialog.Trigger>
       {isValid && (
-        <Dialog.Portal style={{ zIndex: 10, fontFamily: "Inter" }}>
-          <Dialog.Overlay className={styles.DialogOverlay} />
+        <Dialog.Portal>
+          <Dialog.Overlay
+            style={{ zIndex: 10 }}
+            className={styles.DialogOverlay}
+          />
           <Dialog.Content
             className={styles.DialogContent}
-            style={{ zIndex: 10 }}
+            style={{ zIndex: 10, fontFamily: "Inter" }}
           >
             <Dialog.Description className={styles.DialogDescription}>
-              <div
-                style={{
-                  width: "90%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <div className="flex gap-10 center">
+              <div className={styles.Toolbar}>
+                <div className={styles.ToolbarGroup}>
+                  <button
+                    aria-label={`Copy ${activeLabel}`}
+                    className="btn flex gap-10 center fs-12"
+                    onClick={() => copyToClipboard(activeCode, activeLabel)}
+                    type="button"
+                  >
+                    <ClipboardCopyIcon />
+                    Copy {activeLabel}
+                  </button>
+                  <button
+                    aria-label="Copy HTML"
+                    className="btn subtle flex gap-10 center fs-12"
+                    onClick={() => copyToClipboard(code, "HTML")}
+                    type="button"
+                  >
+                    <ClipboardCopyIcon />
+                    HTML
+                  </button>
+                  <button
+                    aria-label="Copy Next JSX"
+                    className="btn subtle flex gap-10 center fs-12"
+                    onClick={() => copyToClipboard(nextcode, "Next JSX")}
+                    type="button"
+                  >
+                    <ClipboardCopyIcon />
+                    JSX
+                  </button>
                   <button
                     aria-label="Download html"
                     id="download_html"
@@ -365,7 +416,36 @@ const Model = ({ isValid = false }) => {
                   </button>
                 </div>
 
-                <div className="flex gap-10 center ">
+                <div className={styles.ToolbarGroup}>
+                  <button
+                    aria-pressed={viewMode === "code"}
+                    className={
+                      viewMode === "code"
+                        ? "btn flex gap-10 center fs-12"
+                        : "btn subtle flex gap-10 center fs-12"
+                    }
+                    onClick={() => setViewMode("code")}
+                    type="button"
+                  >
+                    <CodeIcon />
+                    Code
+                  </button>
+                  <button
+                    aria-pressed={viewMode === "preview"}
+                    className={
+                      viewMode === "preview"
+                        ? "btn flex gap-10 center fs-12"
+                        : "btn subtle flex gap-10 center fs-12"
+                    }
+                    onClick={() => setViewMode("preview")}
+                    type="button"
+                  >
+                    <EyeOpenIcon />
+                    Preview here
+                  </button>
+                </div>
+
+                <div className={styles.ToolbarGroup}>
                   <label>HTML</label>
                   <Toggle
                     name="isNext"
@@ -375,30 +455,49 @@ const Model = ({ isValid = false }) => {
                   />
                   <label>NEXTJS</label>
                 </div>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={previewLink}
-                  style={{
-                    background: "var(--violet10)",
-                    textDecoration: "none",
-                  }}
-                  className="btn inter flex gap-10 center fs-12 "
-                >
-                  <RocketIcon />
-                  Preview
-                </a>
               </div>
             </Dialog.Description>
-            <Editor
-              options={options}
-              width="100%"
-              height="560px"
-              language={isNext ? "javascript" : "html"}
-              theme="vs-dark"
-              className={styles.editor}
-              value={isNext ? nextcode : code}
-            />
+            {copyStatus ? (
+              <div className={styles.StatusMessage}>{copyStatus}</div>
+            ) : null}
+            {viewMode === "code" ? (
+              <Editor
+                options={options}
+                width="100%"
+                height="560px"
+                language={activeLanguage}
+                theme="vs-dark"
+                className={styles.editor}
+                value={activeCode}
+              />
+            ) : (
+              <div className={styles.PreviewShell}>
+                <iframe
+                  title="Generated Web Story preview"
+                  className={styles.PreviewFrame}
+                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                  srcDoc={code}
+                />
+                <div className={styles.PreviewAside}>
+                  <h2>In-editor preview</h2>
+                  <p>
+                    This preview renders the generated HTML directly in this
+                    editor. Use the copy buttons above when you are ready to
+                    ship or test elsewhere.
+                  </p>
+                  {previewLink ? (
+                    <a
+                      href={previewLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn subtle flex gap-10 center fs-12"
+                    >
+                      Open AMP Playground
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            )}
             <div
               style={{
                 padding: "5px",

@@ -16,7 +16,7 @@ function UnsplashContainer() {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="flex col gap-10 center jc" style={{ width: "100%" }}>
+    <div className="unsplash-panel">
       <Search
         query={query}
         loading={loading}
@@ -47,33 +47,32 @@ function Search({
 }) {
   return (
     <form
-      className="flex gap-10 center jc scroll"
-      style={{ width: "100%" }}
+      className="unsplash-search"
       onSubmit={(e) => {
         setLoading(true);
         e.preventDefault();
-        const response = unsplash.search
-          .getPhotos({
-            query: query,
-            page: 1,
-            perPage: 10,
-            orientation: "portrait",
+        unsplash
+          .GET("/search/photos", {
+            params: {
+              query: {
+                query,
+                page: 1,
+                per_page: 10,
+                orientation: "portrait",
+              },
+            },
           })
           .then((el) => {
-            if (el.errors) {
-              console.log("error occused", el.errors[0]);
+            if (el.error) {
               setLoading(false);
             } else {
-              setData(el.response.results);
+              setData(el.data.results);
               setLoading(false);
             }
           });
-
-        console.log(response);
       }}
     >
       <input
-        style={{ width: "90%" }}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search here ..."
       />
@@ -97,20 +96,7 @@ function Search({
 
 function ImageContainer({ data }: { data: any }) {
   return (
-    <div
-      style={{
-        overflow: "scroll",
-        height: "calc(100vh - 180px)",
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "40px",
-        padding: "20px 0px",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      className="scroll"
-    >
+    <div className="unsplash-results scroll">
       {data.length === 0 ? (
         <PlaceHolder />
       ) : (

@@ -5,6 +5,8 @@ import { config } from "../axios";
 
 import {
   GitHubLogoIcon,
+  GlobeIcon,
+  LinkedInLogoIcon,
   MagnifyingGlassIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
@@ -14,6 +16,24 @@ import useLocalStorage from "use-local-storage";
 import { SCHEMA } from "@/lib/constants";
 import OnBoarding from "./OnBoarding";
 import mdParser from "@/lib/markdownParser";
+
+const socialLinks = [
+  {
+    href: "https://coolhead.in",
+    label: "Pratik Sharma website",
+    icon: GlobeIcon,
+  },
+  {
+    href: "https://github.com/biomathcode",
+    label: "Pratik Sharma GitHub",
+    icon: GitHubLogoIcon,
+  },
+  {
+    href: "https://linkedin.com/in/biomathcode",
+    label: "Pratik Sharma LinkedIn",
+    icon: LinkedInLogoIcon,
+  },
+];
 
 export interface ColourOption {
   value: string;
@@ -52,18 +72,12 @@ function NavBar({
   const { register, handleSubmit } = useForm();
 
   return (
-    <nav
-      style={{
-        width: "100vw",
-        height: "60px",
-        minHeight: "60px",
-        background: "#eee",
-        margin: "0px",
-        padding: "0px 20px",
-      }}
-      className="flex center ja gap-10"
-    >
-      <div className="flex center gap-10 ">
+    <nav className="topbar">
+      <div className="brand-lockup">
+        <span className="brand-title">Web Story Generator</span>
+        <span className="brand-subtitle">Free, no sign up required</span>
+      </div>
+      <div className="flex center gap-10 url-form">
         <Suspense fallback={<p>Error happend</p>}>
           <form
             onSubmit={handleSubmit(async (data) => {
@@ -73,7 +87,6 @@ function NavBar({
                 const response = await axios.get(
                   `/api/hello?url=${data.username}`
                 );
-                console.log(response);
                 if (response) {
                   const el = await mdParser(response.data.data);
 
@@ -125,18 +138,10 @@ function NavBar({
         </Suspense>
       </div>
 
-      <div className="flex gap-10 center">
+      <div className="topbar-actions">
         <OnBoarding />
         <Link
-          className="flex  center gap-10 fs-12"
-          style={{
-            color: "var(--violet2)",
-            padding: "10px 15px",
-            background: "var(--violet9)",
-            borderRadius: "5px",
-
-            textDecorationStyle: "solid",
-          }}
+          className="nav-link-button"
           href="/learn"
           target="_blank"
           rel="noreferrer"
@@ -144,23 +149,21 @@ function NavBar({
           <RocketIcon />
           Learn
         </Link>
-        <Link
-          className="flex  center gap-10 fs-12"
-          style={{
-            color: "var(--slate2)",
-            padding: "10px 15px",
-            background: "var(--slate12)",
-            borderRadius: "5px",
-
-            textDecorationStyle: "solid",
-          }}
-          href="https://github.com/biomathcode/web-story-next"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="github link"
-        >
-          <GitHubLogoIcon />
-        </Link>
+        <div className="social-link-group" aria-label="Social links">
+          {socialLinks.map(({ href, label, icon: Icon }) => (
+            <Link
+              key={href}
+              className="nav-link-button secondary icon-only"
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              title={label}
+            >
+              <Icon />
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );

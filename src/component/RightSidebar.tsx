@@ -1,11 +1,54 @@
 import Droppable from "./Droppable";
 import * as Tabs from "@radix-ui/react-tabs";
-import PlaceHolder from "./Placeholder/Placeholder";
 
 import UnsplashContainer from "./Unsplash";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { useTasks } from "@/context/data";
 import { CalendarPlaceHolder } from "./Icons";
+import {
+  FileTextIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons";
+import LearnMoreLinks from "./LearnMoreLinks";
+import { editorLearnLinks } from "@/lib/seoResources";
+
+const EmptyContentOnboarding = () => {
+  const focusSourceInput = () => {
+    document.getElementById("username")?.focus();
+  };
+
+  return (
+    <div className="side-onboarding">
+      <div className="feature-hint">
+        <div className="feature-hint-icon">
+          <FileTextIcon />
+        </div>
+        <div>
+          <span className="new-badge">Start here</span>
+          <h2>Start with a draft</h2>
+          <p>
+            Paste an article URL, then drag extracted text and images into the
+            story canvas.
+          </p>
+        </div>
+      </div>
+      <button className="onboarding-step-card" type="button" onClick={focusSourceInput}>
+        <FileTextIcon />
+        <span>
+          <b>Add article source</b>
+          <small>Paste a page URL to extract text and images.</small>
+        </span>
+      </button>
+      <div className="onboarding-step-card muted">
+        <RocketIcon />
+        <span>
+          <b>Publish markup</b>
+          <small>Open Publish after adding author and SEO details.</small>
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const TemplateComponent = () => {
   const getData = useTasks();
@@ -39,13 +82,21 @@ const RightSidebar = ({ content }: { content: any }) => {
       style={{ overflow: "auto", width: "100%" }}
     >
       <Tabs.List className="TabsList scroll" aria-label="Manage your account">
-        <Tabs.Trigger className="TabsTrigger" value="tab1">
+        <Tabs.Trigger className="TabsTrigger" id="content-tab-trigger" value="tab1">
           Content
         </Tabs.Trigger>
-        <Tabs.Trigger className="TabsTrigger" value="tab2">
+        <Tabs.Trigger
+          className="TabsTrigger"
+          id="unsplash-tab-trigger"
+          value="tab2"
+        >
           Unsplash
         </Tabs.Trigger>
-        <Tabs.Trigger className="TabsTrigger" value="tab3">
+        <Tabs.Trigger
+          className="TabsTrigger"
+          id="template-tab-trigger"
+          value="tab3"
+        >
           Template
         </Tabs.Trigger>
       </Tabs.List>
@@ -67,24 +118,16 @@ const RightSidebar = ({ content }: { content: any }) => {
         }}
       >
         <TemplateComponent />
+        <LearnMoreLinks links={editorLearnLinks.template} />
       </Tabs.Content>
       <Tabs.Content
-        className="flex  center jc scroll"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          width: "100%",
-
-          overflow: "scroll",
-
-          padding: "10px 20px",
-        }}
+        className="unsplash-tab"
         value="tab2"
       >
-        <ScrollArea.Root>
-          <ScrollArea.Viewport>
+        <ScrollArea.Root className="unsplash-scroll-root">
+          <ScrollArea.Viewport className="unsplash-scroll-viewport">
             <UnsplashContainer />
+            <LearnMoreLinks links={editorLearnLinks.unsplash} />
           </ScrollArea.Viewport>
         </ScrollArea.Root>
       </Tabs.Content>
@@ -107,13 +150,8 @@ const RightSidebar = ({ content }: { content: any }) => {
       >
         {content.length > 0
           ? content.map((el: any, i: any) => {
-              if (el.type === "list") {
-                console.log(el, "this is list");
-              }
-
               // three types content, code, image
               if (el?.raw?.match(/!\[(.*)\]\((.+)\)/g) && el?.type !== "list") {
-                console.log("this is image", el);
                 return (
                   <Droppable
                     data={el}
@@ -138,7 +176,8 @@ const RightSidebar = ({ content }: { content: any }) => {
               }
             })
           : null}
-        {content.length === 0 && <PlaceHolder />}
+        {content.length === 0 && <EmptyContentOnboarding />}
+        <LearnMoreLinks links={editorLearnLinks.content} />
       </Tabs.Content>
     </Tabs.Root>
   );

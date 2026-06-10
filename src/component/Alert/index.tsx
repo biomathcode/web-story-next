@@ -96,8 +96,11 @@ const Alert = ({
           {icon}
         </button>
       </AlertDialog.Trigger>
-      <AlertDialog.Portal style={{ zIndex: 10 }}>
-        <AlertDialog.Overlay className={styles.AlertDialogOverlay} />
+      <AlertDialog.Portal>
+        <AlertDialog.Overlay
+          style={{ zIndex: 10 }}
+          className={styles.AlertDialogOverlay}
+        />
         <AlertDialog.Content
           style={{ zIndex: 20 }}
           className={styles.AlertDialogContent}

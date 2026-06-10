@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "es5",
     "noImplicitAny": false,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "sourceMap": false,
@@ -11,10 +15,10 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -23,9 +27,28 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/new-amp.jsx", "src/pages/new-amp.jsx", "src/lib/supabase.ts", "src/lib/supabase.ts", "src/pages/test.jsx", "src/pages/test.jsx", "src/context/data.tsx", "src/context/data.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/pages/new-amp.jsx",
+    "src/pages/new-amp.jsx",
+    "src/lib/supabase.ts",
+    "src/lib/supabase.ts",
+    "src/pages/test.jsx",
+    "src/pages/test.jsx",
+    "src/context/data.tsx",
+    "src/context/data.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/stories",
+    ".storybook"
+  ]
 }

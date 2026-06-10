@@ -36,8 +36,8 @@ function FullModel({
           {triggerName}
         </button>
       </Dialog.Trigger>
-      <Dialog.Portal style={{ zIndex: 10 }}>
-        <Dialog.Overlay className={styles.DialogOverlay} />
+      <Dialog.Portal>
+        <Dialog.Overlay style={{ zIndex: 10 }} className={styles.DialogOverlay} />
         <Dialog.Content
           className={classNames(styles.DialogContent, "inter")}
           style={{ zIndex: 10, overflow: "scroll" }}

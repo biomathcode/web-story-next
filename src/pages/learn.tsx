@@ -2,6 +2,7 @@ import AccordianContainer from "@/component/Accordian";
 import Footer from "@/component/Footer";
 import InfoCheckBox from "@/component/InfoCheckbox/InfoCheckbox";
 import { StructuredData } from "@/component/SEO";
+import { seoResourceLinks } from "@/lib/seoResources";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
@@ -23,6 +24,16 @@ const header = [
       "Sign in to Google analytics. Click on Gear icon with the label Admin. Click on the Create Property. After completing the form about Property details. Recommended that you create a Google Analytics 4 property. Add the g-tab inside the amp story auto analytics component and add the tag as a child of amp story component.",
   },
 ];
+
+const learnSeo = {
+  title: "Google Web Stories SEO Guide and Examples",
+  description:
+    "Learn how to create Google Web Stories, review Google Web Stories examples, and publish without a Google Web Stories login.",
+  url: "https://webstory.coolhead.in/learn",
+  image: "https://webstory.coolhead.in/og.jpeg",
+  keywords:
+    "google web stories, google web stories examples, create google web stories, google web stories app, google web stories login, chrome web stories",
+};
 
 const data = [
   {
@@ -56,10 +67,10 @@ const data = [
     ],
   },
   StructuredData({
-    title: "Learn about AMP web stories Search Engine Optimisation or SEO",
-    description:
-      " Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story",
-    image: "https://webstory.coolhead.in/og.jpeg",
+    link: learnSeo.url,
+    title: learnSeo.title,
+    description: learnSeo.description,
+    image: learnSeo.image,
     authorName: "Pratik Sharma",
     authorUrl: "https://coolhead.in",
     publisherWebsite: "https://coolhead.in",
@@ -109,45 +120,26 @@ function Learn() {
   return (
     <>
       <Head>
-        <title>
-          Learn about AMP web stories Search Engine Optimisation or SEO
-        </title>
-        <meta title="Learn about AMP web stories Search Engine Optimisation or SEO" />
-        <meta
-          property="title"
-          content="Learn about AMP web stories Search Engine Optimisation or SEO"
-        />
+        <title>{learnSeo.title}</title>
+        <meta property="title" content={learnSeo.title} />
 
-        <meta
-          property="description"
-          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. "
-        />
-        <meta
-          property="og:title"
-          content="Learn about AMP web stories search engine optimisation or SEO"
-        />
-        <meta
-          property="og:description"
-          content="Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
-        />
-        <meta
-          property="og:image"
-          content="https://webstory.coolhead.in/og.jpeg"
-        />
+        <meta name="description" content={learnSeo.description} />
+        <meta name="keywords" content={learnSeo.keywords} />
+        <link rel="canonical" href={learnSeo.url} />
+        <meta property="og:title" content={learnSeo.title} />
+        <meta property="og:description" content={learnSeo.description} />
+        <meta property="og:image" content={learnSeo.image} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
           name="twitter:title"
-          content="Learn about AMP web stories search engine optimisation or SEO"
+          content={learnSeo.title}
         />
         <meta
           name="twitter:description"
-          content=" Learn the basic of seo of AMP web stories. Tips and tricks to improve the seo of your amp web stories. - Coolhead || Web story"
+          content={learnSeo.description}
         />
-        <meta
-          name="twitter:image"
-          content=" https://webstory.coolhead.in/og.jpeg"
-        />
+        <meta name="twitter:image" content={learnSeo.image} />
         <meta
           name="twitter:image:alt"
           content="Webstory code generator - no code tool editor "
@@ -155,7 +147,7 @@ function Learn() {
         <meta property="og:type" content="article" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:url" content="http://webstory.coolhead.in/learn" />
+        <meta property="og:url" content={learnSeo.url} />
         <meta name="twitter:creator" content="@biomathcode" />
       </Head>
       <Script
@@ -180,8 +172,14 @@ function Learn() {
               fontWeight: 300,
             }}
           >
-            Learn about AMP web stories Search Engine Optimisation
+            Google Web Stories SEO Guide
           </h1>
+          <p>
+            Use this guide to create Google Web Stories, find practical Google
+            Web Stories examples, and improve discoverability with structured
+            data. The editor works as a free Google Web Stories app, and it does
+            not require a Google Web Stories login.
+          </p>
           <p
             style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}
           >
@@ -247,7 +245,11 @@ function Learn() {
           </h2>
 
           <ul className="flex col gap-20">
-            <li>Add Structued data to your webstories.</li>
+            <li>Add structured data to your web stories.</li>
+            <li>
+              Add carousel structured data when you publish a collection of
+              related Web Stories or articles.
+            </li>
             <li>
               Make sure there is enough contract between the text and the
               background image. <i>Tip: Add Overlay Effect</i>
@@ -316,6 +318,42 @@ function Learn() {
               10 SEO Tips to increase views google web stories ?
             </Link>
           </p>
+          <p
+            style={{
+              border: "1px solid #444",
+              borderRadius: "4px",
+              padding: "20px",
+              margin: "20px 0px",
+            }}
+          >
+            Discovery strategy{" "}
+            <Link href="/how-web-stories-improve-discovery-score-google-search-console">
+              How Web Stories can improve discovery in Search Console
+            </Link>
+          </p>
+          <p
+            style={{
+              border: "1px solid #444",
+              borderRadius: "4px",
+              padding: "20px",
+              margin: "20px 0px",
+            }}
+          >
+            Rich results{" "}
+            <Link href="/add-carousel-structured-data-google-rich-view">
+              Add carousel structured data for Google rich view
+            </Link>
+          </p>
+
+          <h2>Web Stories SEO resources</h2>
+          <ul className="flex col gap-10">
+            {seoResourceLinks.map((resource) => (
+              <li key={resource.href}>
+                <Link href={resource.href}>{resource.title}</Link> -{" "}
+                {resource.description}
+              </li>
+            ))}
+          </ul>
 
           <h3>Resource to learn more</h3>
           <ul className="flex col gap-10">

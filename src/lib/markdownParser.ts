@@ -5,7 +5,6 @@ import htmlToMarkdown from "@wcj/html-to-markdown";
 const mdParser = async (content: string) => {
   const el = await htmlToMarkdown({ html: content });
 
-  console.log("html to markdown", el);
   const response = marked?.lexer(el || "");
 
   const data: any = [];

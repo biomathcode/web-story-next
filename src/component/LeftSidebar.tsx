@@ -3,6 +3,9 @@ import {
   ColorWheelIcon,
   FontSizeIcon,
   GearIcon,
+  GitHubLogoIcon,
+  GlobeIcon,
+  LinkedInLogoIcon,
   LineHeightIcon,
   LockClosedIcon,
   SpaceBetweenHorizontallyIcon,
@@ -44,6 +47,8 @@ import InputComponent from "./InputComponent";
 import { nanoid } from "nanoid";
 import { BankPlaceholder, CalendarPlaceHolder } from "./Icons";
 import Link from "next/link";
+import LearnMoreLinks from "./LearnMoreLinks";
+import { editorLearnLinks } from "@/lib/seoResources";
 
 const LeftSidebar = ({
   inter,
@@ -57,7 +62,6 @@ const LeftSidebar = ({
   setNewState: any;
 }) => {
   function handleChange(e: any) {
-    console.log(e);
     const state = newState.map((el: any, i: any) => {
       const newObject: any = {
         text: {
@@ -129,8 +133,6 @@ const LeftSidebar = ({
       return i === newSelect ? newObject[e.target.name] : el;
     });
 
-    console.log("new state", state);
-
     setNewState(state);
   }
 
@@ -189,11 +191,11 @@ const LeftSidebar = ({
 
   return (
     <div
-      className="flex col  js"
+      className="flex col js"
       style={{
-        height: "80vh",
+        height: "100%",
         justifyContent: "space-between",
-        background: "#eee",
+        background: "var(--panel-bg)",
       }}
     >
       <Tabs.Root
@@ -202,13 +204,25 @@ const LeftSidebar = ({
         style={{ width: "100%" }}
       >
         <Tabs.List className="TabsList scroll" aria-label="Manage your account">
-          <Tabs.Trigger className="TabsTrigger" value="tab1">
+          <Tabs.Trigger
+            className="TabsTrigger"
+            id="style-tab-trigger"
+            value="tab1"
+          >
             Styles
           </Tabs.Trigger>
-          <Tabs.Trigger className="TabsTrigger" value="tab2">
+          <Tabs.Trigger
+            className="TabsTrigger"
+            id="animation-tab-trigger"
+            value="tab2"
+          >
             Animation
           </Tabs.Trigger>
-          <Tabs.Trigger className="TabsTrigger" value="tab3">
+          <Tabs.Trigger
+            className="TabsTrigger"
+            id="cta-tab-trigger"
+            value="tab3"
+          >
             CTA
           </Tabs.Trigger>
         </Tabs.List>
@@ -216,14 +230,14 @@ const LeftSidebar = ({
           className="scroll"
           value="tab3"
           style={{
-            padding: "10px 10px",
+            padding: "14px",
             margin: "0px px",
 
             width: "100%",
-            maxHeight: "calc(90vh - 150px ) ",
+            maxHeight: "calc(100vh - 190px)",
 
             right: "0px",
-            background: "#eee",
+            background: "var(--panel-bg)",
 
             gap: "10px",
             fontSize: "14px",
@@ -273,18 +287,19 @@ const LeftSidebar = ({
               </>
             ) : null}
           </div>
+          <LearnMoreLinks links={editorLearnLinks.cta} />
         </Tabs.Content>
         <Tabs.Content
           style={{
-            padding: "10px 10px",
+            padding: "14px",
             margin: "0px px",
             overflow: "scroll",
 
             width: "100%",
-            maxHeight: "calc(90vh - 150px ) ",
+            maxHeight: "calc(100vh - 190px)",
 
             right: "0px",
-            background: "#eee",
+            background: "var(--panel-bg)",
             display: "flex",
             flexDirection: "column",
 
@@ -330,6 +345,7 @@ const LeftSidebar = ({
               ))}
             </select>
           </fieldset>
+          <LearnMoreLinks links={editorLearnLinks.animation} />
         </Tabs.Content>
 
         <Tabs.Content
@@ -338,13 +354,13 @@ const LeftSidebar = ({
 
             width: "100%",
 
-            maxHeight: "calc(90vh - 150px ) ",
+            maxHeight: "calc(100vh - 190px)",
 
             right: "0px",
-            background: "#eee",
+            background: "var(--panel-bg)",
             display: "flex",
             flexDirection: "column",
-            padding: "10px",
+            padding: "14px",
 
             gap: "10px",
             fontSize: "14px",
@@ -553,6 +569,7 @@ const LeftSidebar = ({
               name="slider"
               label="slider"
             /> */}
+            <LearnMoreLinks links={editorLearnLinks.styles} />
           </div>
         </Tabs.Content>
       </Tabs.Root>
@@ -700,13 +717,35 @@ const LeftSidebar = ({
           Created by
           <Link
             className="flex  center gap-10 fs-12"
-            href="https://twitter.com/BioMathCode"
+            href="https://coolhead.in"
             target="_blank"
             rel="noreferrer"
-            aria-label="twitter profile link"
+            aria-label="Pratik Sharma website"
           >
-            {" "}
+            <GlobeIcon />
             @biomathcode
+          </Link>
+        </p>
+        <p className="label flex gap-10">
+          <Link
+            className="flex center gap-10 fs-12"
+            href="https://github.com/biomathcode"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Pratik Sharma GitHub"
+          >
+            <GitHubLogoIcon />
+            GitHub
+          </Link>
+          <Link
+            className="flex center gap-10 fs-12"
+            href="https://linkedin.com/in/biomathcode"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Pratik Sharma LinkedIn"
+          >
+            <LinkedInLogoIcon />
+            LinkedIn
           </Link>
         </p>
       </div>

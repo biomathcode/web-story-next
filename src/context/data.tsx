@@ -81,21 +81,34 @@ export const TasksDispatchContext = createContext<Dispatch<ProductActions>>(
   () => null
 );
 
+const getStoredTemplates = () => {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    return JSON.parse(localStorage.getItem("template") || "null");
+  } catch {
+    return null;
+  }
+};
+
 export function TasksProvider({ children }) {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("template") || "")) {
+    const templates = getStoredTemplates();
+
+    if (templates) {
       dispatch({
         type: Types.Init,
-        payload: JSON.parse(localStorage.getItem("template") || " "),
+        payload: templates,
       });
     }
   }, []);
 
   useEffect(() => {
     if (tasks !== initialTasks) {
-      console.log("this is called", tasks);
       localStorage.setItem("template", JSON.stringify(tasks));
     }
   }, [tasks]);
@@ -167,9 +180,9 @@ function tasksReducer(tasks: TemplateType[], action: ProductActions) {
     }
     case Types.Init: {
       if (action.payload !== null) {
-        console.log("this is the first action is called", action.payload);
         return action.payload;
       }
+      return tasks;
     }
     default: {
       throw Error("Unknown action: " + action);

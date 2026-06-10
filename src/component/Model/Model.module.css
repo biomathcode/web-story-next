@@ -39,8 +39,74 @@
   color: var(--mauve11);
   font-size: 15px;
   line-height: 1.5;
+  display: block;
+}
+
+.Toolbar {
+  width: calc(100% - 36px);
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
+}
+
+.ToolbarGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.StatusMessage {
+  width: fit-content;
+  margin: 0 0 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.PreviewShell {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) minmax(220px, 1fr);
+  gap: 16px;
+  min-height: 560px;
+  padding: 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.PreviewFrame {
+  width: 100%;
+  height: 560px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: #000;
+}
+
+.PreviewAside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  max-width: 360px;
+}
+
+.PreviewAside h2 {
+  margin: 0;
+  color: var(--brand-strong);
+  font-size: 18px;
+}
+
+.PreviewAside p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .Button {

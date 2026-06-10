@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RgbaColorPicker } from "react-colorful";
 import { useClickAway } from "use-click-away";
 
@@ -26,13 +26,9 @@ export default function ColorComponent({
   setColorValue,
   name,
 }: ColorComponentType) {
-  const [color, setColor] = useState(stringToRGB(colorValue));
+  const color = stringToRGB(colorValue);
   const [modal, setModal] = React.useState(false);
   const clickRef = React.useRef<any>("");
-
-  useEffect(() => {
-    setColor(stringToRGB(colorValue));
-  }, [colorValue]);
 
   useClickAway(clickRef, () => {
     setModal(false);
@@ -65,8 +61,6 @@ export default function ColorComponent({
           <RgbaColorPicker
             color={color}
             onChange={(newColor) => {
-              setColor(newColor);
-
               const obj = {
                 target: {
                   name: name,

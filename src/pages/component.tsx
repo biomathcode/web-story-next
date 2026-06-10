@@ -21,7 +21,6 @@ function Component() {
           <ChildrenComponent />
           <Alert
             action={() => {
-              console.log(value);
               setValue("");
             }}
             actionName="Create Template"
@@ -43,7 +42,6 @@ function ChildrenComponent() {
 
   const dispatch = useTasksDispatch();
 
-  console.log(getData);
   return (
     <>
       <h1>Tasks</h1>

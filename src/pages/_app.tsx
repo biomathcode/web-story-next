@@ -5,10 +5,19 @@ import "./globals.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
-    (window as any)?.plugSDK?.init({
-      app_id: "don:core:dvrv-us-1:devo/13GRGt258:plug_setting/1",
+    if (process.env.NODE_ENV !== "development") {
+      return;
+    }
+
+    import("react-scan").then(({ scan }) => {
+      scan({
+        enabled: true,
+        showToolbar: true,
+        trackUnnecessaryRenders: true,
+      });
     });
   }, []);
+
   return (
     <>
       <Script
@@ -30,13 +39,6 @@ const App = ({ Component, pageProps }: AppProps) => {
         crossOrigin="anonymous"
       ></Script>
 
-      <Script
-        id="devrev"
-        src="https://plug-platform.devrev.ai/static/plug.js"
-        type="text/javascript"
-        crossOrigin="anonymous"
-        strategy="beforeInteractive"
-      ></Script>
       <Component {...pageProps} />
     </>
   );

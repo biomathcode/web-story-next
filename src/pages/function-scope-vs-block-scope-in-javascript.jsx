@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useAmp } from "next/amp";
 
 import { StructuredData } from "../component/SEO/index";
 
@@ -21,7 +20,6 @@ export const config = {
 };
 
 export default function IndexPage() {
-  const isAmp = useAmp();
   return (
     <>
       <Head>
